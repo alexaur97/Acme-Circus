@@ -1,0 +1,38 @@
+package converters; 
+
+import org.apache.commons.lang.StringUtils; 
+import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.core.convert.converter.Converter; 
+import org.springframework.stereotype.Component; 
+import org.springframework.transaction.annotation.Transactional; 
+
+import repositories.TicketRepository; 
+import domain.Ticket; 
+
+@Component 
+@Transactional 
+public class StringToTicketConverter implements Converter<String, Ticket>{ 
+
+	@Autowired 
+	TicketRepository ticketRepository; 
+
+	@Override 
+	public Ticket convert(String text){ 
+		Ticket result; 
+		int id; 
+
+		try{ 
+			if(StringUtils.isEmpty(text)){ 
+				result = null; 
+			}else{ 
+				id = Integer.valueOf(text); 
+				result = ticketRepository.findOne(id); 
+			} 
+		}catch (Throwable oops) { 
+			throw new IllegalArgumentException(oops); 
+		} 
+
+		return result; 
+	} 
+
+} 

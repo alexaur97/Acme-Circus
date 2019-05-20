@@ -22,4 +22,4 @@
 <a href="about/contact.do"><spring:message code="masterpage.contact" /></a>
 <a href="about/privacy.do"><spring:message code="masterpage.privacy" /></a>
 
-<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Acme Circus Co., Inc.</b>
+<b>Copyright &copy; <fmt:formatDate value="${date}" pattern="yyyy" /> Acme-Circus Co., Inc.</b>

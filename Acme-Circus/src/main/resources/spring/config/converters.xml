@@ -18,10 +18,46 @@
 	">
 
 	<util:list id="converters">
-		<!-- 
-			Add your own converters using entries of the following form: 
-			<bean class="converters.Class1ToClass2" /> 
-		-->
+		<bean class="converters.StringToFeeConverter" />
+		<bean class="converters.FeeToStringConverter" />
+		<bean class="converters.StringToAttendeeConverter" />
+		<bean class="converters.AttendeeToStringConverter" />
+		<bean class="converters.StringToWorkerConverter" />
+		<bean class="converters.WorkerToStringConverter" />
+		<bean class="converters.StringToArtistConverter" />
+		<bean class="converters.ArtistToStringConverter" />
+		<bean class="converters.StringToOwnerConverter" />
+		<bean class="converters.OwnerToStringConverter" />
+		<bean class="converters.StringToOrganizerConverter" />
+		<bean class="converters.OrganizerToStringConverter" />
+		<bean class="converters.StringToCategoryPriceConverter" />
+		<bean class="converters.CategoryPriceToStringConverter" />
+		<bean class="converters.StringToTicketConverter" />
+		<bean class="converters.TicketToStringConverter" />
+		<bean class="converters.StringToPruchaseConverter" />
+		<bean class="converters.PruchaseToStringConverter" />
+		<bean class="converters.StringToStopConverter" />
+		<bean class="converters.StopToStringConverter" />
+		<bean class="converters.StringToArtistInvoiceConverter" />
+		<bean class="converters.ArtistInvoiceToStringConverter" />
+		<bean class="converters.StringToBannerInvoiceConverter" />
+		<bean class="converters.BannerInvoiceToStringConverter" />
+		<bean class="converters.StringToCircusInvoiceConverter" />
+		<bean class="converters.CircusInvoiceToStringConverter" />
+		<bean class="converters.StringToInvoiceConverter" />
+		<bean class="converters.InvoiceToStringConverter" />
+		<bean class="converters.StringToBannerConverter" />
+		<bean class="converters.BannerToStringConverter" />
+		<bean class="converters.StringToCategoryTourConverter" />
+		<bean class="converters.CategoryTourToStringConverter" />
+		<bean class="converters.StringToTourConverter" />
+		<bean class="converters.TourToStringConverter" />
+		<bean class="converters.StringToOfferConverter" />
+		<bean class="converters.OfferToStringConverter" />
+		<bean class="converters.StringToPerformanceConverter" />
+		<bean class="converters.PerformanceToStringConverter" />
+		<bean class="converters.StringToCircusConverter" />
+		<bean class="converters.CircusToStringConverter" />		
 	</util:list>
 	
 </beans>
