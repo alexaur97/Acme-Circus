@@ -6,6 +6,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
@@ -26,7 +27,7 @@ public class Performance extends DomainEntity {
 	public Integer persons;
 	public String video;
 	public Boolean copy;
-
+	public Artist artist;
 	
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
@@ -69,6 +70,16 @@ public class Performance extends DomainEntity {
 	}
 	public void setCopy(Boolean copy) {
 		this.copy = copy;
+	}
+	
+	@NotNull
+	@ManyToOne(optional = false)
+	public Artist getArtist() {
+		return artist;
+	}
+
+	public void setArtist(Artist artist) {
+		this.artist = artist;
 	}
 	
 	

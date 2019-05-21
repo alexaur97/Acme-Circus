@@ -113,7 +113,7 @@ public class AttendeeService {
 		result.setPhoto(attendeeRegisterForm.getPhoto());
 		result.setSurnames(attendeeRegisterForm.getSurnames());
 
-		result.setDNI(attendeeRegisterForm.getDni());
+		result.setDni(attendeeRegisterForm.getDni());
 		return result;
 	}
 }
