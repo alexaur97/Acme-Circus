@@ -7,18 +7,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional; 
 
 import repositories.PruchaseRepository; 
-import domain.Pruchase; 
+import domain.Purchase; 
 
 @Component 
 @Transactional 
-public class StringToPruchaseConverter implements Converter<String, Pruchase>{ 
+public class StringToPruchaseConverter implements Converter<String, Purchase>{ 
 
 	@Autowired 
 	PruchaseRepository pruchaseRepository; 
 
 	@Override 
-	public Pruchase convert(String text){ 
-		Pruchase result; 
+	public Purchase convert(String text){ 
+		Purchase result; 
 		int id; 
 
 		try{ 

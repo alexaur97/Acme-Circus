@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Pruchase extends DomainEntity {
+public class Purchase extends DomainEntity {
 
 	// Attributes ..................
 	

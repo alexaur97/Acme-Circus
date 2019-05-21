@@ -10,7 +10,7 @@ import org.springframework.util.Assert;
 import repositories.PerformanceRepository;
 
 import domain.Performance; 
-import domain.Pruchase;
+import domain.Purchase;
 
 @Service 
 @Transactional 

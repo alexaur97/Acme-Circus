@@ -9,7 +9,7 @@ import org.springframework.util.Assert;
 
 import repositories.PruchaseRepository;
 
-import domain.Pruchase; 
+import domain.Purchase; 
 import domain.Stop;
 
 @Service 
@@ -32,37 +32,37 @@ public class PruchaseService {
 
 	//Simple CRUD methods--------------------
 
-	public Pruchase create(){
-		Pruchase result;
+	public Purchase create(){
+		Purchase result;
 
-		result = new Pruchase();
+		result = new Purchase();
 
 		return result;
 	}
 
-	public Collection<Pruchase> findAll(){
-		Collection<Pruchase> result;
+	public Collection<Purchase> findAll(){
+		Collection<Purchase> result;
 
 		result = pruchaseRepository.findAll();
 
 		return result;
 	}
 
-	public Pruchase findOne(int pruchaseId){
-		Pruchase result;
+	public Purchase findOne(int pruchaseId){
+		Purchase result;
 
 		result = pruchaseRepository.findOne(pruchaseId);
 
 		return result;
 	}
 
-	public void save(Pruchase pruchase){
+	public void save(Purchase pruchase){
 		Assert.notNull(pruchase);
 
 		pruchaseRepository.save(pruchase);
 	}
 
-	public void delete(Pruchase pruchase){
+	public void delete(Purchase pruchase){
 		pruchaseRepository.delete(pruchase);
 	}
 
