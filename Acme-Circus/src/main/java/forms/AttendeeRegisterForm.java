@@ -72,7 +72,7 @@ public class AttendeeRegisterForm {
 		this.surnames = surnames;
 	}
 
-	@NotBlank
+	@NotNull
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@Pattern(regexp = "^[0-9]{8}[A-Z]$")
 	public String getDni() {

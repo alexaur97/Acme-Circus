@@ -64,7 +64,7 @@ public class Actor extends DomainEntity {
 		this.surnames = surnames;
 	}
 
-	@NotBlank
+	@NotNull
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	@Pattern(regexp = "^[0-9]{8}[A-Z]$")
 	// 8 números y una letra
@@ -107,7 +107,6 @@ public class Actor extends DomainEntity {
 		this.email = email;
 	}
 
-	@NotNull
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getPhone() {
 		return this.phone;
@@ -116,8 +115,7 @@ public class Actor extends DomainEntity {
 	public void setPhone(final String phone) {
 		this.phone = phone;
 	}
-	
-	@NotNull
+
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getAddress() {
 		return this.address;

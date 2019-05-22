@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import miscellaneous.Utils;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.AttendeeRepository;
+import security.Authority;
 import security.UserAccount;
 import domain.Attendee;
 import domain.CreditCard;
@@ -42,8 +44,21 @@ public class AttendeeService {
 		Attendee result;
 
 		result = new Attendee();
+		final UserAccount ua = new UserAccount();
+
+		result.setUserAccount(ua);
+
+		final Authority a = new Authority();
+		a.setAuthority(Authority.ATTENDEE);
+		final Collection<Authority> authorities = new ArrayList<Authority>();
+		authorities.add(a);
+		result.getUserAccount().setAuthorities(authorities);
+
+		final CreditCard creditCard = new CreditCard();
+		result.setCreditCard(creditCard);
 
 		return result;
+
 	}
 
 	public Collection<Attendee> findAll() {
