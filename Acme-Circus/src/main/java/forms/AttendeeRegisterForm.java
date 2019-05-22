@@ -41,7 +41,7 @@ public class AttendeeRegisterForm {
 	private Date	bornDate;
 
 
-	@NotBlank
+	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getBornDate() {
@@ -72,8 +72,9 @@ public class AttendeeRegisterForm {
 		this.surnames = surnames;
 	}
 
-	@NotNull
+	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Pattern(regexp = "^[0-9]{8}[A-Z]$")
 	public String getDni() {
 		return this.dni;
 	}

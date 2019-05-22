@@ -30,19 +30,427 @@
 		</property>
 	</bean>
 
-
-	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="super" />
-		<property name="password" value="1b3231655cebb7a1f783eddf27d254ca" />
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="artist1" />
+		<property name="password" value="8507c08cd2743274878fb97302e42cf8" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="ADMIN" />
+					<property name="authority" value="ARTIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="artist2" />
+		<property name="password" value="a330293fcc542e3b891a6c102e59f217" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ARTIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="organizer1" />
+		<property name="password" value="428e8d298a100ea1d80c257ca3995b87" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ORGANIZER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="WORKER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="organizer2" />
+		<property name="password" value="c0200ec08537353630b45c6d391e936e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ORGANIZER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="WORKER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="attendee1" />
+		<property name="password" value="6fcf38dfc3b9d4c1816cc536efa7dcca" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ATTENDEE" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="attendee2" />
+		<property name="password" value="2a0b056e56f17fdd885d820342b814b2" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ATTENDEE" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="owner1" />
+		<property name="password" value="4ef5ba0c918c537fadba2ada54e3dd68" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="OWNER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="WORKER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount9" class="security.UserAccount">
+		<property name="username" value="owner2" />
+		<property name="password" value="b1e3677cd7c6f633e6c08037583c846f" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="OWNER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="WORKER" />
+				</bean>
+			</list>
+		</property>
+
+	</bean>
+	
+	<bean id="userAccount10" class="security.UserAccount">
+		<property name="username" value="owner3" />
+		<property name="password" value="80a38342307696962140b56a785877ae" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="OWNER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="WORKER" />
 				</bean>
 			</list>
 		</property>
 	</bean>
 	
-	<!-- Other domain beans come here -->	
+		<!-- Circus -->
+
+	<bean id="circus1" class="domain.Circus">
+		<property name="VAT" value="kuhluiy786" />
+		<property name="name" value="Circus Totalus" />
+		<property name="history" value="A legendary circus." />
+		<property name="active" value="true" />
+	</bean>
+	
+	<bean id="circus2" class="domain.Circus">
+		<property name="VAT" value="jhgyut677" />
+		<property name="name" value="Circe du Soeil" />
+		<property name="history" value="Le cirké definitivé, o la lá." />
+		<property name="active" value="true" />
+	</bean>
+	
+	<bean id="circus3" class="domain.Circus">
+		<property name="VAT" value="43ghvjhh8" />
+		<property name="name" value="The circus od the horrors" />
+		<property name="history" value="Get ready to be afraid. More than 100 years of history." />
+		<property name="active" value="false" />
+	</bean>
+
+	<!-- CreditCards -->
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="Paolo Luna Rodríguez" />
+		<property name="brandName" value="Visa" />
+		<property name="number" value="4278959519763522" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="22" />
+		<property name="cvv" value="194" />
+	</bean>
+
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holderName" value="Leah Laird Bird" />
+		<property name="brandName" value="Mastercard" />
+		<property name="number" value="5505141376835436" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="25" />
+		<property name="cvv" value="823" />
+	</bean>
+
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holderName" value="Jocelyn Finch Berry" />
+		<property name="brandName" value="American Express" />
+		<property name="number" value="372195236838403" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="26" />
+		<property name="cvv" value="921" />
+	</bean>
+
+	<bean id="creditCard4" class="domain.CreditCard">
+		<property name="holderName" value="Joseph Kingsman Heiz" />
+		<property name="brandName" value="Visa" />
+		<property name="number" value="4556925425329552" />
+		<property name="expirationMonth" value="08" />
+		<property name="expirationYear" value="20" />
+		<property name="cvv" value="575" />
+	</bean>
+
+	<bean id="creditCard5" class="domain.CreditCard">
+		<property name="holderName" value="Angelina Andrews Lopez" />
+		<property name="brandName" value="Mastercard" />
+		<property name="number" value="5255259896394957" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="22" />
+		<property name="cvv" value="437" />
+	</bean>
+
+	<bean id="creditCard6" class="domain.CreditCard">
+		<property name="holderName" value="Isaiah Farrell Lord" />
+		<property name="brandName" value="American Express" />
+		<property name="number" value="377993629160319" />
+		<property name="expirationMonth" value="03" />
+		<property name="expirationYear" value="23" />
+		<property name="cvv" value="251" />
+	</bean>
+
+	<bean id="creditCard7" class="domain.CreditCard">
+		<property name="holderName" value="Pablo Parra Romulo" />
+		<property name="brandName" value="American Express" />
+		<property name="number" value="377993629160319" />
+		<property name="expirationMonth" value="09" />
+		<property name="expirationYear" value="26" />
+		<property name="cvv" value="777" />
+	</bean>
+
+	<bean id="creditCard8" class="domain.CreditCard">
+		<property name="holderName" value="Pilar Valdes Tolón" />
+		<property name="brandName" value="American Express" />
+		<property name="number" value="5105105105105100" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="24" />
+		<property name="cvv" value="195" />
+	</bean>
+
+	<bean id="creditCard9" class="domain.CreditCard">
+		<property name="holderName" value="Ana Maria Pardo Bazán" />
+		<property name="brandName" value="American Express" />
+		<property name="number" value="344029942076625" />
+		<property name="expirationMonth" value="06" />
+		<property name="expirationYear" value="29" />
+		<property name="cvv" value="751" />
+	</bean>
+
+	<bean id="creditCard10" class="domain.CreditCard">
+		<property name="holderName" value="Rosa Mari León Reina" />
+		<property name="brandName" value="American Express" />
+		<property name="number" value="378984452642308" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="147" />
+	</bean>
+
+	<bean id="creditCard11" class="domain.CreditCard">
+		<property name="holderName" value="Jose Mari León Reina" />
+		<property name="brandName" value="American Express" />
+		<property name="number" value="5275205444444030" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="148" />
+	</bean>
+	
+	<!-- Actors -->
+
+	<!-- Administrators -->
+
+	<bean id="actor1" class="domain.Administrator">
+		<property name="name" value="Paolo" />
+		<property name="surnames" value="Luna Rodríguez" />
+		<property name="dni" value="77844831C" />
+		<property name="creditCard" ref="creditCard1" />
+		<property name="photo"
+			value="https://img.lovepik.com/element/40025/1507.png_860.png" />
+		<property name="email" value="admin@admin.com" />
+		<property name="phone" value="698765432" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount1" />
+	</bean>
+
+	<!-- Artists -->
+
+	<bean id="artist1" class="domain.Artist">
+		<property name="name" value="Leah" />
+		<property name="surnames" value="Laird Bird" />
+		<property name="dni" value="26588479L" />
+		<property name="creditCard" ref="creditCard2" />
+		<property name="photo"
+			value="https://conceptodefinicion.de/wp-content/uploads/2014/10/persona.jpg" />
+		<property name="email" value="company1@gmail.com" />
+		<property name="phone" value="76759897" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount2" />
+	</bean>
+
+	<bean id="artist2" class="domain.Artist">
+		<property name="name" value="Jocelyn" />
+		<property name="surnames" value="Finch Berry" />
+		<property name="dni" value="14788525P" />
+		<property name="creditCard" ref="creditCard3" />
+		<property name="photo"
+			value="https://static.iris.net.co/semana/upload/images/2015/10/23/447377_20029_1.jpg" />
+		<property name="email" value="company2@gmail.com" />
+		<property name="phone" value="" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount3" />
+	</bean>
+
+	<!-- Organizers -->
+
+	<bean id="organizer1" class="domain.Organizer">
+		<property name="name" value="Joseph" />
+		<property name="surnames" value="Kingsman Heiz" />
+		<property name="dni" value="15999596Z" />
+		<property name="creditCard" ref="creditCard4" />
+		<property name="photo"
+			value="https://ams.educause.edu/eweb/upload/60283746.jpg" />
+		<property name="email" value="company3@gmail.com" />
+		<property name="phone" value="" />
+		<property name="address" value="Calle Bailen, Madrid" />
+		<property name="userAccount" ref="userAccount4" />
+		<property name="circus" ref="circus1" />
+	</bean>
+
+	<bean id="organizer2" class="domain.Organizer">
+		<property name="name" value="Pilar" />
+		<property name="surnames" value="Valdes Tolón" />
+		<property name="dni" value="91662435Y" />
+		<property name="creditCard" ref="creditCard8" />
+		<property name="photo" value="" />
+		<property name="email" value="company8@gmail.com" />
+		<property name="phone" value="" />
+		<property name="address" value="Calle Rojo Red, Murcia" />
+		<property name="userAccount" ref="userAccount5" />
+		<property name="circus" ref="circus2" />
+	</bean>
+	
+	<!-- Attendee -->
+
+	<bean id="attendee1" class="domain.Attendee">
+		<property name="name" value="Angelina" />
+		<property name="surnames" value="Andrews Lopez" />
+		<property name="dni" value="11223344G" />
+		<property name="creditCard" ref="creditCard5" />
+		<property name="photo"
+			value="https://static.vix.com/es/sites/default/files/styles/large/public/imj/otramedicina/4/4-formas-de-saber-si-una-persona-tiene-mala-vibra-3.jpg?itok=0Iith7el" />
+		<property name="email" value="rookie1@gmail.com" />
+		<property name="phone" value="548766" />
+		<property name="address" value="" />
+		<property name="bornDate" value="03/03/1989" />
+		<property name="userAccount" ref="userAccount6" />
+	</bean>
+
+	<bean id="attendee2" class="domain.Attendee">
+		<property name="name" value="Isaiah" />
+		<property name="surnames" value="Farrell Lord" />
+		<property name="dni" value="95147533X" />
+		<property name="creditCard" ref="creditCard6" />
+		<property name="photo"
+			value="https://s3-eu-west-1.amazonaws.com/papora/papora/wp-content/uploads/2018/05/16120658/descripcion-persona-en-ingles.jpg" />
+		<property name="email" value="rookie2@gmail.com" />
+		<property name="phone" value="4123500" />
+		<property name="address" value="" />
+		<property name="bornDate" value="04/10/1999" />
+		<property name="userAccount" ref="userAccount7" />
+	</bean>
+
+	<!-- Owner -->
+
+	<bean id="owner1" class="domain.Owner">
+		<property name="name" value="Pablo" />
+		<property name="surnames" value="Parra Rómulo" />
+		<property name="dni" value="88773569E" />
+		<property name="creditCard" ref="creditCard7" />
+		<property name="photo"
+			value="https://empleat.vinetconsulting.com/Imagenes/persona1.jpg" />
+		<property name="email" value="owner1@gmail.com" />
+		<property name="phone" value="47780980" />
+		<property name="address" value="Abbey Road, Liverpool" />
+		<property name="userAccount" ref="userAccount8" />
+		<property name="circus" ref="circus1" />
+	</bean>
+
+	<bean id="owner2" class="domain.Owner">
+		<property name="name" value="Ana Maria" />
+		<property name="surnames" value="Pardo Bazán" />
+		<property name="dni" value="49623177A" />
+		<property name="creditCard" ref="creditCard9" />
+		<property name="photo" value="" />
+		<property name="email" value="owner2@owner2.com" />
+		<property name="phone" value="87857858767" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount9" />
+		<property name="circus" ref="circus2" />
+	</bean>
+	
+	<bean id="owner3" class="domain.Owner">
+		<property name="name" value="Rosa Mari" />
+		<property name="surnames" value="León Reina" />
+		<property name="dni" value="16666483E" />
+		<property name="creditCard" ref="creditCard10" />
+		<property name="photo" value="" />
+		<property name="email" value="owner3@owner3.org" />
+		<property name="phone" value="67567565" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount10" />
+		<property name="circus" ref="circus3" />
+	</bean>
+	
+	<!-- Spamwords -->
+
+	<bean id="spamWord1" class="domain.SpamWord">
+		<property name="word" value="sex" />
+	</bean>
+	<bean id="spamWord2" class="domain.SpamWord">
+		<property name="word" value="viagra" />
+	</bean>
+	<bean id="spamWord3" class="domain.SpamWord">
+		<property name="word" value="cialis" />
+	</bean>
+	<bean id="spamWord4" class="domain.SpamWord">
+		<property name="word" value="one million" />
+	</bean>
+	<bean id="spamWord5" class="domain.SpamWord">
+		<property name="word" value="you've been selected" />
+	</bean>
+	<bean id="spamWord6" class="domain.SpamWord">
+		<property name="word" value="Nigeria" />
+	</bean>
+	<bean id="spamWord7" class="domain.SpamWord">
+		<property name="word" value="sexo" />
+	</bean>
+	<bean id="spamWord8" class="domain.SpamWord">
+		<property name="word" value="un millon" />
+	</bean>
+	<bean id="spamWord9" class="domain.SpamWord">
+		<property name="word" value="has sido elegido" />
+	</bean>
 	
 </beans>

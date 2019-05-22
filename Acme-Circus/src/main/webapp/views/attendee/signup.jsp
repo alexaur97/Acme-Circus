@@ -28,7 +28,8 @@
 		</legend>
 		<acme:textbox code="attendee.name" path="name" />
 		<acme:textbox code="attendee.surnames" path="surnames" />
-		<acme:textbox code="attendee.dni" path="dni" />
+		<acme:textbox code="attendee.dni" path="dni" placeholder="NNNNNNNNL"
+			comment="attendee.dni.pattern" />
 		<acme:textbox code="attendee.bornDate" path="bornDate" placeholder="yyyy-MM-dd"/>
 		<acme:textbox code="attendee.photo" path="photo" />
 		<acme:textbox code="attendee.email" path="email" />

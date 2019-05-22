@@ -1,3 +1,4 @@
+
 package domain;
 
 import java.util.Date;
@@ -10,7 +11,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -18,21 +18,20 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Attendee extends Actor {
 
 	// Attributes ..................
-	
-	public Date bornDate;
-	
+
+	public Date	bornDate;
+
+
 	@Past
 	@NotNull
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getBornDate() {
-		return bornDate;
+		return this.bornDate;
 	}
 
-	public void setBornDate(Date bornDate) {
+	public void setBornDate(final Date bornDate) {
 		this.bornDate = bornDate;
 	}
-
-
 
 }
