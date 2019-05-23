@@ -27,6 +27,11 @@
 		<value>/views/customer/messages</value>
 		<value>/views/profile/messages</value>
 		<value>/views/about/messages</value>
+		<value>/views/circus/messages</value>
+		<value>/views/categoryTour/messages</value>
+		<value>/views/tour/messages</value>
+		<value>/views/stop/messages</value>
+		
 	</util:list>
 
 </beans>

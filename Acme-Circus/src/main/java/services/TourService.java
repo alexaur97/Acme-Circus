@@ -1,37 +1,35 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.TourRepository;
+import domain.Tour;
 
-import domain.Tour; 
-
-@Service 
-@Transactional 
-public class TourService { 
+@Service
+@Transactional
+public class TourService {
 
 	//Managed repository -------------------
 	@Autowired
-	private TourRepository tourRepository;
+	private TourRepository	tourRepository;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public TourService(){
+	public TourService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Tour create(){
+	public Tour create() {
 		Tour result;
 
 		result = new Tour();
@@ -39,32 +37,37 @@ public class TourService {
 		return result;
 	}
 
-	public Collection<Tour> findAll(){
+	public Collection<Tour> findAll() {
 		Collection<Tour> result;
 
-		result = tourRepository.findAll();
+		result = this.tourRepository.findAll();
 
 		return result;
 	}
 
-	public Tour findOne(int tourId){
+	public Tour findOne(final int tourId) {
 		Tour result;
 
-		result = tourRepository.findOne(tourId);
+		result = this.tourRepository.findOne(tourId);
 
 		return result;
 	}
 
-	public void save(Tour tour){
+	public void save(final Tour tour) {
 		Assert.notNull(tour);
 
-		tourRepository.save(tour);
+		this.tourRepository.save(tour);
 	}
 
-	public void delete(Tour tour){
-		tourRepository.delete(tour);
+	public void delete(final Tour tour) {
+		this.tourRepository.delete(tour);
 	}
 
+	public Collection<Tour> findAllToursByCategoryTour(final int categoryTourId) {
+		Assert.notNull(categoryTourId);
+		final Collection<Tour> res = this.tourRepository.findAllToursByCategory(categoryTourId);
+		return res;
+	}
 
 	//Other Methods--------------------
-} 
+}

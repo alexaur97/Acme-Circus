@@ -1,15 +1,12 @@
+
 package repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.data.jpa.repository.Query; 
-import org.springframework.stereotype.Repository; 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import domain.CategoryTour; 
+import domain.CategoryTour;
 
-@Repository 
-public interface CategoryTourRepository extends JpaRepository<CategoryTour, Integer>{ 
+@Repository
+public interface CategoryTourRepository extends JpaRepository<CategoryTour, Integer> {
 
-	//@Query("") 
-	//Method 
-
-} 
+}

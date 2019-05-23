@@ -1,38 +1,35 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.CategoryTourRepository;
+import domain.CategoryTour;
 
-import domain.CategoryTour; 
-import domain.CircusInvoice;
-
-@Service 
-@Transactional 
-public class CategoryTourService { 
+@Service
+@Transactional
+public class CategoryTourService {
 
 	//Managed repository -------------------
 	@Autowired
-	private CategoryTourRepository categoryTourRepository;
+	private CategoryTourRepository	categoryTourRepository;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public CategoryTourService(){
+	public CategoryTourService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public CategoryTour create(){
+	public CategoryTour create() {
 		CategoryTour result;
 
 		result = new CategoryTour();
@@ -40,32 +37,30 @@ public class CategoryTourService {
 		return result;
 	}
 
-	public Collection<CategoryTour> findAll(){
+	public Collection<CategoryTour> findAll() {
 		Collection<CategoryTour> result;
 
-		result = categoryTourRepository.findAll();
+		result = this.categoryTourRepository.findAll();
 
 		return result;
 	}
 
-	public CategoryTour findOne(int categoryTourId){
+	public CategoryTour findOne(final int categoryTourId) {
 		CategoryTour result;
 
-		result = categoryTourRepository.findOne(categoryTourId);
+		result = this.categoryTourRepository.findOne(categoryTourId);
 
 		return result;
 	}
 
-	public void save(CategoryTour categoryTour){
+	public CategoryTour save(final CategoryTour categoryTour) {
 		Assert.notNull(categoryTour);
-
-		categoryTourRepository.save(categoryTour);
+		return this.categoryTourRepository.save(categoryTour);
 	}
 
-	public void delete(CategoryTour categoryTour){
-		categoryTourRepository.delete(categoryTour);
+	public void delete(final CategoryTour categoryTour) {
+		this.categoryTourRepository.delete(categoryTour);
 	}
-
 
 	//Other Methods--------------------
-} 
+}

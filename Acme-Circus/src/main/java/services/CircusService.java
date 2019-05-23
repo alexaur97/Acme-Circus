@@ -1,38 +1,39 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.CircusRepository;
+import domain.Circus;
+import domain.Owner;
 
-import domain.Circus; 
-import domain.Fee;
-
-@Service 
-@Transactional 
-public class CircusService { 
+@Service
+@Transactional
+public class CircusService {
 
 	//Managed repository -------------------
 	@Autowired
-	private CircusRepository circusRepository;
+	private CircusRepository	circusRepository;
+
+	@Autowired
+	private OwnerService		ownerService;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public CircusService(){
+	public CircusService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Circus create(){
+	public Circus create() {
 		Circus result;
 
 		result = new Circus();
@@ -40,32 +41,52 @@ public class CircusService {
 		return result;
 	}
 
-	public Collection<Circus> findAll(){
+	public Collection<Circus> findAll() {
 		Collection<Circus> result;
 
-		result = circusRepository.findAll();
+		result = this.circusRepository.findAll();
 
 		return result;
 	}
 
-	public Circus findOne(int circusId){
+	public Circus findOne(final int circusId) {
 		Circus result;
 
-		result = circusRepository.findOne(circusId);
+		result = this.circusRepository.findOne(circusId);
 
 		return result;
 	}
 
-	public void save(Circus circus){
+	public void save(final Circus circus) {
 		Assert.notNull(circus);
 
-		circusRepository.save(circus);
+		this.circusRepository.save(circus);
 	}
 
-	public void delete(Circus circus){
-		circusRepository.delete(circus);
+	public void delete(final Circus circus) {
+		this.circusRepository.delete(circus);
 	}
 
+	public Collection<Circus> findAllWithTour() {
+		final Collection<Circus> res = this.circusRepository.findAllWithTour();
+		return res;
+	}
+
+	public Circus reconstruct(final Circus circus) {
+		final Circus res = circus;
+		final Circus c = this.findOne(circus.getId());
+		if (circus.getId() != 0)
+			res.setActive(c.getActive());
+
+		return res;
+	}
+
+	public Circus findByOwner() {
+		final int idO = this.ownerService.findByPrincipal().getId();
+		final Owner owner = this.ownerService.findOne(idO);
+		final Circus res = owner.getCircus();
+		return res;
+	}
 
 	//Other Methods--------------------
-} 
+}

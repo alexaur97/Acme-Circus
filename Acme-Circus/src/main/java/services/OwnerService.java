@@ -12,6 +12,7 @@ import repositories.OwnerRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.DomainEntity;
 import domain.Owner;
 
 @Service
@@ -21,6 +22,7 @@ public class OwnerService {
 	//Managed repository -------------------
 	@Autowired
 	private OwnerRepository	ownerRepository;
+
 	@Autowired
 	private ActorService	actorService;
 

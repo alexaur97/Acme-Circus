@@ -1,5 +1,5 @@
 
-package controllers;
+package controllers.all;
 
 import java.util.Collection;
 import java.util.Locale;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.AttendeeService;
+import controllers.AbstractController;
 import domain.Attendee;
 import forms.AttendeeRegisterForm;
 
@@ -43,7 +44,6 @@ public class AttendeeController extends AbstractController {
 		}
 		return result;
 	}
-
 	protected ModelAndView createEditModelAndView(final AttendeeRegisterForm attendeeRegisterForm) {
 		return this.createEditModelAndView(attendeeRegisterForm, null);
 	}
@@ -83,11 +83,11 @@ public class AttendeeController extends AbstractController {
 				else if (emails.contains(attendeeRegisterForm.getEmail()))
 					result.addObject("message", "attendee.email.error");
 				else if (!attendeeRegisterForm.getConfirmPassword().equals(attendeeRegisterForm.getPassword()))
-					result.addObject("message", "company.password.error");
+					result.addObject("message", "attendee.password.error");
 				else if (Utils.creditCardIsExpired(attendeeRegisterForm.getExpirationMonth(), attendeeRegisterForm.getExpirationYear()))
-					result.addObject("message", "company.expired.card.error");
+					result.addObject("message", "attendee.expired.card.error");
 				else
-					result.addObject("message", "company.commit.error");
+					result.addObject("message", "attendee.commit.error");
 			}
 		return result;
 	}

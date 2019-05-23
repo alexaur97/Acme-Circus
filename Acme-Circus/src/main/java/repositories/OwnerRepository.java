@@ -10,8 +10,10 @@ import domain.Owner;
 @Repository
 public interface OwnerRepository extends JpaRepository<Owner, Integer> {
 
-	//@Query("") 
-	//Method 
-	@Query("select a from Owner a where a.userAccount.id=?1")
+	@Query("select o from Owner o where o.userAccount.id=?1")
 	Owner findByUserId(int id);
+
+	//@Query("")
+	//Method
+
 }

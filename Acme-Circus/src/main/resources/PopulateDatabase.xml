@@ -422,6 +422,226 @@
 		<property name="userAccount" ref="userAccount10" />
 		<property name="circus" ref="circus3" />
 	</bean>
+	<!-- Tour -->
+		<bean id="tour1" class="domain.Tour">
+		<property name="name" value="Gira por Andalucia" />
+		<property name="description" value="El mejor circo de toda españa llega a Andalucia" />
+		<property name="startDate" value="10/10/2020"/>
+		<property name="endDate" value="10/10/2021" />
+		<property name="link" value="https://circo.com" />
+		<property name="tags" value="" />
+		<property name="validated" value="true" />
+		<property name="stops" >
+			<list>
+			<ref bean="stop1"/>
+			</list>
+		</property>
+		<property name="organizers" ref="organizer1" />
+		<property name="categoryTour" ref="categoryTour1" />
+		<property name="performances">
+			<list>
+				<ref bean="performance1"/>
+			</list>
+		</property>
+		
+		<property name="offers">
+		 <list>
+		 </list>
+		</property>
+	</bean>
+	<!-- CategoryTour -->
+	<bean id="categoryTour1" class="domain.CategoryTour">
+		<property name="name" value="name" />
+		<property name="minAge" value="16" />
+		
+	</bean>
+	
+	
+	<!--  Stops -->
+	
+	<bean id="stop1" class="domain.Stop">
+		<property name="city" value="Madrid" />
+		<property name="country" value="España" />
+		<property name="location" value="Palacio de congresos"/>
+		<property name="date" value="12/10/2021" />
+		<property name="spotsTotal" value="1200" />
+		<property name="spotsAvailable" value="890" />
+	</bean>
+
+		<!-- Messages -->
+
+	<bean id="message1" class="domain.Message">
+		<property name="subject" value="Message 1" />
+		<property name="body" value="This is message 1 sex" />
+		<property name="moment" value="08/08/2018 00:54" />
+		<property name="spam" value="true" />
+		<property name="deleted" value="false" />
+		<property name="tags" value="SPAM" />
+		<property name="recipient" ref="owner1" />
+		<property name="sender" ref="organizer1" />
+		<property name="copy" value="true" />
+		<property name="owner" ref="owner1" />
+	</bean>
+
+	<bean id="message7" class="domain.Message">
+		<property name="subject" value="Message 1" />
+		<property name="body" value="This is message 1 viagra" />
+		<property name="moment" value="08/08/2018 00:54" />
+		<property name="spam" value="false" />
+		<property name="deleted" value="false" />
+		<property name="tags" value="" />
+		<property name="recipient" ref="owner1" />
+		<property name="sender" ref="organizer1" />
+		<property name="owner" ref="organizer1" />
+		<property name="copy" value="false" />
+	</bean>
+
+	<bean id="message2" class="domain.Message">
+		<property name="subject" value="Message 2" />
+		<property name="body" value="This is message 2" />
+		<property name="moment" value="01/04/2018 05:58" />
+		<property name="spam" value="false" />
+		<property name="deleted" value="false" />
+		<property name="tags" value="" />
+		<property name="recipient" ref="organizer1" />
+		<property name="sender" ref="owner1" />
+		<property name="owner" ref="organizer1" />
+		<property name="copy" value="true" />
+	</bean>
+
+	<bean id="message8" class="domain.Message">
+		<property name="subject" value="Message 2" />
+		<property name="body" value="This is message 2" />
+		<property name="moment" value="01/04/2018 05:58" />
+		<property name="spam" value="false" />
+		<property name="deleted" value="false" />
+		<property name="tags" value="" />
+		<property name="recipient" ref="organizer1" />
+		<property name="sender" ref="owner1" />
+		<property name="owner" ref="owner1" />
+		<property name="copy" value="false" />
+	</bean>
+
+	<bean id="message3" class="domain.Message">
+		<property name="subject" value="Message 3" />
+		<property name="body" value="This is message 3" />
+		<property name="moment" value="02/02/2019 11:14" />
+		<property name="spam" value="false" />
+		<property name="deleted" value="false" />
+		<property name="tags" value="" />
+		<property name="recipient" ref="owner2" />
+		<property name="sender" ref="organizer2" />
+		<property name="owner" ref="organizer2" />
+		<property name="copy" value="true" />
+	</bean>
+
+	<bean id="message9" class="domain.Message">
+		<property name="subject" value="Message 3" />
+		<property name="body" value="This is message 3" />
+		<property name="moment" value="02/02/2019 11:14" />
+		<property name="spam" value="false" />
+		<property name="deleted" value="false" />
+		<property name="tags" value="" />
+		<property name="recipient" ref="organizer2" />
+		<property name="sender" ref="owner2" />
+		<property name="owner" ref="owner2" />
+		<property name="copy" value="false" />
+	</bean>
+
+
+	<bean id="message4" class="domain.Message">
+		<property name="subject" value="Message 4 sex" />
+		<property name="body" value="This is message 4" />
+		<property name="moment" value="03/01/2018 50:11" />
+		<property name="spam" value="false" />
+		<property name="deleted" value="false" />
+		<property name="tags" value="" />
+		<property name="recipient" ref="owner2" />
+		<property name="sender" ref="organizer2" />
+		<property name="owner" ref="organizer2" />
+		<property name="copy" value="true" />
+	</bean>
+
+	<bean id="message10" class="domain.Message">
+		<property name="subject" value="Message 4 sex" />
+		<property name="body" value="This is message 4" />
+		<property name="moment" value="03/01/2018 50:11" />
+		<property name="spam" value="true" />
+		<property name="deleted" value="false" />
+		<property name="tags" value="" />
+		<property name="recipient" ref="organizer2" />
+		<property name="sender" ref="owner2" />
+		<property name="owner" ref="owner2" />
+		<property name="copy" value="false" />
+	</bean>
+
+	<bean id="message5" class="domain.Message">
+		<property name="subject" value="Message with a big viagra" />
+		<property name="body" value="has sido elegido enhorabuena! eres el mejor" />
+		<property name="moment" value="09/15/2016 10:11" />
+		<property name="spam" value="true" />
+		<property name="deleted" value="true" />
+		<property name="tags" value="SPAM , DELETED" />
+		<property name="recipient" ref="owner3" />
+		<property name="sender" ref="owner3" />
+		<property name="owner" ref="owner3" />
+		<property name="copy" value="true" />
+	</bean>
+	
+	<!-- Fee -->
+
+	<bean id="fee" class="domain.Fee">
+		<property name="bannerFee" value="2.25" />
+		<property name="circusFee" value="5" />
+		<property name="acceptedOfferFee" value="0.75" />
+	</bean>
+	
+	<!-- Performance -->
+
+	<bean id="performance1" class="domain.Performance">
+		<property name="name" value="Performance amizing with a tiger" />
+		<property name="tags" value="ANIMALS , AMAZING , ORIGINAL , NOTEXPENSIVE" />
+		<property name="persons" value="4" />
+		<property name="video" value="https://www.youtube.com/watch?v=zzhST5LJ1n0" />
+		<property name="copy" value="false" />
+		<property name="artist" ref="artist1" />
+	</bean>
+	
+	<bean id="performance2" class="domain.Performance">
+		<property name="name" value="Surprise!!" />
+		<property name="tags" value="NONE" />
+		<property name="persons" value="10" />
+		<property name="video" value="" />
+		<property name="copy" value="false" />
+		<property name="artist" ref="artist1" />
+	</bean>
+	
+	<bean id="performance3" class="domain.Performance">
+		<property name="name" value="If you like clowns, we are the bests" />
+		<property name="tags" value="CLOWNS" />
+		<property name="persons" value="4" />
+		<property name="video" value="https://www.youtube.com/watch?v=W5I7BXhtEUA" />
+		<property name="copy" value="false" />
+		<property name="artist" ref="artist1" />
+	</bean>
+	
+	<bean id="performance4" class="domain.Performance">
+		<property name="name" value="Let's dance a little bit with us!" />
+		<property name="tags" value="DANCE " />
+		<property name="persons" value="8" />
+		<property name="video" value="https://www.youtube.com/watch?v=zzskjdfhsjk5LJ1n0" />
+		<property name="copy" value="false" />
+		<property name="artist" ref="artist2" />
+	</bean>
+	
+	<bean id="performance5" class="domain.Performance">
+		<property name="name" value="Performance without animals!" />
+		<property name="tags" value="NO ANIMALS , MODERN , REAL , AWESOME" />
+		<property name="persons" value="2" />
+		<property name="video" value="https://www.youtube.com/watch?v=O43P8hdy-dI" />
+		<property name="copy" value="false" />
+		<property name="artist" ref="artist2" />
+	</bean>
 	
 	<!-- Spamwords -->
 
@@ -452,5 +672,10 @@
 	<bean id="spamWord9" class="domain.SpamWord">
 		<property name="word" value="has sido elegido" />
 	</bean>
+	
+	
+	
+	
+	
 	
 </beans>
