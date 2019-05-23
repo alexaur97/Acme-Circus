@@ -26,4 +26,6 @@
 	<acme:textbox code="categoryTour.name" path="name"/>
 	<acme:textbox code="categoryTour.minAge" path="minAge"/>
 	<acme:submit code="categoryTour.save" name="save"/>
+	<acme:button code="categoryTour.back"
+	url="categoryTour/administrator/show.do?categoryTourId=${categoryTour.id}" />
 </form:form>
