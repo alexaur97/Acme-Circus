@@ -24,8 +24,9 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-
-	<display:column titleKey="circus.history" property= "history"/>
+<spring:message code="circus.history"/>: <jstl:out value="${circus.history}"></jstl:out>
+<br/>
+	
 	
 	
  <acme:cancel url="/circus/list.do" code="circus.back" />

@@ -422,6 +422,38 @@
 		<property name="userAccount" ref="userAccount10" />
 		<property name="circus" ref="circus3" />
 	</bean>
+	<!-- Tour -->
+		<bean id="tour1" class="domain.Tour">
+		<property name="name" value="Gira por Andalucia" />
+		<property name="description" value="El mejor circo de toda españa llega a Andalucia" />
+		<property name="startDate" value="10/10/2020"/>
+		<property name="endDate" value="10/10/2021" />
+		<property name="link" value="https://circo.com" />
+		<property name="tags" value="" />
+		<property name="validated" value="true" />
+		<property name="stops" >
+			<list>
+			</list>
+		</property>
+		<property name="organizers" ref="organizer1" />
+		<property name="categoryTour" ref="categoryTour1" />
+		<property name="performances">
+			<list>
+				<ref bean="performance1"/>
+			</list>
+		</property>
+			
+		<property name="offers">
+		 <list>
+		 </list>
+		</property>
+	</bean>
+	<!-- CategoryTour -->
+	<bean id="categoryTour1" class="domain.CategoryTour">
+		<property name="name" value="name" />
+		<property name="minAge" value="16" />
+		
+	</bean>
 	
 		<!-- Messages -->
 
