@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,6 +57,8 @@ public class CategoryTourAdministratorController extends AbstractController {
 		ModelAndView result;
 		try {
 			final CategoryTour categoryTour = this.categoryTourService.findOne(categoryTourId);
+			final Collection<CategoryTour> used = this.categoryTourService.findAllUsedCategoriesTour();
+			Assert.isTrue(!used.contains(categoryTour));
 			result = this.createEditModelAndView(categoryTour);
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/#");
@@ -63,6 +66,25 @@ public class CategoryTourAdministratorController extends AbstractController {
 		return result;
 	}
 
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public ModelAndView show(@RequestParam final int categoryTourId) {
+		ModelAndView result;
+		try {
+			final CategoryTour categoryTour = this.categoryTourService.findOne(categoryTourId);
+			final Collection<CategoryTour> used = this.categoryTourService.findAllUsedCategoriesTour();
+			result = new ModelAndView("categoryTour/show");
+			result.addObject("categoryTour", categoryTour);
+			Boolean isNotUsed;
+			if (used.contains(categoryTour))
+				isNotUsed = false;
+			else
+				isNotUsed = true;
+			result.addObject("isNotUsed", isNotUsed);
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/#");
+		}
+		return result;
+	}
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView edit(@Valid final CategoryTour categoryTour, final BindingResult binding) {
 		ModelAndView result;

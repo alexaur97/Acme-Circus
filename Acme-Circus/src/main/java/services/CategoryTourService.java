@@ -39,27 +39,29 @@ public class CategoryTourService {
 
 	public Collection<CategoryTour> findAll() {
 		Collection<CategoryTour> result;
-
 		result = this.categoryTourRepository.findAll();
-
 		return result;
 	}
 
 	public CategoryTour findOne(final int categoryTourId) {
 		CategoryTour result;
-
 		result = this.categoryTourRepository.findOne(categoryTourId);
-
 		return result;
 	}
 
 	public CategoryTour save(final CategoryTour categoryTour) {
 		Assert.notNull(categoryTour);
+		final Collection<CategoryTour> used = this.findAllUsedCategoriesTour();
+		Assert.isTrue(!used.contains(categoryTour));
 		return this.categoryTourRepository.save(categoryTour);
 	}
 
 	public void delete(final CategoryTour categoryTour) {
 		this.categoryTourRepository.delete(categoryTour);
+	}
+
+	public Collection<CategoryTour> findAllUsedCategoriesTour() {
+		return this.categoryTourRepository.findAllUsedCategoriesTour();
 	}
 
 	//Other Methods--------------------
