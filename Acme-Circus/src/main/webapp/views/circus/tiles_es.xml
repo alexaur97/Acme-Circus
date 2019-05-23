@@ -19,4 +19,14 @@
 		<put-attribute name="title" value="Mostrar Circo" />
 		<put-attribute name="body" value="/views/circus/show.jsp" />
 	</definition>
+	
+	<definition name="circus/myList" extends="master.page">
+		<put-attribute name="title" value="Mi Lista de Circos" />
+		<put-attribute name="body" value="/views/circus/myList.jsp" />
+	</definition>
+	
+	<definition name="circus/edit" extends="master.page">
+		<put-attribute name="title" value="Editar Circos" />
+		<put-attribute name="body" value="/views/circus/edit.jsp" />
+	</definition>
 </tiles-definitions>

@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import repositories.CircusRepository;
 import domain.Circus;
+import domain.Owner;
 
 @Service
 @Transactional
@@ -18,6 +19,9 @@ public class CircusService {
 	//Managed repository -------------------
 	@Autowired
 	private CircusRepository	circusRepository;
+
+	@Autowired
+	private OwnerService		ownerService;
 
 
 	//Supporting Services ------------------
@@ -65,6 +69,22 @@ public class CircusService {
 
 	public Collection<Circus> findAllWithTour() {
 		final Collection<Circus> res = this.circusRepository.findAllWithTour();
+		return res;
+	}
+
+	public Circus reconstruct(final Circus circus) {
+		final Circus res = circus;
+		final Circus c = this.findOne(circus.getId());
+		if (circus.getId() != 0)
+			res.setActive(c.getActive());
+
+		return res;
+	}
+
+	public Circus findByOwner() {
+		final int idO = this.ownerService.findByPrincipal().getId();
+		final Owner owner = this.ownerService.findOne(idO);
+		final Circus res = owner.getCircus();
 		return res;
 	}
 
