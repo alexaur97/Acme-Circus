@@ -1,15 +1,20 @@
+
 package repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.data.jpa.repository.Query; 
-import org.springframework.stereotype.Repository; 
+import java.util.Collection;
 
-import domain.Performance; 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-@Repository 
-public interface PerformanceRepository extends JpaRepository<Performance, Integer>{ 
+import domain.Performance;
+
+@Repository
+public interface PerformanceRepository extends JpaRepository<Performance, Integer> {
 
 	//@Query("") 
 	//Method 
+	@Query("select p from Performance p where p.artist.id=?1")
+	Collection<Performance> findByArtist(int id);
 
-} 
+}
