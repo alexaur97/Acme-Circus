@@ -1,38 +1,42 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.OwnerRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
+import domain.DomainEntity;
+import domain.Owner;
 
-import domain.Owner; 
-import domain.Performance;
-
-@Service 
-@Transactional 
-public class OwnerService { 
+@Service
+@Transactional
+public class OwnerService {
 
 	//Managed repository -------------------
 	@Autowired
-	private OwnerRepository ownerRepository;
+	private OwnerRepository	ownerRepository;
+
+	@Autowired
+	private ActorService	actorService;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public OwnerService(){
+	public OwnerService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Owner create(){
+	public Owner create() {
 		Owner result;
 
 		result = new Owner();
@@ -40,32 +44,47 @@ public class OwnerService {
 		return result;
 	}
 
-	public Collection<Owner> findAll(){
+	public Collection<Owner> findAll() {
 		Collection<Owner> result;
 
-		result = ownerRepository.findAll();
+		result = this.ownerRepository.findAll();
 
 		return result;
 	}
 
-	public Owner findOne(int ownerId){
+	public Owner findOne(final int ownerId) {
 		Owner result;
 
-		result = ownerRepository.findOne(ownerId);
+		result = this.ownerRepository.findOne(ownerId);
 
 		return result;
 	}
 
-	public void save(Owner owner){
+	public void save(final Owner owner) {
 		Assert.notNull(owner);
 
-		ownerRepository.save(owner);
+		this.ownerRepository.save(owner);
 	}
 
-	public void delete(Owner owner){
-		ownerRepository.delete(owner);
+	public void delete(final Owner owner) {
+		this.ownerRepository.delete(owner);
 	}
 
+	public DomainEntity findByPrincipal() {
+		final UserAccount user = LoginService.getPrincipal();
+		Assert.notNull(user);
+
+		final Owner o = this.findByUserId(user.getId());
+		Assert.notNull(o);
+		this.actorService.auth(o, Authority.OWNER);
+		return o;
+	}
+
+	private Owner findByUserId(final int id) {
+		final Owner h = this.ownerRepository.findByUserId(id);
+		return h;
+
+	}
 
 	//Other Methods--------------------
-} 
+}
