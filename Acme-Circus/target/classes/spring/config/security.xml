@@ -48,6 +48,15 @@
 		<security:intercept-url pattern="/categoryTour/administrator/edit.do" access="hasRole('ADMIN')" /> 
 		<security:intercept-url pattern="/categoryTour/administrator/list.do" access="hasRole('ADMIN')" /> 
 
+		<security:intercept-url pattern="/tour/list.do" access="permitAll" /> 
+		<security:intercept-url pattern="/tour/listByCategories.do" access="permitAll" /> 
+
+
+		<security:intercept-url pattern="/stop/listByTour.do" access="permitAll" /> 
+
+		<security:intercept-url pattern="/categoryTour/list.do" access="permitAll" /> 
+
+
 		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" /> 
 		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('CUSTOMER')" /> 
 

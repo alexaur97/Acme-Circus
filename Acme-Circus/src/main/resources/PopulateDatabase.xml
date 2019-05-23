@@ -433,6 +433,7 @@
 		<property name="validated" value="true" />
 		<property name="stops" >
 			<list>
+			<ref bean="stop1"/>
 			</list>
 		</property>
 		<property name="organizers" ref="organizer1" />
@@ -442,7 +443,7 @@
 				<ref bean="performance1"/>
 			</list>
 		</property>
-			
+		
 		<property name="offers">
 		 <list>
 		 </list>
@@ -455,6 +456,18 @@
 		
 	</bean>
 	
+	
+	<!--  Stops -->
+	
+	<bean id="stop1" class="domain.Stop">
+		<property name="city" value="Madrid" />
+		<property name="country" value="España" />
+		<property name="location" value="Palacio de congresos"/>
+		<property name="date" value="12/10/2021" />
+		<property name="spotsTotal" value="1200" />
+		<property name="spotsAvailable" value="890" />
+	</bean>
+
 		<!-- Messages -->
 
 	<bean id="message1" class="domain.Message">

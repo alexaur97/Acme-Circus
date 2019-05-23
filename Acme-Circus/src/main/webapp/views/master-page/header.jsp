@@ -43,6 +43,10 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="circus/list.do"><spring:message code="master.page.circus" /></a></li>
 		
+			<li><a class="fNiv" href="tour/list.do"><spring:message code="master.page.tour" /></a></li>
+		
+			<li><a class="fNiv" href="categoryTour/list.do"><spring:message code="master.page.categoryTour" /></a></li>
+		
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 			<li><a class="fNiv"><spring:message
 						code="master.page.register" /></a>
