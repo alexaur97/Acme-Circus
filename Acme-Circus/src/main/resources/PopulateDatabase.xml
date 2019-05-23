@@ -423,6 +423,8 @@
 		<property name="circus" ref="circus3" />
 	</bean>
 	
+
+	
 	<!-- Spamwords -->
 
 	<bean id="spamWord1" class="domain.SpamWord">
@@ -452,5 +454,10 @@
 	<bean id="spamWord9" class="domain.SpamWord">
 		<property name="word" value="has sido elegido" />
 	</bean>
+	
+	
+	
+	
+	
 	
 </beans>
