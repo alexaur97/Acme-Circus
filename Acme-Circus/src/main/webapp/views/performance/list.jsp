@@ -26,7 +26,7 @@
 	<display:column titleKey="performance.persons" property="persons" ></display:column>
 	
 		<display:column titleKey="performance.video">
-			<acme:button url="${performances.video }" code="performance.video" />
+		<a href="${performances.video }">Video</a>
 	</display:column>
 
 	

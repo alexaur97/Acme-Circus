@@ -31,8 +31,8 @@
 		<value>/views/categoryTour/tiles.xml</value>
 		<value>/views/tour/tiles.xml</value>
 		<value>/views/stop/tiles.xml</value>
+		<value>/views/performance/tiles.xml</value>
 		<value>/views/artist/tiles.xml</value>
-				<value>/views/performance/tiles.xml</value>
 		
 
 	</util:list>
