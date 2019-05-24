@@ -1,38 +1,38 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.StopRepository;
+import domain.Stop;
 
-import domain.Stop; 
-import domain.Ticket;
-
-@Service 
-@Transactional 
-public class StopService { 
+@Service
+@Transactional
+public class StopService {
 
 	//Managed repository -------------------
 	@Autowired
-	private StopRepository stopRepository;
+	private StopRepository	stopRepository;
+
+	@Autowired
+	private TourService		tourService;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public StopService(){
+	public StopService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Stop create(){
+	public Stop create() {
 		Stop result;
 
 		result = new Stop();
@@ -40,32 +40,38 @@ public class StopService {
 		return result;
 	}
 
-	public Collection<Stop> findAll(){
+	public Collection<Stop> findAll() {
 		Collection<Stop> result;
 
-		result = stopRepository.findAll();
+		result = this.stopRepository.findAll();
 
 		return result;
 	}
 
-	public Stop findOne(int stopId){
+	public Stop findOne(final int stopId) {
 		Stop result;
 
-		result = stopRepository.findOne(stopId);
+		result = this.stopRepository.findOne(stopId);
 
 		return result;
 	}
 
-	public void save(Stop stop){
+	public void save(final Stop stop) {
 		Assert.notNull(stop);
 
-		stopRepository.save(stop);
+		this.stopRepository.save(stop);
 	}
 
-	public void delete(Stop stop){
-		stopRepository.delete(stop);
+	public void delete(final Stop stop) {
+		this.stopRepository.delete(stop);
 	}
 
+	public Collection<Stop> findAllAvailable(final int tourId) {
+
+		final Collection<Stop> res = this.stopRepository.findAllAvailable(tourId);
+
+		return res;
+	}
 
 	//Other Methods--------------------
-} 
+}

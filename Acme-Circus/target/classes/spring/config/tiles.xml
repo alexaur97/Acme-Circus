@@ -29,6 +29,8 @@
 		<value>/views/about/tiles.xml</value>
 		<value>/views/circus/tiles.xml</value>
 		<value>/views/categoryTour/tiles.xml</value>
+		<value>/views/pruchase/tiles.xml</value>
+		<value>/views/stop/tiles.xml</value>
 	</util:list>
 
 </beans>

@@ -1,15 +1,21 @@
+
 package repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.data.jpa.repository.Query; 
-import org.springframework.stereotype.Repository; 
+import java.util.Collection;
 
-import domain.Stop; 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-@Repository 
-public interface StopRepository extends JpaRepository<Stop, Integer>{ 
+import domain.Stop;
+
+@Repository
+public interface StopRepository extends JpaRepository<Stop, Integer> {
+
+	@Query("select s from Tour t join t.stops s where  s.spotsAvailable >0 and t.id=?1")
+	Collection<Stop> findAllAvailable(int id);
 
 	//@Query("") 
 	//Method 
 
-} 
+}
