@@ -35,4 +35,9 @@
 		<put-attribute name="body" value="/views/categoryTour/edit.jsp" />
 	</definition>
 	
+	<definition name="categoryTour/show" extends="master.page">	
+		<put-attribute name="title" value="Categoría de gira" />
+		<put-attribute name="body" value="/views/categoryTour/show.jsp" />
+	</definition>
+	
 </tiles-definitions>

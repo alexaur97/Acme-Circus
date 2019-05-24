@@ -19,12 +19,12 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table name="categoriesTour" id="cat" requestURI="${requestURI}" pagesize="10" class="displaytag">
-<display:column property="name" titleKey="categoryTour.name"/>
-<display:column property="minAge" titleKey="categoryTour.minAge"/>
-<display:column titleKey="categoryTour.show"><acme:button
-					url="categoryTour/administrator/show.do?categoryTourId=${cat.id}"
-					code="categoryTour.show" /></display:column>
-</display:table>
 
-	<acme:button url="categoryTour/administrator/create.do" code="categoryTour.create"/>
+<acme:display code="categoryTour.name" path="name" />
+<acme:display code="categoryTour.minAge" path="minAge" />
+<jstl:if test="${isNotUsed eq true}">
+	<acme:button code="categoryTour.edit"
+		url="categoryTour/administrator/edit.do?categoryTourId=${categoryTour.id}" />
+</jstl:if>
+<acme:button code="categoryTour.back"
+	url="categoryTour/administrator/list.do" />
