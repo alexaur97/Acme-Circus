@@ -31,6 +31,8 @@
 		<value>/views/categoryTour/tiles.xml</value>
 		<value>/views/pruchase/tiles.xml</value>
 		<value>/views/stop/tiles.xml</value>
+		<value>/views/tour/tiles.xml</value>
+		
 	</util:list>
 
 </beans>

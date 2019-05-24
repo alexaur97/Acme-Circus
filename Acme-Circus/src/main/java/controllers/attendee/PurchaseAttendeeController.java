@@ -83,28 +83,4 @@ public class PurchaseAttendeeController extends AbstractController {
 		return res;
 	}
 
-	//	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	//	public ModelAndView show(@RequestParam final int purchaseId) {
-	//		ModelAndView result;
-	//		final PositionData positionData;
-	//
-	//		try {
-	//			this.rookieService.findByPrincipal();
-	//			Assert.notNull(positionDataId);
-	//			positionData = this.positionDataService.findOne(positionDataId);
-	//			final Curriculum cu = this.curriculumService.findByPositionData(positionData.getId());
-	//			final Integer idH = this.rookieService.findByPrincipal().getId();
-	//			final Collection<Curriculum> curriculums = this.curriculumService.findByRookie(idH);
-	//			Assert.isTrue(curriculums.contains(cu));
-	//
-	//			result = new ModelAndView("positionData/show");
-	//			result.addObject("positionData", positionData);
-	//			result.addObject("curriculum", cu);
-	//		} catch (final Exception e) {
-	//			result = new ModelAndView("redirect:/#");
-	//		}
-	//
-	//		return result;
-	//	}
-
 }
