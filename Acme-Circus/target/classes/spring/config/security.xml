@@ -49,6 +49,7 @@
 		<security:intercept-url pattern="/categoryTour/administrator/list.do" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/categoryTour/administrator/show.do" access="hasRole('ADMIN')" />
 
+		<security:intercept-url pattern="/tour/search.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/list.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/listByCategories.do" access="permitAll" />
 
@@ -63,11 +64,6 @@
  <security:intercept-url pattern="/artist/organizer/list.do" access="hasRole('ORGANIZER')"/>
 <security:intercept-url pattern="/artist/organizer/performances.do" access="hasRole('ORGANIZER')"/>
 
-		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" />
-		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('CUSTOMER')" />
-
-		<security:intercept-url pattern="/circus/owner/myList.do" access="hasRole('OWNER')" />
-		<security:intercept-url pattern="/circus/owner/edit.do" access="hasRole('OWNER')" />
 
 		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('CUSTOMER')" />
@@ -75,10 +71,6 @@
 		<security:intercept-url pattern="/circus/owner/myList.do" access="hasRole('OWNER')" />
 		<security:intercept-url pattern="/circus/owner/edit.do" access="hasRole('OWNER')" />
 
-
-		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/profile/action-2.do" access="isAuthenticated()" />
-		<security:intercept-url pattern="/profile/action-3.do" access="isAuthenticated()" />
 
 
 		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" />
@@ -90,6 +82,8 @@
 		<security:intercept-url pattern="/attendee/signup.do"
 			access="isAnonymous()" />
 		<security:intercept-url pattern="/artist/signup.do"
+			access="isAnonymous()" />
+		<security:intercept-url pattern="/owner/signup.do"
 			access="isAnonymous()" />
 
 

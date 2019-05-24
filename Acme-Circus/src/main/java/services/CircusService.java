@@ -57,10 +57,10 @@ public class CircusService {
 		return result;
 	}
 
-	public void save(final Circus circus) {
+	public Circus save(final Circus circus) {
 		Assert.notNull(circus);
 
-		this.circusRepository.save(circus);
+		return this.circusRepository.save(circus);
 	}
 
 	public void delete(final Circus circus) {

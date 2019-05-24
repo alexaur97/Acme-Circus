@@ -33,6 +33,7 @@
 		<value>/views/stop/tiles.xml</value>
 		<value>/views/performance/tiles.xml</value>
 		<value>/views/artist/tiles.xml</value>
+		<value>/views/owner/tiles.xml</value>
 		
 
 	</util:list>

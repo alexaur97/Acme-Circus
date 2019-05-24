@@ -31,8 +31,10 @@
 		<value>/views/categoryTour/messages</value>
 		<value>/views/tour/messages</value>
 		<value>/views/stop/messages</value>
+		<value>/views/performance/messages</value>
 		<value>/views/artist/messages</value>
-				<value>/views/performance/messages</value>
+		<value>/views/owner/messages</value>
+		
 		
 
 	</util:list>

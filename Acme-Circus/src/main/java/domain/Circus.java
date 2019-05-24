@@ -1,9 +1,11 @@
+
 package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.SafeHtml;
@@ -14,47 +16,45 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 public class Circus extends DomainEntity {
 
 	// Attributes ..................
-	
-	public String VAT;
-	public String name;
-	public String history;
-	public Boolean active;
-	
-	
+
+	public String	VAT;
+	public String	name;
+	public String	history;
+	public Boolean	active;
+
+
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
+	@Pattern(regexp = "^(ES)?[0-9A-Z][0-9]{7}[0-9A-Z]$")
 	public String getVAT() {
-		return VAT;
+		return this.VAT;
 	}
-	public void setVAT(String vAT) {
-		VAT = vAT;
+	public void setVAT(final String vAT) {
+		this.VAT = vAT;
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getName() {
-		return name;
+		return this.name;
 	}
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getHistory() {
-		return history;
+		return this.history;
 	}
-	public void setHistory(String history) {
+	public void setHistory(final String history) {
 		this.history = history;
 	}
-	
+
 	@NotNull
 	public Boolean getActive() {
-		return active;
+		return this.active;
 	}
-	public void setActive(Boolean active) {
+	public void setActive(final Boolean active) {
 		this.active = active;
 	}
-	
-	
-
 
 }

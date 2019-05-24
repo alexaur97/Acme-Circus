@@ -157,21 +157,21 @@
 		<!-- Circus -->
 
 	<bean id="circus1" class="domain.Circus">
-		<property name="VAT" value="kuhluiy786" />
+		<property name="VAT" value="ESV0963021Z" />
 		<property name="name" value="Circus Totalus" />
 		<property name="history" value="A legendary circus." />
 		<property name="active" value="true" />
 	</bean>
 	
 	<bean id="circus2" class="domain.Circus">
-		<property name="VAT" value="jhgyut677" />
+		<property name="VAT" value="ESR0463321Q" />
 		<property name="name" value="Circe du Soeil" />
 		<property name="history" value="Le cirké definitivé, o la lá." />
 		<property name="active" value="true" />
 	</bean>
 	
 	<bean id="circus3" class="domain.Circus">
-		<property name="VAT" value="43ghvjhh8" />
+		<property name="VAT" value="ESG0063121H" />
 		<property name="name" value="The circus od the horrors" />
 		<property name="history" value="Get ready to be afraid. More than 100 years of history." />
 		<property name="active" value="false" />
