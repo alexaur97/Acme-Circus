@@ -1,5 +1,5 @@
 
-package controllers.owner;
+package controllers.Owner;
 
 import java.util.Collection;
 

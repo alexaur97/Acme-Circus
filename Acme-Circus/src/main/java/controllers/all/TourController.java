@@ -6,6 +6,7 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,6 +26,33 @@ public class TourController extends AbstractController {
 	@Autowired
 	CategoryTourService	categoryTourService;
 
+
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public ModelAndView searchForm() {
+		ModelAndView result;
+		final Tour tour = new Tour();
+		try {
+			result = new ModelAndView("tour/search");
+			result.addObject("tour", tour);
+			result.addObject("requestURI", "tour/search.do");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/#");
+		}
+		return result;
+	}
+	@RequestMapping(value = "/search", method = RequestMethod.POST)
+	public ModelAndView searchList(final Tour tour, final BindingResult binding) {
+		ModelAndView result;
+		try {
+			result = new ModelAndView("tour/search");
+			final Collection<Tour> tours = this.tourService.searchTours(tour.getName());
+			result.addObject("tours", tours);
+			result.addObject("requestURI", "tour/search.do");
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/#");
+		}
+		return result;
+	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
