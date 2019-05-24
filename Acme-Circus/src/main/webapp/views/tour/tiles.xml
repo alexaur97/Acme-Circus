@@ -16,11 +16,12 @@
 		<put-attribute name="body" value="/views/tour/list.jsp" />
 	</definition>
 	
-	
-	<definition name="circus/show" extends="master.page">
-		<put-attribute name="title" value="Show Circus" />
-		<put-attribute name="body" value="/views/circus/show.jsp" />
+	<definition name="tour/search" extends="master.page">
+		<put-attribute name="title" value="Search tour" />
+		<put-attribute name="body" value="/views/tour/search.jsp" />
 	</definition>
+	
+	
 	
 
 </tiles-definitions>

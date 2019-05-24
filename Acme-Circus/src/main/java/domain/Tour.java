@@ -33,7 +33,6 @@ public class Tour extends DomainEntity {
 	public Collection<String>		tags;
 	public Boolean					validated;
 
-	public Collection<Stop>			stops;
 	public Organizer				organizers;
 	public CategoryTour				categoryTour;
 	public Collection<Performance>	performances;
@@ -110,16 +109,6 @@ public class Tour extends DomainEntity {
 	public void setValidated(final Boolean validated) {
 		this.validated = validated;
 	}
-
-	@OneToMany
-	public Collection<Stop> getStops() {
-		return this.stops;
-	}
-
-	public void setStops(final Collection<Stop> stops) {
-		this.stops = stops;
-	}
-
 	@ManyToOne(optional = false)
 	public Organizer getOrganizers() {
 		return this.organizers;

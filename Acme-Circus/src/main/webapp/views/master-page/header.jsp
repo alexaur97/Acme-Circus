@@ -54,6 +54,8 @@
 		
 			<li><a class="fNiv" href="tour/list.do"><spring:message code="master.page.tour" /></a></li>
 		
+			<li><a class="fNiv" href="tour/search.do"><spring:message code="master.page.search" /></a></li>
+		
 			<li><a class="fNiv" href="categoryTour/list.do"><spring:message code="master.page.categoryTour" /></a></li>
 		
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>

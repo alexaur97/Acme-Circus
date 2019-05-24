@@ -12,7 +12,9 @@ import domain.Stop;
 @Repository
 public interface StopRepository extends JpaRepository<Stop, Integer> {
 
-	@Query("select t.stops from Tour t where t.id = ?1")
+	@Query("select s from Stop s where s.tour.id = ?1")
 	Collection<Stop> findAllStopsByTour(int tourId);
 
+	@Query("select s from Stop s where ((s.city like %?1%) or (s.country like %?1%) or (s.location like %?1%))")
+	Collection<Stop> searchStopsByKeyWord(String keyword);
 }

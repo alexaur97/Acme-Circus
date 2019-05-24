@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -28,6 +29,7 @@ public class Stop extends DomainEntity {
 	public Date		date;
 	public Integer	spotsTotal;
 	public Integer	spotsAvailable;
+	public Tour		tour;
 
 
 	@NotBlank
@@ -78,6 +80,15 @@ public class Stop extends DomainEntity {
 	}
 	public void setSpotsAvailable(final Integer spotsAvailable) {
 		this.spotsAvailable = spotsAvailable;
+	}
+
+	@ManyToOne(optional = false)
+	public Tour getTour() {
+		return this.tour;
+	}
+
+	public void setTour(final Tour tour) {
+		this.tour = tour;
 	}
 
 }

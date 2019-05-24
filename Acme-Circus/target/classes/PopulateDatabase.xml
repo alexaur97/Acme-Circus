@@ -431,11 +431,6 @@
 		<property name="link" value="https://circo.com" />
 		<property name="tags" value="" />
 		<property name="validated" value="true" />
-		<property name="stops" >
-			<list>
-			<ref bean="stop1"/>
-			</list>
-		</property>
 		<property name="organizers" ref="organizer1" />
 		<property name="categoryTour" ref="categoryTour1" />
 		<property name="performances">
@@ -449,6 +444,29 @@
 		 </list>
 		</property>
 	</bean>
+	
+	<bean id="tour2" class="domain.Tour">
+		<property name="name" value="Circo del sol 2020" />
+		<property name="description" value="Gira por España!" />
+		<property name="startDate" value="10/10/2020"/>
+		<property name="endDate" value="10/10/2021" />
+		<property name="link" value="https://circosol.com" />
+		<property name="tags" value="" />
+		<property name="validated" value="true" />
+		<property name="organizers" ref="organizer2" />
+		<property name="categoryTour" ref="categoryTour1" />
+		<property name="performances">
+			<list>
+				<ref bean="performance2"/>
+			</list>
+		</property>
+		
+		<property name="offers">
+		 <list>
+		 </list>
+		</property>
+	</bean>
+
 	<!-- CategoryTour -->
 	<bean id="categoryTour1" class="domain.CategoryTour">
 		<property name="name" value="name" />
@@ -466,8 +484,9 @@
 		<property name="date" value="12/10/2021" />
 		<property name="spotsTotal" value="1200" />
 		<property name="spotsAvailable" value="890" />
+		<property name="tour" ref="tour1" />
+		
 	</bean>
-
 		<!-- Messages -->
 
 	<bean id="message1" class="domain.Message">
