@@ -22,5 +22,10 @@
 		<put-attribute name="body" value="/views/artist/list.jsp" />
 	</definition>
 	
+	<definition name="artist/signup" extends="master.page">
+		<put-attribute name="title" value="Register as a artist" />
+		<put-attribute name="body" value="/views/artist/signup.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>
