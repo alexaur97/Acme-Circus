@@ -29,6 +29,11 @@
 				</ul>
 			</li>
 		</security:authorize>
+		
+		<security:authorize access="hasRole('ATTENDEE')">
+			<li><a class="fNiv" href="tour/attendee/list.do"><spring:message code="master.page.purchase" /></a></li>
+		</security:authorize>
+		
 			<security:authorize access="hasRole('OWNER')">
 			<li><a class="fNiv" href="circus/owner/myList.do"><spring:message code="master.page.myListCircus" /></a></li>
 		</security:authorize>
