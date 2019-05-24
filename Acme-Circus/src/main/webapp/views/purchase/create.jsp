@@ -26,7 +26,7 @@
 		<div class="col-sm-12 col-md-12 col-lg-12">
 			<fieldset class="col-md-6 col-md-offset-3">
 
-				<form:form action="pruchase/attendee/create.do"
+				<form:form action="purchase/attendee/create.do"
 					modelAttribute="form" class="form-horizontal" method="post">
 					<div class="form-group ">
 
@@ -46,11 +46,11 @@
 						<br>
 
 						
-						<acme:submit name="save" code="pruchase.save" />
+						<acme:submit name="save" code="purchase.save" />
 						
 
 						<acme:cancel url="/stop/attendee/list.do"
-							code="pruchase.cancel" />
+							code="purchase.cancel" />
 					</div>
 				</form:form>
 			</fieldset>

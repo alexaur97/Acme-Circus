@@ -1,38 +1,42 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.ArrayList;
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.TicketRepository;
+import domain.Ticket;
+import forms.PurchaseAttendeeForm;
 
-import domain.Ticket; 
-import domain.Tour;
-
-@Service 
-@Transactional 
-public class TicketService { 
+@Service
+@Transactional
+public class TicketService {
 
 	//Managed repository -------------------
 	@Autowired
-	private TicketRepository ticketRepository;
+	private TicketRepository	ticketRepository;
+
+	@Autowired
+	private Validator			validator;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public TicketService(){
+	public TicketService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Ticket create(){
+	public Ticket create() {
 		Ticket result;
 
 		result = new Ticket();
@@ -40,32 +44,67 @@ public class TicketService {
 		return result;
 	}
 
-	public Collection<Ticket> findAll(){
+	public Collection<Ticket> findAll() {
 		Collection<Ticket> result;
 
-		result = ticketRepository.findAll();
+		result = this.ticketRepository.findAll();
 
 		return result;
 	}
 
-	public Ticket findOne(int ticketId){
+	public Ticket findOne(final int ticketId) {
 		Ticket result;
 
-		result = ticketRepository.findOne(ticketId);
+		result = this.ticketRepository.findOne(ticketId);
 
 		return result;
 	}
 
-	public void save(Ticket ticket){
+	public void save(final Ticket ticket) {
 		Assert.notNull(ticket);
 
-		ticketRepository.save(ticket);
+		this.ticketRepository.save(ticket);
 	}
 
-	public void delete(Ticket ticket){
-		ticketRepository.delete(ticket);
+	public void delete(final Ticket ticket) {
+		this.ticketRepository.delete(ticket);
 	}
 
+	public Collection<Ticket> reconstruct(final PurchaseAttendeeForm form, final BindingResult binding) {
+		final Collection<Ticket> res = new ArrayList<>();
+
+		for (Integer i = 0; i <= form.getNum(); i++) {
+			final Ticket ticket = new Ticket();
+			ticket.setCategoryPrice(form.getCategory());
+			final Integer refNumber = this.creaNum();
+			ticket.setRefNumber(refNumber);
+			res.add(ticket);
+
+		}
+		this.validator.validate(res, binding);
+		return res;
+	}
+	public Integer creaNum() {
+		String cadena = null;
+
+		final char[] elementos = {
+			'1', '2', '3', '4', '5', '6', '7', '8', '9'
+		};
+
+		final char[] conjunto = new char[6];
+
+		for (int i = 0; i < 6; i++) {
+
+			final int el = (int) (Math.random() * 9);
+
+			conjunto[i] = elementos[el];
+		}
+		cadena = new String(conjunto);
+
+		final Integer num = Integer.parseInt(cadena);
+
+		return num;
+	}
 
 	//Other Methods--------------------
-} 
+}
