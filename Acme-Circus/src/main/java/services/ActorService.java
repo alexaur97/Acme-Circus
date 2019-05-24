@@ -22,13 +22,13 @@ import domain.Message;
 public class ActorService {
 
 	@Autowired
-	private ActorRepository					actorRepository;
-	
-	@Autowired
-	private MessageService					messageService;
+	private ActorRepository			actorRepository;
 
 	@Autowired
-	private AdministratorService			administratorService;
+	private MessageService			messageService;
+
+	@Autowired
+	private AdministratorService	administratorService;
 
 
 	public Actor save(final Actor a) {
@@ -103,17 +103,19 @@ public class ActorService {
 		return res;
 	}
 
-	/*public ActorEditForm toForm(final Actor actor) {
-		final ActorEditForm res = new ActorEditForm();
-		res.setName(actor.getName());
-		res.setSurnames(actor.getSurnames());
-		res.setVAT(actor.getVAT());
-		res.setPhoto(actor.getPhoto());
-		res.setEmail(actor.getEmail());
-		res.setPhone(actor.getPhone());
-		res.setAddress(actor.getAddress());
-		return res;
-	}*/
+	/*
+	 * public ActorEditForm toForm(final Actor actor) {
+	 * final ActorEditForm res = new ActorEditForm();
+	 * res.setName(actor.getName());
+	 * res.setSurnames(actor.getSurnames());
+	 * res.setVAT(actor.getVAT());
+	 * res.setPhoto(actor.getPhoto());
+	 * res.setEmail(actor.getEmail());
+	 * res.setPhone(actor.getPhone());
+	 * res.setAddress(actor.getAddress());
+	 * return res;
+	 * }
+	 */
 
 	public void isSpammer() {
 
@@ -126,24 +128,47 @@ public class ActorService {
 			final Collection<Message> messages = this.messageService.findSender(actorId);
 			final Collection<Message> messagesSpam = this.messageService.findSenderSpam(actorId);
 			final double calculo = ((double) messagesSpam.size() / messages.size());
-			/*if (messages.isEmpty())
-				actores.get(i).setSpammer(false);
-			else if (calculo > 0.10)
-				actores.get(i).setSpammer(true);
-			else
-				actores.get(i).setSpammer(false);*/
+			/*
+			 * if (messages.isEmpty())
+			 * actores.get(i).setSpammer(false);
+			 * else if (calculo > 0.10)
+			 * actores.get(i).setSpammer(true);
+			 * else
+			 * actores.get(i).setSpammer(false);
+			 */
 		}
 	}
-	/*public String addCountryCode(String phoneNumber) {
-		if (phoneNumber.length() > 0 && phoneNumber.charAt(0) != '+') {
-			final ConfigurationParameters cp = this.configurationParametersService.find();
-			final String cc = cp.getCountryCode();
-			phoneNumber = cc + " " + phoneNumber;
-		}
-		return phoneNumber;
-	}*/
+	/*
+	 * public String addCountryCode(String phoneNumber) {
+	 * if (phoneNumber.length() > 0 && phoneNumber.charAt(0) != '+') {
+	 * final ConfigurationParameters cp = this.configurationParametersService.find();
+	 * final String cc = cp.getCountryCode();
+	 * phoneNumber = cc + " " + phoneNumber;
+	 * }
+	 * return phoneNumber;
+	 * }
+	 */
 	public Actor findByUserName(final String name) {
 		return this.actorRepository.findByUserName(name);
 	}
 
+	public Collection<Actor> findAllAttendees() {
+		return this.actorRepository.findAllAttendees();
+	}
+
+	public Collection<Actor> findAllOwners() {
+		return this.actorRepository.findAllOwners();
+	}
+
+	public Collection<Actor> findAllOrganizers() {
+		return this.actorRepository.findAllOrganizers();
+	}
+
+	public Collection<Actor> findAllArtists() {
+		return this.actorRepository.findAllArtists();
+	}
+
+	public Actor findByUserAccount(final int userId) {
+		return this.actorRepository.findByUserAccount(userId);
+	}
 }

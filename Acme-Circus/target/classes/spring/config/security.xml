@@ -44,10 +44,8 @@
 		<security:intercept-url pattern="/circus/list.do" access="permitAll" />
 		<security:intercept-url pattern="/circus/show.do" access="permitAll" />
 
-		<security:intercept-url pattern="/categoryTour/administrator/create.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/categoryTour/administrator/edit.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/categoryTour/administrator/list.do" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/categoryTour/administrator/show.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/categoryTour/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMIN')" />
 
 		<security:intercept-url pattern="/tour/search.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/list.do" access="permitAll" />

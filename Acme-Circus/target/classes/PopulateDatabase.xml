@@ -154,6 +154,91 @@
 		</property>
 	</bean>
 	
+	<bean id="userAccount11" class="security.UserAccount">
+		<property name="username" value="attendee3" />
+		<property name="password" value="ba30678e31f03eda1532ba361179805b" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ATTENDEE" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount12" class="security.UserAccount">
+		<property name="username" value="attendee4" />
+		<property name="password" value="7047369a0dffc677c5473ae2f341afe8" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ATTENDEE" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+		<bean id="userAccount13" class="security.UserAccount">
+		<property name="username" value="owner4" />
+		<property name="password" value="b6faad5051326390f43710c2dd66b15e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="OWNER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+		<bean id="userAccount14" class="security.UserAccount">
+		<property name="username" value="organizer3" />
+		<property name="password" value="fa238b284eee68de9720932fadbc01b9" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ORGANIZER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+		<bean id="userAccount15" class="security.UserAccount">
+		<property name="username" value="organizer4" />
+		<property name="password" value="bd94603cd3f6ce0a6fb9aa657df6a003" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ORGANIZER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount16" class="security.UserAccount">
+		<property name="username" value="artist3" />
+		<property name="password" value="0f1da3aa51be4b7ff3e1e045feedfb7c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ARTIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccount17" class="security.UserAccount">
+		<property name="username" value="artist4" />
+		<property name="password" value="e6da9289f35109858fd26c685ef1d3a1" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ARTIST" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	
 		<!-- Circus -->
 
 	<bean id="circus1" class="domain.Circus">
@@ -277,6 +362,69 @@
 		<property name="cvv" value="148" />
 	</bean>
 	
+	<bean id="creditCard12" class="domain.CreditCard">
+		<property name="holderName" value="Jose Reina" />
+		<property name="brandName" value="Express" />
+		<property name="number" value="5275205444444030" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="148" />
+	</bean>
+	
+		<bean id="creditCard13" class="domain.CreditCard">
+		<property name="holderName" value="Jose Reina" />
+		<property name="brandName" value="Express" />
+		<property name="number" value="5275205444444030" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="148" />
+	</bean>
+	
+		<bean id="creditCard14" class="domain.CreditCard">
+		<property name="holderName" value="Jose Reina" />
+		<property name="brandName" value="Express" />
+		<property name="number" value="5275205444444030" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="148" />
+	</bean>
+	
+		<bean id="creditCard15" class="domain.CreditCard">
+		<property name="holderName" value="Jose Reina" />
+		<property name="brandName" value="Express" />
+		<property name="number" value="5275205444444030" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="148" />
+	</bean>
+	
+	<bean id="creditCard16" class="domain.CreditCard">
+		<property name="holderName" value="Jose Reina" />
+		<property name="brandName" value="Express" />
+		<property name="number" value="5275205444444030" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="148" />
+	</bean>
+	
+	<bean id="creditCard17" class="domain.CreditCard">
+		<property name="holderName" value="Jose Reina" />
+		<property name="brandName" value="Express" />
+		<property name="number" value="5275205444444030" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="148" />
+	</bean>
+	
+	<bean id="creditCard18" class="domain.CreditCard">
+		<property name="holderName" value="Jose Reina" />
+		<property name="brandName" value="Express" />
+		<property name="number" value="5275205444444030" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="21" />
+		<property name="cvv" value="148" />
+	</bean>
+	
 	<!-- Actors -->
 
 	<!-- Administrators -->
@@ -321,6 +469,32 @@
 		<property name="address" value="" />
 		<property name="userAccount" ref="userAccount3" />
 	</bean>
+	
+	<bean id="artist3" class="domain.Artist">
+		<property name="name" value="artist3" />
+		<property name="surnames" value="Finch Berry" />
+		<property name="dni" value="14788525P" />
+		<property name="creditCard" ref="creditCard17" />
+		<property name="photo"
+			value="https://static.iris.net.co/semana/upload/images/2015/10/23/447377_20029_1.jpg" />
+		<property name="email" value="artist3@gmail.com" />
+		<property name="phone" value="" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount16" />
+	</bean>
+	
+	<bean id="artist4" class="domain.Artist">
+		<property name="name" value="artist4" />
+		<property name="surnames" value="Finch Berry" />
+		<property name="dni" value="14788525P" />
+		<property name="creditCard" ref="creditCard18" />
+		<property name="photo"
+			value="https://static.iris.net.co/semana/upload/images/2015/10/23/447377_20029_1.jpg" />
+		<property name="email" value="artist4@gmail.com" />
+		<property name="phone" value="" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount17" />
+	</bean>
 
 	<!-- Organizers -->
 
@@ -348,6 +522,32 @@
 		<property name="phone" value="" />
 		<property name="address" value="Calle Rojo Red, Murcia" />
 		<property name="userAccount" ref="userAccount5" />
+		<property name="circus" ref="circus2" />
+	</bean>
+	
+		<bean id="organizer3" class="domain.Organizer">
+		<property name="name" value="organizer3" />
+		<property name="surnames" value="Valdes Tolón" />
+		<property name="dni" value="91662435Y" />
+		<property name="creditCard" ref="creditCard15" />
+		<property name="photo" value="" />
+		<property name="email" value="organizer3@gmail.com" />
+		<property name="phone" value="" />
+		<property name="address" value="Calle Rojo Red, Murcia" />
+		<property name="userAccount" ref="userAccount14" />
+		<property name="circus" ref="circus2" />
+	</bean>
+	
+		<bean id="organizer4" class="domain.Organizer">
+		<property name="name" value="organizer4" />
+		<property name="surnames" value="Valdes Tolón" />
+		<property name="dni" value="91662435Y" />
+		<property name="creditCard" ref="creditCard16" />
+		<property name="photo" value="" />
+		<property name="email" value="organizer4@gmail.com" />
+		<property name="phone" value="" />
+		<property name="address" value="Calle Rojo Red, Murcia" />
+		<property name="userAccount" ref="userAccount15" />
 		<property name="circus" ref="circus2" />
 	</bean>
 	
@@ -380,6 +580,35 @@
 		<property name="bornDate" value="04/10/1999" />
 		<property name="userAccount" ref="userAccount7" />
 	</bean>
+	
+	<bean id="attendee3" class="domain.Attendee">
+		<property name="name" value="attendee3" />
+		<property name="surnames" value="attendee3" />
+		<property name="dni" value="95147533X" />
+		<property name="creditCard" ref="creditCard13" />
+		<property name="photo"
+			value="https://s3-eu-west-1.amazonaws.com/papora/papora/wp-content/uploads/2018/05/16120658/descripcion-persona-en-ingles.jpg" />
+		<property name="email" value="attendee3@gmail.com" />
+		<property name="phone" value="4123500" />
+		<property name="address" value="" />
+		<property name="bornDate" value="04/10/1999" />
+		<property name="userAccount" ref="userAccount11" />
+	</bean>
+	
+	<bean id="attendee4" class="domain.Attendee">
+		<property name="name" value="attendee4" />
+		<property name="surnames" value="attendee4" />
+		<property name="dni" value="95147533X" />
+		<property name="creditCard" ref="creditCard14" />
+		<property name="photo"
+			value="https://s3-eu-west-1.amazonaws.com/papora/papora/wp-content/uploads/2018/05/16120658/descripcion-persona-en-ingles.jpg" />
+		<property name="email" value="attendee4@gmail.com" />
+		<property name="phone" value="4123500" />
+		<property name="address" value="" />
+		<property name="bornDate" value="04/10/1999" />
+		<property name="userAccount" ref="userAccount12" />
+	</bean>
+	
 
 	<!-- Owner -->
 
@@ -422,6 +651,20 @@
 		<property name="userAccount" ref="userAccount10" />
 		<property name="circus" ref="circus3" />
 	</bean>
+	
+	<bean id="owner4" class="domain.Owner">
+		<property name="name" value="owner4" />
+		<property name="surnames" value="owner4" />
+		<property name="dni" value="16666483E" />
+		<property name="creditCard" ref="creditCard12" />
+		<property name="photo" value="" />
+		<property name="email" value="owner4@owner3.org" />
+		<property name="phone" value="67567565" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount13" />
+		<property name="circus" ref="circus3" />
+	</bean>
+	
 	<!-- Tour -->
 		<bean id="tour1" class="domain.Tour">
 		<property name="name" value="Gira por Andalucia" />
@@ -469,11 +712,53 @@
 
 	<!-- CategoryTour -->
 	<bean id="categoryTour1" class="domain.CategoryTour">
-		<property name="name" value="name" />
-		<property name="minAge" value="16" />
+		<property name="name" value="Adultos" />
+		<property name="minAge" value="18" />
 		
 	</bean>
 	
+	<bean id="categoryTour2" class="domain.CategoryTour">
+		<property name="name" value="Todos los públicos" />
+		<property name="minAge" value="0" />
+		
+	</bean>
+	
+	<bean id="categoryTour3" class="domain.CategoryTour">
+		<property name="name" value="Adolescentes" />
+		<property name="minAge" value="12" />
+		
+	</bean>
+
+	
+	<bean id="categoryTour4" class="domain.CategoryTour">
+		<property name="name" value="Pachachos" />
+		<property name="minAge" value="6" />
+		
+	</bean>
+	
+	<bean id="categoryTour5" class="domain.CategoryTour">
+		<property name="name" value="Saltimbanquis" />
+		<property name="minAge" value="3" />
+		
+	</bean>
+	
+	<bean id="categoryTour6" class="domain.CategoryTour">
+		<property name="name" value="Elefantes voladores" />
+		<property name="minAge" value="3" />
+		
+	</bean>
+	
+	<bean id="categoryTour7" class="domain.CategoryTour">
+		<property name="name" value="Leones" />
+		<property name="minAge" value="14" />
+		
+	</bean>
+	
+	<bean id="categoryTour8" class="domain.CategoryTour">
+		<property name="name" value="Fuegos" />
+		<property name="minAge" value="6" />
+		
+	</bean>
 	
 	<!--  Stops -->
 	

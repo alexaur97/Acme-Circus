@@ -20,8 +20,8 @@
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 
-<acme:display code="categoryTour.name" path="name" />
-<acme:display code="categoryTour.minAge" path="minAge" />
+<acme:display code="categoryTour.name" path="${categoryTour.name}" />
+<acme:display code="categoryTour.minAge" path="${categoryTour.minAge }" />
 <jstl:if test="${isNotUsed eq true}">
 	<acme:button code="categoryTour.edit"
 		url="categoryTour/administrator/edit.do?categoryTourId=${categoryTour.id}" />

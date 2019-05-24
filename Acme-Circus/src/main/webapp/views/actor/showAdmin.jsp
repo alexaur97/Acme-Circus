@@ -19,12 +19,17 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table name="categoriesTour" id="cat" requestURI="${requestURI}" pagesize="5" class="displaytag">
-<display:column property="name" titleKey="categoryTour.name"/>
-<display:column property="minAge" titleKey="categoryTour.minAge"/>
-<display:column titleKey="categoryTour.show"><acme:button
-					url="categoryTour/administrator/show.do?categoryTourId=${cat.id}"
-					code="categoryTour.show" /></display:column>
-</display:table>
 
-	<acme:button url="categoryTour/administrator/create.do" code="categoryTour.create"/>
+<acme:display code="actor.name" path="${actor.name}" />
+<acme:display code="actor.surnames" path="${actor.surnames }" />
+<acme:display code="actor.email" path="${actor.email }" />
+<acme:display code="actor.phone" path="${actor.phone }" />
+<spring:message code="actor.photo"/>: <a href="${actor.photo}" ><jstl:out value="${actor.photo }" /></a>
+<acme:display code="actor.address" path="${actor.address }" />
+<acme:display code="actor.dni" path="${actor.dni }" />
+<acme:display code="actor.creditCard" path="${actor.creditCard.number }" />
+<jstl:if test="${isAttendee eq 1}">
+	<acme:display code="actor.bornDate" path="${actor.bornDate}"/>
+</jstl:if>
+<acme:button code="actor.back"
+	url="actor/administrator/list.do" />
