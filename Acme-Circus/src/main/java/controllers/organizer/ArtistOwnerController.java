@@ -1,5 +1,5 @@
 
-package controllers.owner;
+package controllers.organizer;
 
 import java.util.Collection;
 
@@ -11,19 +11,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ArtistService;
-import services.OrganizerService;
+import services.OwnerService;
 import services.PerformanceService;
 import controllers.AbstractController;
 import domain.Artist;
-import domain.Organizer;
+import domain.Owner;
 import domain.Performance;
 
 @Controller
-@RequestMapping("artist/organizer")
+@RequestMapping("artist/owner")
 public class ArtistOwnerController extends AbstractController {
 
 	@Autowired
-	private OrganizerService	organizerService;
+	private OwnerService		ownerService;
 
 	@Autowired
 	private ArtistService		artistService;
@@ -36,10 +36,10 @@ public class ArtistOwnerController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		try {
-			final Organizer organizer = this.organizerService.findByPrincipal();
+			final Owner owner = this.ownerService.findByPrincipal();
 			final Collection<Artist> artists = this.artistService.findAll();
 			result = new ModelAndView("artist/list");
-			result.addObject("requestURI", "artist/organizer/list.do");
+			result.addObject("requestURI", "artist/owner/list.do");
 			result.addObject("artists", artists);
 
 		} catch (final Exception e) {
@@ -52,10 +52,10 @@ public class ArtistOwnerController extends AbstractController {
 	public ModelAndView performances(@RequestParam final int artistId) {
 		ModelAndView result;
 		try {
-			final Organizer organizer = this.organizerService.findByPrincipal();
+			final Owner owner = this.ownerService.findByPrincipal();
 			final Collection<Performance> performances = this.performanceService.findByArtist(artistId);
 			result = new ModelAndView("performance/list");
-			result.addObject("requestURI", "artist/organizer/performances.do");
+			result.addObject("requestURI", "artist/owner/performances.do");
 			result.addObject("performances", performances);
 
 		} catch (final Exception e) {

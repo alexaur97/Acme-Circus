@@ -1,38 +1,53 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.OrganizerRepository;
+import security.Authority;
+import security.LoginService;
+import security.UserAccount;
+import domain.Organizer;
 
-import domain.Organizer; 
-import domain.Owner;
-
-@Service 
-@Transactional 
-public class OrganizerService { 
+@Service
+@Transactional
+public class OrganizerService {
 
 	//Managed repository -------------------
 	@Autowired
-	private OrganizerRepository organizerRepository;
+	private OrganizerRepository	organizerRepository;
+	@Autowired
+	private ActorService		actorService;
 
 
 	//Supporting Services ------------------
+	public Organizer findByPrincipal() {
+		final UserAccount user = LoginService.getPrincipal();
+		Assert.notNull(user);
 
+		final Organizer a = this.findByUserId(user.getId());
+		Assert.notNull(a);
+		this.actorService.auth(a, Authority.ORGANIZER);
+		return a;
+	}
+	public Organizer findByUserId(final int id) {
+		final Organizer a = this.organizerRepository.findByUserId(id);
+		return a;
+	}
 
 	//COnstructors -------------------------
-	public OrganizerService(){
+	public OrganizerService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Organizer create(){
+	public Organizer create() {
 		Organizer result;
 
 		result = new Organizer();
@@ -40,32 +55,31 @@ public class OrganizerService {
 		return result;
 	}
 
-	public Collection<Organizer> findAll(){
+	public Collection<Organizer> findAll() {
 		Collection<Organizer> result;
 
-		result = organizerRepository.findAll();
+		result = this.organizerRepository.findAll();
 
 		return result;
 	}
 
-	public Organizer findOne(int organizerId){
+	public Organizer findOne(final int organizerId) {
 		Organizer result;
 
-		result = organizerRepository.findOne(organizerId);
+		result = this.organizerRepository.findOne(organizerId);
 
 		return result;
 	}
 
-	public void save(Organizer organizer){
+	public void save(final Organizer organizer) {
 		Assert.notNull(organizer);
 
-		organizerRepository.save(organizer);
+		this.organizerRepository.save(organizer);
 	}
 
-	public void delete(Organizer organizer){
-		organizerRepository.delete(organizer);
+	public void delete(final Organizer organizer) {
+		this.organizerRepository.delete(organizer);
 	}
-
 
 	//Other Methods--------------------
-} 
+}

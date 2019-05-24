@@ -19,7 +19,7 @@
 
 <div>
 	<ul id="jMenu">
-	<security:authorize access="hasRole('OWNER')">
+	<security:authorize access="hasRole('OWNER'||'ORGANIZER')">
 			<li><a href="artist/owner/list.do"><spring:message code="master.page.artists" /></a></li>
 		</security:authorize>
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
