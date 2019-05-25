@@ -31,9 +31,9 @@
 	<display:column titleKey="stop.location" property= "location"/>
 	<display:column titleKey="stop.date" property= "date"/>
 
-		<display:column titleKey="stop.pruchase">
-		<acme:cancel url="/pruchase/attendee/create.do?stopId=${stop.id}"
-			code="stop.pruchase" />
+		<display:column titleKey="stop.purchase">
+		<acme:cancel url="/purchase/attendee/create.do?stopId=${stop.id}"
+			code="stop.purchase" />
 	</display:column>	
 	
 </display:table>

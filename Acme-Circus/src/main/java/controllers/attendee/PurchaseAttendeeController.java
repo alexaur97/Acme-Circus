@@ -44,7 +44,7 @@ public class PurchaseAttendeeController extends AbstractController {
 			final Collection<CategoryPrice> categories = this.categoryPriceService.findByStop(stopId);
 			res = new ModelAndView("purchase/create");
 			res.addObject("form", form);
-			res.addObject("categoriess", categories);
+			res.addObject("categories", categories);
 		} catch (final Throwable oops) {
 			res = new ModelAndView("redirect:/#");
 		}
@@ -54,31 +54,29 @@ public class PurchaseAttendeeController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView create(@ModelAttribute("form") final PurchaseAttendeeForm form, final BindingResult binding) {
 		ModelAndView res;
-		final Purchase purchase;
-		final Collection<Ticket> tickets;
 
-		tickets = this.tickerService.reconstruct(form, binding);
-		purchase = this.purchaseService.reconstruct(form, tickets, binding);
+		try {
+			final Purchase purchase;
+			final Collection<Ticket> tickets;
 
-		if (binding.hasErrors())
+			tickets = this.tickerService.reconstruct(form, binding);
+			purchase = this.purchaseService.reconstruct(form, tickets, binding);
+
+			for (final Ticket t : tickets)
+				this.tickerService.save(t);
+
+			this.purchaseService.save(purchase);
+
+			res = new ModelAndView("purchase/show");
+			res.addObject("purchase", purchase);
+			res.addObject("tickets", tickets);
+
+		} catch (final Throwable oops) {
+
 			res = new ModelAndView("purchase/create");
-		else
-			try {
-				for (final Ticket t : tickets)
-					this.tickerService.save(t);
+			res.addObject("message", "purchase.commit.error");
 
-				this.purchaseService.save(purchase);
-
-				res = new ModelAndView("purchase/show");
-				res.addObject("purchase", purchase);
-				res.addObject("tickets", tickets);
-
-			} catch (final Throwable oops) {
-
-				res = new ModelAndView("purchase/create");
-				res.addObject("message", "purchase.commit.error");
-
-			}
+		}
 
 		return res;
 	}

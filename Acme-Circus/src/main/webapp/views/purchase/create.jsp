@@ -30,15 +30,14 @@
 					modelAttribute="form" class="form-horizontal" method="post">
 					<div class="form-group ">
 
-						<form:hidden path="id"/>
-						<form:hidden path="version"/>
+						
 								
-						<acme:textbox code="form.num" path="num" />
+						<acme:textbox code="purchase.num" path="num" />
 						<br>
 						<br>
 						
-						<spring:message code ="form.category"/>	
-						<acme:select items="${categories}" itemLabel="amount" itemLabel="category" code="form.category" path="categories"/>
+						
+						<acme:select items="${categories}" itemLabel="category" code="purchase.category" path="category"/>
 						
 						
 						
@@ -49,7 +48,7 @@
 						<acme:submit name="save" code="purchase.save" />
 						
 
-						<acme:cancel url="/stop/attendee/list.do"
+						<acme:cancel url="/tour/attendee/list.do"
 							code="purchase.cancel" />
 					</div>
 				</form:form>
