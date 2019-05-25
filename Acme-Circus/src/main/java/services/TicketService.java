@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 
 import repositories.TicketRepository;
 import domain.Ticket;
@@ -22,9 +21,6 @@ public class TicketService {
 	//Managed repository -------------------
 	@Autowired
 	private TicketRepository	ticketRepository;
-
-	@Autowired
-	private Validator			validator;
 
 
 	//Supporting Services ------------------
@@ -81,7 +77,6 @@ public class TicketService {
 			res.add(ticket);
 
 		}
-		this.validator.validate(res, binding);
 		return res;
 	}
 	public Integer creaNum() {

@@ -1,6 +1,8 @@
 
 package forms;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import domain.CategoryPrice;
@@ -13,6 +15,8 @@ public class PurchaseAttendeeForm {
 
 
 	@NotNull
+	@Min(1)
+	@Max(10)
 	public Integer getNum() {
 		return this.num;
 	}

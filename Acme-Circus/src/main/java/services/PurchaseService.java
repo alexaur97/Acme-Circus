@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 
 import repositories.PruchaseRepository;
 import domain.Attendee;
@@ -26,9 +25,6 @@ public class PurchaseService {
 
 	@Autowired
 	private AttendeeService		attendeeService;
-
-	@Autowired
-	private Validator			validator;
 
 
 	//Supporting Services ------------------
@@ -86,7 +82,6 @@ public class PurchaseService {
 
 		purchase.setTickets(tickets);
 
-		this.validator.validate(purchase, binding);
 		return purchase;
 	}
 
