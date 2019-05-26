@@ -31,10 +31,7 @@
 	<display:column titleKey="tour.startDate" property= "startDate"/>
 	<display:column titleKey="tour.endDate" property= "endDate"/>
 	
-	<display:column titleKey="tour.stops">
-		<acme:cancel url="/stop/listByTour.do?tourId=${tour.id}"
-			code="tour.stops" />
-	</display:column>	
+	
 	<display:column titleKey="tour.link" property= "link"/>
 	
 		<display:column titleKey="tour.stops">

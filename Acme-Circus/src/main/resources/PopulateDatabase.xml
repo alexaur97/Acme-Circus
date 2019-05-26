@@ -718,6 +718,7 @@
 		<property name="date" value="10/10/2021" />
 		<property name="spotsTotal" value="500" />
 		<property name="spotsAvailable" value="450" />
+		<property name="tour" ref="tour1" />
 	</bean>
 	
 	<!-- CategoryTour -->
@@ -772,7 +773,7 @@
 	
 	<!--  Stops -->
 	
-	<bean id="stop1" class="domain.Stop">
+	<bean id="stop2" class="domain.Stop">
 		<property name="city" value="Madrid" />
 		<property name="country" value="España" />
 		<property name="location" value="Palacio de congresos"/>

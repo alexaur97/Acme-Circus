@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,10 +16,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.CategoryPriceService;
 import services.PurchaseService;
+import services.StopService;
 import services.TicketService;
 import controllers.AbstractController;
 import domain.CategoryPrice;
 import domain.Purchase;
+import domain.Stop;
 import domain.Ticket;
 import forms.PurchaseAttendeeForm;
 
@@ -35,11 +38,16 @@ public class PurchaseAttendeeController extends AbstractController {
 	@Autowired
 	private TicketService			tickerService;
 
+	@Autowired
+	private StopService				stopService;
+
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create(@RequestParam final int stopId) {
 		ModelAndView res;
 		try {
+			final Stop stop = this.stopService.findOne(stopId);
+			Assert.isTrue(stop.getSpotsAvailable() > 0);
 			final PurchaseAttendeeForm purchaseAttendeeForm = new PurchaseAttendeeForm();
 
 			final Collection<CategoryPrice> categories = this.categoryPriceService.findByStop(stopId);

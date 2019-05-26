@@ -74,6 +74,8 @@ public class StopService {
 
 	public Collection<Stop> findStopsByKeyword(final String keyword) {
 		return this.stopRepository.searchStopsByKeyWord(keyword);
+
+	}
 	public Collection<Stop> findAllAvailable(final int tourId) {
 
 		final Collection<Stop> res = this.stopRepository.findAllAvailable(tourId);

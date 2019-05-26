@@ -12,12 +12,7 @@ import domain.Stop;
 @Repository
 public interface StopRepository extends JpaRepository<Stop, Integer> {
 
-import domain.Stop;
-
-@Repository
-public interface StopRepository extends JpaRepository<Stop, Integer> {
-
-	@Query("select s from Tour t join t.stops s where  s.spotsAvailable >0 and t.id=?1")
+	@Query("select s from Stop s where  s.spotsAvailable >0 and s.tour.id=?1")
 	Collection<Stop> findAllAvailable(int id);
 
 	@Query("select s from Stop s where s.tour.id = ?1")
