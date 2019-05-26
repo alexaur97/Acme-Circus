@@ -35,11 +35,8 @@
 		<value>/views/artist/messages</value>
 		<value>/views/owner/messages</value>
 		<value>/views/actor/messages</value>
-		
-
+		<value>/views/ticket/messages</value>
 		<value>/views/purchase/messages</value>
-		<value>/views/stop/messages</value>
-		<value>/views/tour/messages</value>
 		
 	</util:list>
 
