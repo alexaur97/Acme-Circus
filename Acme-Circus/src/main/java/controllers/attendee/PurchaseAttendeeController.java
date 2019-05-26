@@ -73,11 +73,12 @@ public class PurchaseAttendeeController extends AbstractController {
 				final Purchase purchase;
 				final Collection<Ticket> tickets;
 
-				tickets = this.tickerService.reconstruct(purchaseAttendeeForm, binding);
-				purchase = this.purchaseService.reconstruct(purchaseAttendeeForm, tickets, binding);
+				tickets = this.tickerService.reconstruct(purchaseAttendeeForm);
 
 				for (final Ticket t : tickets)
 					this.tickerService.save(t);
+
+				purchase = this.purchaseService.reconstruct(purchaseAttendeeForm, tickets);
 
 				this.purchaseService.save(purchase);
 

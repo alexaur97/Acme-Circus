@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import org.springframework.validation.BindingResult;
 
 import repositories.PruchaseRepository;
 import domain.Attendee;
@@ -70,7 +69,7 @@ public class PurchaseService {
 		this.pruchaseRepository.delete(pruchase);
 	}
 
-	public Purchase reconstruct(final PurchaseAttendeeForm form, final Collection<Ticket> tickets, final BindingResult binding) {
+	public Purchase reconstruct(final PurchaseAttendeeForm form, final Collection<Ticket> tickets) {
 		final Purchase purchase = new Purchase();
 		final Attendee attendee = this.attendeeService.findByPrincipal();
 		purchase.setAttendee(attendee);

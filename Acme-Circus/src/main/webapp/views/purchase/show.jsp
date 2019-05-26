@@ -24,15 +24,19 @@
 
 <spring:message code="purchase.totalPrice"/>: <jstl:out value="${purchase.totalPrice}"></jstl:out>
 <br/>
-<spring:message code="purchase.name"/>: <jstl:out value="${purhase.attendee.name}"></jstl:out>
+<spring:message code="purchase.name"/>: <jstl:out value="${purchase.attendee.name}"></jstl:out>
 <br/>
-<spring:message code="purchase.creditCard"/>: <jstl:out value="${purchase.creditCard}"></jstl:out>
+<spring:message code="purchase.creditCard"/>: 
+		<jstl:out value="${purchase.creditCard.holderName}"></jstl:out>
+		<jstl:out value="${purchase.creditCard.number}"></jstl:out>
 <br/>
-<spring:message code="purchase.tickets"/>
+<br>
+<spring:message code="purchase.tickets"/>:<br>
 <jstl:forEach items="${tickets}" var="x">
-		<spring:message code="ticket.refNumber"/>: <jstl:out value="${x.refNumber}"></jstl:out>
-		<spring:message code="ticket.categoryPrice"/>: <jstl:out value="${x.categoryPrice}"></jstl:out>
-		
+		<spring:message code="ticket.refNumber"/>: <jstl:out value="${x.refNumber}"></jstl:out>,
+		<spring:message code="ticket.categoryPrice"/>: <jstl:out value="${x.categoryPrice.category}"></jstl:out>,
+		<spring:message code="ticket.amount"/>:<jstl:out value="${x.categoryPrice.amount}"></jstl:out>
+		<br>
 	</jstl:forEach>
 
 

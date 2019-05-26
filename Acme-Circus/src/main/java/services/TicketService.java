@@ -3,12 +3,12 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import org.springframework.validation.BindingResult;
 
 import repositories.TicketRepository;
 import domain.Ticket;
@@ -66,10 +66,10 @@ public class TicketService {
 		this.ticketRepository.delete(ticket);
 	}
 
-	public Collection<Ticket> reconstruct(final PurchaseAttendeeForm form, final BindingResult binding) {
-		final Collection<Ticket> res = new ArrayList<>();
+	public Collection<Ticket> reconstruct(final PurchaseAttendeeForm form) {
+		List<Ticket> res = new ArrayList<>();
 
-		for (Integer i = 0; i <= form.getNum(); i++) {
+		for (Integer i = 0; i < form.getNum(); i++) {
 			final Ticket ticket = new Ticket();
 			ticket.setCategoryPrice(form.getCategory());
 			final Integer refNumber = this.creaNum();
@@ -77,6 +77,8 @@ public class TicketService {
 			res.add(ticket);
 
 		}
+		//final List<Ticket> r = res.subList(0, form.getNum() - 1);
+		res = res.subList(0, form.getNum());
 		return res;
 	}
 	public Integer creaNum() {
