@@ -37,9 +37,8 @@
 		<value>/views/actor/tiles.xml</value>
 		<value>/views/stats/tiles.xml</value>
 
+		<value>/views/ticket/tiles.xml</value>
 		<value>/views/purchase/tiles.xml</value>
-		<value>/views/stop/tiles.xml</value>
-		<value>/views/tour/tiles.xml</value>
 		
 	</util:list>
 

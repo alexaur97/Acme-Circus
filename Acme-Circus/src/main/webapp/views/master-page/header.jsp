@@ -39,6 +39,9 @@
 		
 		<security:authorize access="hasRole('ATTENDEE')">
 			<li><a class="fNiv" href="tour/attendee/list.do"><spring:message code="master.page.purchase" /></a></li>
+			<li><a class="fNiv" href="purchase/attendee/list.do"><spring:message code="master.page.Mypurchase" /></a></li>
+		
+		
 		</security:authorize>
 		
 			<security:authorize access="hasRole('OWNER')">

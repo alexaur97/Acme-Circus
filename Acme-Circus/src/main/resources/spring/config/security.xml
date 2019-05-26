@@ -69,6 +69,8 @@
 		<security:intercept-url pattern="/tour/attendee/list.do" access="hasRole('ATTENDEE')" /> 
 		<security:intercept-url pattern="/stop/attendee/list.do" access="hasRole('ATTENDEE')" /> 
 		<security:intercept-url pattern="/purchase/attendee/create.do" access="hasRole('ATTENDEE')" /> 
+		<security:intercept-url pattern="/purchase/attendee/list.do" access="hasRole('ATTENDEE')" /> 
+		<security:intercept-url pattern="/ticket/attendee/list.do" access="hasRole('ATTENDEE')" /> 
 
 		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" /> 
 		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('CUSTOMER')" /> 

@@ -24,14 +24,21 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table pagesize="5" name="stops" id="stop"
+<display:table pagesize="5" name="purchases" id="purchase"
 	requestURI="${requestURI}" class="displaytag table">
-	<display:column titleKey="stop.city" property="city" />
-	<display:column titleKey="stop.country" property= "country"/>
-	<display:column titleKey="stop.location" property= "location"/>
-	<display:column titleKey="stop.date" property= "date"/>
+	<display:column titleKey="purchase.name" property="attendee.name"/>
+	<display:column titleKey="purchase.surnames" property="attendee.surnames"/>
+	<display:column titleKey="purchase.stop" property= "stop.city"/>
+	<display:column titleKey="purchase.location" property= "stop.location"/>
+	<display:column titleKey="purchase.creditCard" property= "creditCard.number"/>
+	<display:column titleKey="purchase.totalPrice" property= "totalPrice"/>
 
+
+		<display:column titleKey="purchase.tickets">
+		<acme:cancel url="/ticket/attendee/list.do?purchaseId=${purchase.id}"
+			code="purchase.tickets" />
+	</display:column>	
+	
 </display:table>
 
-	<acme:cancel url="/purchase/attendee/create.do?stopId=${stop.id}"
-			code="stop.purchase" />
+	

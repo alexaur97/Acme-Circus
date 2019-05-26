@@ -84,5 +84,11 @@ public class PurchaseService {
 		return purchase;
 	}
 
+	public Collection<Purchase> findByAttendee(final int idA) {
+
+		final Collection<Purchase> res = this.pruchaseRepository.findByAttendee(idA);
+		return res;
+	}
+
 	//Other Methods--------------------
 }

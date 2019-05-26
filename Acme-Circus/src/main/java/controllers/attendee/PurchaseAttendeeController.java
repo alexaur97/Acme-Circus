@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AttendeeService;
 import services.CategoryPriceService;
 import services.PurchaseService;
 import services.StopService;
@@ -40,6 +41,9 @@ public class PurchaseAttendeeController extends AbstractController {
 
 	@Autowired
 	private StopService				stopService;
+
+	@Autowired
+	private AttendeeService			attendeeService;
 
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -106,6 +110,23 @@ public class PurchaseAttendeeController extends AbstractController {
 			}
 
 		return res;
+	}
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		try {
+			final int idA = this.attendeeService.findByPrincipal().getId();
+			final Collection<Purchase> purchases = this.purchaseService.findByAttendee(idA);
+			result = new ModelAndView("purchase/list");
+			result.addObject("requestURI", "purchase/attendee/list.do");
+			result.addObject("purchases", purchases);
+
+		} catch (final Exception e) {
+			result = new ModelAndView("redirect:/#");
+		}
+
+		return result;
+
 	}
 
 }
