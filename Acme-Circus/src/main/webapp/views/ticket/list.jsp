@@ -30,10 +30,8 @@
 	<display:column titleKey="ticket.categoryPrice.category" property= "categoryPrice.category"/>
 	<display:column titleKey="ticket.categoryPrice.amount" property= "categoryPrice.amount"/>
 
-		<display:column titleKey="ticket.back">
-		<acme:cancel url="/purchase/attendee/list.do"
-			code="ticket.back" />
-	</display:column>	
+	
 </display:table>
 
-	
+	<acme:cancel url="/purchase/attendee/list.do"
+			code="ticket.back" />

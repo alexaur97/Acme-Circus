@@ -26,9 +26,11 @@
 
 <display:table pagesize="5" name="purchases" id="purchase"
 	requestURI="${requestURI}" class="displaytag table">
-	<display:column titleKey="purchase.name" property="attendee" />
-	<display:column titleKey="purchase.stop" property= "stop"/>
-	<display:column titleKey="purchase.creditCard" property= "creditCard"/>
+	<display:column titleKey="purchase.name" property="attendee.name"/>
+	<display:column titleKey="purchase.surnames" property="attendee.surnames"/>
+	<display:column titleKey="purchase.stop" property= "stop.city"/>
+	<display:column titleKey="purchase.location" property= "stop.location"/>
+	<display:column titleKey="purchase.creditCard" property= "creditCard.number"/>
 	<display:column titleKey="purchase.totalPrice" property= "totalPrice"/>
 
 
