@@ -1,10 +1,10 @@
+
 package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
@@ -15,23 +15,24 @@ public class Ticket extends DomainEntity {
 
 	// Attributes ..................
 
-	public Integer refNumber;
-	public CategoryPrice categoryPrice;
-	
+	public Integer			refNumber;
+	public CategoryPrice	categoryPrice;
+
+
 	@NotNull
-	@Range(min= 0)
+	@Range(min = 0)
 	public Integer getRefNumber() {
-		return refNumber;
+		return this.refNumber;
 	}
-	public void setRefNumber(Integer refNumber) {
+	public void setRefNumber(final Integer refNumber) {
 		this.refNumber = refNumber;
 	}
-	
-	@ManyToOne(optional=false)
+
+	@ManyToOne(optional = false)
 	public CategoryPrice getCategoryPrice() {
-		return categoryPrice;
+		return this.categoryPrice;
 	}
-	public void setCategoryPrice(CategoryPrice categoryPrice) {
+	public void setCategoryPrice(final CategoryPrice categoryPrice) {
 		this.categoryPrice = categoryPrice;
 	}
 

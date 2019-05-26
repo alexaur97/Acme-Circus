@@ -75,8 +75,8 @@ public class PurchaseAttendeeController extends AbstractController {
 
 				tickets = this.tickerService.reconstruct(purchaseAttendeeForm);
 
-				for (final Ticket t : tickets)
-					this.tickerService.save(t);
+				//				for (final Ticket t : tickets)
+				//					this.tickerService.save(t);
 
 				purchase = this.purchaseService.reconstruct(purchaseAttendeeForm, tickets);
 
