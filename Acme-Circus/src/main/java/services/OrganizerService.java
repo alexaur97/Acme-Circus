@@ -80,6 +80,9 @@ public class OrganizerService {
 	public void delete(final Organizer organizer) {
 		this.organizerRepository.delete(organizer);
 	}
+	public Collection<Organizer> organizersByCircus(final int circusId) {
+		return this.organizerRepository.organizersByCircus(circusId);
+	}
 
 	//Other Methods--------------------
 }

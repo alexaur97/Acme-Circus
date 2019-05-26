@@ -19,11 +19,10 @@ public class StopService {
 	@Autowired
 	private StopRepository	stopRepository;
 
+	//Supporting Services ------------------
 	@Autowired
 	private TourService		tourService;
 
-
-	//Supporting Services ------------------
 
 	//COnstructors -------------------------
 	public StopService() {
@@ -81,6 +80,16 @@ public class StopService {
 		final Collection<Stop> res = this.stopRepository.findAllAvailable(tourId);
 
 		return res;
+	}
+
+	public Double stopsPerTour() {
+		Double a = (double) this.stopRepository.findAll().size();
+		if (a == null)
+			a = 0.0;
+		Double b = (double) this.tourService.findAll().size();
+		if (b == null)
+			b = 0.0;
+		return a / b;
 	}
 
 	//Other Methods--------------------
