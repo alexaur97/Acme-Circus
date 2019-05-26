@@ -19,8 +19,10 @@ public class StopService {
 	@Autowired
 	private StopRepository	stopRepository;
 
-
 	//Supporting Services ------------------
+	@Autowired
+	private TourService		tourService;
+
 
 	//COnstructors -------------------------
 	public StopService() {
@@ -71,6 +73,16 @@ public class StopService {
 
 	public Collection<Stop> findStopsByKeyword(final String keyword) {
 		return this.stopRepository.searchStopsByKeyWord(keyword);
+	}
+
+	public Double stopsPerTour() {
+		Double a = (double) this.stopRepository.findAll().size();
+		if (a == null)
+			a = 0.0;
+		Double b = (double) this.tourService.findAll().size();
+		if (b == null)
+			b = 0.0;
+		return a / b;
 	}
 
 	//Other Methods--------------------

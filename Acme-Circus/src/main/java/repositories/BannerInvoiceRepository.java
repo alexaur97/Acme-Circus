@@ -1,15 +1,19 @@
+
 package repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.data.jpa.repository.Query; 
-import org.springframework.stereotype.Repository; 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-import domain.BannerInvoice; 
+import domain.BannerInvoice;
 
-@Repository 
-public interface BannerInvoiceRepository extends JpaRepository<BannerInvoice, Integer>{ 
+@Repository
+public interface BannerInvoiceRepository extends JpaRepository<BannerInvoice, Integer> {
+
+	@Query("select sum(b.total) from BannerInvoice b")
+	Double totalBenefits();
 
 	//@Query("") 
 	//Method 
 
-} 
+}
