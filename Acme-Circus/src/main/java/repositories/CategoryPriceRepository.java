@@ -1,15 +1,21 @@
+
 package repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.data.jpa.repository.Query; 
-import org.springframework.stereotype.Repository; 
+import java.util.Collection;
 
-import domain.CategoryPrice; 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-@Repository 
-public interface CategoryPriceRepository extends JpaRepository<CategoryPrice, Integer>{ 
+import domain.CategoryPrice;
+
+@Repository
+public interface CategoryPriceRepository extends JpaRepository<CategoryPrice, Integer> {
+
+	@Query("select c from CategoryPrice c where c.stop.id=?1")
+	Collection<CategoryPrice> findByStop(int stopId);
 
 	//@Query("") 
 	//Method 
 
-} 
+}

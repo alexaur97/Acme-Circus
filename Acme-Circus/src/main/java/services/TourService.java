@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,6 +75,9 @@ public class TourService {
 	public Collection<Tour> findAllToursByCategoryTour(final int categoryTourId) {
 		Assert.notNull(categoryTourId);
 		final Collection<Tour> res = this.tourRepository.findAllToursByCategory(categoryTourId);
+	public Collection<Tour> findAllAvailable() {
+
+		final Collection<Tour> res = this.tourRepository.findAllAvailable();
 		return res;
 	}
 

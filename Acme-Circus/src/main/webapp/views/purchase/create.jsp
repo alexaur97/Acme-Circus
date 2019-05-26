@@ -7,9 +7,6 @@
  * TDG Licence, a copy of which you may download from 
  * http://www.tdg-seville.info/License.html
  --%>
-
-<%@page import="java.util.Date"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -21,27 +18,43 @@
 <%@taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table pagesize="5" name="tours" id="tour"
-	requestURI="${requestURI}" class="displaytag table">
-	<display:column titleKey="tour.name" property="name" />
-	<display:column titleKey="tour.description" property= "description"/>
-	<display:column titleKey="tour.startDate" property= "startDate"/>
-	<display:column titleKey="tour.endDate" property= "endDate"/>
-	
-	<display:column titleKey="tour.stops">
-		<acme:cancel url="/stop/listByTour.do?tourId=${tour.id}"
-			code="tour.stops" />
-	</display:column>	
-	<display:column titleKey="tour.link" property= "link"/>
-	
-		<display:column titleKey="tour.stops">
-		<acme:cancel url="/stop/attendee/list.do?tourId=${tour.id}"
-			code="tour.stops" />
-	</display:column>	
-	
-</display:table>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-12">
+			<fieldset class="col-md-6 col-md-offset-3">
 
-	
+				<form:form action="purchase/attendee/create.do?stopId=${stopId}"
+					modelAttribute="purchaseAttendeeForm" class="form-horizontal" method="post">
+					<div class="form-group ">
+
+						
+								
+						<acme:textbox code="purchase.num" path="num" />
+						<br>
+						<br>
+						
+						
+						<acme:select items="${categories}" itemLabel="category" code="purchase.category" path="category"/>
+						
+						
+						
+						<br>
+						<br>
+
+						
+						<acme:submit name="save" code="purchase.save" />
+						
+
+						<acme:cancel url="/tour/attendee/list.do"
+							code="purchase.cancel" />
+					</div>
+				</form:form>
+			</fieldset>
+		
+
+		</div>
+	</div>
+</div>

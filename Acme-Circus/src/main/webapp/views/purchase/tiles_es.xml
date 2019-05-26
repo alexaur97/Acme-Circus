@@ -9,10 +9,13 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 
-	<definition name="stop/list" extends="master.page">
-		<put-attribute name="title" value="Paradas" />
-		<put-attribute name="body" value="/views/stop/list.jsp" />
+	<definition name="purchase/create" extends="master.page">
+		<put-attribute name="title" value="Compra" />
+		<put-attribute name="body" value="/views/purchase/create.jsp" />
 	</definition>
 
-
+	<definition name="purchase/show" extends="master.page">
+		<put-attribute name="title" value="Compra" />
+		<put-attribute name="body" value="/views/purchase/show.jsp" />
+	</definition>
 </tiles-definitions>

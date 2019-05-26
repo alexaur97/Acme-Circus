@@ -679,6 +679,7 @@
 		<property name="performances">
 			<list>
 				<ref bean="performance1"/>
+				
 			</list>
 		</property>
 		
@@ -709,7 +710,16 @@
 		 </list>
 		</property>
 	</bean>
-
+	<!-- Stop -->
+	<bean id="stop1" class="domain.Stop">
+		<property name="city" value="Trebujena" />
+		<property name="country" value="España" />
+		<property name="location" value="Reina Mercedes"/>
+		<property name="date" value="10/10/2021" />
+		<property name="spotsTotal" value="500" />
+		<property name="spotsAvailable" value="450" />
+	</bean>
+	
 	<!-- CategoryTour -->
 	<bean id="categoryTour1" class="domain.CategoryTour">
 		<property name="name" value="Adultos" />
@@ -772,6 +782,13 @@
 		<property name="tour" ref="tour1" />
 		
 	</bean>
+	<!-- CategoryPrice -->
+	<bean id="categoryPrice1" class="domain.CategoryPrice">
+		<property name="amount" value="50" />
+		<property name="category" value="Gold" />
+		<property name="stop" ref="stop1" />
+	</bean>
+	
 		<!-- Messages -->
 
 	<bean id="message1" class="domain.Message">
