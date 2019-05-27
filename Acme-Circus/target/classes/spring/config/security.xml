@@ -116,6 +116,16 @@
 			access="isAnonymous()" />
 		<security:intercept-url pattern="/actor/edit.do"
 			access="isAuthenticated()" />
+		<security:intercept-url pattern="/message/list.do"
+			access="hasRole('WORKER')" />
+		<security:intercept-url pattern="/message/show.do"
+			access="hasRole('WORKER')" />
+		<security:intercept-url pattern="/message/delete.do"
+			access="hasRole('WORKER')" />
+		<security:intercept-url pattern="/message/create.do"
+			access="hasRole('WORKER')" />
+		<security:intercept-url pattern="/message/edit.do"
+			access="hasRole('WORKER')" />
 
 
 

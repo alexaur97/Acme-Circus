@@ -37,7 +37,7 @@
 		<value>/views/actor/messages</value>
 		<value>/views/categoryPrice/messages</value>
 		<value>/views/stats/messages</value>
-		<value>/views/stats/messages</value>
+		<value>/views/message/messages</value>
 		<value>/views/banner/messages</value>
 		<value>/views/ticket/messages</value>
 		<value>/views/purchase/messages</value>

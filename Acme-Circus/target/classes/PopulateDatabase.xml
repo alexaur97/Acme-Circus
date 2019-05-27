@@ -186,6 +186,9 @@
 				<bean class="security.Authority">
 					<property name="authority" value="OWNER" />
 				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="WORKER" />
+				</bean>
 			</list>
 		</property>
 	</bean>
@@ -198,6 +201,9 @@
 				<bean class="security.Authority">
 					<property name="authority" value="ORGANIZER" />
 				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="WORKER" />
+				</bean>
 			</list>
 		</property>
 	</bean>
@@ -209,6 +215,9 @@
 			<list>
 				<bean class="security.Authority">
 					<property name="authority" value="ORGANIZER" />
+				</bean>
+				<bean class="security.Authority">
+					<property name="authority" value="WORKER" />
 				</bean>
 			</list>
 		</property>

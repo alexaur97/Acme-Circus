@@ -106,7 +106,11 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="actor/edit.do"><spring:message code="master.page.editProfile" /></a></li>				
+					<li><a href="actor/edit.do"><spring:message code="master.page.editProfile" /></a></li>
+					<security:authorize access="hasRole('WORKER')">
+						<li><a href="message/list.do"><spring:message
+								code="master.page.message" /> </a></li>
+					</security:authorize>				
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>
