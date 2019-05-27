@@ -37,6 +37,7 @@
 		<value>/views/actor/tiles.xml</value>
 		<value>/views/categoryPrice/tiles.xml</value>
 		<value>/views/stats/tiles.xml</value>
+
 		<value>/views/banner/tiles.xml</value>
 		<value>/views/ticket/tiles.xml</value>
 		<value>/views/purchase/tiles.xml</value>

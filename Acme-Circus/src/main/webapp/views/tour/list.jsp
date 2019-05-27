@@ -30,14 +30,34 @@
 	<display:column titleKey="tour.description" property= "description"/>
 	<display:column titleKey="tour.startDate" property= "startDate"/>
 	<display:column titleKey="tour.endDate" property= "endDate"/>
-	
-	
 	<display:column titleKey="tour.link" property= "link"/>
+	<display:column titleKey="tour.validated">
+		
+	<jstl:if test="${tour.validated}">
+			<h3 style="color: #008000;">
+				<spring:message code="tour.yes" />
+			</h3>
+		</jstl:if>
+		<jstl:if test="${!tour.validated}">
+			<h3 style="color: #CB3234;">
+				<spring:message code="tour.no" />
+			</h3>
+		</jstl:if>
+		</display:column>
+	
 	
 		<display:column titleKey="tour.stops">
 		<acme:cancel url="/stop/attendee/list.do?tourId=${tour.id}"
 			code="tour.stops" />
 	</display:column>	
+	
+	<security:authorize access="hasRole('OWNER')">
+	<display:column titleKey="tour.validate">
+		<acme:cancel url="/tour/owner/validate.do?tourId=${tour.id}"
+			code="tour.validate" />
+	</display:column>	
+	</security:authorize>
+	
 	
 </display:table>
 

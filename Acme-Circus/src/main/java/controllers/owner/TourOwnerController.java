@@ -1,6 +1,8 @@
 
 package controllers.owner;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -45,5 +47,40 @@ public class TourOwnerController extends AbstractController {
 
 		return result;
 
+	}
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView result;
+		try {
+			Collection<Tour> tours;
+			final int id = this.ownerService.findByPrincipal().getCircus().getId();
+			tours = this.tourService.findByCircus(id);
+			result = new ModelAndView("tour/listAll");
+			result.addObject("requestURI", "tour/list.do");
+			result.addObject("tours", tours);
+
+		} catch (final Exception e) {
+			result = new ModelAndView("redirect:/#");
+		}
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/validate", method = RequestMethod.GET)
+	public ModelAndView validate(@RequestParam final int tourId) {
+		ModelAndView result;
+		try {
+			this.ownerService.findByPrincipal();
+			Tour tour = this.tourService.findOne(tourId);
+			tour = this.tourService.validate(tour);
+			tour = this.tourService.save(tour);
+			result = new ModelAndView("redirect:/tour/owner/list.do");
+
+		} catch (final Throwable oops) {
+			result = new ModelAndView("redirect:/#");
+		}
+		return result;
 	}
 }
