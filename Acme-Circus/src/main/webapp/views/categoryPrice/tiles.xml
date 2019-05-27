@@ -15,4 +15,9 @@
 		<put-attribute name="body" value="/views/categoryPrice/list.jsp" />
 	</definition>
 	
+	<definition name="categoryPrice/edit" extends="master.page">
+		<put-attribute name="title" value="Edit category price" />
+		<put-attribute name="body" value="/views/categoryPrice/edit.jsp" />
+	</definition>
+	
 </tiles-definitions>

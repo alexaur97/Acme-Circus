@@ -1,13 +1,11 @@
 <%--
- * list.jsp
- *
  * Copyright (C) 2019 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
+ *
+ * The use of this project is hereby constrained to the conditions of the
+ * TDG Licence, a copy of which you may download from
  * http://www.tdg-seville.info/License.html
  --%>
-
+ 
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -24,17 +22,16 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table pagesize="5" name="stops" id="stop"
-	requestURI="${requestURI}" class="displaytag table">
-	<display:column titleKey="stop.city" property="city" />
-	<display:column titleKey="stop.country" property= "country"/>
-	<display:column titleKey="stop.location" property= "location"/>
-	<display:column titleKey="stop.date" property= "date"/>
+<acme:display code="stop.city" path="${stop.city}" />
+<acme:display code="stop.country" path="${stop.country }" />
+<acme:display code="stop.location" path="${stop.location }" />
+<acme:display code="stop.date" path="${stop.date }" />
+<acme:display code="stop.spotsTotal" path="${stop.spotsTotal }" />
+<acme:display code="stop.spotsAvailable" path="${stop.spotsAvailable }" />
 
-</display:table>
 
-<security:authorize access="hasRole('ATTENDEE')">
 
-	<acme:cancel url="/purchase/attendee/create.do?stopId=${stop.id}"
-			code="stop.purchase" />
-</security:authorize>
+
+
+
+	

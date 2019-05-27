@@ -30,8 +30,24 @@
 	<display:column titleKey="categoryPrice.category" property= "category"/>	
 	<display:column titleKey="categoryPrice.city" property = "stop.city"/>
 	<display:column titleKey="categoryPrice.location" property = "stop.location"/>
+	<display:column titleKey="categoryPrice.stop">
+
+		<acme:cancel url="/stop/show.do?stopId=${categoryPrice.stop.id}"
+
+			code="categoryPrice.stop" />
+
+	</display:column>
 	
+	<display:column titleKey="categoryPrice.stop">
+
+		<acme:cancel url="/categoryPrice/owner/edit.do?categoryPriceId=${categoryPrice.id}"
+
+			code="categoryPrice.stop" />
+
+	</display:column>	
 	
 </display:table>
 
+		<acme:cancel url="/categoryPrice/owner/create.do"
+			code="categoryPrice.create" />
 	

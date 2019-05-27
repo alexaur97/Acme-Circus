@@ -719,6 +719,7 @@
 		<property name="stop" ref="stop2" />			
 	</bean>
 
+
 	<!-- Stop -->
 	<bean id="stop1" class="domain.Stop">
 		<property name="city" value="Trebujena" />
