@@ -33,6 +33,7 @@
 					<li><a href="categoryTour/administrator/list.do"><spring:message code="master.page.administrator.categoryTour" /></a></li>
 					<li><a href="actor/administrator/list.do"><spring:message code="master.page.administrator.actor" /></a></li>
 					<li><a href="stats/administrator/dashboard.do"><spring:message code="master.page.administrator.stats" /></a></li>					
+					<li><a href="circus/administrator/list.do"><spring:message code="master.page.administrator.circus" /></a></li>					
 				</ul>
 			</li>
 		</security:authorize>

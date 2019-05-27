@@ -47,6 +47,7 @@
 		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/stats/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/circus/administrator/deactivate.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/circus/administrator/list.do" access="hasRole('ADMIN')" />
 
 
 
