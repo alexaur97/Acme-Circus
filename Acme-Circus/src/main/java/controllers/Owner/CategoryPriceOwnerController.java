@@ -58,12 +58,7 @@ public class CategoryPriceOwnerController extends AbstractController {
 		ModelAndView result;
 		try {
 			final CategoryPrice categoryPrice = this.categoryPriceService.create();
-			final int circusId = this.ownerService.findByPrincipal().getCircus().getId();
-			final Collection<Stop> stops = this.stopService.findAllStopsByCircus(circusId);
-			result = new ModelAndView("categoryPrice/edit");
-			result.addObject("categoryPrice", categoryPrice);
-			result.addObject("stops", stops);
-
+			result = this.createEditModelAndView(categoryPrice);
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/#");
 		}
@@ -90,7 +85,7 @@ public class CategoryPriceOwnerController extends AbstractController {
 	public ModelAndView save(@ModelAttribute("categoryPrice") CategoryPrice categoryPrice, final BindingResult binding) {
 		ModelAndView res;
 
-		categoryPrice = this.categoryPriceService.reconstruct(categoryPrice);
+		categoryPrice = this.categoryPriceService.reconstruct(categoryPrice, binding);
 
 		if (binding.hasErrors())
 			res = this.createEditModelAndView(categoryPrice);
@@ -109,18 +104,19 @@ public class CategoryPriceOwnerController extends AbstractController {
 		return res;
 	}
 
-	//	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	//	public ModelAndView delete(@RequestParam final int problemId) {
-	//		ModelAndView result;
-	//		try {
-	//			final Problem problem = this.problemService.findOne(problemId);
-	//			this.problemService.delete(problem);
-	//			result = new ModelAndView("redirect:/problem/company/list.do");
-	//		} catch (final Throwable oops) {
-	//			result = new ModelAndView("redirect:/#");
-	//		}
-	//		return result;
-	//	}
+	@RequestMapping(value = "edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final CategoryPrice categoryPrice, final BindingResult binding) {
+		ModelAndView result;
+		final CategoryPrice res = this.categoryPriceService.findOne(categoryPrice.getId());
+
+		try {
+			this.categoryPriceService.delete(res);
+			result = new ModelAndView("redirect:/categoryPrice/owner/list.do");
+		} catch (final Throwable oops) {
+			result = this.createEditModelAndView(res, oops.getMessage());
+		}
+		return result;
+	}
 
 	protected ModelAndView createEditModelAndView(final CategoryPrice categoryPrice) {
 		return this.createEditModelAndView(categoryPrice, null);

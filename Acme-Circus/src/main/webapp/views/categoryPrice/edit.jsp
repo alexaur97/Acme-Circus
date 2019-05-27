@@ -43,9 +43,19 @@
 						
 						<acme:cancel url="/categoryPrice/owner/list.do"
 							code="categoryPrice.cancel" />
+							
+						
+						 <jstl:if test="${categoryPrice.id!=0}">
+							<acme:submitConfirmation name="delete" code="categoryPrice.delete"
+								onclick="categoryPrice.delete.confirmation" />
+						</jstl:if> 
+			
 					</div>
 				</form:form>
 			</fieldset>
+			
+			<spring:message code="categoryPrice.aviso"/>
+			
 		
 
 		</div>

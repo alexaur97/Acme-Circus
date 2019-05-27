@@ -65,6 +65,7 @@
 <security:intercept-url pattern="/categoryPrice/owner/list.do" access="hasRole('OWNER')"/>
 
 <security:intercept-url pattern="/categoryPrice/owner/edit.do" access="hasRole('OWNER')"/>
+<security:intercept-url pattern="/categoryPrice/owner/delete.do" access="hasRole('OWNER')"/>
 
  <security:intercept-url pattern="/artist/organizer/list.do" access="hasRole('ORGANIZER')"/>
 <security:intercept-url pattern="/artist/organizer/performances.do" access="hasRole('ORGANIZER')"/>
