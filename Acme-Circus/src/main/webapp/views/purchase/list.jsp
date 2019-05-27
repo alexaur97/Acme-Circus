@@ -23,7 +23,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-
 <display:table pagesize="5" name="purchases" id="purchase"
 	requestURI="${requestURI}" class="displaytag table">
 	<display:column titleKey="purchase.name" property="attendee.name"/>
@@ -40,5 +39,4 @@
 	</display:column>	
 	
 </display:table>
-
 	

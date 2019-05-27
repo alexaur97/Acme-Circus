@@ -710,6 +710,16 @@
 		 </list>
 		</property>
 	</bean>
+
+	<!-- CategoryPrice -->
+	
+	<bean id="categoryPrice2" class="domain.CategoryPrice">
+		<property name="amount" value="80" />
+		<property name="category" value="Entrada normal" />
+		<property name="stop" ref="stop2" />			
+	</bean>
+
+
 	<!-- Stop -->
 	<bean id="stop1" class="domain.Stop">
 		<property name="city" value="Trebujena" />

@@ -11,8 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.TourRepository;
+import domain.Organizer;
+import domain.Owner;
 import domain.Stop;
 import domain.Tour;
 
@@ -26,8 +30,15 @@ public class TourService {
 
 	@Autowired
 	private StopService			stopService;
+
+	@Autowired
+	private OwnerService		ownerService;
+
 	@Autowired
 	private OrganizerService	organizerService;
+
+	@Autowired
+	private Validator			validator;
 
 
 	//Supporting Services ------------------
@@ -63,10 +74,10 @@ public class TourService {
 		return result;
 	}
 
-	public void save(final Tour tour) {
+	public Tour save(final Tour tour) {
 		Assert.notNull(tour);
 
-		this.tourRepository.save(tour);
+		return this.tourRepository.save(tour);
 	}
 
 	public void delete(final Tour tour) {
@@ -108,5 +119,38 @@ public class TourService {
 		res.addAll(eliminarRepetidos);
 		return res;
 
+	}
+
+	public Collection<Tour> findByCircus(final int id) {
+		final Collection<Tour> res = this.tourRepository.findByCircus(id);
+		return res;
+	}
+
+	public Tour validate(final Tour tour) {
+		final Owner o = this.ownerService.findByPrincipal();
+		Assert.isTrue(tour.getOrganizers().getCircus().equals(o.getCircus()));
+		final Tour res = tour;
+		res.setValidated(true);
+		return res;
+	}
+
+	public Tour reconstruct(final Tour tour, final BindingResult binding) {
+
+		final Organizer o = this.organizerService.findByPrincipal();
+		//S� est� validado no podremos editarlo
+		final Tour result = tour;
+		final Tour t = this.findOne(tour.getId());
+
+		result.setOrganizers(o);
+
+		if (tour.getId() != 0) {
+			result.setValidated(t.getValidated());
+			result.setPerformances(t.getPerformances());
+			result.setOffers(t.getOffers());
+
+		} else
+			result.setValidated(false);
+		this.validator.validate(result, binding);
+		return result;
 	}
 }

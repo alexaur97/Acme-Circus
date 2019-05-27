@@ -20,4 +20,7 @@ public interface StopRepository extends JpaRepository<Stop, Integer> {
 
 	@Query("select s from Stop s where ((s.city like %?1%) or (s.country like %?1%) or (s.location like %?1%))")
 	Collection<Stop> searchStopsByKeyWord(String keyword);
+
+	@Query("select s from Stop s where s.tour.organizers.circus.id = ?1")
+	Collection<Stop> findAllStopsByCircus(int circusId);
 }

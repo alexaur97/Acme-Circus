@@ -12,7 +12,7 @@ import domain.Circus;
 @Repository
 public interface CircusRepository extends JpaRepository<Circus, Integer> {
 
-	@Query("select t.organizers.circus from Tour t")
+	@Query("select t.organizers.circus from Tour t where t.organizers.circus.active=true ")
 	Collection<Circus> findAllWithTour();
 
 	//@Query("") 

@@ -5,8 +5,10 @@ import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.StopService;
@@ -36,5 +38,21 @@ public class StopController {
 
 		return result;
 
+	}
+
+	@RequestMapping(value = "/show", method = RequestMethod.GET)
+	public ModelAndView show(@RequestParam final int stopId) {
+		ModelAndView result;
+
+		try {
+			Assert.notNull(stopId);
+			final Stop stop = this.stopService.findOne(stopId);
+			result = new ModelAndView("stop/show");
+			result.addObject("stop", stop);
+		} catch (final Exception e) {
+			result = new ModelAndView("redirect:/#");
+		}
+
+		return result;
 	}
 }

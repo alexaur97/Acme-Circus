@@ -82,6 +82,13 @@ public class StopService {
 		return res;
 	}
 
+	public Collection<Stop> findAllStopsByCircus(final int circusId) {
+
+		final Collection<Stop> res = this.stopRepository.findAllStopsByCircus(circusId);
+
+		return res;
+	}
+
 	public Double stopsPerTour() {
 		Double a = (double) this.stopRepository.findAll().size();
 		if (a == null)

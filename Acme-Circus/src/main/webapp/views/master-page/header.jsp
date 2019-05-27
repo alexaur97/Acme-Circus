@@ -21,9 +21,14 @@
 	<ul id="jMenu">
 	<security:authorize access="hasRole('OWNER')">
 			<li><a href="artist/owner/list.do"><spring:message code="master.page.artists" /></a></li>
+			
+			<li><a href="tour/owner/list.do"><spring:message code="master.page.mytours" /></a></li>
+			
 		</security:authorize>
 		<security:authorize access="hasRole('ORGANIZER')">
 			<li><a href="artist/organizer/list.do"><spring:message code="master.page.artists" /></a></li>
+		    <li><a href="tour/organizer/list.do"><spring:message code="master.page.mytours" /></a></li>
+						
 		</security:authorize>
 		<security:authorize access="hasRole('ORGANIZER')">
 			<li><a href="offer/organizer/list.do"><spring:message code="master.page.offers" /></a></li>
@@ -39,6 +44,7 @@
 					<li><a href="categoryTour/administrator/list.do"><spring:message code="master.page.administrator.categoryTour" /></a></li>
 					<li><a href="actor/administrator/list.do"><spring:message code="master.page.administrator.actor" /></a></li>
 					<li><a href="stats/administrator/dashboard.do"><spring:message code="master.page.administrator.stats" /></a></li>					
+					<li><a href="circus/administrator/list.do"><spring:message code="master.page.administrator.circus" /></a></li>					
 				</ul>
 			</li>
 		</security:authorize>
@@ -52,6 +58,9 @@
 		
 			<security:authorize access="hasRole('OWNER')">
 			<li><a class="fNiv" href="circus/owner/myList.do"><spring:message code="master.page.myListCircus" /></a></li>
+			
+			<li><a class="fNiv" href="categoryPrice/owner/list.do"><spring:message code="master.page.categoryPriceList" /></a></li>
+			<li><a class="fNiv" href="banner/owner/myList.do"><spring:message code="master.page.banners" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('CUSTOMER')">
@@ -67,7 +76,7 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="circus/list.do"><spring:message code="master.page.circus" /></a></li>
 		
-			<li><a class="fNiv" href="tour/list.do"><spring:message code="master.page.tour" /></a></li>
+			<li><a class="fNiv" href="tour/listAll.do"><spring:message code="master.page.tour" /></a></li>
 		
 			<li><a class="fNiv" href="tour/search.do"><spring:message code="master.page.search" /></a></li>
 		

@@ -33,5 +33,8 @@
 
 </display:table>
 
+<security:authorize access="hasRole('ATTENDEE')">
+
 	<acme:cancel url="/purchase/attendee/create.do?stopId=${stop.id}"
 			code="stop.purchase" />
+</security:authorize>
