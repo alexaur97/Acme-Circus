@@ -33,6 +33,7 @@
 					<li><a href="categoryTour/administrator/list.do"><spring:message code="master.page.administrator.categoryTour" /></a></li>
 					<li><a href="actor/administrator/list.do"><spring:message code="master.page.administrator.actor" /></a></li>
 					<li><a href="stats/administrator/dashboard.do"><spring:message code="master.page.administrator.stats" /></a></li>					
+					<li><a href="circus/administrator/list.do"><spring:message code="master.page.administrator.circus" /></a></li>					
 				</ul>
 			</li>
 		</security:authorize>
@@ -48,6 +49,7 @@
 			<li><a class="fNiv" href="circus/owner/myList.do"><spring:message code="master.page.myListCircus" /></a></li>
 			
 			<li><a class="fNiv" href="categoryPrice/owner/list.do"><spring:message code="master.page.categoryPriceList" /></a></li>
+			<li><a class="fNiv" href="banner/owner/myList.do"><spring:message code="master.page.banners" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('CUSTOMER')">

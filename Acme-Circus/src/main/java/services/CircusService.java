@@ -18,10 +18,13 @@ public class CircusService {
 
 	//Managed repository -------------------
 	@Autowired
-	private CircusRepository	circusRepository;
+	private CircusRepository		circusRepository;
 
 	@Autowired
-	private OwnerService		ownerService;
+	private OwnerService			ownerService;
+
+	@Autowired
+	private AdministratorService	administratorService;
 
 
 	//Supporting Services ------------------
@@ -85,6 +88,13 @@ public class CircusService {
 		final int idO = this.ownerService.findByPrincipal().getId();
 		final Owner owner = this.ownerService.findOne(idO);
 		final Circus res = owner.getCircus();
+		return res;
+	}
+
+	public Circus deactivate(final Circus circus) {
+		this.administratorService.findByPrincipal();
+		final Circus res = circus;
+		res.setActive(false);
 		return res;
 	}
 

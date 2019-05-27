@@ -42,16 +42,20 @@
 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 		<security:intercept-url pattern="/circus/list.do" access="permitAll" />
-		<security:intercept-url pattern="/circus/show.do" access="permitAll" />
 
 		<security:intercept-url pattern="/categoryTour/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/stats/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/circus/administrator/deactivate.do" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/circus/administrator/list.do" access="hasRole('ADMIN')" />
+
+
 
 		<security:intercept-url pattern="/tour/search.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/list.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/listAll.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/listByCategories.do" access="permitAll" />
+		<security:intercept-url pattern="/tour/show.do" access="permitAll" />
 
 
 		<security:intercept-url pattern="/stop/listByTour.do" access="permitAll" />
@@ -61,6 +65,11 @@
 
 <security:intercept-url pattern="/artist/owner/list.do" access="hasRole('OWNER')"/>
 <security:intercept-url pattern="/artist/owner/performances.do" access="hasRole('OWNER')"/>
+<security:intercept-url pattern="/banner/owner/edit.do" access="hasRole('OWNER')"/>
+<security:intercept-url pattern="/banner/owner/myList.do" access="hasRole('OWNER')"/>
+<security:intercept-url pattern="/banner/owner/create.do" access="hasRole('OWNER')"/>
+<security:intercept-url pattern="/tour/owner/show.do" access="hasRole('OWNER')"/>
+
 
 <security:intercept-url pattern="/categoryPrice/owner/list.do" access="hasRole('OWNER')"/>
 

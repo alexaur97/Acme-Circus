@@ -1,13 +1,11 @@
 <%--
- * list.jsp
- *
  * Copyright (C) 2019 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
+ *
+ * The use of this project is hereby constrained to the conditions of the
+ * TDG Licence, a copy of which you may download from
  * http://www.tdg-seville.info/License.html
  --%>
-
+ 
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -24,23 +22,17 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<display:table pagesize="5" name="circus" id="circus"
-	requestURI="${requestURI}" class="displaytag table">
-	<display:column titleKey="circus.name" property="name" />
-	<display:column titleKey="circus.active" property= "active"/>
+<spring:message code="tour.name"/>: <jstl:out value="${tour.name}"></jstl:out>
+<br/>
+<spring:message code="tour.description"/>: <jstl:out value="${tour.description}"></jstl:out>
+<br/>
+<spring:message code="tour.startDate"/>: <jstl:out value="${tour.startDate}"></jstl:out>
+</br>
+<spring:message code="tour.endDate"/>: <jstl:out value="${tour.endDate}"></jstl:out>
+<br>
+<spring:message code="tour.link"/>: <jstl:out value="${tour.link}"></jstl:out>
+<br>
 
 
-		<display:column titleKey="circus.history">
-		<acme:cancel url="/circus/show.do?circusId=${circus.id}"
-			code="circus.history" />
-	</display:column>	
-	
-	<security:authorize access="hasRole('ADMIN')">
-	<display:column titleKey="circus.deactivate">
-		<acme:cancel url="/circus/administrator/deactivate.do?circusId=${circus.id}"
-			code="circus.deactivate" />
-	</display:column>	
-	</security:authorize>
-</display:table>
 
 	

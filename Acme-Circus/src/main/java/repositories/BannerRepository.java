@@ -1,15 +1,21 @@
+
 package repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.data.jpa.repository.Query; 
-import org.springframework.stereotype.Repository; 
+import java.util.Collection;
 
-import domain.Banner; 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-@Repository 
-public interface BannerRepository extends JpaRepository<Banner, Integer>{ 
+import domain.Banner;
+
+@Repository
+public interface BannerRepository extends JpaRepository<Banner, Integer> {
+
+	@Query("select b from Banner b where b.tour.organizers.circus.id=?1")
+	Collection<Banner> findByCircus(int id);
 
 	//@Query("") 
 	//Method 
 
-} 
+}
