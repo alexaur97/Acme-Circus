@@ -1,71 +1,64 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.FeeRepository;
+import domain.Fee;
 
-import domain.Fee; 
-import domain.Invoice;
-
-@Service 
-@Transactional 
-public class FeeService { 
+@Service
+@Transactional
+public class FeeService {
 
 	//Managed repository -------------------
 	@Autowired
-	private FeeRepository feeRepository;
+	private FeeRepository	feeRepository;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public FeeService(){
+	public FeeService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Fee create(){
+	//	public Fee create() {
+	//		Fee result;
+	//
+	//		result = new Fee();
+	//
+	//		return result;
+	//	}
+
+	public Fee find() {
 		Fee result;
 
-		result = new Fee();
+		result = (Fee) this.feeRepository.findAll().toArray()[0];
 
 		return result;
 	}
 
-	public Collection<Fee> findAll(){
-		Collection<Fee> result;
+	//	public Fee findOne(final int feeId) {
+	//		Fee result;
+	//
+	//		result = this.feeRepository.findOne(feeId);
+	//
+	//		return result;
+	//	}
 
-		result = feeRepository.findAll();
-
-		return result;
-	}
-
-	public Fee findOne(int feeId){
-		Fee result;
-
-		result = feeRepository.findOne(feeId);
-
-		return result;
-	}
-
-	public void save(Fee fee){
+	public Fee save(final Fee fee) {
 		Assert.notNull(fee);
-
-		feeRepository.save(fee);
+		return this.feeRepository.save(fee);
 	}
 
-	public void delete(Fee fee){
-		feeRepository.delete(fee);
-	}
-
+	//	public void delete(final Fee fee) {
+	//		this.feeRepository.delete(fee);
+	//	}
 
 	//Other Methods--------------------
-} 
+}
