@@ -37,12 +37,12 @@ public class Authority implements GrantedAuthority {
 
 	// Values -----------------------------------------------------------------
 
-	public static final String	ADMIN		= "ADMIN";
-	public static final String	ARTIST	= "ARTIST";
-	public static final String	ORGANIZER	= "ORGANIZER";
-	public static final String	ATTENDEE	= "ATTENDEE";
-	public static final String	OWNER	= "OWNER";
-	public static final String	WORKER	= "WORKER";
+	public static final String	ADMINISTRATOR	= "ADMINISTRATOR";
+	public static final String	ARTIST			= "ARTIST";
+	public static final String	ORGANIZER		= "ORGANIZER";
+	public static final String	ATTENDEE		= "ATTENDEE";
+	public static final String	OWNER			= "OWNER";
+	public static final String	WORKER			= "WORKER";
 
 	// Attributes -------------------------------------------------------------
 
@@ -50,7 +50,7 @@ public class Authority implements GrantedAuthority {
 
 
 	@NotBlank
-	@Pattern(regexp = "^" + Authority.ADMIN + "|" + Authority.WORKER + "|" + Authority.ARTIST + "|" + Authority.ORGANIZER + "|" + Authority.ATTENDEE + "|" + Authority.OWNER + "$")
+	@Pattern(regexp = "^" + Authority.ADMINISTRATOR + "|" + Authority.WORKER + "|" + Authority.ARTIST + "|" + Authority.ORGANIZER + "|" + Authority.ATTENDEE + "|" + Authority.OWNER + "$")
 	@Override
 	public String getAuthority() {
 		return this.authority;
@@ -67,21 +67,21 @@ public class Authority implements GrantedAuthority {
 		result = new ArrayList<Authority>();
 
 		authority = new Authority();
-		authority.setAuthority(Authority.ADMIN);
+		authority.setAuthority(Authority.ADMINISTRATOR);
 		result.add(authority);
 
 		authority = new Authority();
 		authority.setAuthority(Authority.ARTIST);
 		result.add(authority);
-		
+
 		authority = new Authority();
 		authority.setAuthority(Authority.ORGANIZER);
 		result.add(authority);
-		
+
 		authority = new Authority();
 		authority.setAuthority(Authority.ATTENDEE);
 		result.add(authority);
-		
+
 		authority = new Authority();
 		authority.setAuthority(Authority.OWNER);
 		result.add(authority);
@@ -90,7 +90,6 @@ public class Authority implements GrantedAuthority {
 		authority.setAuthority(Authority.WORKER);
 		result.add(authority);
 
-		
 		return result;
 	}
 

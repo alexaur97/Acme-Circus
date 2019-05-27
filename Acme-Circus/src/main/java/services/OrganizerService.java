@@ -13,6 +13,7 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Organizer;
+import forms.ActorEditForm;
 
 @Service
 @Transactional
@@ -85,4 +86,22 @@ public class OrganizerService {
 	}
 
 	//Other Methods--------------------
+
+	public Organizer reconstructEdit(final ActorEditForm actorEditForm) {
+		final Organizer res;
+		res = this.findByPrincipal();
+		res.setName(actorEditForm.getName());
+		res.setDni(actorEditForm.getDni());
+		res.setSurnames(actorEditForm.getSurnames());
+		res.setPhoto(actorEditForm.getPhoto());
+		res.setEmail(actorEditForm.getEmail());
+		if (actorEditForm.getPhone().contains("+"))
+			res.setPhone(actorEditForm.getPhone());
+		else
+			res.setPhone("+34 " + actorEditForm.getPhone());
+
+		res.setAddress(actorEditForm.getAddress());
+		Assert.notNull(res);
+		return res;
+	}
 }

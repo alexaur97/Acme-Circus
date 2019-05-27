@@ -19,6 +19,7 @@ import security.UserAccount;
 import domain.Circus;
 import domain.CreditCard;
 import domain.Owner;
+import forms.ActorEditForm;
 import forms.OwnerRegisterForm;
 
 @Service
@@ -162,4 +163,23 @@ public class OwnerService {
 	public Collection<Owner> ownersByCircus(final int circusId) {
 		return this.ownerRepository.ownersByCircus(circusId);
 	}
+
+	public Owner reconstructEdit(final ActorEditForm actorEditForm) {
+		final Owner res;
+		res = this.findByPrincipal();
+		res.setName(actorEditForm.getName());
+		res.setDni(actorEditForm.getDni());
+		res.setSurnames(actorEditForm.getSurnames());
+		res.setPhoto(actorEditForm.getPhoto());
+		res.setEmail(actorEditForm.getEmail());
+		if (actorEditForm.getPhone().contains("+"))
+			res.setPhone(actorEditForm.getPhone());
+		else
+			res.setPhone("+34 " + actorEditForm.getPhone());
+
+		res.setAddress(actorEditForm.getAddress());
+		Assert.notNull(res);
+		return res;
+	}
+
 }

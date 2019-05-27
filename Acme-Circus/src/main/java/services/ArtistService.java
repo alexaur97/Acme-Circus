@@ -18,6 +18,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Artist;
 import domain.CreditCard;
+import forms.ActorEditForm;
 import forms.ArtistRegisterForm;
 
 @Service
@@ -142,6 +143,24 @@ public class ArtistService {
 
 		result.setDni(artisRegisterForm.getDni());
 		return result;
+	}
+
+	public Artist reconstructEdit(final ActorEditForm actorEditForm) {
+		final Artist res;
+		res = this.findByPrincipal();
+		res.setName(actorEditForm.getName());
+		res.setDni(actorEditForm.getDni());
+		res.setSurnames(actorEditForm.getSurnames());
+		res.setPhoto(actorEditForm.getPhoto());
+		res.setEmail(actorEditForm.getEmail());
+		if (actorEditForm.getPhone().contains("+"))
+			res.setPhone(actorEditForm.getPhone());
+		else
+			res.setPhone("+34 " + actorEditForm.getPhone());
+
+		res.setAddress(actorEditForm.getAddress());
+		Assert.notNull(res);
+		return res;
 	}
 
 }

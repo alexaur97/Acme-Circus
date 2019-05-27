@@ -43,11 +43,11 @@
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 		<security:intercept-url pattern="/circus/list.do" access="permitAll" />
 
-		<security:intercept-url pattern="/categoryTour/administrator/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/stats/administrator/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/circus/administrator/**" access="hasRole('ADMIN')" />
-		<security:intercept-url pattern="/fee/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/categoryTour/administrator/**" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/stats/administrator/**" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/circus/administrator/**" access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/fee/administrator/**" access="hasRole('ADMINISTRATOR')" />
 
 		<security:intercept-url pattern="/tour/search.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/list.do" access="permitAll" />
@@ -114,6 +114,8 @@
 			access="isAnonymous()" />
 		<security:intercept-url pattern="/owner/signup.do"
 			access="isAnonymous()" />
+		<security:intercept-url pattern="/actor/edit.do"
+			access="isAuthenticated()" />
 
 
 

@@ -16,6 +16,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Actor;
 import domain.Message;
+import forms.ActorEditForm;
 
 @Service
 @Transactional
@@ -170,5 +171,17 @@ public class ActorService {
 
 	public Actor findByUserAccount(final int userId) {
 		return this.actorRepository.findByUserAccount(userId);
+	}
+
+	public ActorEditForm toForm(final Actor actor) {
+		final ActorEditForm res = new ActorEditForm();
+		res.setName(actor.getName());
+		res.setSurnames(actor.getSurnames());
+		res.setDni(actor.getDni());
+		res.setPhoto(actor.getPhoto());
+		res.setEmail(actor.getEmail());
+		res.setPhone(actor.getPhone());
+		res.setAddress(actor.getAddress());
+		return res;
 	}
 }
