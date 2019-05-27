@@ -33,7 +33,7 @@
 	<display:column titleKey="banner.img" property= "img"/>
 
 		<display:column titleKey="banner.tour">
-		<acme:cancel url="/tour/show.do?tourId=${banner.tour.id}"
+		<acme:cancel url="/tour/owner/show.do?tourId=${banner.tour.id}"
 			code="banner.tour" />
 	</display:column>	
 	
@@ -47,7 +47,7 @@
 <br>
 <br>
 
-	<acme:cancel url="/banner/owner/create.do?" code="banner.create" />
+	<acme:cancel url="/banner/owner/create.do" code="banner.create" />
 
 
 	

@@ -9,7 +9,6 @@ import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.CategoryTourService;
@@ -84,22 +83,6 @@ public class TourController extends AbstractController {
 			result = new ModelAndView("tour/list");
 			result.addObject("requestURI", "tour/listByCategories.do");
 			result.addObject("tours", tours);
-
-		} catch (final Exception e) {
-			result = new ModelAndView("redirect:/#");
-		}
-
-		return result;
-
-	}
-	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public ModelAndView show(@RequestParam final int tourId) {
-		ModelAndView result;
-		try {
-			final Tour tour = this.tourService.findOne(tourId);
-			result = new ModelAndView("tour/show");
-			result.addObject("requestURI", "tour/show.do");
-			result.addObject("tour", tour);
 
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:/#");
