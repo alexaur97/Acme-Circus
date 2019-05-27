@@ -46,6 +46,7 @@
 		
 			<security:authorize access="hasRole('OWNER')">
 			<li><a class="fNiv" href="circus/owner/myList.do"><spring:message code="master.page.myListCircus" /></a></li>
+			<li><a class="fNiv" href="banner/owner/myList.do"><spring:message code="master.page.banners" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('CUSTOMER')">

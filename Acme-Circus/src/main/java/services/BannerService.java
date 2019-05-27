@@ -1,38 +1,36 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.BannerRepository;
+import domain.Banner;
 
-import domain.Banner; 
-import domain.CategoryPrice;
-
-@Service 
-@Transactional 
-public class BannerService { 
+@Service
+@Transactional
+public class BannerService {
 
 	//Managed repository -------------------
 	@Autowired
-	private BannerRepository bannerRepository;
+	private BannerRepository	bannerRepository;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public BannerService(){
+	public BannerService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Banner create(){
+	public Banner create() {
+
 		Banner result;
 
 		result = new Banner();
@@ -40,32 +38,37 @@ public class BannerService {
 		return result;
 	}
 
-	public Collection<Banner> findAll(){
+	public Collection<Banner> findAll() {
 		Collection<Banner> result;
 
-		result = bannerRepository.findAll();
+		result = this.bannerRepository.findAll();
 
 		return result;
 	}
 
-	public Banner findOne(int bannerId){
+	public Banner findOne(final int bannerId) {
 		Banner result;
 
-		result = bannerRepository.findOne(bannerId);
+		result = this.bannerRepository.findOne(bannerId);
 
 		return result;
 	}
 
-	public void save(Banner banner){
+	public void save(final Banner banner) {
 		Assert.notNull(banner);
 
-		bannerRepository.save(banner);
+		this.bannerRepository.save(banner);
 	}
 
-	public void delete(Banner banner){
-		bannerRepository.delete(banner);
+	public void delete(final Banner banner) {
+		this.bannerRepository.delete(banner);
 	}
 
+	public Collection<Banner> findByCircus(final int id) {
+		final Collection<Banner> res = this.bannerRepository.findByCircus(id);
+
+		return res;
+	}
 
 	//Other Methods--------------------
-} 
+}

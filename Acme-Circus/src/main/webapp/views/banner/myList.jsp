@@ -23,20 +23,31 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
-<display:table pagesize="5" name="purchases" id="purchase"
+
+
+<display:table pagesize="5" name="banners" id="banner"
 	requestURI="${requestURI}" class="displaytag table">
-	<display:column titleKey="purchase.name" property="attendee.name"/>
-	<display:column titleKey="purchase.surnames" property="attendee.surnames"/>
-	<display:column titleKey="purchase.stop" property= "stop.city"/>
-	<display:column titleKey="purchase.location" property= "stop.location"/>
-	<display:column titleKey="purchase.creditCard" property= "creditCard.number"/>
-	<display:column titleKey="purchase.totalPrice" property= "totalPrice"/>
+	<display:column titleKey="banner.description" property="description"/>
+	<display:column titleKey="banner.startDate" property="startDate"/>
+	<display:column titleKey="banner.endDate" property= "endDate"/>
+	<display:column titleKey="banner.img" property= "img"/>
 
-
-		<display:column titleKey="purchase.tickets">
-		<acme:cancel url="/ticket/attendee/list.do?purchaseId=${purchase.id}"
-			code="purchase.tickets" />
+		<display:column titleKey="banner.tour">
+		<acme:cancel url="/tour/show.do?tourId=${banner.tour.id}"
+			code="banner.tour" />
 	</display:column>	
 	
+		<display:column titleKey="banner.edit">
+		<acme:cancel url="/banner/owner/edit.do?bannerId=${banner.id}"
+			code="banner.edit" />
+	</display:column>	
+	
+	
 </display:table>
+<br>
+<br>
+
+	<acme:cancel url="/banner/owner/create.do?" code="banner.create" />
+
+
 	

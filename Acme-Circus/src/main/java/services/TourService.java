@@ -103,4 +103,9 @@ public class TourService {
 		return res;
 
 	}
+
+	public Collection<Tour> findByCircus(final int id) {
+		final Collection<Tour> res = this.tourRepository.findByCircus(id);
+		return res;
+	}
 }
