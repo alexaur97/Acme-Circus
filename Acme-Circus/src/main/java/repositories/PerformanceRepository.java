@@ -16,5 +16,7 @@ public interface PerformanceRepository extends JpaRepository<Performance, Intege
 	//Method 
 	@Query("select p from Performance p where p.artist.id=?1")
 	Collection<Performance> findByArtist(int id);
+	@Query("select p from Performance p where p.copy is false")
+	Collection<Performance> findAllNotCopy();
 
 }

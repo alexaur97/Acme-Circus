@@ -17,13 +17,13 @@
 <tiles-definitions>
 
 	
-	<definition name="performance/list" extends="master.page">	
-		<put-attribute name="title" value="Performances List" />
-		<put-attribute name="body" value="/views/performance/list.jsp" />
+	<definition name="offer/list" extends="master.page">	
+		<put-attribute name="title" value="Offers List" />
+		<put-attribute name="body" value="/views/offer/list.jsp" />
 	</definition>
-	<definition name="performance/edit" extends="master.page">	
-		<put-attribute name="title" value="Performances Edit" />
-		<put-attribute name="body" value="/views/performance/edit.jsp" />
+	<definition name="offer/edit" extends="master.page">	
+		<put-attribute name="title" value="Offer Edit" />
+		<put-attribute name="body" value="/views/offer/edit.jsp" />
 	</definition>
 	
 	

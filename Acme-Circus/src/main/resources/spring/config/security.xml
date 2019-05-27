@@ -62,6 +62,9 @@
 
  <security:intercept-url pattern="/artist/organizer/list.do" access="hasRole('ORGANIZER')"/>
 <security:intercept-url pattern="/artist/organizer/performances.do" access="hasRole('ORGANIZER')"/>
+ <security:intercept-url pattern="/offer/organizer/list.do" access="hasRole('ORGANIZER')"/>
+ <security:intercept-url pattern="/offer/organizer/create.do" access="hasRole('ORGANIZER')"/>
+ <security:intercept-url pattern="/offer/organizer/edit.do" access="hasRole('ORGANIZER')"/>
 
 
 		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" />
@@ -78,6 +81,9 @@
 		<security:intercept-url pattern="/circus/owner/myList.do" access="hasRole('OWNER')" />
 		<security:intercept-url pattern="/circus/owner/edit.do" access="hasRole('OWNER')" />
 
+		<security:intercept-url pattern="/performance/artist/list.do" access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/performance/artist/edit.do" access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/performance/artist/create.do" access="hasRole('ARTIST')" />
 
 
 		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" />

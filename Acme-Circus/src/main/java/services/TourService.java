@@ -22,10 +22,12 @@ public class TourService {
 
 	//Managed repository -------------------
 	@Autowired
-	private TourRepository	tourRepository;
+	private TourRepository		tourRepository;
 
 	@Autowired
-	private StopService		stopService;
+	private StopService			stopService;
+	@Autowired
+	private OrganizerService	organizerService;
 
 
 	//Supporting Services ------------------
@@ -82,7 +84,11 @@ public class TourService {
 		final Collection<Tour> res = this.tourRepository.findAllAvailable();
 		return res;
 	}
-
+	public Collection<Tour> findAllAvailableByOrganize() {
+		final int id = this.organizerService.findByPrincipal().getId();
+		final Collection<Tour> res = this.tourRepository.findAllAvailableByOrg(id);
+		return res;
+	}
 	//Other Methods--------------------
 
 	public Collection<Tour> searchTours(final String keyword) {

@@ -40,6 +40,10 @@
 
 		<value>/views/ticket/messages</value>
 		<value>/views/purchase/messages</value>
+				<value>/views/performance/messages</value>
+								<value>/views/offer/messages</value>
+				
+		
 		
 	</util:list>
 

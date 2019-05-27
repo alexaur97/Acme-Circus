@@ -1,11 +1,8 @@
 
-package domain;
+package forms;
 
 import java.util.Date;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -18,11 +15,10 @@ import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Entity
-@Access(AccessType.PROPERTY)
-public class Offer extends DomainEntity {
+import domain.Performance;
+import domain.Tour;
 
-	// Attributes ..................
+public class OfferForm {// Attributes ..................
 
 	public String		observations;
 	public String		status;
@@ -30,8 +26,35 @@ public class Offer extends DomainEntity {
 	public String		conditions;
 	public Double		money;
 	public Performance	performance;
+	public Tour			tour;
+	public Integer		id;
+	public Integer		version;
 
 
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(final Integer id) {
+		this.id = id;
+	}
+
+	public Integer getVersion() {
+		return this.version;
+	}
+
+	public void setVersion(final Integer version) {
+		this.version = version;
+	}
+
+	@NotNull
+	public Tour getTour() {
+		return this.tour;
+	}
+
+	public void setTour(final Tour tour) {
+		this.tour = tour;
+	}
 	@NotNull
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getObservations() {
@@ -74,7 +97,7 @@ public class Offer extends DomainEntity {
 	public void setMoney(final Double money) {
 		this.money = money;
 	}
-
+	@NotNull
 	@ManyToOne(optional = false)
 	public Performance getPerformance() {
 		return this.performance;

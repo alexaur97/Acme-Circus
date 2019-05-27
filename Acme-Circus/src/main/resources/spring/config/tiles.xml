@@ -39,6 +39,9 @@
 
 		<value>/views/ticket/tiles.xml</value>
 		<value>/views/purchase/tiles.xml</value>
+				<value>/views/performance/tiles.xml</value>
+						<value>/views/offer/tiles.xml</value>
+		
 		
 	</util:list>
 

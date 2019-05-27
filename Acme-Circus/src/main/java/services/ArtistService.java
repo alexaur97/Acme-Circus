@@ -14,6 +14,7 @@ import org.springframework.util.Assert;
 
 import repositories.ArtistRepository;
 import security.Authority;
+import security.LoginService;
 import security.UserAccount;
 import domain.Artist;
 import domain.CreditCard;
@@ -39,6 +40,19 @@ public class ArtistService {
 	}
 
 	//Simple CRUD methods--------------------
+	public Artist findByPrincipal() {
+		final UserAccount user = LoginService.getPrincipal();
+		Assert.notNull(user);
+
+		final Artist a = this.findByUserId(user.getId());
+		Assert.notNull(a);
+		this.actorService.auth(a, Authority.ARTIST);
+		return a;
+	}
+	public Artist findByUserId(final int id) {
+		final Artist a = this.artistRepository.findByUserId(id);
+		return a;
+	}
 
 	public Artist create() {
 		Artist result;
@@ -129,4 +143,5 @@ public class ArtistService {
 		result.setDni(artisRegisterForm.getDni());
 		return result;
 	}
+
 }
