@@ -35,6 +35,12 @@
 			code="circus.history" />
 	</display:column>	
 	
+	<security:authorize access="hasRole('ADMIN')">
+	<display:column titleKey="circus.deactivate">
+		<acme:cancel url="/circus/administrator/deactivate.do?circusId=${circus.id}"
+			code="circus.deactivate" />
+	</display:column>	
+	</security:authorize>
 </display:table>
 
 	
