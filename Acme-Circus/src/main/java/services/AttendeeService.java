@@ -14,9 +14,11 @@ import org.springframework.util.Assert;
 
 import repositories.AttendeeRepository;
 import security.Authority;
+import security.LoginService;
 import security.UserAccount;
 import domain.Attendee;
 import domain.CreditCard;
+import domain.Purchase;
 import forms.AttendeeRegisterForm;
 
 @Service
@@ -130,5 +132,30 @@ public class AttendeeService {
 
 		result.setDni(attendeeRegisterForm.getDni());
 		return result;
+	}
+
+	public Attendee findByPrincipal() {
+		final UserAccount user = LoginService.getPrincipal();
+		Assert.notNull(user);
+
+		final Attendee a = this.findByUserId(user.getId());
+		Assert.notNull(a);
+		this.actorService.auth(a, Authority.ATTENDEE);
+		return a;
+	}
+
+	private Attendee findByUserId(final int id) {
+		final Attendee a = this.attendeeRepository.findByUserId(id);
+		return a;
+	}
+
+	public Attendee mostSpender() {
+		final Purchase p = this.attendeeRepository.mostExpensive();
+		int id;
+		if (p != null)
+			id = p.getId();
+		else
+			id = 0;
+		return this.attendeeRepository.mostSpender(id);
 	}
 }

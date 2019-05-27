@@ -1,38 +1,35 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.CircusInvoiceRepository;
+import domain.CircusInvoice;
 
-import domain.Circus;
-import domain.CircusInvoice; 
-
-@Service 
-@Transactional 
-public class CircusInvoiceService { 
+@Service
+@Transactional
+public class CircusInvoiceService {
 
 	//Managed repository -------------------
 	@Autowired
-	private CircusInvoiceRepository circusInvoiceRepository;
+	private CircusInvoiceRepository	circusInvoiceRepository;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public CircusInvoiceService(){
+	public CircusInvoiceService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public CircusInvoice create(){
+	public CircusInvoice create() {
 		CircusInvoice result;
 
 		result = new CircusInvoice();
@@ -40,32 +37,39 @@ public class CircusInvoiceService {
 		return result;
 	}
 
-	public Collection<CircusInvoice> findAll(){
+	public Collection<CircusInvoice> findAll() {
 		Collection<CircusInvoice> result;
 
-		result = circusInvoiceRepository.findAll();
+		result = this.circusInvoiceRepository.findAll();
 
 		return result;
 	}
 
-	public CircusInvoice findOne(int circusInvoiceId){
+	public CircusInvoice findOne(final int circusInvoiceId) {
 		CircusInvoice result;
 
-		result = circusInvoiceRepository.findOne(circusInvoiceId);
+		result = this.circusInvoiceRepository.findOne(circusInvoiceId);
 
 		return result;
 	}
 
-	public void save(CircusInvoice circusInvoice){
+	public void save(final CircusInvoice circusInvoice) {
 		Assert.notNull(circusInvoice);
 
-		circusInvoiceRepository.save(circusInvoice);
+		this.circusInvoiceRepository.save(circusInvoice);
 	}
 
-	public void delete(CircusInvoice circusInvoice){
-		circusInvoiceRepository.delete(circusInvoice);
+	public void delete(final CircusInvoice circusInvoice) {
+		this.circusInvoiceRepository.delete(circusInvoice);
 	}
 
+	public Double totalBenefits() {
+		Double result = this.circusInvoiceRepository.totalBenefits();
+		if (result == null)
+			result = 0.0;
+		return result;
+
+	}
 
 	//Other Methods--------------------
-} 
+}

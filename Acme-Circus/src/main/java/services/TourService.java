@@ -77,6 +77,12 @@ public class TourService {
 		return res;
 	}
 
+	public Collection<Tour> findAllAvailable() {
+
+		final Collection<Tour> res = this.tourRepository.findAllAvailable();
+		return res;
+	}
+
 	//Other Methods--------------------
 
 	public Collection<Tour> searchTours(final String keyword) {

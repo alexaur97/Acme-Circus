@@ -1,38 +1,37 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.OfferRepository;
+import domain.Offer;
 
-import domain.Offer; 
-import domain.Organizer;
-
-@Service 
-@Transactional 
-public class OfferService { 
+@Service
+@Transactional
+public class OfferService {
 
 	//Managed repository -------------------
 	@Autowired
-	private OfferRepository offerRepository;
-
+	private OfferRepository	offerRepository;
 
 	//Supporting Services ------------------
+	@Autowired
+	private ArtistService	artistService;
 
 
 	//COnstructors -------------------------
-	public OfferService(){
+	public OfferService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Offer create(){
+	public Offer create() {
 		Offer result;
 
 		result = new Offer();
@@ -40,32 +39,41 @@ public class OfferService {
 		return result;
 	}
 
-	public Collection<Offer> findAll(){
+	public Collection<Offer> findAll() {
 		Collection<Offer> result;
 
-		result = offerRepository.findAll();
+		result = this.offerRepository.findAll();
 
 		return result;
 	}
 
-	public Offer findOne(int offerId){
+	public Offer findOne(final int offerId) {
 		Offer result;
 
-		result = offerRepository.findOne(offerId);
+		result = this.offerRepository.findOne(offerId);
 
 		return result;
 	}
 
-	public void save(Offer offer){
+	public void save(final Offer offer) {
 		Assert.notNull(offer);
 
-		offerRepository.save(offer);
+		this.offerRepository.save(offer);
 	}
 
-	public void delete(Offer offer){
-		offerRepository.delete(offer);
+	public void delete(final Offer offer) {
+		this.offerRepository.delete(offer);
 	}
 
-
+	public Double acceptedOffersPerArtistRatio() {
+		Double a = (double) this.offerRepository.confirmedOffersPerArtistRatio();
+		if (a == null)
+			a = 0.0;
+		Double b = (double) this.artistService.findAll().size();
+		if (b == null)
+			b = 1.0;
+		final Double result = a / b;
+		return result;
+	}
 	//Other Methods--------------------
-} 
+}

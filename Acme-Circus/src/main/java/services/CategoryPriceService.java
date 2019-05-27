@@ -63,9 +63,13 @@ public class CategoryPriceService {
 		this.categoryPriceRepository.delete(categoryPrice);
 	}
 
+
 	public Collection<CategoryPrice> findCategoryPriceByCircus(final int circusId) {
 		final Collection<CategoryPrice> res = this.categoryPriceRepository.findAllCategoryPriceByCircus(circusId);
-		return res;
+		
+	public Collection<CategoryPrice> findByStop(final int stopId) {
+		final Collection<CategoryPrice> res = this.categoryPriceRepository.findByStop(stopId);
+¡		return res;
 	}
 
 	//Other Methods--------------------

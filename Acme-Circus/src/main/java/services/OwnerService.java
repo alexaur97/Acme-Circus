@@ -158,4 +158,8 @@ public class OwnerService {
 		result.setDni(ownerRegisterForm.getDni());
 		return result;
 	}
+
+	public Collection<Owner> ownersByCircus(final int circusId) {
+		return this.ownerRepository.ownersByCircus(circusId);
+	}
 }

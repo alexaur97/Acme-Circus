@@ -28,9 +28,10 @@
 	requestURI="${requestURI}" class="displaytag table">
 	<display:column titleKey="stop.city" property="city" />
 	<display:column titleKey="stop.country" property= "country"/>
-	<display:column titleKey="stop.date" property= "date"/>
 	<display:column titleKey="stop.location" property= "location"/>
-	
+	<display:column titleKey="stop.date" property= "date"/>
+
 </display:table>
 
-	
+	<acme:cancel url="/purchase/attendee/create.do?stopId=${stop.id}"
+			code="stop.purchase" />

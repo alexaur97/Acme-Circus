@@ -1,38 +1,35 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.BannerInvoiceRepository;
+import domain.BannerInvoice;
 
-import domain.Banner;
-import domain.BannerInvoice; 
-
-@Service 
-@Transactional 
-public class BannerInvoiceService { 
+@Service
+@Transactional
+public class BannerInvoiceService {
 
 	//Managed repository -------------------
 	@Autowired
-	private BannerInvoiceRepository bannerInvoiceRepository;
+	private BannerInvoiceRepository	bannerInvoiceRepository;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public BannerInvoiceService(){
+	public BannerInvoiceService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public BannerInvoice create(){
+	public BannerInvoice create() {
 		BannerInvoice result;
 
 		result = new BannerInvoice();
@@ -40,32 +37,38 @@ public class BannerInvoiceService {
 		return result;
 	}
 
-	public Collection<BannerInvoice> findAll(){
+	public Collection<BannerInvoice> findAll() {
 		Collection<BannerInvoice> result;
 
-		result = bannerInvoiceRepository.findAll();
+		result = this.bannerInvoiceRepository.findAll();
 
 		return result;
 	}
 
-	public BannerInvoice findOne(int bannerInvoiceId){
+	public BannerInvoice findOne(final int bannerInvoiceId) {
 		BannerInvoice result;
 
-		result = bannerInvoiceRepository.findOne(bannerInvoiceId);
+		result = this.bannerInvoiceRepository.findOne(bannerInvoiceId);
 
 		return result;
 	}
 
-	public void save(BannerInvoice bannerInvoice){
+	public void save(final BannerInvoice bannerInvoice) {
 		Assert.notNull(bannerInvoice);
 
-		bannerInvoiceRepository.save(bannerInvoice);
+		this.bannerInvoiceRepository.save(bannerInvoice);
 	}
 
-	public void delete(BannerInvoice bannerInvoice){
-		bannerInvoiceRepository.delete(bannerInvoice);
+	public void delete(final BannerInvoice bannerInvoice) {
+		this.bannerInvoiceRepository.delete(bannerInvoice);
 	}
 
+	public Double totalBenefits() {
+		Double result = this.bannerInvoiceRepository.totalBenefits();
+		if (result == null)
+			result = 0.0;
+		return result;
+	}
 
 	//Other Methods--------------------
-} 
+}

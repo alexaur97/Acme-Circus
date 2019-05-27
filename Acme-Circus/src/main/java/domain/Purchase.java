@@ -1,9 +1,11 @@
+
 package domain;
 
 import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -16,57 +18,57 @@ import org.hibernate.validator.constraints.Range;
 public class Purchase extends DomainEntity {
 
 	// Attributes ..................
-	
-	public CreditCard creditCard;
-	public Double totalPrice;
-	public Attendee attendee;
-	public Stop stop;
-	public Collection<Ticket> tickets;
-	
+
+	public CreditCard			creditCard;
+	public Double				totalPrice;
+	public Attendee				attendee;
+	public Stop					stop;
+	public Collection<Ticket>	tickets;
+
+
 	@NotNull
 	@ManyToOne(optional = false)
 	public CreditCard getCreditCard() {
-		return creditCard;
+		return this.creditCard;
 	}
-	public void setCreditCard(CreditCard creditCard) {
+	public void setCreditCard(final CreditCard creditCard) {
 		this.creditCard = creditCard;
 	}
-	
+
 	@NotNull
-	@Range(min=0)
+	@Range(min = 0)
 	public Double getTotalPrice() {
-		return totalPrice;
+		return this.totalPrice;
 	}
-	public void setTotalPrice(Double totalPrice) {
+	public void setTotalPrice(final Double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	
+
 	@NotNull
 	@ManyToOne(optional = false)
 	public Attendee getAttendee() {
-		return attendee;
-	}	
-	public void setAttendee(Attendee attendee) {
+		return this.attendee;
+	}
+	public void setAttendee(final Attendee attendee) {
 		this.attendee = attendee;
 	}
-	
+
 	@NotNull
 	@ManyToOne(optional = false)
 	public Stop getStop() {
-		return stop;
+		return this.stop;
 	}
-	public void setStop(Stop stop) {
+	public void setStop(final Stop stop) {
 		this.stop = stop;
 	}
-	
+
 	@NotNull
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	public Collection<Ticket> getTickets() {
-		return tickets;
+		return this.tickets;
 	}
-	public void setTickets(Collection<Ticket> tickets) {
+	public void setTickets(final Collection<Ticket> tickets) {
 		this.tickets = tickets;
 	}
-
 
 }
