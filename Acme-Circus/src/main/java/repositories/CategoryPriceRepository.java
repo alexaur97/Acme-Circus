@@ -1,15 +1,18 @@
+
 package repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository; 
-import org.springframework.data.jpa.repository.Query; 
-import org.springframework.stereotype.Repository; 
+import java.util.Collection;
 
-import domain.CategoryPrice; 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
-@Repository 
-public interface CategoryPriceRepository extends JpaRepository<CategoryPrice, Integer>{ 
+import domain.CategoryPrice;
 
-	//@Query("") 
-	//Method 
+@Repository
+public interface CategoryPriceRepository extends JpaRepository<CategoryPrice, Integer> {
 
-} 
+	@Query("select c from CategoryPrice c where c.stop.tour.organizers.circus.id = ?1")
+	Collection<CategoryPrice> findAllCategoryPriceByCircus(int circusId);
+
+}

@@ -710,6 +710,14 @@
 		</property>
 	</bean>
 
+	<!-- CategoryPrice -->
+	
+	<bean id="categoryPrice1" class="domain.CategoryPrice">
+		<property name="amount" value="80" />
+		<property name="category" value="Entrada normal" />
+		<property name="stop" ref="stop1" />			
+	</bean>
+
 	<!-- CategoryTour -->
 	<bean id="categoryTour1" class="domain.CategoryTour">
 		<property name="name" value="Adultos" />

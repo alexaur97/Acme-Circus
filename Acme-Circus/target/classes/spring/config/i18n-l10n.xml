@@ -35,6 +35,7 @@
 		<value>/views/artist/messages</value>
 		<value>/views/owner/messages</value>
 		<value>/views/actor/messages</value>
+		<value>/views/categoryPrice/messages</value>
 		
 
 	</util:list>

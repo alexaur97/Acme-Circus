@@ -37,6 +37,8 @@
 		</security:authorize>
 			<security:authorize access="hasRole('OWNER')">
 			<li><a class="fNiv" href="circus/owner/myList.do"><spring:message code="master.page.myListCircus" /></a></li>
+			
+			<li><a class="fNiv" href="categoryPrice/owner/list.do"><spring:message code="master.page.categoryPriceList" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('CUSTOMER')">
