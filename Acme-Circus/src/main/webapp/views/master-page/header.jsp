@@ -31,6 +31,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="categoryTour/administrator/list.do"><spring:message code="master.page.administrator.categoryTour" /></a></li>
+					<li><a href="fee/administrator/setup.do"><spring:message code="master.page.administrator.fee" /></a></li>
 					<li><a href="actor/administrator/list.do"><spring:message code="master.page.administrator.actor" /></a></li>
 					<li><a href="stats/administrator/dashboard.do"><spring:message code="master.page.administrator.stats" /></a></li>					
 				</ul>

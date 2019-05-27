@@ -47,6 +47,7 @@
 		<security:intercept-url pattern="/categoryTour/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/stats/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/fee/administrator/**" access="hasRole('ADMIN')" />
 
 		<security:intercept-url pattern="/tour/search.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/list.do" access="permitAll" />
