@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AdministratorService;
 import services.CircusService;
 import controllers.AbstractController;
 import domain.Circus;
@@ -19,13 +20,17 @@ import domain.Circus;
 public class CircusAdministratorController extends AbstractController {
 
 	@Autowired
-	private CircusService	circusService;
+	private CircusService			circusService;
+
+	@Autowired
+	private AdministratorService	administratorService;
 
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 		ModelAndView result;
 		try {
+			this.administratorService.findByPrincipal();
 			final Collection<Circus> circus = this.circusService.findAll();
 			result = new ModelAndView("circus/list");
 			result.addObject("circus", circus);
@@ -40,6 +45,7 @@ public class CircusAdministratorController extends AbstractController {
 	public ModelAndView deactivate(@RequestParam final int circusId) {
 		ModelAndView result;
 		try {
+			this.administratorService.findByPrincipal();
 			Circus circus = this.circusService.findOne(circusId);
 			circus = this.circusService.deactivate(circus);
 			circus = this.circusService.save(circus);
