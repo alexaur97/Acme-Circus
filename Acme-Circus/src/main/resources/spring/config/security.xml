@@ -69,6 +69,9 @@
 <security:intercept-url pattern="/tour/owner/show.do" access="hasRole('OWNER')"/>
 <security:intercept-url pattern="/tour/owner/list.do" access="hasRole('OWNER')"/>
 
+<security:intercept-url pattern="/organizer/owner/list.do" access="hasRole('OWNER')"/>
+<security:intercept-url pattern="/organizer/owner/create.do" access="hasRole('OWNER')"/>
+
 
 <security:intercept-url pattern="/categoryPrice/owner/list.do" access="hasRole('OWNER')"/>
 

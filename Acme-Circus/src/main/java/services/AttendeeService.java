@@ -127,7 +127,10 @@ public class AttendeeService {
 
 		result.setEmail(attendeeRegisterForm.getEmail());
 		result.setName(attendeeRegisterForm.getName());
-		result.setPhone("+34 " + attendeeRegisterForm.getPhone());
+		if (attendeeRegisterForm.getPhone().isEmpty())
+			result.setPhone(attendeeRegisterForm.getPhone());
+		else
+			result.setPhone("+34 " + attendeeRegisterForm.getPhone());
 		result.setPhoto(attendeeRegisterForm.getPhoto());
 		result.setSurnames(attendeeRegisterForm.getSurnames());
 
@@ -168,7 +171,7 @@ public class AttendeeService {
 		res.setSurnames(actorEditForm.getSurnames());
 		res.setPhoto(actorEditForm.getPhoto());
 		res.setEmail(actorEditForm.getEmail());
-		if (actorEditForm.getPhone().contains("+"))
+		if (actorEditForm.getPhone().contains("+") || actorEditForm.getPhone().isEmpty())
 			res.setPhone(actorEditForm.getPhone());
 		else
 			res.setPhone("+34 " + actorEditForm.getPhone());

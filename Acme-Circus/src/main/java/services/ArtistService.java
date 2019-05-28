@@ -137,7 +137,10 @@ public class ArtistService {
 
 		result.setEmail(artisRegisterForm.getEmail());
 		result.setName(artisRegisterForm.getName());
-		result.setPhone("+34 " + artisRegisterForm.getPhone());
+		if (artisRegisterForm.getPhone().isEmpty())
+			result.setPhone(artisRegisterForm.getPhone());
+		else
+			result.setPhone("+34 " + artisRegisterForm.getPhone());
 		result.setPhoto(artisRegisterForm.getPhoto());
 		result.setSurnames(artisRegisterForm.getSurnames());
 
@@ -153,7 +156,7 @@ public class ArtistService {
 		res.setSurnames(actorEditForm.getSurnames());
 		res.setPhoto(actorEditForm.getPhoto());
 		res.setEmail(actorEditForm.getEmail());
-		if (actorEditForm.getPhone().contains("+"))
+		if (actorEditForm.getPhone().contains("+") || actorEditForm.getPhone().isEmpty())
 			res.setPhone(actorEditForm.getPhone());
 		else
 			res.setPhone("+34 " + actorEditForm.getPhone());

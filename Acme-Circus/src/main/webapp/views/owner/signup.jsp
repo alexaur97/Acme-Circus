@@ -28,8 +28,14 @@
 		</legend>
 		<acme:textbox code="owner.name" path="name" />
 		<acme:textbox code="owner.surnames" path="surnames" />
-		<acme:textbox code="owner.dni" path="dni" placeholder="NNNNNNNNL"
-			comment="owner.dni.pattern" />
+		<jstl:choose>
+		<jstl:when test="${lang eq 'en'}">
+			<acme:textbox code="owner.dni" path="dni" placeholder="8 numbers and 1 letter"/>
+		</jstl:when>
+		<jstl:otherwise>
+			<acme:textbox code="owner.dni" path="dni" placeholder="8 números y 1 letra"/>
+		</jstl:otherwise>
+		</jstl:choose>
 		<acme:textbox code="owner.photo" path="photo" />
 		<acme:textbox code="owner.email" path="email" />
 		<acme:textbox code="owner.phone" path="phone" />

@@ -21,7 +21,7 @@
 	<ul id="jMenu">
 	<security:authorize access="hasRole('OWNER')">
 			<li><a href="artist/owner/list.do"><spring:message code="master.page.artists" /></a></li>
-			
+			<li><a href="organizer/owner/list.do"><spring:message code="master.page.organizers" /></a></li>
 			<li><a href="tour/owner/list.do"><spring:message code="master.page.mytours" /></a></li>
 			
 		</security:authorize>

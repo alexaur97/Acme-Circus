@@ -20,49 +20,49 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<form:form id="form" action="artist/signup.do"
-	modelAttribute="artistRegisterForm" method="POST">
+<form:form id="form" action="organizer/owner/create.do"
+	modelAttribute="organizerRegisterForm" method="POST">
 	<fieldset style="border-width: 4px">
 		<legend>
-			<spring:message code="artist.personal.data" />
+			<spring:message code="organizer.personal.data" />
 		</legend>
-		<acme:textbox code="artist.name" path="name" />
-		<acme:textbox code="artist.surnames" path="surnames" />
+		<acme:textbox code="organizer.name" path="name" />
+		<acme:textbox code="organizer.surnames" path="surnames" />
 		<jstl:choose>
 		<jstl:when test="${lang eq 'en'}">
-			<acme:textbox code="artist.dni" path="dni" placeholder="8 numbers and 1 letter"/>
+			<acme:textbox code="organizer.dni" path="dni" placeholder="8 numbers and 1 letter"/>
 		</jstl:when>
 		<jstl:otherwise>
-			<acme:textbox code="artist.dni" path="dni" placeholder="8 números y 1 letra"/>
+			<acme:textbox code="organizer.dni" path="dni" placeholder="8 números y 1 letra"/>
 		</jstl:otherwise>
 		</jstl:choose>
-		<acme:textbox code="artist.photo" path="photo" />
-		<acme:textbox code="artist.email" path="email" />
-		<acme:textbox code="artist.phone" path="phone" />
-		<acme:textbox code="artist.address" path="address" />
+		<acme:textbox code="organizer.photo" path="photo" />
+		<acme:textbox code="organizer.email" path="email" />
+		<acme:textbox code="organizer.phone" path="phone" />
+		<acme:textbox code="organizer.address" path="address" />
 	</fieldset>
 	<br />
 	<fieldset style="border-width: 4px">
 		<legend>
-			<spring:message code="artist.userAccount" />
+			<spring:message code="organizer.userAccount" />
 		</legend>
-		<acme:textbox code="artist.username" path="username" />
-		<acme:password code="artist.password" path="password" />
-		<acme:password code="artist.confirmPassword" path="confirmPassword" />
+		<acme:textbox code="organizer.username" path="username" />
+		<acme:password code="organizer.password" path="password" />
+		<acme:password code="organizer.confirmPassword" path="confirmPassword" />
 	</fieldset>
 	<br />
 	<fieldset style="border-width: 4px">
 		<legend>
-			<spring:message code="artist.creditCard" />
+			<spring:message code="organizer.creditCard" />
 		</legend>
-		<acme:textbox code="artist.holderName" path="holderName" />
-		<acme:textbox code="artist.brandName" path="brandName" />
-		<acme:textbox code="artist.number" path="number" />
-		<acme:textbox code="artist.expirationMonth" path="expirationMonth" />
-		<acme:textbox code="artist.expirationYear" path="expirationYear" />
-		<acme:textbox code="artist.cvv" path="cvv" />
+		<acme:textbox code="organizer.holderName" path="holderName" />
+		<acme:textbox code="organizer.brandName" path="brandName" />
+		<acme:textbox code="organizer.number" path="number" />
+		<acme:textbox code="organizer.expirationMonth" path="expirationMonth" />
+		<acme:textbox code="organizer.expirationYear" path="expirationYear" />
+		<acme:textbox code="organizer.cvv" path="cvv" />
 	</fieldset>
-	<spring:message code="artist.check" />
+	<spring:message code="organizer.check" />
 	<form:checkbox path="terms" />
 	<form:errors path="terms" cssClass="error" />
 	<br />
@@ -71,17 +71,17 @@
 		<jstl:when test="${lang eq 'en'}">
 			<button type="submit" onclick="return validatePhoneNumber()"
 				name="save">
-				<spring:message code="artist.save" />
+				<spring:message code="organizer.save" />
 			</button>
 		</jstl:when>
 		<jstl:otherwise>
 			<button type="submit" onclick="return validatePhoneNumberEs()"
 				name="save">
-				<spring:message code="artist.save" />
+				<spring:message code="organizer.save" />
 			</button>
 		</jstl:otherwise>
 	</jstl:choose>
-	<acme:cancel url="/#" code="artist.cancel" />
+	<acme:cancel url="/#" code="organizer.cancel" />
 
 	<script type="text/javascript">
 		function validatePhoneNumber() {
