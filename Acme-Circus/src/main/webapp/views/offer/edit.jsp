@@ -23,14 +23,12 @@
 <form:form action="offer/organizer/create.do"
 					modelAttribute="offerForm" class="form-horizontal" method="post">
 
-						<form:hidden path="id"/>
-						<form:hidden path="version"/>
-								
-						<acme:textbox code="offer.observation" path="observations" />
+						
 						<acme:textbox type="number" code="offer.money" path="money" />							
 						<acme:select items="${performances}" itemLabel="name" code="offer.performance" path="performance"/>
 												<acme:select items="${tours}" itemLabel="name" code="offer.tour" path="tour"/>
-						<acme:textarea  code="offer.conditions" path="conditions" />
+												<acme:textbox code="offer.observation" path="observations" />
+						
 						<spring:message code = "offer.message.comma"/>	
 						
 						<acme:submit name="save" code="performance.save" />

@@ -22,7 +22,7 @@
 
 <display:table name="offers" id="offers" requestURI="${requestURI}"
 	pagesize="5" class="displaytag table">
-	<display:column property="observation" titleKey="offer.observation" />
+	<display:column property="observations" titleKey="offer.observation" />
 	<display:column titleKey="offer.status" property="status" ></display:column>
 		<display:column titleKey="offer.lastUpdate" property="lastUpdate" ></display:column>
 		<display:column titleKey="offer.conditions" property="conditions" ></display:column>

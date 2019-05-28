@@ -83,7 +83,6 @@ public class OfferOrganizerController extends AbstractController {
 	public ModelAndView save(@Valid final OfferForm offer, final BindingResult binding) {
 
 		ModelAndView result;
-		final Offer offerF = this.offerService.reconstruct(offer, binding);
 
 		if (binding.hasErrors()) {
 			final Collection<Tour> tours = this.tourService.findAllAvailable();
@@ -94,11 +93,12 @@ public class OfferOrganizerController extends AbstractController {
 			result.addObject("offer", offer);
 		} else {
 			//			try {
+			final Offer offerF = this.offerService.reconstruct(offer, binding);
+			final Offer offerFinal = this.offerService.save(offerF);
+
 			final Tour tour = offer.getTour();
+			tour.getOffers().add(offerFinal);
 
-			tour.getOffers().add(offerF);
-
-			this.offerService.save(offerF);
 			this.tourService.save(tour);
 			result = new ModelAndView("redirect:/offer/organizer/list.do");
 

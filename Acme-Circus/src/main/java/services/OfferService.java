@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,10 +62,11 @@ public class OfferService {
 		return result;
 	}
 
-	public void save(final Offer offer) {
+	public Offer save(final Offer offer) {
 		Assert.notNull(offer);
 
-		this.offerRepository.save(offer);
+		final Offer result = this.offerRepository.save(offer);
+		return result;
 	}
 
 	public void delete(final Offer offer) {
@@ -93,8 +95,8 @@ public class OfferService {
 		result.setPerformance(offer.getPerformance());
 		//		result.setVersion(offer.getVersion());
 		result.setStatus("PENDING");
-		//		final Date a = new Date();
-		//		result.setLastUpdate(a);
+		final Date a = new Date();
+		result.setLastUpdate(a);
 		return result;
 
 	}

@@ -707,6 +707,7 @@
 		
 		<property name="offers">
 		 <list>
+		 <ref bean="offer1"/>
 		 </list>
 		</property>
 	</bean>
@@ -1006,6 +1007,15 @@
 	</bean>
 	
 	
+	<!-- Offer -->
+	
+	<bean id="offer1" class="domain.Offer">
+		<property name="observations" value="ANIMALS,MONEY" />
+		<property name="status" value="PENDING" />
+		<property name="money" value="2" />
+		<property name="lastUpdate" value="10/10/2018"/>
+		<property name="performance" ref="performance1" />
+	</bean>
 	
 	
 	
