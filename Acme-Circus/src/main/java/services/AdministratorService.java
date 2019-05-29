@@ -4,7 +4,10 @@ package services;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import miscellaneous.Utils;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -16,6 +19,7 @@ import security.UserAccount;
 import domain.Administrator;
 import domain.CreditCard;
 import forms.ActorEditForm;
+import forms.AdministratorRegisterForm;
 
 @Service
 @Transactional
@@ -97,55 +101,52 @@ public class AdministratorService {
 		return a;
 	}
 
-	/*
-	 * public Administrator reconstruct(final AdministratorRegisterForm r) {
-	 * Assert.isTrue(r.getPassword().equals(r.getConfirmPassword()));
-	 * 
-	 * final Collection<String> accounts = this.actorService.findAllAccounts();
-	 * final Administrator result = this.create();
-	 * final UserAccount userAccount = result.getUserAccount();
-	 * final Boolean bAccount = !accounts.contains(userAccount.getUsername());
-	 * Assert.isTrue(bAccount);
-	 * 
-	 * final Collection<String> emails = this.actorService.findAllEmails();
-	 * final String email = result.getEmail();
-	 * final Boolean bEmail = !emails.contains(email);
-	 * Assert.isTrue(bEmail);
-	 * 
-	 * final Md5PasswordEncoder pe = new Md5PasswordEncoder();
-	 * final String password = pe.encodePassword(r.getPassword(), null);
-	 * 
-	 * userAccount.setUsername(r.getUsername());
-	 * userAccount.setPassword(password);
-	 * 
-	 * result.setUserAccount(userAccount);
-	 * 
-	 * result.setName(r.getName());
-	 * result.setVAT(r.getVAT());
-	 * result.setSurnames(r.getSurnames());
-	 * result.setPhoto(r.getPhoto());
-	 * result.setEmail(r.getEmail());
-	 * result.setPhone(this.actorService.addCountryCode(r.getPhone()));
-	 * result.setAddress(r.getAddress());
-	 * 
-	 * result.setBanned(false);
-	 * 
-	 * final CreditCard creditCard = result.getCreditCard();
-	 * creditCard.setBrandName(r.getBrandName());
-	 * creditCard.setCvv(r.getCvv());
-	 * creditCard.setExpirationMonth(r.getExpirationMonth());
-	 * creditCard.setExpirationYear(r.getExpirationYear());
-	 * creditCard.setHolderName(r.getHolderName());
-	 * creditCard.setNumber(r.getNumber());
-	 * final Boolean b2 = Utils.creditCardIsExpired(creditCard);
-	 * Assert.isTrue(!b2);
-	 * result.setCreditCard(creditCard);
-	 * 
-	 * result.setSpammer(false);
-	 * 
-	 * return result;
-	 * }
-	 */
+	public Administrator reconstruct(final AdministratorRegisterForm r) {
+		Assert.isTrue(r.getPassword().equals(r.getConfirmPassword()));
+
+		final Collection<String> accounts = this.actorService.findAllAccounts();
+		final Administrator result = this.create();
+		final UserAccount userAccount = result.getUserAccount();
+		final Boolean bAccount = !accounts.contains(userAccount.getUsername());
+		Assert.isTrue(bAccount);
+
+		final Collection<String> emails = this.actorService.findAllEmails();
+		final String email = result.getEmail();
+		final Boolean bEmail = !emails.contains(email);
+		Assert.isTrue(bEmail);
+
+		final Md5PasswordEncoder pe = new Md5PasswordEncoder();
+		final String password = pe.encodePassword(r.getPassword(), null);
+
+		userAccount.setUsername(r.getUsername());
+		userAccount.setPassword(password);
+
+		result.setUserAccount(userAccount);
+
+		result.setName(r.getName());
+		result.setDni(r.getDni());
+		result.setSurnames(r.getSurnames());
+		result.setPhoto(r.getPhoto());
+		result.setEmail(r.getEmail());
+		if (r.getPhone().isEmpty())
+			result.setPhone(r.getPhone());
+		else
+			result.setPhone("+34 " + r.getPhone());
+		result.setAddress(r.getAddress());
+
+		final CreditCard creditCard = result.getCreditCard();
+		creditCard.setBrandName(r.getBrandName());
+		creditCard.setCvv(r.getCvv());
+		creditCard.setExpirationMonth(r.getExpirationMonth());
+		creditCard.setExpirationYear(r.getExpirationYear());
+		creditCard.setHolderName(r.getHolderName());
+		creditCard.setNumber(r.getNumber());
+		final Boolean b2 = Utils.creditCardIsExpired(creditCard);
+		Assert.isTrue(!b2);
+		result.setCreditCard(creditCard);
+
+		return result;
+	}
 
 	public Administrator reconstructEdit(final ActorEditForm actorEditForm) {
 		final Administrator res;

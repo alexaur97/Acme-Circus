@@ -107,6 +107,10 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="actor/edit.do"><spring:message code="master.page.editProfile" /></a></li>
+					<security:authorize access="hasRole('ADMINISTRATOR')">
+					<li><a href="administrator/administrator/create.do"><spring:message
+									code="master.page.signup.admin" /></a></li>
+					</security:authorize>
 					<security:authorize access="hasRole('WORKER')">
 						<li><a href="message/list.do"><spring:message
 								code="master.page.message" /> </a></li>

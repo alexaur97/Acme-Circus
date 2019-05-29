@@ -23,7 +23,7 @@
 	</definition>
 	
 	<definition name="artist/signup" extends="master.page">
-		<put-attribute name="title" value="Register as a artist" />
+		<put-attribute name="title" value="Register as an artist" />
 		<put-attribute name="body" value="/views/artist/signup.jsp" />
 	</definition>
 	
