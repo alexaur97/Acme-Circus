@@ -37,4 +37,7 @@ public interface ActorRepository extends JpaRepository<Actor, Integer> {
 
 	@Query("select o from Owner o")
 	Collection<Actor> findAllOwners();
+
+	@Query("select a from Administrator a")
+	Collection<Actor> findAllAdministrators();
 }

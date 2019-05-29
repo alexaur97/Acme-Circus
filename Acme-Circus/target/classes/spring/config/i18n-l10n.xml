@@ -42,9 +42,10 @@
 		<value>/views/banner/messages</value>
 		<value>/views/ticket/messages</value>
 		<value>/views/purchase/messages</value>
-				<value>/views/performance/messages</value>
-								<value>/views/offer/messages</value>
-					<value>/views/fee/messages</value>
+		<value>/views/performance/messages</value>
+		<value>/views/fee/messages</value>
+		<value>/views/offer/messages</value>
+
 
 
 	</util:list>

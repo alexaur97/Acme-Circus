@@ -90,13 +90,14 @@ public class StopService {
 	}
 
 	public Double stopsPerTour() {
-		Double a = (double) this.stopRepository.findAll().size();
-		if (a == null)
-			a = 0.0;
-		Double b = (double) this.tourService.findAll().size();
-		if (b == null)
-			b = 0.0;
-		return a / b;
+		Double result;
+		final Double a = (double) this.stopRepository.findAll().size();
+		final Double b = (double) this.tourService.findAll().size();
+		if (b == 0.0)
+			result = a;
+		else
+			result = a / b;
+		return result;
 	}
 
 	//Other Methods--------------------

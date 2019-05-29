@@ -32,10 +32,12 @@ public class ActorAdministratorController extends AbstractController {
 			final Collection<Actor> owners = this.actorService.findAllOwners();
 			final Collection<Actor> organizers = this.actorService.findAllOrganizers();
 			final Collection<Actor> artists = this.actorService.findAllArtists();
+			final Collection<Actor> admins = this.actorService.findAllAdministrators();
 			result.addObject("attendees", attendees);
 			result.addObject("owners", owners);
 			result.addObject("organizers", organizers);
 			result.addObject("artists", artists);
+			result.addObject("admins", admins);
 			result.addObject("requestURI", "actor/administrator/list.do");
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/#");
