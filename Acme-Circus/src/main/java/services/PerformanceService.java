@@ -28,6 +28,8 @@ public class PerformanceService {
 	//Supporting Services ------------------
 	@Autowired
 	private ArtistService			artistService;
+	@Autowired
+	private OfferService			offerService;
 
 
 	//COnstructors -------------------------
@@ -74,9 +76,9 @@ public class PerformanceService {
 	}
 
 	public void delete(final Performance performance) {
+		Assert.isTrue(!performance.getCopy());
 		this.performanceRepository.delete(performance);
 	}
-
 	//Other Methods--------------------
 	public Collection<Performance> findByArtist(final int artistId) {
 		return this.performanceRepository.findByArtist(artistId);

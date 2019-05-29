@@ -21,15 +21,17 @@ import forms.OfferForm;
 public class OfferService {
 
 	@Autowired
-	private Validator		validator;
+	private Validator			validator;
 
 	//Managed repository -------------------
 	@Autowired
-	private OfferRepository	offerRepository;
+	private OfferRepository		offerRepository;
 
 	//Supporting Services ------------------
 	@Autowired
-	private ArtistService	artistService;
+	private ArtistService		artistService;
+	@Autowired
+	private PerformanceService	performance;
 
 
 	//COnstructors -------------------------
@@ -96,7 +98,7 @@ public class OfferService {
 		final Offer result = new Offer();
 		result.setMoney(offer.getMoney());
 		result.setObservations(offer.getObservations());
-		result.setPerformance(offer.getPerformance());
+		result.setPerformance(this.performance.copy(offer.getPerformance()));
 		result.setStatus("PENDING");
 		final Date a = new Date();
 		result.setLastUpdate(a);
@@ -110,6 +112,16 @@ public class OfferService {
 		Assert.isTrue(offers.contains(offer));
 		Assert.isTrue(offer.getStatus().equals("PENDING"));
 		offer.setStatus("REJECTED");
+		offer.setLastUpdate(new Date());
+		return offer;
+	}
+	public Offer rejectAccept(final int id) {
+		final Artist a = this.artistService.findByPrincipal();
+		final Collection<Offer> offers = this.findByArt(a.getId());
+		final Offer offer = this.offerRepository.findOne(id);
+		Assert.isTrue(offers.contains(offer));
+		Assert.isTrue(offer.getStatus().equals("PENDING"));
+		offer.setStatus("ACCEPTED");
 		offer.setLastUpdate(new Date());
 		return offer;
 	}

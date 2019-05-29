@@ -19,11 +19,17 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+	<security:authorize access="hasRole('ORGANIZER')">
+
+<br/><spring:message code="artist.name"/>: <jstl:out value="${artist.name}"></jstl:out>
+<br/><spring:message code="artist.surnames"/>: <jstl:out value="${artist.surnames}"></jstl:out>
+	</security:authorize>
 
 <display:table name="performances" id="performances" requestURI="${requestURI}"
 	pagesize="5" class="displaytag table">
 	<display:column property="name" titleKey="performance.name" />
 	<display:column titleKey="performance.persons" property="persons" ></display:column>
+		<display:column titleKey="performance.tags" property="tags" ></display:column>
 	
 		<display:column titleKey="performance.video">
 		<a href="${performances.video }">Video</a>

@@ -53,9 +53,11 @@ public class ArtistOrganizerController extends AbstractController {
 		try {
 			final Organizer organizer = this.organizerService.findByPrincipal();
 			final Collection<Performance> performances = this.performanceService.findByArtist(artistId);
+			final Artist artist = this.artistService.findOne(artistId);
 			result = new ModelAndView("performance/list");
 			result.addObject("requestURI", "artist/organizer/performances.do");
 			result.addObject("performances", performances);
+			result.addObject("artist", artist);
 
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:/#");
