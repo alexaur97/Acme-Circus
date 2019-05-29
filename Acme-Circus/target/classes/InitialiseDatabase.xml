@@ -32,4 +32,33 @@
 	
 	<!-- Other domain beans come here -->	
 	
+	<bean id="actor1" class="domain.Administrator">
+		<property name="name" value="Paolo" />
+		<property name="surnames" value="Luna Rodríguez" />
+		<property name="dni" value="77844831C" />
+		<property name="creditCard" ref="creditCard1" />
+		<property name="photo"
+			value="https://img.lovepik.com/element/40025/1507.png_860.png" />
+		<property name="email" value="admin@admin.com" />
+		<property name="phone" value="698765432" />
+		<property name="address" value="" />
+		<property name="userAccount" ref="userAccount1" />
+	</bean>
+	
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="Paolo Luna Rodríguez" />
+		<property name="brandName" value="Visa" />
+		<property name="number" value="4278959519763522" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="22" />
+		<property name="cvv" value="194" />
+	</bean>
+	
+	<bean id="fee" class="domain.Fee">
+		<property name="bannerFee" value="2.25" />
+		<property name="circusFee" value="5" />
+		<property name="acceptedOfferFee" value="0.75" />
+	</bean>
+	
+	
 </beans>

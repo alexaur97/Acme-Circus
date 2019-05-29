@@ -43,9 +43,10 @@
 		<value>/views/banner/tiles.xml</value>
 		<value>/views/ticket/tiles.xml</value>
 		<value>/views/purchase/tiles.xml</value>
-				<value>/views/performance/tiles.xml</value>
-						<value>/views/offer/tiles.xml</value>
-						<value>/views/fee/tiles.xml</value>
+		<value>/views/performance/tiles.xml</value>
+		<value>/views/fee/tiles.xml</value>
+		<value>/views/offer/tiles.xml</value>
+		
 
 
 	</util:list>

@@ -77,13 +77,15 @@ public class OfferService {
 	}
 
 	public Double acceptedOffersPerArtistRatio() {
+		Double result;
 		Double a = (double) this.offerRepository.confirmedOffersPerArtistRatio();
 		if (a == null)
 			a = 0.0;
-		Double b = (double) this.artistService.findAll().size();
-		if (b == null)
-			b = 1.0;
-		final Double result = a / b;
+		final Double b = (double) this.artistService.findAll().size();
+		if (b == 0.0)
+			result = a;
+		else
+			result = a / b;
 		return result;
 	}
 	public Collection<Offer> findByOrg(final int orgId) {

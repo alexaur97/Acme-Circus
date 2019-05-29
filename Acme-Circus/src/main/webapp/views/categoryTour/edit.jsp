@@ -26,6 +26,14 @@
 	<acme:textbox code="categoryTour.name" path="name"/>
 	<acme:textbox code="categoryTour.minAge" path="minAge"/>
 	<acme:submit code="categoryTour.save" name="save"/>
+	<jstl:choose>
+	<jstl:when test="${categoryTour.id ne 0}">
 	<acme:button code="categoryTour.back"
 	url="categoryTour/administrator/show.do?categoryTourId=${categoryTour.id}" />
+	</jstl:when>
+	<jstl:otherwise>
+	<acme:button code="categoryTour.back"
+	url="categoryTour/administrator/list.do" />
+	</jstl:otherwise>
+	</jstl:choose>
 </form:form>

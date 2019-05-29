@@ -19,6 +19,18 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<h4><spring:message code="actor.administrators" /></h4>
+
+<display:table name="admins" id="admin" requestURI="${requestURI}" pagesize="3" class="displaytag">
+<display:column property="name" titleKey="actor.name"/>
+<display:column property="surnames" titleKey="actor.surnames"/>
+<display:column property="email" titleKey="actor.email"/>
+<display:column property="phone" titleKey="actor.phone"/>
+<display:column titleKey="actor.show"><acme:button
+					url="actor/administrator/show.do?userId=${admin.userAccount.id}"
+					code="actor.show" /></display:column>
+</display:table>
+
 <h4><spring:message code="actor.attendees" /></h4>
 
 <display:table name="attendees" id="attendee" requestURI="${requestURI}" pagesize="3" class="displaytag">

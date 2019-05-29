@@ -184,4 +184,8 @@ public class ActorService {
 		res.setAddress(actor.getAddress());
 		return res;
 	}
+
+	public Collection<Actor> findAllAdministrators() {
+		return this.actorRepository.findAllAdministrators();
+	}
 }
