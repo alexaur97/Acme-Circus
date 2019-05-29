@@ -17,6 +17,9 @@ public interface TourRepository extends JpaRepository<Tour, Integer> {
 	@Query("select t from Tour t where (t.validated = true and t.organizers.id=?1)")
 	Collection<Tour> findAllAvailableByOrg(int id);
 
+	@Query("select t from Tour t where (t.validated = false and t.organizers.id=?1)")
+	Collection<Tour> findAllNotAvailableByOrg(int id);
+
 	@Query("select t from Tour t where t.categoryTour.id = ?1")
 	Collection<Tour> findAllToursByCategory(int categoryTourId);
 

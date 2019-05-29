@@ -31,6 +31,10 @@
 						
 		</security:authorize>
 		<security:authorize access="hasRole('ORGANIZER')">
+			
+			<li><a href="stop/organizer/list.do"><spring:message code="master.page.mystops" /></a></li>
+			
+			
 			<li><a href="offer/organizer/list.do"><spring:message code="master.page.offers" /></a></li>
 		</security:authorize>
 		<security:authorize access="hasRole('ARTIST')">

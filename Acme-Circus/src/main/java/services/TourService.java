@@ -116,6 +116,12 @@ public class TourService {
 		final Collection<Tour> res = this.tourRepository.findAllAvailableByOrg(id);
 		return res;
 	}
+
+	public Collection<Tour> findAllNotAvailableByOrganize() {
+		final int id = this.organizerService.findByPrincipal().getId();
+		final Collection<Tour> res = this.tourRepository.findAllNotAvailableByOrg(id);
+		return res;
+	}
 	//Other Methods--------------------
 
 	public Collection<Tour> searchTours(final String keyword) {

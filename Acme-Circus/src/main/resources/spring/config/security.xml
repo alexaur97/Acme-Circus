@@ -89,8 +89,13 @@
  <security:intercept-url pattern="/offer/organizer/create.do" access="hasRole('ORGANIZER')"/>
  <security:intercept-url pattern="/offer/organizer/edit.do" access="hasRole('ORGANIZER')"/>
 
+ <security:intercept-url pattern="/tour/organizer/list.do" access="hasRole('ORGANIZER')"/>
  <security:intercept-url pattern="/tour/organizer/edit.do" access="hasRole('ORGANIZER')"/>
  <security:intercept-url pattern="/tour/organizer/create.do" access="hasRole('ORGANIZER')"/>
+
+ <security:intercept-url pattern="/stop/organizer/list.do" access="hasRole('ORGANIZER')"/>
+ <security:intercept-url pattern="/stop/organizer/create.do" access="hasRole('ORGANIZER')"/>
+ <security:intercept-url pattern="/stop/organizer/edit.do" access="hasRole('ORGANIZER')"/>
 
 
 		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" />
