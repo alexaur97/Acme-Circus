@@ -31,6 +31,13 @@
 	<display:column titleKey="stop.location" property= "location"/>
 	<display:column titleKey="stop.date" property= "date"/>
 
+<display:column titleKey="stop.show">
+
+		<acme:cancel url="/stop/show.do?stopId=${stop.id}"
+
+			code="stop.show" />
+
+	</display:column>	
 </display:table>
 
 <security:authorize access="hasRole('ATTENDEE')">

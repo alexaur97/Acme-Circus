@@ -63,8 +63,16 @@
 	<display:column titleKey="tour.endDate" property= "endDate"/>	
 
 	<display:column titleKey="tour.link" property= "link"/>
+	
+	<display:column titleKey="tour.categoryTour" property= "categoryTour.name"/>
+	
+	<display:column titleKey="tour.tags" property= "tags"/>
+	
+	<security:authorize access="hasAnyRole('ORGANIZER', 'OWNER')">
+	
 
 	<display:column titleKey="tour.validated">
+	
 		
 	<jstl:if test="${tour.validated}">
 			<h3 style="color: #008000;">
@@ -78,6 +86,8 @@
 		</jstl:if>
 		</display:column>
 
+</security:authorize>
+
 		<display:column titleKey="tour.stops">
 
 		<acme:cancel url="/stop/listByTour.do?tourId=${tour.id}"
@@ -88,6 +98,7 @@
 	
 	
 		<security:authorize access="hasRole('ORGANIZER')">
+		
 		
 	
 	<display:column titleKey="tour.edit">
@@ -106,9 +117,16 @@
 		</security:authorize>
 	
 	<security:authorize access="hasRole('OWNER')">
+	
+	
 	<display:column titleKey="tour.validate">
+			<jstl:if test="${!tour.validated}">
+	
 		<acme:cancel url="/tour/owner/validate.do?tourId=${tour.id}"
 			code="tour.validate" />
+			
+		</jstl:if>
+			
 	</display:column>	
 	</security:authorize>
 	

@@ -37,7 +37,7 @@
 						<acme:textarea code="tour.description" path="description" />
 						<acme:textbox placeholder="yyyy-MM-dd" code="tour.startDate" path="startDate" />
 						<acme:textbox placeholder="yyyy-MM-dd" code="tour.endDate" path="endDate" />
-						<acme:textarea code="tour.link" path="link" />
+						<acme:textbox code="tour.link" path="link" />
 						<form:select  id="categoryTour" code="tour.categoryTour" path="categoryTour">
 							<form:options items="${categoryTours}" itemLabel="name" itemValue="id" />
 						</form:select>

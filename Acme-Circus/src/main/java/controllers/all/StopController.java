@@ -26,6 +26,7 @@ public class StopController {
 	public ModelAndView list(final int tourId) {
 		ModelAndView result;
 		try {
+			Assert.notNull(tourId);
 			Collection<Stop> stops;
 			stops = this.stopService.findStopsByTour(tourId);
 			result = new ModelAndView("stop/list");

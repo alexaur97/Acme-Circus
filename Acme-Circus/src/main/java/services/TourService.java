@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -75,12 +76,27 @@ public class TourService {
 	}
 
 	public Tour save(final Tour tour) {
+
+		final Date actual = new Date();
+		Assert.isTrue(tour.getStartDate().after(actual));
+		Assert.isTrue(tour.getStartDate().before(tour.getEndDate()));
+		final Organizer o = this.organizerService.findByPrincipal();
+		final Boolean b = tour.getOrganizers().equals(o);
+		Assert.isTrue(b);
+
 		Assert.notNull(tour);
 
 		return this.tourRepository.save(tour);
 	}
-
 	public void delete(final Tour tour) {
+
+		final Organizer o = this.organizerService.findByPrincipal();
+		final Boolean organizer = tour.getOrganizers().equals(o);
+		Assert.isTrue(organizer);
+
+		final Boolean b = tour.getOffers().isEmpty();
+		Assert.isTrue(b);
+		Assert.isTrue(!tour.validated);
 		this.tourRepository.delete(tour);
 	}
 

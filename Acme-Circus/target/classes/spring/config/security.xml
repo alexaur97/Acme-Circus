@@ -56,6 +56,7 @@
 		<security:intercept-url pattern="/tour/search.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/list.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/listAll.do" access="permitAll" />
+				<security:intercept-url pattern="/tour/listPublic.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/listByCategories.do" access="permitAll" />
 		<security:intercept-url pattern="/tour/show.do" access="permitAll" />
 
@@ -88,6 +89,9 @@
  <security:intercept-url pattern="/offer/organizer/create.do" access="hasRole('ORGANIZER')"/>
  <security:intercept-url pattern="/offer/organizer/edit.do" access="hasRole('ORGANIZER')"/>
 
+ <security:intercept-url pattern="/tour/organizer/edit.do" access="hasRole('ORGANIZER')"/>
+ <security:intercept-url pattern="/tour/organizer/create.do" access="hasRole('ORGANIZER')"/>
+
 
 		<security:intercept-url pattern="/customer/action-1.do" access="hasRole('CUSTOMER')" />
 		<security:intercept-url pattern="/customer/action-2.do" access="hasRole('CUSTOMER')" />
@@ -107,6 +111,9 @@
 		<security:intercept-url pattern="/performance/artist/list.do" access="hasRole('ARTIST')" />
 		<security:intercept-url pattern="/performance/artist/edit.do" access="hasRole('ARTIST')" />
 		<security:intercept-url pattern="/performance/artist/create.do" access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/offer/artist/list.do" access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/offer/artist/reject.do" access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/offer/artist/accept.do" access="hasRole('ARTIST')" />
 
 
 		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" />

@@ -57,7 +57,7 @@ public class TourOwnerController extends AbstractController {
 			final int id = this.ownerService.findByPrincipal().getCircus().getId();
 			tours = this.tourService.findByCircus(id);
 			result = new ModelAndView("tour/listAll");
-			result.addObject("requestURI", "tour/list.do");
+			result.addObject("requestURI", "tour/listAll.do");
 			result.addObject("tours", tours);
 
 		} catch (final Exception e) {
@@ -76,7 +76,7 @@ public class TourOwnerController extends AbstractController {
 			Tour tour = this.tourService.findOne(tourId);
 			tour = this.tourService.validate(tour);
 			tour = this.tourService.save(tour);
-			result = new ModelAndView("redirect:/tour/owner/list.do");
+			result = new ModelAndView("redirect: tour/listAll.do");
 
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/#");

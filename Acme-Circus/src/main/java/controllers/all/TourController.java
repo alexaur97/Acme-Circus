@@ -90,6 +90,23 @@ public class TourController extends AbstractController {
 
 	}
 
+	@RequestMapping(value = "/listPublic", method = RequestMethod.GET)
+	public ModelAndView listPublic() {
+		ModelAndView result;
+		try {
+			Collection<Tour> tours;
+			tours = this.tourService.findAllAvailable();
+			result = new ModelAndView("tour/listAll");
+			result.addObject("requestURI", "tour/listAll.do");
+			result.addObject("tours", tours);
+
+		} catch (final Exception e) {
+			result = new ModelAndView("redirect:/#");
+		}
+
+		return result;
+
+	}
 	@RequestMapping(value = "/listByCategories", method = RequestMethod.GET)
 	public ModelAndView listByCategories(final int categoryTourId) {
 		ModelAndView result;
@@ -98,7 +115,7 @@ public class TourController extends AbstractController {
 			this.categoryTourService.findOne(categoryTourId);
 			Collection<Tour> tours;
 			tours = this.tourService.findAllToursByCategoryTour(categoryTourId);
-			result = new ModelAndView("tour/list");
+			result = new ModelAndView("tour/listAll");
 			result.addObject("requestURI", "tour/listByCategories.do");
 			result.addObject("tours", tours);
 
