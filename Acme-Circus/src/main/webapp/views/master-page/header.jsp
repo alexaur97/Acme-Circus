@@ -21,7 +21,7 @@
 	<ul id="jMenu">
 	<security:authorize access="hasRole('OWNER')">
 			<li><a href="artist/owner/list.do"><spring:message code="master.page.artists" /></a></li>
-			
+			<li><a href="organizer/owner/list.do"><spring:message code="master.page.organizers" /></a></li>
 			<li><a href="tour/owner/list.do"><spring:message code="master.page.mytours" /></a></li>
 			
 		</security:authorize>
@@ -40,7 +40,7 @@
 			<li><a href="performance/artist/list.do"><spring:message code="master.page.performances" /></a></li>
 		</security:authorize>
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
-		<security:authorize access="hasRole('ADMIN')">
+		<security:authorize access="hasRole('ADMINISTRATOR')">
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -109,9 +109,15 @@
 				</a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="profile/action-1.do"><spring:message code="master.page.profile.action.1" /></a></li>
-					<li><a href="profile/action-2.do"><spring:message code="master.page.profile.action.2" /></a></li>
-					<li><a href="profile/action-3.do"><spring:message code="master.page.profile.action.3" /></a></li>					
+					<li><a href="actor/edit.do"><spring:message code="master.page.editProfile" /></a></li>
+					<security:authorize access="hasRole('ADMINISTRATOR')">
+					<li><a href="administrator/administrator/create.do"><spring:message
+									code="master.page.signup.admin" /></a></li>
+					</security:authorize>
+					<security:authorize access="hasRole('WORKER')">
+						<li><a href="message/list.do"><spring:message
+								code="master.page.message" /> </a></li>
+					</security:authorize>				
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
 				</ul>
 			</li>

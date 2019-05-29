@@ -42,7 +42,7 @@ public class Message extends DomainEntity {
 
 	@NotNull
 	@ManyToOne(optional = false)
-	public Actor getOwner() {
+	public Worker getOwner() {
 		return this.owner;
 	}
 
@@ -112,7 +112,7 @@ public class Message extends DomainEntity {
 
 	@NotNull
 	@ManyToOne(optional = false)
-	public Actor getRecipient() {
+	public Worker getRecipient() {
 		return this.recipient;
 	}
 	public void setRecipient(final Worker recipient) {
@@ -120,7 +120,7 @@ public class Message extends DomainEntity {
 	}
 
 	@ManyToOne(optional = true)
-	public Actor getSender() {
+	public Worker getSender() {
 		return this.sender;
 	}
 	public void setSender(final Worker sender) {

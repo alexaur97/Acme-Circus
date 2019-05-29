@@ -36,7 +36,6 @@ public class ArtistOwnerController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		try {
-			final Owner owner = this.ownerService.findByPrincipal();
 			final Collection<Artist> artists = this.artistService.findAll();
 			result = new ModelAndView("artist/list");
 			result.addObject("requestURI", "artist/owner/list.do");

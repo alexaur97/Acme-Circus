@@ -28,11 +28,17 @@
 		</legend>
 		<acme:textbox code="owner.name" path="name" />
 		<acme:textbox code="owner.surnames" path="surnames" />
-		<acme:textbox code="owner.dni" path="dni" placeholder="NNNNNNNNL"
-			comment="owner.dni.pattern" />
+		<jstl:choose>
+		<jstl:when test="${lang eq 'en'}">
+			<acme:textbox code="owner.dni" path="dni" placeholder="8 numbers and 1 letter"/>
+		</jstl:when>
+		<jstl:otherwise>
+			<acme:textbox code="owner.dni" path="dni" placeholder="8 números y 1 letra"/>
+		</jstl:otherwise>
+		</jstl:choose>
 		<acme:textbox code="owner.photo" path="photo" />
 		<acme:textbox code="owner.email" path="email" />
-		<acme:textbox code="owner.phone" path="phone" />
+		<acme:textbox code="owner.phone" path="phone" placeholder="123456789" comment="owner.phone.pattern" />
 		<acme:textbox code="owner.address" path="address" />
 	</fieldset>
 	<br />
@@ -90,11 +96,11 @@
 	<script type="text/javascript">
 		function validatePhoneNumber() {
 			var phoneNumber = document.getElementById("phone");
-			if (!(phoneNumber.value).match("^\\+\\d{1,3}([ ]{1}[(]{1}\\d{1,3}[)]{1})?[ ]{1}\\d{4,}$|^\\d{4,}$|^$")) { return confirm("Phone number doesn't adhere to the correct pattern. Do you want to continue?"); }
+			if (!(phoneNumber.value).match("^\\+\\d{1,3}([ ]{1}[(]{1}\\d{1,3}[)]{1})?[ ]{1}\\d{4,}$|^\\d{4,}$|^$")) { return confirm("Phone number doesn't adhere to the correct pattern (9 Numbers - 123456789). Do you want to continue?"); }
 		}
 		function validatePhoneNumberEs() {
 			var phoneNumber = document.getElementById("phone");
-			if (!(phoneNumber.value).match("^\\+\\d{1,3}([ ]{1}[(]{1}\\d{1,3}[)]{1})?[ ]{1}\\d{4,}$|^\\d{4,}$|^$")) { return confirm("El teléfono no se ajusta al patrón correcto. ¿Desea continuar?"); }
+			if (!(phoneNumber.value).match("^\\+\\d{1,3}([ ]{1}[(]{1}\\d{1,3}[)]{1})?[ ]{1}\\d{4,}$|^\\d{4,}$|^$")) { return confirm("El teléfono no se ajusta al patrón correcto (9 Números - 123456789). ¿Desea continuar?"); }
 		}
 	</script>
 </form:form>

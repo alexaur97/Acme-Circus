@@ -19,6 +19,7 @@ import security.UserAccount;
 import domain.Circus;
 import domain.CreditCard;
 import domain.Owner;
+import forms.ActorEditForm;
 import forms.OwnerRegisterForm;
 
 @Service
@@ -69,8 +70,11 @@ public class OwnerService {
 
 		final Authority a = new Authority();
 		a.setAuthority(Authority.OWNER);
+		final Authority b = new Authority();
+		b.setAuthority(Authority.WORKER);
 		final Collection<Authority> authorities = new ArrayList<Authority>();
 		authorities.add(a);
+		authorities.add(b);
 		result.getUserAccount().setAuthorities(authorities);
 
 		final CreditCard creditCard = new CreditCard();
@@ -151,7 +155,10 @@ public class OwnerService {
 
 		result.setEmail(ownerRegisterForm.getEmail());
 		result.setName(ownerRegisterForm.getName());
-		result.setPhone("+34 " + ownerRegisterForm.getPhone());
+		if (ownerRegisterForm.getPhone().isEmpty())
+			result.setPhone(ownerRegisterForm.getPhone());
+		else
+			result.setPhone("+34 " + ownerRegisterForm.getPhone());
 		result.setPhoto(ownerRegisterForm.getPhoto());
 		result.setSurnames(ownerRegisterForm.getSurnames());
 
@@ -162,4 +169,23 @@ public class OwnerService {
 	public Collection<Owner> ownersByCircus(final int circusId) {
 		return this.ownerRepository.ownersByCircus(circusId);
 	}
+
+	public Owner reconstructEdit(final ActorEditForm actorEditForm) {
+		final Owner res;
+		res = this.findByPrincipal();
+		res.setName(actorEditForm.getName());
+		res.setDni(actorEditForm.getDni());
+		res.setSurnames(actorEditForm.getSurnames());
+		res.setPhoto(actorEditForm.getPhoto());
+		res.setEmail(actorEditForm.getEmail());
+		if (actorEditForm.getPhone().contains("+") || actorEditForm.getPhone().isEmpty())
+			res.setPhone(actorEditForm.getPhone());
+		else
+			res.setPhone("+34 " + actorEditForm.getPhone());
+
+		res.setAddress(actorEditForm.getAddress());
+		Assert.notNull(res);
+		return res;
+	}
+
 }

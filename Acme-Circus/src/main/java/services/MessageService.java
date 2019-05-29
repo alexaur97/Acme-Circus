@@ -15,11 +15,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.MessageRepository;
-import domain.Actor;
-import domain.Administrator;
 import domain.Message;
-
 import domain.SpamWord;
+import domain.Worker;
 
 @Service
 @Transactional
@@ -27,19 +25,22 @@ public class MessageService {
 
 	//Managed repository -------------------
 	@Autowired
-	private MessageRepository				messageRepository;
+	private MessageRepository		messageRepository;
 
 	@Autowired
-	private AdministratorService			administratorService;
+	private AdministratorService	administratorService;
 
 	@Autowired
-	private ActorService					actorService;
+	private ActorService			actorService;
 
 	@Autowired
-	private SpamWordService					spamWordService;
+	private SpamWordService			spamWordService;
 
 	@Autowired
-	private Validator						validator;
+	private Validator				validator;
+
+	@Autowired
+	private WorkerService			workerService;
 
 
 	//Supporting Services ------------------
@@ -136,9 +137,9 @@ public class MessageService {
 		return result;
 	}
 
-/*	public Message reconstruct(final Message msg, final BindingResult binding) {
+	public Message reconstruct(final Message msg, final BindingResult binding) {
 		final Message res = msg;
-		final Actor a = this.actorService.findByPrincipal();
+		final Worker a = this.workerService.findByPrincipal();
 		msg.setSender(a);
 		msg.setOwner(a);
 		final Date moment = new Date();
@@ -157,37 +158,6 @@ public class MessageService {
 		return res;
 	}
 
-	public Message reconstructAdmnistrator(final Message msg, final BindingResult binding) {
-		final Message res = msg;
-		final Administrator admin = this.administratorService.findByPrincipal();
-		res.setDeleted(false);
-		final Date moment = new Date();
-		res.setMoment(moment);
-		res.setSender(admin);
-		final Collection<String> tags = new ArrayList<>();
-		tags.add("SYSTEM");
-		res.setTags(tags);
-		this.isSpam(res);
-		res.setRecipient(admin);
-		res.setOwner(admin);
-		res.setCopy(false);
-		this.validator.validate(res, binding);
-
-		return res;
-	}
-	public Message reconstructAdmnistrator2(final Message msg, final Actor actor, final BindingResult binding) {
-		msg.setRecipient(actor);
-		msg.setOwner(msg.getSender());
-		msg.setCopy(false);
-		return msg;
-	}
-	public Message reconstructAdmnistrator2Copy(final Message msg, final Actor actor, final BindingResult binding) {
-		msg.setRecipient(actor);
-		msg.setOwner(actor);
-		msg.setCopy(true);
-		return msg;
-	}
-
 	public List<String> spamwords(final Collection<SpamWord> sw) {
 
 		Collection<SpamWord> spamwords = new ArrayList<>();
@@ -204,6 +174,38 @@ public class MessageService {
 
 	}
 
+	/*
+	 * public Message reconstructAdmnistrator(final Message msg, final BindingResult binding) {
+	 * final Message res = msg;
+	 * final Administrator admin = this.administratorService.findByPrincipal();
+	 * res.setDeleted(false);
+	 * final Date moment = new Date();
+	 * res.setMoment(moment);
+	 * res.setSender(admin);
+	 * final Collection<String> tags = new ArrayList<>();
+	 * tags.add("SYSTEM");
+	 * res.setTags(tags);
+	 * this.isSpam(res);
+	 * res.setRecipient(admin);
+	 * res.setOwner(admin);
+	 * res.setCopy(false);
+	 * this.validator.validate(res, binding);
+	 * 
+	 * return res;
+	 * }
+	 * public Message reconstructAdmnistrator2(final Message msg, final Actor actor, final BindingResult binding) {
+	 * msg.setRecipient(actor);
+	 * msg.setOwner(msg.getSender());
+	 * msg.setCopy(false);
+	 * return msg;
+	 * }
+	 * public Message reconstructAdmnistrator2Copy(final Message msg, final Actor actor, final BindingResult binding) {
+	 * msg.setRecipient(actor);
+	 * msg.setOwner(actor);
+	 * msg.setCopy(true);
+	 * return msg;
+	 * }
+	 */
 	public void isSpam(final Message message) {
 		Collection<SpamWord> spamwords = new ArrayList<>();
 		spamwords = this.spamWordService.findAll();
@@ -241,24 +243,5 @@ public class MessageService {
 				} else
 					message.setSpam(false);
 	}
-
-	public void changedStatus(final Actor actor) {
-		final Message message = this.create();
-		message.setRecipient(actor);
-		message.setOwner(actor);
-		final Date moment = new Date();
-		message.setMoment(moment);
-		message.setCopy(true);
-		message.setDeleted(false);
-		message.setSender(null);
-		message.setSpam(false);
-		message.setSubject("System message");
-		message.setBody("One of your applications has changed its status. / Una de tus aplicaciones ha cambiado su estado.");
-		final Collection<String> tags = new ArrayList<>();
-		tags.add("SYSTEM");
-		message.setTags(tags);
-		this.save(message);
-
-	}*/
 
 }

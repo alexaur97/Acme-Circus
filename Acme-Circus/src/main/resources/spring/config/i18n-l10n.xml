@@ -34,16 +34,18 @@
 		<value>/views/performance/messages</value>
 		<value>/views/artist/messages</value>
 		<value>/views/owner/messages</value>
+		<value>/views/organizer/messages</value>
 		<value>/views/actor/messages</value>
 		<value>/views/categoryPrice/messages</value>
 		<value>/views/stats/messages</value>
+		<value>/views/message/messages</value>
 		<value>/views/banner/messages</value>
 		<value>/views/ticket/messages</value>
 		<value>/views/purchase/messages</value>
 		<value>/views/performance/messages</value>
-		<value>/views/fee/messages</value>	
+		<value>/views/fee/messages</value>
 		<value>/views/offer/messages</value>
-		
+
 
 
 	</util:list>
