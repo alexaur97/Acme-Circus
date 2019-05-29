@@ -67,10 +67,10 @@ public class PerformanceService {
 		return result;
 	}
 
-	public void save(final Performance performance) {
+	public Performance save(final Performance performance) {
 		Assert.notNull(performance);
 
-		this.performanceRepository.save(performance);
+		return this.performanceRepository.save(performance);
 	}
 
 	public void delete(final Performance performance) {
@@ -101,5 +101,15 @@ public class PerformanceService {
 
 		this.validator.validate(res, binding);
 		return res;
+	}
+	public Performance copy(final Performance performance) {
+		final Performance copia = new Performance();
+		copia.setArtist(performance.getArtist());
+		copia.setCopy(true);
+		copia.setName(performance.getName());
+		copia.setPersons(performance.getPersons());
+		copia.setTags(performance.getTags());
+		copia.setVideo(performance.getVideo());
+		return this.save(copia);
 	}
 }

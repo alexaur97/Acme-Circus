@@ -91,22 +91,21 @@ public class OfferOrganizerController extends AbstractController {
 			result.addObject("performances", performances);
 			result.addObject("tours", tours);
 			result.addObject("offer", offer);
-		} else {
-			//			try {
-			final Offer offerF = this.offerService.reconstruct(offer, binding);
-			final Offer offerFinal = this.offerService.save(offerF);
+		} else
+			try {
+				final Offer offerF = this.offerService.reconstruct(offer, binding);
+				final Offer offerFinal = this.offerService.save(offerF);
 
-			final Tour tour = offer.getTour();
-			tour.getOffers().add(offerFinal);
+				final Tour tour = offer.getTour();
+				tour.getOffers().add(offerFinal);
 
-			this.tourService.save(tour);
-			result = new ModelAndView("redirect:/offer/organizer/list.do");
+				this.tourService.save(tour);
+				result = new ModelAndView("redirect:/offer/organizer/list.do");
 
-			//			} catch (final Throwable oops) {
-			//				result = new ModelAndView("redirect:/#");
-			//
-			//			}
-		}
+			} catch (final Throwable oops) {
+				result = new ModelAndView("redirect:/#");
+
+			}
 		return result;
 	}
 }

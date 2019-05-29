@@ -100,6 +100,9 @@
 		<security:intercept-url pattern="/performance/artist/list.do" access="hasRole('ARTIST')" />
 		<security:intercept-url pattern="/performance/artist/edit.do" access="hasRole('ARTIST')" />
 		<security:intercept-url pattern="/performance/artist/create.do" access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/offer/artist/list.do" access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/offer/artist/reject.do" access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/offer/artist/accept.do" access="hasRole('ARTIST')" />
 
 
 		<security:intercept-url pattern="/profile/action-1.do" access="isAuthenticated()" />

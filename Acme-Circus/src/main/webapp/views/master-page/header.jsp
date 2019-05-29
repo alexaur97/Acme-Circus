@@ -34,6 +34,9 @@
 			<li><a href="offer/organizer/list.do"><spring:message code="master.page.offers" /></a></li>
 		</security:authorize>
 		<security:authorize access="hasRole('ARTIST')">
+			<li><a href="offer/artist/list.do"><spring:message code="master.page.offers" /></a></li>
+		</security:authorize>
+		<security:authorize access="hasRole('ARTIST')">
 			<li><a href="performance/artist/list.do"><spring:message code="master.page.performances" /></a></li>
 		</security:authorize>
 		<!-- Do not forget the "fNiv" class for the first level links !! -->

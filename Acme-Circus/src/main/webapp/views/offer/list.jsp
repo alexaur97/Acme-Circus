@@ -27,11 +27,24 @@
 		<display:column titleKey="offer.lastUpdate" property="lastUpdate" ></display:column>
 		<display:column titleKey="offer.conditions" property="conditions" ></display:column>
 		<display:column titleKey="offer.money" property="money" ></display:column>
-
+<security:authorize access="hasRole('ARTIST')">
+<jstl:if test="${noVacio}">
+	<jstl:if test="${offers.status==s}">
+	<display:column titleKey="offer.accept">		
+			<acme:button url="/performance/artist/edit.do?performanceId=${performances.id}" code="offer.accept" />
+	</display:column>
+	<display:column titleKey="offer.reject">		
+			<acme:button url="/offer/artist/reject.do?offerId=${offers.id}" code="offer.reject" />
+	</display:column>
+	</jstl:if>
+		</jstl:if>
+	
+	</security:authorize>
 </display:table>
 </br>
+<security:authorize access="hasRole('ORGANIZER')">
 	<acme:button url="/offer/organizer/create.do" code="offer.create" />
-
+</security:authorize>
 
 
 

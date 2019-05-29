@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.OfferRepository;
+import domain.Artist;
 import domain.Offer;
 import forms.OfferForm;
 
@@ -86,18 +87,30 @@ public class OfferService {
 	public Collection<Offer> findByOrg(final int orgId) {
 		return this.offerRepository.findByOrg(orgId);
 	}
+	public Collection<Offer> findByArt(final int orgId) {
+		return this.offerRepository.findByArt(orgId);
+	}
+
 	//Other Methods--------------------
 	public Offer reconstruct(final OfferForm offer, final BindingResult binding) {
 		final Offer result = new Offer();
-		//		result.setId(offer.getId());
 		result.setMoney(offer.getMoney());
 		result.setObservations(offer.getObservations());
 		result.setPerformance(offer.getPerformance());
-		//		result.setVersion(offer.getVersion());
 		result.setStatus("PENDING");
 		final Date a = new Date();
 		result.setLastUpdate(a);
 		return result;
 
+	}
+	public Offer rejectResticc(final int id) {
+		final Artist a = this.artistService.findByPrincipal();
+		final Collection<Offer> offers = this.findByArt(a.getId());
+		final Offer offer = this.offerRepository.findOne(id);
+		Assert.isTrue(offers.contains(offer));
+		Assert.isTrue(offer.getStatus().equals("PENDING"));
+		offer.setStatus("REJECTED");
+		offer.setLastUpdate(new Date());
+		return offer;
 	}
 }
