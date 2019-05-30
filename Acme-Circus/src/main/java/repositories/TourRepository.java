@@ -2,6 +2,7 @@
 package repositories;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -28,4 +29,13 @@ public interface TourRepository extends JpaRepository<Tour, Integer> {
 
 	@Query("select t from Tour t where t.organizers.circus.id=?1")
 	Collection<Tour> findByCircus(int id);
+	//	@Query("select t from Tour t join t.offers o where o.performance.artist.id=?1 and o.status='CONFIRMED' and((t.startDate<=?2 and t.endDate>=?3)or(t.startDate<=?2 and t.endDate<=?3 and t.endDate>=?2)or (t.startDate>=?2 and t.startDate<=?3 and t.endDate<=?3 and t.endDate>=?2)or(t.startDate>=?2 and t.startDate<=?3 and t.endDate>=?2))")
+	//	Collection<Tour> findConfirmedAndNotTimeByArt(int artId, Date startDate, Date endDate);
+	//	
+	@Query("select t from Tour t join t.offers o where o.performance.artist.id=?1 and o.status='CONFIRMED' and ((t.startDate between ?2 and ?3) or (t.endDate between ?2 and ?3)or(t.startDate>= ?2 and t.endDate<=?3))")
+	Collection<Tour> findConfirmedAndNotTimeByArt(int artId, Date startDate, Date endDate, Date actual);
+
+	@Query("select t from Tour t join t.offers o where o.id=?1")
+	Tour findByOffer(int artId);
+
 }

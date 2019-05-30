@@ -29,19 +29,38 @@
 		<display:column titleKey="offer.conditions" property="conditions" ></display:column>
 		<display:column titleKey="offer.money" property="money" ></display:column>
 <security:authorize access="hasRole('ARTIST')">
-<jstl:if test="${noVacio}">
-	<jstl:if test="${offers.status==s}">
-	<display:column titleKey="offer.accept">		
+
+	<display:column titleKey="offer.accept">
+	<jstl:if test="${noVacio}">
+	<jstl:if test="${offers.status==s}">		
 			<acme:button url="/offer/artist/accept.do?offerId=${offers.id}" code="offer.accept" />
-	</display:column>
-	<display:column titleKey="offer.reject">		
-			<acme:button url="/offer/artist/reject.do?offerId=${offers.id}" code="offer.reject" />
-	</display:column>
 	</jstl:if>
 		</jstl:if>
+	</display:column>
+	
+	<display:column titleKey="offer.reject">	
+	<jstl:if test="${noVacio}">
+	<jstl:if test="${offers.status==s}">	
+			<acme:button url="/offer/artist/reject.do?offerId=${offers.id}" code="offer.reject" />
+	</jstl:if>
+		</jstl:if>
+	</display:column>
+	
 	
 	</security:authorize>
 </display:table>
+<jstl:if test="${e}">	
+</br>
+						<p style="color:red">
+						<spring:message  code = "offer.message.date"/>	
+						</p>	
+						</jstl:if>
+						<jstl:if test="${time}">	
+</br>
+						<p style="color:red">
+						<spring:message  code = "offer.message.date"/>	
+						</p>	
+						</jstl:if>
 </br>
 <security:authorize access="hasRole('ORGANIZER')">
 	<acme:button url="/offer/organizer/create.do" code="offer.create" />

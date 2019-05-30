@@ -25,7 +25,7 @@
 					modelAttribute="offerForm" class="form-horizontal" method="post">
 
 						
-						<acme:textbox type="number" code="offer.money" path="money" />							
+						<acme:textbox  code="offer.money" path="money" />							
 						<acme:select items="${performances}" itemLabel="name" code="offer.performance" path="performance"/>
 												<acme:select items="${tours}" itemLabel="name" code="offer.tour" path="tour"/>
 												<acme:textbox code="offer.observation" path="observations" />
@@ -49,8 +49,10 @@
 						
 						<acme:submit name="save" code="performance.save" />
 							<jstl:if test="${blanco}">
-						
-						<spring:message code = "offer.message.error"/>	
+						</br>
+						<p style="color:red">
+						<spring:message  code = "offer.message.error"/>	
+						</p>
 								</jstl:if>
 						
 				</form:form>

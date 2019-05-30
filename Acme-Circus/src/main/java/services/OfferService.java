@@ -14,6 +14,7 @@ import org.springframework.validation.Validator;
 import repositories.OfferRepository;
 import domain.Artist;
 import domain.Offer;
+import domain.Tour;
 import forms.OfferForm;
 
 @Service
@@ -32,6 +33,8 @@ public class OfferService {
 	private ArtistService		artistService;
 	@Autowired
 	private PerformanceService	performance;
+	@Autowired
+	private TourService			tourService;
 
 
 	//COnstructors -------------------------
@@ -117,12 +120,18 @@ public class OfferService {
 		offer.setLastUpdate(new Date());
 		return offer;
 	}
+
 	public Offer acceptRestricGet(final int id) {
+		final int artId = this.artistService.findByPrincipal().getId();
+		final Tour tour = this.tourService.findByOffer(id);
+		final Collection<Tour> toursMal = this.tourService.findConfirmedAndNotTimeByArt(artId, tour.getStartDate(), tour.getEndDate());
+		Assert.isTrue(toursMal.isEmpty());
 		final Artist a = this.artistService.findByPrincipal();
 		final Collection<Offer> offers = this.findByArt(a.getId());
 		final Offer offer = this.offerRepository.findOne(id);
 		Assert.isTrue(offers.contains(offer));
 		Assert.isTrue(offer.getStatus().equals("PENDING"));
+		Assert.isTrue(tour.getStartDate().after(new Date()));
 		return offer;
 	}
 	public Offer reconstructArtist(final Offer offer, final BindingResult binding) {
