@@ -117,14 +117,26 @@ public class OfferService {
 		offer.setLastUpdate(new Date());
 		return offer;
 	}
-	public Offer rejectAccept(final int id) {
+	public Offer acceptRestricGet(final int id) {
 		final Artist a = this.artistService.findByPrincipal();
 		final Collection<Offer> offers = this.findByArt(a.getId());
 		final Offer offer = this.offerRepository.findOne(id);
 		Assert.isTrue(offers.contains(offer));
 		Assert.isTrue(offer.getStatus().equals("PENDING"));
-		offer.setStatus("ACCEPTED");
-		offer.setLastUpdate(new Date());
 		return offer;
+	}
+	public Offer reconstructArtist(final Offer offer, final BindingResult binding) {
+		final Offer result = offer;
+		final Offer offerDb = this.findOne(result.getId());
+		result.setMoney(offerDb.getMoney());
+		result.setObservations(offerDb.getObservations());
+		result.setPerformance(offerDb.getPerformance());
+		result.setStatus("WAITINGFORCONFIMATION");
+		final Date a = new Date();
+		result.setLastUpdate(a);
+		this.validator.validate(result, binding);
+
+		return result;
+
 	}
 }

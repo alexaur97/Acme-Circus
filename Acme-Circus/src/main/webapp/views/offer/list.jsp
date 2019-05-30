@@ -32,7 +32,7 @@
 <jstl:if test="${noVacio}">
 	<jstl:if test="${offers.status==s}">
 	<display:column titleKey="offer.accept">		
-			<acme:button url="/performance/artist/edit.do?performanceId=${performances.id}" code="offer.accept" />
+			<acme:button url="/offer/artist/accept.do?offerId=${offers.id}" code="offer.accept" />
 	</display:column>
 	<display:column titleKey="offer.reject">		
 			<acme:button url="/offer/artist/reject.do?offerId=${offers.id}" code="offer.reject" />

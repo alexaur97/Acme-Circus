@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,9 +22,6 @@ import services.TourService;
 import controllers.AbstractController;
 import domain.Artist;
 import domain.Offer;
-import domain.Performance;
-import domain.Tour;
-import forms.OfferForm;
 
 @Controller
 @RequestMapping("offer/artist")
@@ -78,20 +76,16 @@ public class OfferArtistController extends AbstractController {
 		return result;
 	}
 	@RequestMapping(value = "/accept", method = RequestMethod.GET)
-	public ModelAndView accept() {
+	public ModelAndView accept(@RequestParam final int offerId) {
 
 		ModelAndView result;
 
 		try {
-			this.organizerService.findByPrincipal();
-			final OfferForm offer;
-			offer = new OfferForm();
-			final Collection<Tour> tours = this.tourService.findAllAvailable();
-			final Collection<Performance> performances = this.performanceService.findAllNotCopy();
+			this.artistService.findByPrincipal();
+			this.offerService.acceptRestricGet(offerId);
+			final Offer offer = this.offerService.findOne(offerId);
 			result = new ModelAndView("offer/edit");
 			result.addObject("offerForm", offer);
-			result.addObject("performances", performances);
-			result.addObject("tours", tours);
 
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/#");
@@ -100,30 +94,35 @@ public class OfferArtistController extends AbstractController {
 
 		return result;
 	}
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ModelAndView save(@Valid final OfferForm offer, final BindingResult binding) {
+	@RequestMapping(value = "/accept", method = RequestMethod.POST)
+	public ModelAndView accept(@Valid final Offer offer, final BindingResult binding) {
 
 		ModelAndView result;
+		final Offer offerF = this.offerService.reconstructArtist(offer, binding);
 
 		if (binding.hasErrors()) {
-			final Collection<Tour> tours = this.tourService.findAllAvailable();
-			final Collection<Performance> performances = this.performanceService.findAllNotCopy();
 			result = new ModelAndView("offer/edit");
-			result.addObject("performances", performances);
-			result.addObject("tours", tours);
-			result.addObject("offer", offer);
+			result.addObject("offerForm", offer);
 		} else
 			try {
-				final Offer offerF = this.offerService.reconstruct(offer, binding);
+				Assert.isNull(offerF.getConditions());
+				Assert.isTrue(!offerF.getConditions().isEmpty());
 				final Offer offerFinal = this.offerService.save(offerF);
-
-				final Tour tour = offer.getTour();
-				tour.getOffers().add(offerFinal);
-
-				this.tourService.save(tour);
 				result = new ModelAndView("redirect:/offer/organizer/list.do");
 
 			} catch (final Throwable oops) {
+				if (offerF.getConditions() == null) {
+					result = new ModelAndView("offer/edit");
+					result.addObject("offerForm", offerF);
+					result.addObject("blanco", true);
+
+				}
+				if (!offerF.getConditions().isEmpty()) {
+					result = new ModelAndView("offer/edit");
+					result.addObject("offer", offerF);
+					result.addObject("blanco", true);
+
+				}
 				result = new ModelAndView("redirect:/#");
 
 			}

@@ -19,6 +19,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<security:authorize access="hasRole('ORGANIZER')">
 
 <form:form action="offer/organizer/create.do"
 					modelAttribute="offerForm" class="form-horizontal" method="post">
@@ -33,7 +34,27 @@
 						
 						<acme:submit name="save" code="performance.save" />
 				</form:form>
+	</security:authorize>
+<security:authorize access="hasRole('ARTIST')">
 
+<form:form action="offer/artist/accept.do"
+					modelAttribute="offerForm" class="form-horizontal" method="post">
+
+						<form:hidden path="id"/>
+						<form:hidden path="version"/>
+						
+						<acme:textbox code="offer.conditions" path="conditions" />
+						
+						<spring:message code = "offer.message.comma"/>	
+						
+						<acme:submit name="save" code="performance.save" />
+							<jstl:if test="${blanco}">
+						
+						<spring:message code = "offer.message.error"/>	
+								</jstl:if>
+						
+				</form:form>
+	</security:authorize>
 
 
 
