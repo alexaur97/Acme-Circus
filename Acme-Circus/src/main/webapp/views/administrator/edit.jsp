@@ -88,12 +88,27 @@
 <script type="text/javascript">
 		function validatePhoneNumber() {
 			var phoneNumber = document.getElementById("phone");
-			if (!(phoneNumber.value).match("\\+\\d{2}([ ]{1}[(]{1}\\d{1,3}[)]{1})? \\d{4,}|\\+\\d{2} \\d{4,}|\\d{4,}|Null")) { return confirm("Phone number doesn't adhere to the correct pattern (9 Numbers - 123456789). Do you want to continue?"); }
+			if ((phoneNumber.value != "")) {
+					if (!(phoneNumber.value).match("[0-9]{10}")) {
+						if (!(phoneNumber.value).match("[0-9]{9}")) {
+							return confirm("Phone number doesn't adhere to the correct pattern (9 Numbers - 123456789). Do you want to continue?"); 
+						}
+					}else{
+						return confirm("Phone number doesn't adhere to the correct pattern (9 Numbers - 123456789). Do you want to continue?"); 
+					}								
+			}
 		}
-
 		function validatePhoneNumberEs() {
 			var phoneNumber = document.getElementById("phone");
-			if (!(phoneNumber.value).match("\\+\\d{2}([ ]{1}[(]{1}\\d{1,3}[)]{1})? \\d{4,}|\\+\\d{2} \\d{4,}|\\d{4,}|Null")) { return confirm("El teléfono no se ajusta al patrón correcto (9 Números - 123456789). ¿Desea continuar?"); }
+			if ((phoneNumber.value != "")) {
+				if (!(phoneNumber.value).match("[0-9]{10}")) {
+					if (!(phoneNumber.value).match("[0-9]{9}")) {
+						return confirm("Phone number doesn't adhere to the correct pattern (9 Numbers - 123456789). Do you want to continue?"); 
+					}
+				}else{
+					return confirm("El teléfono no se ajusta al patrón correcto (9 Números - 123456789). ¿Desea continuar?"); 
+				}
+			}
 		}
 	</script>
 </form:form>
