@@ -52,6 +52,13 @@ public class PurchaseAttendeeController extends AbstractController {
 		try {
 			final Stop stop = this.stopService.findOne(stopId);
 			Assert.isTrue(stop.getSpotsAvailable() > 0);
+
+			Integer spotAvailable;
+			if (stop.getSpotsAvailable() >= 10)
+				spotAvailable = 10;
+			else
+				spotAvailable = stop.getSpotsAvailable();
+
 			final PurchaseAttendeeForm purchaseAttendeeForm = new PurchaseAttendeeForm();
 
 			final Collection<CategoryPrice> categories = this.categoryPriceService.findByStop(stopId);
@@ -59,6 +66,7 @@ public class PurchaseAttendeeController extends AbstractController {
 			res.addObject("purchaseAttendeeForm", purchaseAttendeeForm);
 			res.addObject("categories", categories);
 			res.addObject("stopId", stopId);
+			res.addObject("spotsAvailable", spotAvailable);
 		} catch (final Throwable oops) {
 			res = new ModelAndView("redirect:/#");
 		}
@@ -72,11 +80,20 @@ public class PurchaseAttendeeController extends AbstractController {
 		if (binding.hasErrors()) {
 			final Collection<CategoryPrice> categories = this.categoryPriceService.findByStop(stopId);
 
+			final Stop stop = this.stopService.findOne(stopId);
+			Assert.isTrue(stop.getSpotsAvailable() > 0);
+
+			Integer spotAvailable;
+			if (stop.getSpotsAvailable() >= 10)
+				spotAvailable = 10;
+			else
+				spotAvailable = stop.getSpotsAvailable();
+
 			res = new ModelAndView("purchase/create");
 			res.addObject("purchaseAttendeeForm", purchaseAttendeeForm);
 			res.addObject("categories", categories);
 			res.addObject("stopId", stopId);
-
+			res.addObject("spotsAvailable", spotAvailable);
 		}
 
 		else
@@ -84,6 +101,9 @@ public class PurchaseAttendeeController extends AbstractController {
 			try {
 				final Purchase purchase;
 				final Collection<Ticket> tickets;
+				final Stop stop = this.stopService.findOne(stopId);
+
+				Assert.isTrue(stop.getSpotsAvailable() >= purchaseAttendeeForm.getNum());
 
 				tickets = this.tickerService.reconstruct(purchaseAttendeeForm);
 
@@ -100,12 +120,26 @@ public class PurchaseAttendeeController extends AbstractController {
 
 			} catch (final Throwable oops) {
 				final Collection<CategoryPrice> categories = this.categoryPriceService.findByStop(stopId);
+				final Stop stop = this.stopService.findOne(stopId);
 
 				res = new ModelAndView("purchase/create");
 				res.addObject("purchaseAttendeeForm", purchaseAttendeeForm);
 				res.addObject("categories", categories);
 				res.addObject("stopId", stopId);
-				res.addObject("message", "purchase.commit.error");
+				if (!(stop.getSpotsAvailable() >= purchaseAttendeeForm.getNum()))
+					res.addObject("message", "purchase.commit.error.limit");
+
+				else
+					res.addObject("message", "purchase.commit.error");
+
+				Assert.isTrue(stop.getSpotsAvailable() > 0);
+
+				Integer spotAvailable;
+				if (stop.getSpotsAvailable() >= 10)
+					spotAvailable = 10;
+				else
+					spotAvailable = stop.getSpotsAvailable();
+				res.addObject("spotsAvailable", spotAvailable);
 
 			}
 

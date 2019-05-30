@@ -48,6 +48,7 @@ public class BannerOwnerController extends AbstractController {
 
 			res = new ModelAndView("banner/myList");
 			res.addObject("banners", banners);
+			res.addObject("requestURI", "banner/owner/myList.do");
 		} catch (final Throwable oops) {
 			res = new ModelAndView("redirect:/#");
 		}
@@ -116,6 +117,9 @@ public class BannerOwnerController extends AbstractController {
 					res = this.createEditModelAndView(banner, "banner.commit.errorEndDate");
 				else if (banner.getStartDate().before(new Date()))
 					res = this.createEditModelAndView(banner, "banner.commit.errorStartDate");
+				else if (banner.getTour() == null)
+					res = this.createEditModelAndView(banner, "banner.commit.error.tourEmpty");
+
 				else
 					res = this.createEditModelAndView(banner, "banner.commit.error");
 
@@ -133,11 +137,15 @@ public class BannerOwnerController extends AbstractController {
 		final Owner owner = this.ownerService.findByPrincipal();
 		final Collection<Tour> tours = this.tourService.findByCircus(owner.getCircus().getId());
 
+		Boolean a = false;
+
 		res = new ModelAndView("banner/edit");
 		res.addObject("banner", banner);
 		res.addObject("tours", tours);
 		res.addObject("message", messageCode);
-
+		if (tours.isEmpty())
+			a = true;
+		res.addObject("a", a);
 		return res;
 	}
 

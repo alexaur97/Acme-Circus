@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.CircusRepository;
 import domain.Circus;
@@ -25,6 +27,9 @@ public class CircusService {
 
 	@Autowired
 	private AdministratorService	administratorService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	//Supporting Services ------------------
@@ -75,12 +80,13 @@ public class CircusService {
 		return res;
 	}
 
-	public Circus reconstruct(final Circus circus) {
+	public Circus reconstruct(final Circus circus, final BindingResult binding) {
 		final Circus res = circus;
 		final Circus c = this.findOne(circus.getId());
 		if (circus.getId() != 0)
 			res.setActive(c.getActive());
 
+		this.validator.validate(circus, binding);
 		return res;
 	}
 

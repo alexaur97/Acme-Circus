@@ -74,6 +74,13 @@
 	</display:column>	
 	
 	</security:authorize>
+
+	<security:authorize access="hasRole('ATTENDEE')">
+	<display:column titleKey="stop.purchase">
+	<acme:cancel url="/purchase/attendee/create.do?stopId=${stop.id}"
+			code="stop.purchase" />
+	</display:column>	
+</security:authorize>
 </display:table>
 
 	<security:authorize access="hasRole('ORGANIZER')">
@@ -81,8 +88,4 @@
 			code="stop.create" />
 </security:authorize>
 
-<security:authorize access="hasRole('ATTENDEE')">
 
-	<acme:cancel url="/purchase/attendee/create.do?stopId=${stop.id}"
-			code="stop.purchase" />
-</security:authorize>
