@@ -755,7 +755,7 @@
 		<property name="location" value="Reina Mercedes"/>
 		<property name="date" value="10/10/2021" />
 		<property name="spotsTotal" value="500" />
-		<property name="spotsAvailable" value="450" />
+		<property name="spotsAvailable" value="5" />
 		<property name="tour" ref="tour1" />
 	</bean>
 	

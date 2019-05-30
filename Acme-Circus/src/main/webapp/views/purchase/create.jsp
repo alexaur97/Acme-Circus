@@ -32,7 +32,8 @@
 
 						
 								
-						<acme:textbox code="purchase.num" path="num" />
+						<acme:textbox code="purchase.num" path="num" /> 
+						<spring:message code ="limit.tickets" />${spotsAvailable} <spring:message code="purchase.tickets"/>
 						<br>
 						<br>
 						

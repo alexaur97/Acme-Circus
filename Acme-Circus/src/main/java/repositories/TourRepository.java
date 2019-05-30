@@ -12,7 +12,7 @@ import domain.Tour;
 @Repository
 public interface TourRepository extends JpaRepository<Tour, Integer> {
 
-	@Query("select t from Tour t where t.validated = true")
+	@Query("select s.tour from Stop s where s.tour.validated = true and s.spotsAvailable>0")
 	Collection<Tour> findAllAvailable();
 	@Query("select t from Tour t where (t.validated = true and t.organizers.id=?1)")
 	Collection<Tour> findAllAvailableByOrg(int id);

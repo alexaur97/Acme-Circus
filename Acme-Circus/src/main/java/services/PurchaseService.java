@@ -76,6 +76,8 @@ public class PurchaseService {
 		purchase.setCreditCard(attendee.getCreditCard());
 		purchase.setStop(form.getCategory().getStop());
 
+		final int resta = purchase.getStop().getSpotsAvailable();
+		purchase.getStop().setSpotsAvailable(resta - form.getNum());
 		final Double i = form.getNum() * form.getCategory().getAmount();
 		purchase.setTotalPrice(i);
 
