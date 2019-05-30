@@ -70,7 +70,7 @@ public class CircusOwnerController extends AbstractController {
 	public ModelAndView save(@ModelAttribute("circus") Circus circus, final BindingResult binding) {
 		ModelAndView res;
 
-		circus = this.circusService.reconstruct(circus);
+		circus = this.circusService.reconstruct(circus, binding);
 
 		if (binding.hasErrors())
 			res = this.createEditModelAndView(circus);

@@ -261,6 +261,24 @@
 		<property name="history" value="Get ready to be afraid. More than 100 years of history." />
 		<property name="active" value="false" />
 	</bean>
+	<bean id="circus4" class="domain.Circus">
+		<property name="VAT" value="ESG0063121E" />
+		<property name="name" value="The circus Mariano" />
+		<property name="history" value="Get ready to be afraid. More than 100 years of history." />
+		<property name="active" value="true" />
+	</bean>
+	<bean id="circus5" class="domain.Circus">
+		<property name="VAT" value="ESG0063121Q" />
+		<property name="name" value="The best circus" />
+		<property name="history" value="Get ready to be afraid. More than 100 years of history." />
+		<property name="active" value="true" />
+	</bean>
+	<bean id="circus6" class="domain.Circus">
+		<property name="VAT" value="ESG0063121Z" />
+		<property name="name" value="The circus" />
+		<property name="history" value="Get ready to be afraid. More than 100 years of history." />
+		<property name="active" value="true" />
+	</bean>
 
 	<!-- CreditCards -->
 	<bean id="creditCard1" class="domain.CreditCard">

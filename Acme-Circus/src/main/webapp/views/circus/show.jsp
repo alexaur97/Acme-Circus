@@ -28,7 +28,9 @@
 <br/>
 	
 	
-	
+<security:authorize access="hasRole('ADMIN')">
+ <acme:cancel url="/circus/administrator/list.do" code="circus.back" />
+</security:authorize>
+	<security:authorize access="hasAnyRole('WORKER','ATTENDEE','ARTIST')" >
  <acme:cancel url="/circus/list.do" code="circus.back" />
-
-	
+</security:authorize>

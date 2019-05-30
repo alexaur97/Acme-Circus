@@ -27,8 +27,10 @@
 <display:table pagesize="5" name="circus" id="circus"
 	requestURI="${requestURI}" class="displaytag table">
 	<display:column titleKey="circus.name" property="name" />
+	
+	<security:authorize access="hasRole('ADMIN')">
 	<display:column titleKey="circus.active" property= "active"/>
-
+	</security:authorize>
 
 		<display:column titleKey="circus.history">
 		<acme:cancel url="/circus/show.do?circusId=${circus.id}"
@@ -36,10 +38,12 @@
 	</display:column>	
 	
 	<security:authorize access="hasRole('ADMIN')">
+	<jstl:if test="${circus.active eq true}">
 	<display:column titleKey="circus.deactivate">
 		<acme:cancel url="/circus/administrator/deactivate.do?circusId=${circus.id}"
 			code="circus.deactivate" />
-	</display:column>	
+	</display:column>
+	</jstl:if>	
 	</security:authorize>
 </display:table>
 

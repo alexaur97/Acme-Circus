@@ -42,11 +42,15 @@
 						<br>
 						
 						
+						
 						<acme:select items="${tours}" itemLabel="name" code="banner.tour" path="tour"/>
 						
 						
 						
 						<br>
+						<c:if test="${a eq true}" >
+							<spring:message code="banner.commit.error.noTour"/>
+						</c:if>
 						<br>
 
 						
