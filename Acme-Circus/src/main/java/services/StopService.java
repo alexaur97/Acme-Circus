@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.StopRepository;
+import domain.Organizer;
 import domain.Stop;
 
 @Service
@@ -17,11 +20,17 @@ public class StopService {
 
 	//Managed repository -------------------
 	@Autowired
-	private StopRepository	stopRepository;
+	private StopRepository		stopRepository;
 
 	//Supporting Services ------------------
 	@Autowired
-	private TourService		tourService;
+	private TourService			tourService;
+
+	@Autowired
+	private OrganizerService	organizerService;
+
+	@Autowired
+	private Validator			validator;
 
 
 	//COnstructors -------------------------
@@ -58,10 +67,23 @@ public class StopService {
 	public void save(final Stop stop) {
 		Assert.notNull(stop);
 
+		final Organizer o = this.organizerService.findByPrincipal();
+		final Boolean b = stop.getTour().getOrganizers().equals(o);
+		Assert.isTrue(b);
+
+		Assert.isTrue(!stop.getTour().validated);
+
 		this.stopRepository.save(stop);
 	}
 
 	public void delete(final Stop stop) {
+
+		Assert.notNull(stop);
+		final Organizer o = this.organizerService.findByPrincipal();
+		final Boolean b = stop.getTour().getOrganizers().equals(o);
+		Assert.isTrue(b);
+		Assert.isTrue(!stop.getTour().validated);
+
 		this.stopRepository.delete(stop);
 	}
 
@@ -98,6 +120,14 @@ public class StopService {
 		else
 			result = a / b;
 		return result;
+	}
+
+	public Stop reconstruct(final Stop stop, final BindingResult binding) {
+
+		final Stop result = stop;
+		this.validator.validate(result, binding);
+		return result;
+
 	}
 
 	//Other Methods--------------------

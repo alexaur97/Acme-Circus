@@ -31,7 +31,55 @@
 	<display:column titleKey="stop.location" property= "location"/>
 	<display:column titleKey="stop.date" property= "date"/>
 
+	<security:authorize access="hasRole('ORGANIZER')">
+	
+
+	<display:column titleKey="stop.tour.validated">
+	
+		
+	<jstl:if test="${stop.tour.validated}">
+			<h3 style="color: #008000;">
+				<spring:message code="stop.yes" />
+			</h3>
+		</jstl:if>
+		<jstl:if test="${!stop.tour.validated}">
+			<h3 style="color: #CB3234;">
+				<spring:message code="stop.no" />
+			</h3>
+		</jstl:if>
+		</display:column>
+
+</security:authorize>	
+
+<display:column titleKey="stop.show">
+
+		<acme:cancel url="/stop/show.do?stopId=${stop.id}"
+
+			code="stop.show" />
+
+	</display:column>	
+	
+	<security:authorize access="hasRole('ORGANIZER')">
+	
+	<display:column titleKey="stop.edit">
+			
+			<jstl:if test="${!stop.tour.validated}">
+	
+		<acme:cancel url="/stop/organizer/edit.do?stopId=${stop.id}"
+
+			code="tour.edit" />
+			
+		</jstl:if>
+
+	</display:column>	
+	
+	</security:authorize>
 </display:table>
+
+	<security:authorize access="hasRole('ORGANIZER')">
+<acme:cancel url="/stop/organizer/create.do?stopId=${stop.id}"
+			code="stop.create" />
+</security:authorize>
 
 <security:authorize access="hasRole('ATTENDEE')">
 

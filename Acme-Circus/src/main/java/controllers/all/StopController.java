@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.OrganizerService;
 import services.StopService;
 import domain.Stop;
 
@@ -19,19 +20,41 @@ import domain.Stop;
 public class StopController {
 
 	@Autowired
-	StopService	stopService;
+	StopService					stopService;
+
+	@Autowired
+	private OrganizerService	organizerService;
 
 
 	@RequestMapping(value = "/listByTour", method = RequestMethod.GET)
 	public ModelAndView list(final int tourId) {
 		ModelAndView result;
 		try {
+			Assert.notNull(tourId);
 			Collection<Stop> stops;
 			stops = this.stopService.findStopsByTour(tourId);
 			result = new ModelAndView("stop/list");
 			result.addObject("requestURI", "stop/listByTour.do");
 			result.addObject("stops", stops);
 
+		} catch (final Exception e) {
+			result = new ModelAndView("redirect:/#");
+		}
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView listOrganizer() {
+		ModelAndView result;
+		try {
+			Collection<Stop> stops;
+			final int id = this.organizerService.findByPrincipal().getCircus().getId();
+			stops = this.stopService.findAllStopsByCircus(id);
+			result = new ModelAndView("stop/list");
+			result.addObject("requestURI", "stop/list.do");
+			result.addObject("stops", stops);
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:/#");
 		}

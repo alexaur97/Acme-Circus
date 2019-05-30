@@ -26,32 +26,34 @@
 		<div class="col-sm-12 col-md-12 col-lg-12">
 			<fieldset class="col-md-6 col-md-offset-3">
 
-				<form:form action="tour/organizer/edit.do"
-					modelAttribute="tour" class="form-horizontal" method="post">
+				<form:form action="stop/organizer/edit.do"
+					modelAttribute="stop" class="form-horizontal" method="post">
 					<div class="form-group ">
 						
 					<form:hidden path="id"/>
 						<form:hidden path="version"/>
 								
-						<acme:textbox code="tour.name" path="name" />
-						<acme:textarea code="tour.description" path="description" />
-						<acme:textbox placeholder="yyyy-MM-dd" code="tour.startDate" path="startDate" />
-						<acme:textbox placeholder="yyyy-MM-dd" code="tour.endDate" path="endDate" />
-						<acme:textbox code="tour.link" path="link" />
-						<form:select  id="categoryTour" code="tour.categoryTour" path="categoryTour">
-							<form:options items="${categoryTours}" itemLabel="name" itemValue="id" />
+						<acme:textbox code="stop.city" path="city" />
+						<acme:textbox code="stop.country" path="country" />
+						<acme:textbox code="stop.location" path="location" />
+						<acme:textbox placeholder="yyyy-MM-dd" code="stop.date" path="date" />
+						<acme:textbox code="stop.spotsTotal" path="spotsTotal" />
+						<acme:textbox code="stop.spotsAvailable" path="spotsAvailable" />
+						
+						<form:select  id="tour" code="stop.tour" path="tour">
+							<form:options items="${tours}" itemLabel="name" itemValue="id" />
 						</form:select>
 						
 						
-						<acme:submit name="save" code="tour.save" />
+						<acme:submit name="save" code="stop.save" />
 						
-						<acme:cancel url="/tour/organizer/list.do"
-							code="tour.cancel" />
+						<acme:cancel url="/stop/organizer/list.do"
+							code="stop.cancel" />
 							
 						
-						 <jstl:if test="${tour.id!=0}">
-							<acme:submitConfirmation name="delete" code="tour.delete"
-								onclick="tour.delete.confirmation" />
+						 <jstl:if test="${stop.id!=0}">
+							<acme:submitConfirmation name="delete" code="stop.delete"
+								onclick="stop.delete.confirmation" />
 						</jstl:if> 
 			
 					</div>

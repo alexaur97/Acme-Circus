@@ -38,11 +38,11 @@
 
 	</display:column>
 	
-	<display:column titleKey="categoryPrice.stop">
+	<display:column titleKey="categoryPrice.edit">
 
 		<acme:cancel url="/categoryPrice/owner/edit.do?categoryPriceId=${categoryPrice.id}"
 
-			code="categoryPrice.stop" />
+			code="categoryPrice.edit" />
 
 	</display:column>	
 	

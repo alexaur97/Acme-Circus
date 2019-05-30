@@ -2,6 +2,7 @@
 package controllers.organizer;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import services.OrganizerService;
 import services.TourService;
 import controllers.AbstractController;
 import domain.CategoryTour;
+import domain.Organizer;
 import domain.Tour;
 
 @Controller
@@ -42,7 +44,7 @@ public class TourOrganizerController extends AbstractController {
 			final int id = this.organizerService.findByPrincipal().getCircus().getId();
 			tours = this.tourService.findByCircus(id);
 			result = new ModelAndView("tour/listAll");
-			result.addObject("requestURI", "tour/list.do");
+			result.addObject("requestURI", "tour/listAll.do");
 			result.addObject("tours", tours);
 
 		} catch (final Exception e) {
@@ -73,6 +75,12 @@ public class TourOrganizerController extends AbstractController {
 			final Tour tour = this.tourService.findOne(tourId);
 			Assert.notNull(tour);
 
+			final Organizer o = this.organizerService.findByPrincipal();
+			final Boolean b = tour.getOrganizers().equals(o);
+			Assert.isTrue(b);
+
+			Assert.isTrue(!tour.validated);
+
 			res = this.createEditModelAndView(tour);
 
 		} catch (final Throwable oops) {
@@ -92,26 +100,47 @@ public class TourOrganizerController extends AbstractController {
 		else
 			try {
 
+				final Organizer o = this.organizerService.findByPrincipal();
+				final Boolean b = tour.getOrganizers().equals(o);
+				Assert.isTrue(b);
+
+				Assert.isTrue(!tour.validated);
+
+				Assert.isTrue(tour.getStartDate().before(tour.getEndDate()));
+
+				final Date actual = new Date();
+				Assert.isTrue(tour.getStartDate().after(actual));
+
 				this.tourService.save(tour);
 				res = new ModelAndView("redirect:/tour/organizer/list.do");
 
 			} catch (final Throwable oops) {
 
+				final Date actual = new Date();
+
 				if (tour.getValidated().equals(true))
 					res = this.createEditModelAndView(tour, "tour.validated.error");
-				res = this.createEditModelAndView(tour, "tour.commit.error");
-
+				else if (!tour.getStartDate().before(tour.getEndDate()))
+					res = this.createEditModelAndView(tour, "tour.date.error");
+				else if (!tour.getStartDate().after(actual))
+					res = this.createEditModelAndView(tour, "tour.actual.error");
+				else
+					res = this.createEditModelAndView(tour, "tour.commit.error");
 			}
-
 		return res;
 	}
-
 	@RequestMapping(value = "edit", method = RequestMethod.POST, params = "delete")
 	public ModelAndView delete(final Tour tour, final BindingResult binding) {
 		ModelAndView result;
 		final Tour res = this.tourService.findOne(tour.getId());
 
 		try {
+
+			final Organizer o = this.organizerService.findByPrincipal();
+			final Boolean b = tour.getOrganizers().equals(o);
+			Assert.isTrue(b);
+			Assert.isTrue(!tour.validated);
+
 			this.tourService.delete(res);
 			result = new ModelAndView("redirect:/tour/organizer/list.do");
 		} catch (final Throwable oops) {

@@ -16,6 +16,11 @@
 		<put-attribute name="body" value="/views/stop/list.jsp" />
 	</definition>
 	
+	<definition name="stop/edit" extends="master.page">
+		<put-attribute name="title" value="Edit stop" />
+		<put-attribute name="body" value="/views/stop/edit.jsp" />
+	</definition>
+	
 	<definition name="stop/show" extends="master.page">
 		<put-attribute name="title" value="Show stop" />
 		<put-attribute name="body" value="/views/stop/show.jsp" />

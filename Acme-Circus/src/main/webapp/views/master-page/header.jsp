@@ -31,6 +31,10 @@
 						
 		</security:authorize>
 		<security:authorize access="hasRole('ORGANIZER')">
+			
+			<li><a href="stop/organizer/list.do"><spring:message code="master.page.mystops" /></a></li>
+			
+			
 			<li><a href="offer/organizer/list.do"><spring:message code="master.page.offers" /></a></li>
 		</security:authorize>
 		<security:authorize access="hasRole('ARTIST')">
@@ -80,7 +84,7 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="circus/list.do"><spring:message code="master.page.circus" /></a></li>
 		
-			<li><a class="fNiv" href="tour/listAll.do"><spring:message code="master.page.tour" /></a></li>
+			<li><a class="fNiv" href="tour/listPublic.do"><spring:message code="master.page.tour" /></a></li>
 		
 			<li><a class="fNiv" href="tour/search.do"><spring:message code="master.page.search" /></a></li>
 		
