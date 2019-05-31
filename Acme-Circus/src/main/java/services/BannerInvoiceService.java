@@ -50,9 +50,11 @@ public class BannerInvoiceService {
 	}
 
 	public BannerInvoice findOne(final int bannerInvoiceId) {
+		final Collection<BannerInvoice> bannerInvoices = this.findAllByPrincipal();
 		BannerInvoice result;
 
 		result = this.bannerInvoiceRepository.findOne(bannerInvoiceId);
+		Assert.isTrue(bannerInvoices.contains(result));
 
 		return result;
 	}

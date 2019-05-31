@@ -735,6 +735,8 @@
 		<property name="offers">
 		 <list>
 		 <ref bean="offer1"/>
+		 <ref bean="offer2"/>
+		 <ref bean="offer3"/>
 		 </list>
 		</property>
 	</bean>
@@ -951,8 +953,8 @@
 	<!-- Fee -->
 
 	<bean id="fee" class="domain.Fee">
-		<property name="bannerFee" value="2.25" />
-		<property name="circusFee" value="5" />
+		<property name="bannerFee" value="0.25" />
+		<property name="circusFee" value="1.0" />
 		<property name="acceptedOfferFee" value="0.75" />
 	</bean>
 	
@@ -1034,13 +1036,32 @@
 	</bean>
 	
 	
-	<!-- Offer -->
+	<!-- Offers -->
 	
 	<bean id="offer1" class="domain.Offer">
 		<property name="observations" value="ANIMALS,MONEY" />
 		<property name="status" value="PENDING" />
 		<property name="money" value="2" />
+		<property name="conditions" value="condition 1" />
 		<property name="lastUpdate" value="10/10/2018"/>
+		<property name="performance" ref="performance1" />
+	</bean>
+	
+		<bean id="offer2" class="domain.Offer">
+		<property name="observations" value="ANIMALS,MONEY" />
+		<property name="status" value="CONFIRMED" />
+		<property name="money" value="30" />
+		<property name="conditions" value="condition 2" />
+		<property name="lastUpdate" value="10/10/2018"/>
+		<property name="performance" ref="performance1" />
+	</bean>
+	
+		<bean id="offer3" class="domain.Offer">
+		<property name="observations" value="ANIMALS,MONEY" />
+		<property name="status" value="CONFIRMED" />
+		<property name="money" value="50" />
+		<property name="conditions" value="condition 3" />
+		<property name="lastUpdate" value="9/10/2018"/>
 		<property name="performance" ref="performance1" />
 	</bean>
 	
@@ -1049,28 +1070,32 @@
 	<bean id="bannerInvoice1" class="domain.BannerInvoice">
 		<property name="dateRequested" value="1/12/2018"/>
 		<property name="generated" value="true"/>
-		<property name="total" value="8.0"/>
+		<property name="total" value="1.0"/>
+		<property name="bannerFee" value="1.0"/>
 		<property name="banner" ref="banner1" />
 	</bean>
 	
 	<bean id="bannerInvoice2" class="domain.BannerInvoice">
 		<property name="dateRequested" value="1/12/2017"/>
 		<property name="generated" value="true"/>
-		<property name="total" value="8.0"/>
+		<property name="total" value="1.0"/>
+		<property name="bannerFee" value="1.0"/>
 		<property name="banner" ref="banner2" />
 	</bean>
 	
 	<bean id="bannerInvoice3" class="domain.BannerInvoice">
 		<property name="dateRequested" value="1/12/2017"/>
 		<property name="generated" value="true"/>
-		<property name="total" value="8.0"/>
+		<property name="total" value="1.0"/>
+		<property name="bannerFee" value="1.0"/>
 		<property name="banner" ref="banner3" />
 	</bean>
 	
 	<bean id="circusInvoice1" class="domain.CircusInvoice">
 		<property name="dateRequested" value="1/12/2018"/>
 		<property name="generated" value="true"/>
-		<property name="total" value="8.0"/>
+		<property name="total" value="1.0"/>
+		<property name="circusFee" value="1.0"/>
 		<property name="circus" ref="circus1" />
 	</bean>
 	
@@ -1078,6 +1103,7 @@
 		<property name="dateRequested" value="1/12/2018"/>
 		<property name="generated" value="true"/>
 		<property name="total" value="8.0"/>
+		<property name="acceptedOfferFee" value="0.1"/>
 		<property name="artist" ref="artist1" />
 	</bean>
 	

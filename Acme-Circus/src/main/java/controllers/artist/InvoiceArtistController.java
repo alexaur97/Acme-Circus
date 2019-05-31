@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.ArtistInvoiceService;
+import services.OfferService;
 import controllers.AbstractController;
 import domain.ArtistInvoice;
+import domain.Offer;
 
 @Controller
 @RequestMapping("/invoice/artist")
@@ -20,6 +22,9 @@ public class InvoiceArtistController extends AbstractController {
 
 	@Autowired
 	private ArtistInvoiceService	artistInvoiceService;
+
+	@Autowired
+	private OfferService			offerService;
 
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -41,7 +46,9 @@ public class InvoiceArtistController extends AbstractController {
 		try {
 			result = new ModelAndView("invoice/show");
 			final ArtistInvoice artistInvoice = this.artistInvoiceService.findOne(artistInvoiceId);
+			final Collection<Offer> offers = this.offerService.findConfirmedByPrincipal();
 			result.addObject("artistInvoice", artistInvoice);
+			result.addObject("offers", offers);
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/#");
 		}

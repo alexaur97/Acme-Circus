@@ -50,11 +50,13 @@ public class ArtistInvoiceService {
 	}
 
 	public ArtistInvoice findOne(final int artistInvoiceId) {
-		this.artistService.findByPrincipal();
+		final Collection<ArtistInvoice> artistInvoices = this.findAllByPrincipal();
 
 		ArtistInvoice result;
 
 		result = this.artistInvoiceRepository.findOne(artistInvoiceId);
+
+		Assert.isTrue(artistInvoices.contains(result));
 
 		return result;
 	}
