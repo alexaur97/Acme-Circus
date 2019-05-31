@@ -1,8 +1,10 @@
+
 package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
@@ -12,38 +14,37 @@ import org.hibernate.validator.constraints.Range;
 public class Fee extends DomainEntity {
 
 	// Attributes ..................
-	
-	public Double bannerFee;
-	public Double circusFee;
-	public Double acceptedOfferFee;
-	
-	
+
+	public Double	bannerFee;
+	public Double	circusFee;
+	public Double	acceptedOfferFee;
+
+
 	@NotNull
-	@Range(min = 0)
+	@Min(0)
 	public Double getBannerFee() {
-		return bannerFee;
+		return this.bannerFee;
 	}
-	public void setBannerFee(Double bannerFee) {
+	public void setBannerFee(final Double bannerFee) {
 		this.bannerFee = bannerFee;
 	}
-	
+
 	@NotNull
-	@Range(min = 0)
+	@Min(0)
 	public Double getCircusFee() {
-		return circusFee;
+		return this.circusFee;
 	}
-	public void setCircusFee(Double circusFee) {
+	public void setCircusFee(final Double circusFee) {
 		this.circusFee = circusFee;
 	}
-	
+
 	@NotNull
-	@Range(min = 0)
+	@Range(min = 0, max = 1)
 	public Double getAcceptedOfferFee() {
-		return acceptedOfferFee;
+		return this.acceptedOfferFee;
 	}
-	public void setAcceptedOfferFee(Double acceptedOfferFee) {
+	public void setAcceptedOfferFee(final Double acceptedOfferFee) {
 		this.acceptedOfferFee = acceptedOfferFee;
 	}
-
 
 }

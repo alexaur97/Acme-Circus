@@ -45,6 +45,7 @@
 		<value>/views/performance/messages</value>
 		<value>/views/fee/messages</value>
 		<value>/views/offer/messages</value>
+		<value>/views/invoice/messages</value>
 
 
 
