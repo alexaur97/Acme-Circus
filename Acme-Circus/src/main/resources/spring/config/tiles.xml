@@ -46,6 +46,7 @@
 		<value>/views/performance/tiles.xml</value>
 		<value>/views/fee/tiles.xml</value>
 		<value>/views/offer/tiles.xml</value>
+		<value>/views/invoice/tiles.xml</value>
 		
 
 

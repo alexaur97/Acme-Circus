@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ArtistInvoiceRepository;
+import domain.Artist;
 import domain.ArtistInvoice;
 
 @Service
@@ -19,8 +20,11 @@ public class ArtistInvoiceService {
 	@Autowired
 	private ArtistInvoiceRepository	artistInvoiceRepository;
 
-
 	//Supporting Services ------------------
+
+	@Autowired
+	private ArtistService			artistService;
+
 
 	//COnstructors -------------------------
 	public ArtistInvoiceService() {
@@ -46,6 +50,8 @@ public class ArtistInvoiceService {
 	}
 
 	public ArtistInvoice findOne(final int artistInvoiceId) {
+		this.artistService.findByPrincipal();
+
 		ArtistInvoice result;
 
 		result = this.artistInvoiceRepository.findOne(artistInvoiceId);
@@ -68,6 +74,11 @@ public class ArtistInvoiceService {
 		if (result == null)
 			result = 0.0;
 		return result;
+	}
+
+	public Collection<ArtistInvoice> findAllByPrincipal() {
+		final Artist principal = this.artistService.findByPrincipal();
+		return this.artistInvoiceRepository.findAllByPrincipal(principal.getId());
 	}
 
 	//Other Methods--------------------
