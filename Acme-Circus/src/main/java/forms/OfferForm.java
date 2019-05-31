@@ -2,9 +2,9 @@
 package forms;
 
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Range;
 import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 
@@ -44,7 +44,7 @@ public class OfferForm {// Attributes ..................
 		this.conditions = conditions;
 	}
 	@NotNull
-	@Range(min = 0)
+	@Min(value = 0)
 	public Double getMoney() {
 		return this.money;
 	}

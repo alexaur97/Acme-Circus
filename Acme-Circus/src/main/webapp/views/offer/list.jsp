@@ -55,10 +55,10 @@
 						<spring:message  code = "offer.message.date"/>	
 						</p>	
 						</jstl:if>
-						<jstl:if test="${time}">	
+<jstl:if test="${time}">	
 </br>
 						<p style="color:red">
-						<spring:message  code = "offer.message.date"/>	
+						<spring:message  code = "offer.message.time"/>	
 						</p>	
 						</jstl:if>
 </br>

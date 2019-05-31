@@ -30,7 +30,6 @@
 												<acme:select items="${tours}" itemLabel="name" code="offer.tour" path="tour"/>
 												<acme:textbox code="offer.observation" path="observations" />
 						
-						<spring:message code = "offer.message.comma"/>	
 						
 						<acme:submit name="save" code="performance.save" />
 				</form:form>
@@ -44,9 +43,7 @@
 						<form:hidden path="version"/>
 						
 						<acme:textbox code="offer.conditions" path="conditions" />
-						
-						<spring:message code = "offer.message.comma"/>	
-						
+												
 						<acme:submit name="save" code="performance.save" />
 							<jstl:if test="${blanco}">
 						</br>

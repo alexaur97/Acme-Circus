@@ -92,7 +92,7 @@ public class OfferArtistController extends AbstractController {
 			final int artId = this.artistService.findByPrincipal().getId();
 			final Tour tour = this.tourService.findByOffer(offerId);
 			final Collection<Tour> toursMal = this.tourService.findConfirmedAndNotTimeByArt(artId, tour.getStartDate(), tour.getEndDate());
-			if (toursMal.isEmpty()) {
+			if (!toursMal.isEmpty()) {
 				final Artist artist = this.artistService.findByPrincipal();
 				final Collection<Offer> offers = this.offerService.findByArt(artist.getId());
 				result = new ModelAndView("offer/list");

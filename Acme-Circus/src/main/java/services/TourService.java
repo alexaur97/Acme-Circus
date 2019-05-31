@@ -176,8 +176,7 @@ public class TourService {
 		return result;
 	}
 	public Collection<Tour> findConfirmedAndNotTimeByArt(final int artId, final Date startDate, final Date endDate) {
-		final Date a = new Date();
-		return this.tourRepository.findConfirmedAndNotTimeByArt(artId, startDate, endDate, a);
+		return this.tourRepository.findConfirmedAndNotTimeByArt(artId, startDate, endDate);
 	}
 	public Tour findByOffer(final int id) {
 		return this.tourRepository.findByOffer(id);
