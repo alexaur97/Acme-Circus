@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import repositories.BannerInvoiceRepository;
 import domain.BannerInvoice;
+import domain.Owner;
 
 @Service
 @Transactional
@@ -18,6 +19,9 @@ public class BannerInvoiceService {
 	//Managed repository -------------------
 	@Autowired
 	private BannerInvoiceRepository	bannerInvoiceRepository;
+
+	@Autowired
+	private OwnerService			ownerService;
 
 
 	//Supporting Services ------------------
@@ -68,6 +72,11 @@ public class BannerInvoiceService {
 		if (result == null)
 			result = 0.0;
 		return result;
+	}
+
+	public Collection<BannerInvoice> findAllByPrincipal() {
+		final Owner principal = this.ownerService.findByPrincipal();
+		return this.bannerInvoiceRepository.findAllByPrincipal(principal.getId());
 	}
 
 	//Other Methods--------------------

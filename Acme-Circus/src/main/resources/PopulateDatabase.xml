@@ -1044,7 +1044,67 @@
 		<property name="performance" ref="performance1" />
 	</bean>
 	
+	<!-- Invoices -->
 	
+	<bean id="bannerInvoice1" class="domain.BannerInvoice">
+		<property name="dateRequested" value="1/12/2018"/>
+		<property name="generated" value="true"/>
+		<property name="total" value="8.0"/>
+		<property name="banner" ref="banner1" />
+	</bean>
 	
+	<bean id="bannerInvoice2" class="domain.BannerInvoice">
+		<property name="dateRequested" value="1/12/2017"/>
+		<property name="generated" value="true"/>
+		<property name="total" value="8.0"/>
+		<property name="banner" ref="banner2" />
+	</bean>
+	
+	<bean id="bannerInvoice3" class="domain.BannerInvoice">
+		<property name="dateRequested" value="1/12/2017"/>
+		<property name="generated" value="true"/>
+		<property name="total" value="8.0"/>
+		<property name="banner" ref="banner3" />
+	</bean>
+	
+	<bean id="circusInvoice1" class="domain.CircusInvoice">
+		<property name="dateRequested" value="1/12/2018"/>
+		<property name="generated" value="true"/>
+		<property name="total" value="8.0"/>
+		<property name="circus" ref="circus1" />
+	</bean>
+	
+	<bean id="artistInvoice1" class="domain.ArtistInvoice">
+		<property name="dateRequested" value="1/12/2018"/>
+		<property name="generated" value="true"/>
+		<property name="total" value="8.0"/>
+		<property name="artist" ref="artist1" />
+	</bean>
+	
+	<!-- Banners -->
+	
+	<bean id="banner1" class="domain.Banner">
+		<property name="description" value="¡Ya llegaron los pachachos!"/>
+		<property name="startDate" value="7/7/2018"/>
+		<property name="endDate" value="7/11/2018"/>
+		<property name="img" value="https://images.evisos.es/2010/10/03/animacioacuten-payaso-pitikliacuten_9a6ca9c88_3.jpg" />
+		<property name="tour" ref="tour1"/>
+	</bean>
+	
+	<bean id="banner2" class="domain.Banner">
+		<property name="description" value="¡Oh la la!"/>
+		<property name="startDate" value="7/7/2017"/>
+		<property name="endDate" value="7/11/2017"/>
+		<property name="img" value="https://images.evisos.es/2010/10/03/animacioacuten-payaso-pitikliacuten_9a6ca9c88_3.jpg" />
+		<property name="tour" ref="tour1"/>
+	</bean>
+	
+	<bean id="banner3" class="domain.Banner">
+		<property name="description" value="¡Ya llegaron los saltimbanquis!"/>
+		<property name="startDate" value="7/7/2017"/>
+		<property name="endDate" value="7/11/2017"/>
+		<property name="img" value="https://images.evisos.es/2010/10/03/animacioacuten-payaso-pitikliacuten_9a6ca9c88_3.jpg" />
+		<property name="tour" ref="tour2"/>
+	</bean>
 	
 </beans>
