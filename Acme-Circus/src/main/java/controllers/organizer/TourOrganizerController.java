@@ -42,7 +42,7 @@ public class TourOrganizerController extends AbstractController {
 		try {
 			Collection<Tour> tours;
 			final int id = this.organizerService.findByPrincipal().getCircus().getId();
-			tours = this.tourService.findByCircus(id);
+			tours = this.tourService.findAllByCircus(id);
 			result = new ModelAndView("tour/listAll");
 			result.addObject("requestURI", "tour/listAll.do");
 			result.addObject("tours", tours);

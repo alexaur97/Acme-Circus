@@ -80,10 +80,6 @@ public class TourService {
 		final Date actual = new Date();
 		Assert.isTrue(tour.getStartDate().after(actual));
 		Assert.isTrue(tour.getStartDate().before(tour.getEndDate()));
-		final Organizer o = this.organizerService.findByPrincipal();
-		final Boolean b = tour.getOrganizers().equals(o);
-		Assert.isTrue(b);
-
 		Assert.notNull(tour);
 
 		return this.tourRepository.save(tour);
@@ -111,6 +107,13 @@ public class TourService {
 		final Collection<Tour> res = this.tourRepository.findAllAvailable();
 		return res;
 	}
+
+	public Collection<Tour> findAllValidated() {
+
+		final Collection<Tour> res = this.tourRepository.findAvailable();
+		return res;
+	}
+
 	public Collection<Tour> findAllAvailableByOrganize() {
 		final int id = this.organizerService.findByPrincipal().getId();
 		final Collection<Tour> res = this.tourRepository.findAllAvailableByOrg(id);
@@ -145,6 +148,11 @@ public class TourService {
 
 	public Collection<Tour> findByCircus(final int id) {
 		final Collection<Tour> res = this.tourRepository.findByCircus(id);
+		return res;
+	}
+
+	public Collection<Tour> findAllByCircus(final int id) {
+		final Collection<Tour> res = this.tourRepository.findAllByCircus(id);
 		return res;
 	}
 

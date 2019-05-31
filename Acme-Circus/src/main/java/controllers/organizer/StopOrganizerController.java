@@ -1,7 +1,9 @@
 
 package controllers.organizer;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -106,6 +108,11 @@ public class StopOrganizerController extends AbstractController {
 				final Boolean b = stop.getTour().getOrganizers().equals(o);
 				Assert.isTrue(b);
 
+				final Collection<Stop> stopsC = this.stopService.findStopsByTour(stop.getTour().getId());
+				final List<Stop> stops = new ArrayList<>(stopsC);
+				for (final Stop s : stops)
+					Assert.isTrue(!s.getDate().equals(stop.getDate()));
+
 				Assert.isTrue(!stop.getTour().validated);
 
 				Assert.isTrue(stop.getDate().after(stop.getTour().getStartDate()));
@@ -123,7 +130,7 @@ public class StopOrganizerController extends AbstractController {
 				else if (!stop.getDate().before(stop.getTour().getEndDate()))
 					res = this.createEditModelAndView(stop, "stop.beforeDate.error");
 				else
-					res = this.createEditModelAndView(stop, "stop.commit.error");
+					res = this.createEditModelAndView(stop, "stop.samedate.error");
 			}
 		return res;
 	}

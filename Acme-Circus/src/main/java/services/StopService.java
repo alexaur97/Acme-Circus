@@ -72,6 +72,8 @@ public class StopService {
 		Assert.isTrue(b);
 
 		Assert.isTrue(!stop.getTour().validated);
+		Assert.isTrue(stop.getDate().after(stop.getTour().getStartDate()));
+		Assert.isTrue(stop.getDate().before(stop.getTour().getEndDate()));
 
 		this.stopRepository.save(stop);
 	}

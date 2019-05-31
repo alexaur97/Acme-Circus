@@ -1,6 +1,8 @@
 
 package repositories;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -14,5 +16,8 @@ public interface ArtistInvoiceRepository extends JpaRepository<ArtistInvoice, In
 	Double totalBenefits();
 	//@Query("") 
 	//Method 
+
+	@Query("select a from ArtistInvoice a where a.artist.id=?1")
+	Collection<ArtistInvoice> findAllByPrincipal(int id);
 
 }

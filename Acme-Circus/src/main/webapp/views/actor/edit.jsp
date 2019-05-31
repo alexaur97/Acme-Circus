@@ -25,10 +25,18 @@
 
 	<acme:textbox code="actor.name" path="name" />
 	<acme:textbox code="actor.surnames" path="surnames" />
-	<acme:textbox code="actor.dni" path="dni" />
+	<jstl:choose>
+		<jstl:when test="${lang eq 'en'}">
+			<acme:textbox code="actor.dni" path="dni" placeholder="8 numbers and 1 letter"/>
+		</jstl:when>
+		<jstl:otherwise>
+			<acme:textbox code="actor.dni" path="dni" placeholder="8 números y 1 letra"/>
+		</jstl:otherwise>
+		</jstl:choose>
+
 	<acme:textbox code="actor.photo" path="photo" />
 	<acme:textbox code="actor.email" path="email" />
-	<acme:textbox code="actor.phone" path="phone" />
+	<acme:textbox code="actor.phone" path="phone" placeholder="123456789" comment="organizer.phone.pattern" max ="9" />
 	<acme:textbox code="actor.address" path="address" />
 	<br />
 
@@ -49,13 +57,28 @@
 	<acme:cancel url="/#" code="actor.cancel" />
 	<script type="text/javascript">
 		function validatePhoneNumber() {
-			var phone = document.getElementById("phone");
-			if (!(phone.value).match("^\\+\\d{1,3}([ ]{1}[(]{1}\\d{1,3}[)]{1})?[ ]{1}\\d{4,}$|^\\d{4,}$|^$")) { return confirm("Phone number doesn't adhere to the correct pattern. Do you want to continue?"); }
+			var phoneNumber = document.getElementById("phone");
+			if ((phoneNumber.value != "")) {
+					if (!(phoneNumber.value).match("[0-9]{10}")) {
+						if (!(phoneNumber.value).match("[0-9]{9}")) {
+							return confirm("Phone number doesn't adhere to the correct pattern (9 Numbers - 123456789). Do you want to continue?"); 
+						}
+					}else{
+						return confirm("Phone number doesn't adhere to the correct pattern (9 Numbers - 123456789). Do you want to continue?"); 
+					}								
+			}
 		}
-
 		function validatePhoneNumberEs() {
-			var phone = document.getElementById("phone");
-			if (!(phone.value).match("^\\+\\d{1,3}([ ]{1}[(]{1}\\d{1,3}[)]{1})?[ ]{1}\\d{4,}$|^\\d{4,}$|^$")) { return confirm("El teléfono no se ajusta al patrón correcto. ¿Desea continuar?"); }
+			var phoneNumber = document.getElementById("phone");
+			if ((phoneNumber.value != "")) {
+				if (!(phoneNumber.value).match("[0-9]{10}")) {
+					if (!(phoneNumber.value).match("[0-9]{9}")) {
+						return confirm("Phone number doesn't adhere to the correct pattern (9 Numbers - 123456789). Do you want to continue?"); 
+					}
+				}else{
+					return confirm("El teléfono no se ajusta al patrón correcto (9 Números - 123456789). ¿Desea continuar?"); 
+				}
+			}
 		}
 	</script>
 </form:form>

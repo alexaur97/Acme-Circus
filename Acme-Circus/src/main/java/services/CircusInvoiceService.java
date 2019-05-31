@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import repositories.CircusInvoiceRepository;
 import domain.CircusInvoice;
+import domain.Owner;
 
 @Service
 @Transactional
@@ -18,6 +19,9 @@ public class CircusInvoiceService {
 	//Managed repository -------------------
 	@Autowired
 	private CircusInvoiceRepository	circusInvoiceRepository;
+
+	@Autowired
+	private OwnerService			ownerService;
 
 
 	//Supporting Services ------------------
@@ -69,6 +73,11 @@ public class CircusInvoiceService {
 			result = 0.0;
 		return result;
 
+	}
+
+	public Collection<CircusInvoice> findAllByPrincipal() {
+		final Owner principal = this.ownerService.findByPrincipal();
+		return this.circusInvoiceRepository.findAllByPrincipal(principal.getId());
 	}
 
 	//Other Methods--------------------

@@ -71,7 +71,6 @@ public class TourController extends AbstractController {
 		return result;
 
 	}
-
 	@RequestMapping(value = "/listAll", method = RequestMethod.GET)
 	public ModelAndView listAll() {
 		ModelAndView result;
@@ -95,7 +94,7 @@ public class TourController extends AbstractController {
 		ModelAndView result;
 		try {
 			Collection<Tour> tours;
-			tours = this.tourService.findAllAvailable();
+			tours = this.tourService.findAllValidated();
 			result = new ModelAndView("tour/listAll");
 			result.addObject("requestURI", "tour/listAll.do");
 			result.addObject("tours", tours);
