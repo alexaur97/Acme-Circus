@@ -50,13 +50,16 @@ public class CircusInvoiceService {
 	}
 
 	public CircusInvoice findOne(final int circusInvoiceId) {
+		final Collection<CircusInvoice> circusInvoices = this.findAllByPrincipal();
+
 		CircusInvoice result;
 
 		result = this.circusInvoiceRepository.findOne(circusInvoiceId);
 
+		Assert.isTrue(circusInvoices.contains(result));
+
 		return result;
 	}
-
 	public void save(final CircusInvoice circusInvoice) {
 		Assert.notNull(circusInvoice);
 

@@ -148,4 +148,9 @@ public class OfferService {
 		return result;
 
 	}
+
+	public Collection<Offer> findConfirmedByPrincipal() {
+		final Artist principal = this.artistService.findByPrincipal();
+		return this.offerRepository.findConfirmedByPrincipal(principal.getId());
+	}
 }

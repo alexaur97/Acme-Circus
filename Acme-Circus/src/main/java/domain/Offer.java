@@ -60,6 +60,7 @@ public class Offer extends DomainEntity {
 		this.lastUpdate = lastUpdate;
 	}
 
+	@NotBlank
 	public String getConditions() {
 		return this.conditions;
 	}

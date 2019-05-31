@@ -22,4 +22,7 @@ public interface OfferRepository extends JpaRepository<Offer, Integer> {
 	//@Query("") 
 	//Method 
 
+	@Query("select o from Offer o where o.performance.artist.id=?1 and o.status='CONFIRMED'")
+	Collection<Offer> findConfirmedByPrincipal(int id);
+
 }

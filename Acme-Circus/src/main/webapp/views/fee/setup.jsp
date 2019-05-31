@@ -24,9 +24,9 @@
 <form:form action="fee/administrator/setup.do" modelAttribute="fee">
 	<form:hidden path="id" />
 	<form:hidden path="version" />
-	<acme:textbox code="fee.bannerFee" path="bannerFee" />
-	<acme:textbox code="fee.circusFee" path="circusFee" />
-	<acme:textbox code="fee.acceptedOfferFee" path="acceptedOfferFee" />
+	<acme:textbox code="fee.bannerFee" path="bannerFee"  comment="fee.euro"/>
+	<acme:textbox code="fee.circusFee" path="circusFee" comment="fee.euro"/>
+	<acme:textbox code="fee.acceptedOfferFee" path="acceptedOfferFee" comment="fee.percent" />
 	<acme:submit code="fee.save" name="save" />
 	<acme:button code="fee.back" url="/#" />
 	<jstl:if test="${success eq 1}">
