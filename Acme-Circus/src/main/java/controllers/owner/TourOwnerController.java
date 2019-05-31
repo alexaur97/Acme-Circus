@@ -55,7 +55,7 @@ public class TourOwnerController extends AbstractController {
 		try {
 			Collection<Tour> tours;
 			final int id = this.ownerService.findByPrincipal().getCircus().getId();
-			tours = this.tourService.findByCircus(id);
+			tours = this.tourService.findAllByCircus(id);
 			result = new ModelAndView("tour/listAll");
 			result.addObject("requestURI", "tour/listAll.do");
 			result.addObject("tours", tours);
@@ -72,12 +72,16 @@ public class TourOwnerController extends AbstractController {
 	public ModelAndView validate(@RequestParam final int tourId) {
 		ModelAndView result;
 		try {
+			Collection<Tour> tours;
+			final int id = this.ownerService.findByPrincipal().getCircus().getId();
+			tours = this.tourService.findAllByCircus(id);
 			this.ownerService.findByPrincipal();
 			Tour tour = this.tourService.findOne(tourId);
 			tour = this.tourService.validate(tour);
 			tour = this.tourService.save(tour);
-			result = new ModelAndView("redirect: tour/listAll.do");
-
+			result = new ModelAndView("tour/listAll");
+			result.addObject("requestURI", "tour/listAll.do");
+			result.addObject("tours", tours);
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/#");
 		}

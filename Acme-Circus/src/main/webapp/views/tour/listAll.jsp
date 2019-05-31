@@ -72,7 +72,7 @@
 	
 
 	<display:column titleKey="tour.validated">
-	
+		
 		
 	<jstl:if test="${tour.validated}">
 			<h3 style="color: #008000;">
@@ -84,6 +84,8 @@
 				<spring:message code="tour.no" />
 			</h3>
 		</jstl:if>
+		
+		
 		</display:column>
 
 </security:authorize>
@@ -128,6 +130,7 @@
 		</jstl:if>
 			
 	</display:column>	
+	
 	</security:authorize>
 	
 
