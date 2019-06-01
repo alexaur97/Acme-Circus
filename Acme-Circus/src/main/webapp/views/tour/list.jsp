@@ -31,6 +31,8 @@
 	<display:column titleKey="tour.startDate" property= "startDate"/>
 	<display:column titleKey="tour.endDate" property= "endDate"/>
 	<display:column titleKey="tour.link" property= "link"/>
+	<security:authorize access="hasAnyRole('OWNER','WORKER')">
+	
 	<display:column titleKey="tour.validated">
 		
 	<jstl:if test="${tour.validated}">
@@ -45,7 +47,7 @@
 		</jstl:if>
 		</display:column>
 	
-	
+	</security:authorize>
 		<display:column titleKey="tour.stops">
 		<acme:cancel url="/stop/attendee/list.do?tourId=${tour.id}"
 			code="tour.stops" />

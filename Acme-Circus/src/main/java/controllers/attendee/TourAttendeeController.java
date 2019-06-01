@@ -26,6 +26,7 @@ public class TourAttendeeController extends AbstractController {
 		ModelAndView result;
 		try {
 			final Collection<Tour> tours = this.tourService.findAllAvailable();
+
 			result = new ModelAndView("tour/list");
 			result.addObject("requestURI", "tour/attendee/list.do");
 			result.addObject("tours", tours);

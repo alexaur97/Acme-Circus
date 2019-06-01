@@ -30,6 +30,9 @@
 		<jstl:out value="${purchase.creditCard.holderName}"></jstl:out>
 		<jstl:out value="${purchase.creditCard.number}"></jstl:out>
 <br/>
+<spring:message code="purchase.stop"/>: <jstl:out value="${purchase.stop.city}"></jstl:out>
+
+<br/>
 <br>
 <spring:message code="purchase.tickets"/>:<br>
 <jstl:forEach items="${tickets}" var="x">

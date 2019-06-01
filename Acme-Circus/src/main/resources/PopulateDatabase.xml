@@ -572,7 +572,7 @@
 		<property name="phone" value="" />
 		<property name="address" value="Calle Rojo Red, Murcia" />
 		<property name="userAccount" ref="userAccount14" />
-		<property name="circus" ref="circus2" />
+		<property name="circus" ref="circus4" />
 	</bean>
 	
 		<bean id="organizer4" class="domain.Organizer">
