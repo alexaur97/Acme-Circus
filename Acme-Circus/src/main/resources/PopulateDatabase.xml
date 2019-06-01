@@ -699,7 +699,7 @@
 		<property name="phone" value="67567565" />
 		<property name="address" value="" />
 		<property name="userAccount" ref="userAccount13" />
-		<property name="circus" ref="circus3" />
+		<property name="circus" ref="circus4" />
 	</bean>
 	
 	<bean id="owner5" class="domain.Owner">
@@ -808,7 +808,7 @@
 		<property name="link" value="https://watercircus.com" />
 		<property name="tags" value="WATER, AGUA" />
 		<property name="validated" value="false" />
-		<property name="organizers" ref="organizer3" />
+		<property name="organizers" ref="organizer4" />
 		<property name="categoryTour" ref="categoryTour6" />
 		<property name="performances">
 			<list>
