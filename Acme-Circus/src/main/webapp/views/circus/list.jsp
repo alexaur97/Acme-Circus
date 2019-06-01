@@ -28,7 +28,7 @@
 	requestURI="${requestURI}" class="displaytag table">
 	<display:column titleKey="circus.name" property="name" />
 	
-	<security:authorize access="hasRole('ADMIN')">
+	<security:authorize access="hasRole('ADMINISTRATOR')">
 	<display:column titleKey="circus.active" property= "active"/>
 	</security:authorize>
 
@@ -37,7 +37,7 @@
 			code="circus.history" />
 	</display:column>	
 	
-	<security:authorize access="hasRole('ADMIN')">
+	<security:authorize access="hasRole('ADMINISTRATOR')">
 	<jstl:if test="${circus.active eq true}">
 	<display:column titleKey="circus.deactivate">
 		<acme:cancel url="/circus/administrator/deactivate.do?circusId=${circus.id}"

@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,7 +77,11 @@ public class CircusService {
 	}
 
 	public Collection<Circus> findAllWithTour() {
-		final Collection<Circus> res = this.circusRepository.findAllWithTour();
+		final Collection<Circus> circus = this.circusRepository.findAllWithTour();
+		final Collection<Circus> res = new ArrayList<>();
+		for (final Circus c : circus)
+			if (!res.contains(c))
+				res.add(c);
 		return res;
 	}
 

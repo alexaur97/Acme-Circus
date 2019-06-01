@@ -104,7 +104,11 @@ public class TourService {
 
 	public Collection<Tour> findAllAvailable() {
 
-		final Collection<Tour> res = this.tourRepository.findAllAvailable();
+		final Collection<Tour> tours = this.tourRepository.findAllAvailable();
+		final Collection<Tour> res = new ArrayList<>();
+		for (final Tour t : tours)
+			if (!res.contains(t))
+				res.add(t);
 		return res;
 	}
 
