@@ -1693,7 +1693,7 @@
 	
 	<bean id="offer11" class="domain.Offer">
 		<property name="observations" value="This is THE OFFER." />
-		<property name="status" value="WAITINGFORCONFIMATION" />
+		<property name="status" value="WAITINGFORCONFIRMATION" />
 		<property name="money" value="2000" />
 		<property name="conditions" value="Rabbits and turtles." />
 		<property name="lastUpdate" value="01/01/2019"/>
@@ -1702,7 +1702,7 @@
 	
 	<bean id="offer12" class="domain.Offer">
 		<property name="observations" value="Don't reject us please, we need you." />
-		<property name="status" value="WAITINGFORCONFIMATION" />
+		<property name="status" value="WAITINGFORCONFIRMATION" />
 		<property name="money" value="2000" />
 		<property name="conditions" value="I need plenty of beer in the fridge, I NEED it." />
 		<property name="lastUpdate" value="01/01/2019"/>
@@ -1711,7 +1711,7 @@
 	
 	<bean id="offer13" class="domain.Offer">
 		<property name="observations" value="Good times are coming!" />
-		<property name="status" value="WAITINGFORCONFIMATION" />
+		<property name="status" value="WAITINGFORCONFIRMATION" />
 		<property name="money" value="2000" />
 		<property name="conditions" value="I wanna marry your wife, thats my condition." />
 		<property name="lastUpdate" value="01/01/2019"/>
@@ -1720,7 +1720,7 @@
 	
 	<bean id="offer14" class="domain.Offer">
 		<property name="observations" value="" />
-		<property name="status" value="WAITINGFORCONFIMATION" />
+		<property name="status" value="WAITINGFORCONFIRMATION" />
 		<property name="money" value="2000" />
 		<property name="conditions" value="I accept but I need a contact." />
 		<property name="lastUpdate" value="01/01/2019"/>
@@ -1729,7 +1729,7 @@
 	
 	<bean id="offer15" class="domain.Offer">
 		<property name="observations" value="Be one of us. You wont regret." />
-		<property name="status" value="WAITINGFORCONFIMATION" />
+		<property name="status" value="WAITINGFORCONFIRMATION" />
 		<property name="money" value="2000" />
 		<property name="conditions" value="I need a bed for myself very big because im really fat." />
 		<property name="lastUpdate" value="01/01/2019"/>

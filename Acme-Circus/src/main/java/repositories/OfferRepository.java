@@ -25,4 +25,7 @@ public interface OfferRepository extends JpaRepository<Offer, Integer> {
 	@Query("select o from Offer o where o.performance.artist.id=?1 and o.status='CONFIRMED'")
 	Collection<Offer> findConfirmedByPrincipal(int id);
 
+	@Query("select t.offers from Tour t where t.organizers.circus.id=?1")
+	Collection<Offer> findByCircus(int circusId);
+
 }

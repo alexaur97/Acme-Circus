@@ -42,7 +42,7 @@ public class Offer extends DomainEntity {
 	}
 
 	@NotBlank
-	@Pattern(regexp = "^CONFIRMED|WAITINGFORCONFIMATION|REJECTED|PENDING$")
+	@Pattern(regexp = "^CONFIRMED|WAITINGFORCONFIRMATION|REJECTED|PENDING$")
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getStatus() {
 		return this.status;

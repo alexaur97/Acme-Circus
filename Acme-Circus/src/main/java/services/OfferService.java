@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
@@ -35,6 +36,9 @@ public class OfferService {
 	private PerformanceService	performance;
 	@Autowired
 	private TourService			tourService;
+
+	@Autowired
+	private OwnerService		ownerService;
 
 
 	//COnstructors -------------------------
@@ -140,7 +144,7 @@ public class OfferService {
 		result.setMoney(offerDb.getMoney());
 		result.setObservations(offerDb.getObservations());
 		result.setPerformance(offerDb.getPerformance());
-		result.setStatus("WAITINGFORCONFIMATION");
+		result.setStatus("WAITINGFORCONFIRMATION");
 		final Date a = new Date();
 		result.setLastUpdate(a);
 		this.validator.validate(result, binding);
@@ -152,5 +156,36 @@ public class OfferService {
 	public Collection<Offer> findConfirmedByPrincipal() {
 		final Artist principal = this.artistService.findByPrincipal();
 		return this.offerRepository.findConfirmedByPrincipal(principal.getId());
+	}
+
+	public Collection<Offer> findByCircus(final int circusId) {
+		return this.offerRepository.findByCircus(circusId);
+	}
+
+	public Collection<Offer> findRejectedByOwner() {
+		final Collection<Offer> offers = this.findByCircus(this.ownerService.findByPrincipal().getCircus().getId());
+		final ArrayList<Offer> result = new ArrayList<>();
+		for (final Offer o : offers)
+			if (o.status.equals("REJECTED"))
+				result.add(o);
+		return result;
+	}
+
+	public Collection<Offer> findWaitingByOwner() {
+		final Collection<Offer> offers = this.findByCircus(this.ownerService.findByPrincipal().getCircus().getId());
+		final ArrayList<Offer> result = new ArrayList<>();
+		for (final Offer o : offers)
+			if (o.status.equals("WAITINGFORCONFIRMATION"))
+				result.add(o);
+		return result;
+	}
+
+	public Collection<Offer> findConfirmedByOwner() {
+		final Collection<Offer> offers = this.findByCircus(this.ownerService.findByPrincipal().getCircus().getId());
+		final ArrayList<Offer> result = new ArrayList<>();
+		for (final Offer o : offers)
+			if (o.status.equals("CONFIRMED"))
+				result.add(o);
+		return result;
 	}
 }
