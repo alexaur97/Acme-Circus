@@ -27,34 +27,44 @@
 			<fieldset class="col-md-6 col-md-offset-3">
 
 				<form:form action="purchase/attendee/create.do?stopId=${stopId}"
-					modelAttribute="purchaseAttendeeForm" class="form-horizontal" method="post">
+					modelAttribute="purchaseAttendeeForm" class="form-horizontal"
+					method="post">
 					<div class="form-group ">
 
-						
-								
-						<acme:textbox code="purchase.num" path="num" /> 
-						<spring:message code ="limit.tickets" />${spotsAvailable} <spring:message code="purchase.tickets"/>
-						<br>
-						<br>
-						
-						
-						<acme:select items="${categories}" itemLabel="category" code="purchase.category" path="category"/>
-						
-						
-						
-						<br>
-						<br>
 
+
+						<acme:textbox code="purchase.num" path="num" />
+						<spring:message code="limit.tickets" />
+						${spotsAvailable}
+						<spring:message code="purchase.tickets" />
+						<br> <br>
+
+
+						<acme:select items="${categories}" itemLabel="category"
+							code="purchase.category" path="category" />
 						
+						
+						<br>
+						<br>
+						<spring:message code="purchase.type" />:
+						<br>
+						<jstl:forEach items="${categories}" var="x">
+							<spring:message code="purchase.category" />: <jstl:out value="${x.category}"> </jstl:out>,
+							<spring:message code="purchase.amount" />: <jstl:out value="${x.amount}"></jstl:out>
+							<br>
+						</jstl:forEach>
+
+						<br> <br>
+
+
 						<acme:submit name="save" code="purchase.save" />
-						
 
-						<acme:cancel url="/tour/attendee/list.do"
-							code="purchase.cancel" />
+
+						<acme:cancel url="/tour/attendee/list.do" code="purchase.cancel" />
 					</div>
 				</form:form>
 			</fieldset>
-		
+
 
 		</div>
 	</div>
