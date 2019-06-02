@@ -33,9 +33,11 @@ public class OfferOwnerController extends AbstractController {
 		try {
 			final Owner owner = this.ownerService.findByPrincipal();
 			final Collection<Offer> offers = this.offerService.findByCircus(owner.getCircus().getId());
+			final Boolean b = !offers.isEmpty();
 			result = new ModelAndView("offer/list");
 			result.addObject("requestURI", "offer/artist/list.do");
 			result.addObject("offers", offers);
+			result.addObject("b", b);
 			result.addObject("p", "PENDING");
 			result.addObject("c", "CONFIRMED");
 			result.addObject("w", "WAITINGFORCONFIRMATION");
