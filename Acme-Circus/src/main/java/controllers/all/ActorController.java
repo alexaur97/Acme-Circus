@@ -51,7 +51,6 @@ public class ActorController extends AbstractController {
 	private OwnerService			ownerService;
 
 
-	@Autowired
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit() {
 		ModelAndView result;
