@@ -111,7 +111,15 @@ public class TourService {
 				res.add(t);
 		return res;
 	}
+	public Collection<Tour> findAllAvailableOrg(final int id) {
 
+		final Collection<Tour> tours = this.tourRepository.findAllAvailableOrg(id);
+		final Collection<Tour> res = new ArrayList<>();
+		for (final Tour t : tours)
+			if (!res.contains(t))
+				res.add(t);
+		return res;
+	}
 	public Collection<Tour> findAllValidated() {
 
 		final Collection<Tour> res = this.tourRepository.findAvailable();

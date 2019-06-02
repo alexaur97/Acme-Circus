@@ -62,10 +62,10 @@ public class OfferOrganizerController extends AbstractController {
 		ModelAndView result;
 
 		try {
-			this.organizerService.findByPrincipal();
+			final Organizer o = this.organizerService.findByPrincipal();
 			final OfferForm offer;
 			offer = new OfferForm();
-			final Collection<Tour> tours = this.tourService.findAllAvailable();
+			final Collection<Tour> tours = this.tourService.findAllAvailableOrg(o.getId());
 			final Collection<Performance> performances = this.performanceService.findAllNotCopy();
 			result = new ModelAndView("offer/edit");
 			result.addObject("offerForm", offer);
@@ -85,7 +85,8 @@ public class OfferOrganizerController extends AbstractController {
 		ModelAndView result;
 
 		if (binding.hasErrors()) {
-			final Collection<Tour> tours = this.tourService.findAllAvailable();
+			final Organizer o = this.organizerService.findByPrincipal();
+			final Collection<Tour> tours = this.tourService.findAllAvailableOrg(o.getId());
 			final Collection<Performance> performances = this.performanceService.findAllNotCopy();
 			result = new ModelAndView("offer/edit");
 			result.addObject("performances", performances);
