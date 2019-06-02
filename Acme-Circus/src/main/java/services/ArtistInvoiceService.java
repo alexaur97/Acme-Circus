@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.util.Assert;
 import repositories.ArtistInvoiceRepository;
 import domain.Artist;
 import domain.ArtistInvoice;
+import domain.Offer;
 
 @Service
 @Transactional
@@ -25,6 +27,9 @@ public class ArtistInvoiceService {
 	@Autowired
 	private ArtistService			artistService;
 
+	@Autowired
+	private FeeService				feeService;
+
 
 	//COnstructors -------------------------
 	public ArtistInvoiceService() {
@@ -33,10 +38,18 @@ public class ArtistInvoiceService {
 
 	//Simple CRUD methods--------------------
 
-	public ArtistInvoice create() {
+	public ArtistInvoice create(final Offer offer) {
 		ArtistInvoice result;
 
 		result = new ArtistInvoice();
+		final Double acceptedOfferFee = this.feeService.find().getAcceptedOfferFee();
+		result.setAcceptedOfferFee(acceptedOfferFee);
+		final Artist artist = this.artistService.findByOffer(offer);
+		result.setArtist(artist);
+		final Date date = new Date();
+		result.setDateRequested(date);
+		result.setGenerated(false);
+		result.setTotal(acceptedOfferFee * offer.getMoney());
 
 		return result;
 	}
@@ -81,6 +94,12 @@ public class ArtistInvoiceService {
 	public Collection<ArtistInvoice> findAllByPrincipal() {
 		final Artist principal = this.artistService.findByPrincipal();
 		return this.artistInvoiceRepository.findAllByPrincipal(principal.getId());
+	}
+
+	public void generate(final Offer result) {
+		final ArtistInvoice created = this.create(result);
+		this.save(created);
+
 	}
 
 	//Other Methods--------------------

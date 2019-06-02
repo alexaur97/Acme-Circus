@@ -73,6 +73,8 @@
 								code="master.page.administrator.stats" /></a></li>
 					<li><a href="circus/administrator/list.do"><spring:message
 								code="master.page.administrator.circus" /></a></li>
+					<li><a href="invoice/administrator/generate.do"><spring:message
+								code="master.page.administrator.generate" /></a></li>
 				</ul></li>
 		</security:authorize>
 

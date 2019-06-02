@@ -15,4 +15,7 @@ public interface ArtistRepository extends JpaRepository<Artist, Integer> {
 	@Query("select o from Artist o where o.userAccount.id=?1")
 	Artist findByUserId(int id);
 
+	@Query("select o.performance.artist from Offer o where o.id=?1")
+	Artist findByOffer(int id);
+
 }

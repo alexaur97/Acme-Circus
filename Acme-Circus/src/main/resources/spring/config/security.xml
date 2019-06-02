@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
- * security.xml
- *
- * Copyright (C) 2019 Universidad de Sevilla
- *
- * The use of this project is hereby constrained to the conditions of the
- * TDG Licence, a copy of which you may download from
- * http://www.tdg-seville.info/License.html
- -->
+<!-- * security.xml * * Copyright (C) 2019 Universidad de Sevilla * * The 
+	use of this project is hereby constrained to the conditions of the * TDG 
+	Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
 
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
@@ -29,68 +23,111 @@
 	<security:http auto-config="true" use-expressions="true">
 		<security:intercept-url pattern="/" access="permitAll" />
 
-		<security:intercept-url pattern="/favicon.ico" access="permitAll" />
-		<security:intercept-url pattern="/images/**" access="permitAll" />
-		<security:intercept-url pattern="/scripts/**" access="permitAll" />
-		<security:intercept-url pattern="/styles/**" access="permitAll" />
-		<security:intercept-url pattern="/about/**" access="permitAll" />
+		<security:intercept-url pattern="/favicon.ico"
+			access="permitAll" />
+		<security:intercept-url pattern="/images/**"
+			access="permitAll" />
+		<security:intercept-url pattern="/scripts/**"
+			access="permitAll" />
+		<security:intercept-url pattern="/styles/**"
+			access="permitAll" />
+		<security:intercept-url pattern="/about/**"
+			access="permitAll" />
 
-		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" />
+		<security:intercept-url pattern="/views/misc/index.jsp"
+			access="permitAll" />
 
-		<security:intercept-url pattern="/security/login.do" access="permitAll" />
-		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" />
+		<security:intercept-url pattern="/security/login.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/security/loginFailure.do"
+			access="permitAll" />
 
-		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
-		<security:intercept-url pattern="/circus/list.do" access="permitAll" />
+		<security:intercept-url pattern="/welcome/index.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/circus/list.do"
+			access="permitAll" />
 
-		<security:intercept-url pattern="/categoryTour/administrator/**" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/stats/administrator/**" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/circus/administrator/**" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/fee/administrator/**" access="hasRole('ADMINISTRATOR')" />
-		<security:intercept-url pattern="/administrator/administrator/create.do"
+		<security:intercept-url pattern="/categoryTour/administrator/**"
 			access="hasRole('ADMINISTRATOR')" />
-			<security:intercept-url pattern="/administrator/administrator/edit.do"
+		<security:intercept-url pattern="/actor/administrator/**"
+			access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/stats/administrator/**"
+			access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/circus/administrator/**"
+			access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/fee/administrator/**"
+			access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/administrator/administrator/**"
+			access="hasRole('ADMINISTRATOR')" />
+		<security:intercept-url pattern="/invoice/administrator/**"
 			access="hasRole('ADMINISTRATOR')" />
 
-		<security:intercept-url pattern="/tour/search.do" access="permitAll" />
-		<security:intercept-url pattern="/tour/list.do" access="permitAll" />
-		<security:intercept-url pattern="/tour/listAll.do" access="permitAll" />
-				<security:intercept-url pattern="/tour/listPublic.do" access="permitAll" />
-		<security:intercept-url pattern="/tour/listByCategories.do" access="permitAll" />
-		<security:intercept-url pattern="/tour/show.do" access="permitAll" />
+		<security:intercept-url pattern="/tour/search.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/tour/list.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/tour/listAll.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/tour/listPublic.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/tour/listByCategories.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/tour/show.do"
+			access="permitAll" />
 
 
-		<security:intercept-url pattern="/stop/listByTour.do" access="permitAll" />
-		<security:intercept-url pattern="/stop/show.do" access="permitAll" />
+		<security:intercept-url pattern="/stop/listByTour.do"
+			access="permitAll" />
+		<security:intercept-url pattern="/stop/show.do"
+			access="permitAll" />
 
-		<security:intercept-url pattern="/categoryTour/list.do" access="permitAll" />
+		<security:intercept-url pattern="/categoryTour/list.do"
+			access="permitAll" />
 
-<security:intercept-url pattern="/artist/owner/**" access="hasRole('OWNER')"/>
-<security:intercept-url pattern="/banner/owner/**" access="hasRole('OWNER')"/>
-<security:intercept-url pattern="/tour/owner/**" access="hasRole('OWNER')"/>
-<security:intercept-url pattern="/organizer/owner/**" access="hasRole('OWNER')"/>
-<security:intercept-url pattern="/categoryPrice/owner/**" access="hasRole('OWNER')"/>
-<security:intercept-url pattern="/invoice/owner/**" access="hasRole('OWNER')"/>
+		<security:intercept-url pattern="/artist/owner/**"
+			access="hasRole('OWNER')" />
+		<security:intercept-url pattern="/banner/owner/**"
+			access="hasRole('OWNER')" />
+		<security:intercept-url pattern="/tour/owner/**"
+			access="hasRole('OWNER')" />
+		<security:intercept-url pattern="/organizer/owner/**"
+			access="hasRole('OWNER')" />
+		<security:intercept-url pattern="/categoryPrice/owner/**"
+			access="hasRole('OWNER')" />
+		<security:intercept-url pattern="/invoice/owner/**"
+			access="hasRole('OWNER')" />
 
- <security:intercept-url pattern="/artist/organizer/**" access="hasRole('ORGANIZER')"/>
- <security:intercept-url pattern="/offer/organizer/**" access="hasRole('ORGANIZER')"/>
- <security:intercept-url pattern="/tour/organizer/**" access="hasRole('ORGANIZER')"/>
- <security:intercept-url pattern="/stop/organizer/**" access="hasRole('ORGANIZER')"/>
+		<security:intercept-url pattern="/artist/organizer/**"
+			access="hasRole('ORGANIZER')" />
+		<security:intercept-url pattern="/offer/organizer/**"
+			access="hasRole('ORGANIZER')" />
+		<security:intercept-url pattern="/tour/organizer/**"
+			access="hasRole('ORGANIZER')" />
+		<security:intercept-url pattern="/stop/organizer/**"
+			access="hasRole('ORGANIZER')" />
 
 
-		<security:intercept-url pattern="/tour/attendee/list.do" access="hasRole('ATTENDEE')" />
-		<security:intercept-url pattern="/stop/attendee/list.do" access="hasRole('ATTENDEE')" />
-		<security:intercept-url pattern="/purchase/attendee/**" access="hasRole('ATTENDEE')" />
-		<security:intercept-url pattern="/ticket/attendee/list.do" access="hasRole('ATTENDEE')" />
+		<security:intercept-url pattern="/tour/attendee/list.do"
+			access="hasRole('ATTENDEE')" />
+		<security:intercept-url pattern="/stop/attendee/list.do"
+			access="hasRole('ATTENDEE')" />
+		<security:intercept-url pattern="/purchase/attendee/**"
+			access="hasRole('ATTENDEE')" />
+		<security:intercept-url pattern="/ticket/attendee/list.do"
+			access="hasRole('ATTENDEE')" />
 
-		<security:intercept-url pattern="/circus/owner/**" access="hasRole('OWNER')" />
-		<security:intercept-url pattern="/categoryPrice/owner/create.do" access="hasRole('OWNER')" />
+		<security:intercept-url pattern="/circus/owner/**"
+			access="hasRole('OWNER')" />
+		<security:intercept-url pattern="/categoryPrice/owner/create.do"
+			access="hasRole('OWNER')" />
 
-		<security:intercept-url pattern="/performance/artist/**" access="hasRole('ARTIST')" />
-		<security:intercept-url pattern="/offer/artist/**" access="hasRole('ARTIST')" />
-		<security:intercept-url pattern="/invoice/artist/list.do" access="hasRole('ARTIST')" />
-		
+		<security:intercept-url pattern="/performance/artist/**"
+			access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/offer/artist/**"
+			access="hasRole('ARTIST')" />
+		<security:intercept-url pattern="/invoice/artist/list.do"
+			access="hasRole('ARTIST')" />
+
 		<!-- <security:intercept-url pattern="/**" access="hasRole('NONE')" /> -->
 
 		<security:intercept-url pattern="/attendee/signup.do"
@@ -99,8 +136,10 @@
 			access="isAnonymous()" />
 		<security:intercept-url pattern="/owner/signup.do"
 			access="isAnonymous()" />
+
 		<security:intercept-url pattern="/actor/edit.do"
 			access="isAuthenticated()" />
+
 		<security:intercept-url pattern="/message/list.do"
 			access="hasRole('WORKER')" />
 		<security:intercept-url pattern="/message/show.do"
@@ -115,14 +154,11 @@
 
 
 
-		<security:form-login
-			login-page="/security/login.do"
-			password-parameter="password"
-			username-parameter="username"
+		<security:form-login login-page="/security/login.do"
+			password-parameter="password" username-parameter="username"
 			authentication-failure-url="/security/loginFailure.do" />
 
-		<security:logout
-			logout-success-url="/"
+		<security:logout logout-success-url="/"
 			invalidate-session="true" />
 	</security:http>
 

@@ -22,19 +22,25 @@ import forms.OfferForm;
 public class OfferService {
 
 	@Autowired
-	private Validator			validator;
+	private Validator				validator;
 
 	//Managed repository -------------------
 	@Autowired
-	private OfferRepository		offerRepository;
+	private OfferRepository			offerRepository;
 
 	//Supporting Services ------------------
+
 	@Autowired
-	private ArtistService		artistService;
+	private ArtistService			artistService;
+
 	@Autowired
-	private PerformanceService	performance;
+	private PerformanceService		performance;
+
 	@Autowired
-	private TourService			tourService;
+	private TourService				tourService;
+
+	@Autowired
+	private ArtistInvoiceService	artistInvoiceService;
 
 
 	//COnstructors -------------------------
@@ -70,8 +76,17 @@ public class OfferService {
 
 	public Offer save(final Offer offer) {
 		Assert.notNull(offer);
+		Offer old;
+		if (offer.getId() != 0)
+			old = this.findOne(offer.getId());
+		else
+			old = null;
 
 		final Offer result = this.offerRepository.save(offer);
+
+		if (old != null)
+			if (old.getStatus().equals("WAITINGFORCONFIRMATION") && result.getStatus().equals("CONFIRMED"))
+				this.artistInvoiceService.generate(result);
 		return result;
 	}
 

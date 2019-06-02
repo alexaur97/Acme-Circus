@@ -17,10 +17,13 @@ public class BannerService {
 
 	//Managed repository -------------------
 	@Autowired
-	private BannerRepository	bannerRepository;
-
+	private BannerRepository		bannerRepository;
 
 	//Supporting Services ------------------
+
+	@Autowired
+	private BannerInvoiceService	bannerInvoiceService;
+
 
 	//COnstructors -------------------------
 	public BannerService() {
@@ -54,10 +57,14 @@ public class BannerService {
 		return result;
 	}
 
-	public void save(final Banner banner) {
+	public Banner save(final Banner banner) {
 		Assert.notNull(banner);
 
-		this.bannerRepository.save(banner);
+		final Banner result = this.bannerRepository.save(banner);
+
+		if (banner.getId() == 0)
+			this.bannerInvoiceService.generate(result);
+		return result;
 	}
 
 	public void delete(final Banner banner) {
