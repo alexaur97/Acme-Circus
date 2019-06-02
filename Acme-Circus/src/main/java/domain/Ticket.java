@@ -5,9 +5,8 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -15,16 +14,15 @@ public class Ticket extends DomainEntity {
 
 	// Attributes ..................
 
-	public Integer			refNumber;
+	public String			refNumber;
 	public CategoryPrice	categoryPrice;
 
 
-	@NotNull
-	@Range(min = 0)
-	public Integer getRefNumber() {
+	@NotBlank
+	public String getRefNumber() {
 		return this.refNumber;
 	}
-	public void setRefNumber(final Integer refNumber) {
+	public void setRefNumber(final String refNumber) {
 		this.refNumber = refNumber;
 	}
 

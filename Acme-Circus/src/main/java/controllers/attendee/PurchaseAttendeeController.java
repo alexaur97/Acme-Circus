@@ -1,6 +1,7 @@
 
 package controllers.attendee;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.validation.Valid;
@@ -99,24 +100,25 @@ public class PurchaseAttendeeController extends AbstractController {
 		else
 
 			try {
-				final Purchase purchase;
+				Purchase purchase;
 				final Collection<Ticket> tickets;
 				final Stop stop = this.stopService.findOne(stopId);
 
 				Assert.isTrue(stop.getSpotsAvailable() >= purchaseAttendeeForm.getNum());
 
 				tickets = this.tickerService.reconstruct(purchaseAttendeeForm);
+				final Collection<Ticket> ticketsSaved = new ArrayList<>();
 
-				//				for (final Ticket t : tickets)
-				//					this.tickerService.save(t);
+				for (final Ticket t : tickets)
+					ticketsSaved.add(this.tickerService.save(t));
 
-				purchase = this.purchaseService.reconstruct(purchaseAttendeeForm, tickets);
+				purchase = this.purchaseService.reconstruct(purchaseAttendeeForm, ticketsSaved);
 
-				this.purchaseService.save(purchase);
+				purchase = this.purchaseService.save(purchase);
 
 				res = new ModelAndView("purchase/show");
 				res.addObject("purchase", purchase);
-				res.addObject("tickets", tickets);
+				res.addObject("tickets", ticketsSaved);
 
 			} catch (final Throwable oops) {
 				final Collection<CategoryPrice> categories = this.categoryPriceService.findByStop(stopId);
