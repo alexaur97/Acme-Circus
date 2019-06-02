@@ -20,21 +20,24 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+
 <display:table name="offers" id="offers" requestURI="${requestURI}"
 	pagesize="5" class="displaytag table">
 		<display:column property="performance.name" titleKey="performance.name" />
 	<display:column property="observations" titleKey="offer.observation" />
-	<jstl:if test="${offers.status==c}">
-	<display:column style="color:green" titleKey="offer.status" property="status" ></display:column>
-	</jstl:if>
-	<jstl:if test="${offers.status==p}">
-	<display:column style="color:purple" titleKey="offer.status" property="status" ></display:column>
-	</jstl:if>
-	<jstl:if test="${offers.status==w}">
-	<display:column style="color:blue" titleKey="offer.status" property="status" ></display:column>
-	</jstl:if>
-	<jstl:if test="${offers.status==r}">
-	<display:column style="color:red" titleKey="offer.status" property="status" ></display:column>
+	<jstl:if test="${b}">
+		<jstl:if test="${offers.status==c}">
+		<display:column style="color:green" titleKey="offer.status" property="status" ></display:column>
+		</jstl:if>
+		<jstl:if test="${offers.status==p}">
+		<display:column style="color:purple" titleKey="offer.status" property="status" ></display:column>
+		</jstl:if>
+		<jstl:if test="${offers.status==w}">
+		<display:column style="color:blue" titleKey="offer.status" property="status" ></display:column>
+		</jstl:if>
+		<jstl:if test="${offers.status==r}">
+		<display:column style="color:red" titleKey="offer.status" property="status" ></display:column>
+		</jstl:if>
 	</jstl:if>
 		<display:column titleKey="offer.lastUpdate" property="lastUpdate" ></display:column>
 		<display:column titleKey="offer.conditions" property="conditions" ></display:column>

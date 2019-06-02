@@ -45,9 +45,11 @@ public class OfferArtistController extends AbstractController {
 		try {
 			final Artist artist = this.artistService.findByPrincipal();
 			final Collection<Offer> offers = this.offerService.findByArt(artist.getId());
+			final Boolean b = !offers.isEmpty();
 			result = new ModelAndView("offer/list");
 			result.addObject("requestURI", "offer/artist/list.do");
 			result.addObject("offers", offers);
+			result.addObject("b", b);
 			result.addObject("p", "PENDING");
 			result.addObject("c", "CONFIRMED");
 			result.addObject("w", "WAITINGFORCONFIRMATION");
@@ -98,19 +100,28 @@ public class OfferArtistController extends AbstractController {
 			if (!toursMal.isEmpty()) {
 				final Artist artist = this.artistService.findByPrincipal();
 				final Collection<Offer> offers = this.offerService.findByArt(artist.getId());
+				final Boolean b = !offers.isEmpty();
 				result = new ModelAndView("offer/list");
 				result.addObject("requestURI", "offer/artist/list.do");
-				result.addObject("offers", offers);
-				result.addObject("s", "PENDING");
+				result.addObject("b", b);
+				result.addObject("p", "PENDING");
+				result.addObject("c", "CONFIRMED");
+				result.addObject("w", "WAITINGFORCONFIRMATION");
+				result.addObject("r", "REJECTED");
 				result.addObject("noVacio", true);
 				result.addObject("e", true);
 			} else if (tour.getStartDate().before(new Date())) {
 				final Artist artist = this.artistService.findByPrincipal();
 				final Collection<Offer> offers = this.offerService.findByArt(artist.getId());
+				final Boolean b = !offers.isEmpty();
 				result = new ModelAndView("offer/list");
 				result.addObject("requestURI", "offer/artist/list.do");
 				result.addObject("offers", offers);
-				result.addObject("s", "PENDING");
+				result.addObject("b", b);
+				result.addObject("p", "PENDING");
+				result.addObject("c", "CONFIRMED");
+				result.addObject("w", "WAITINGFORCONFIRMATION");
+				result.addObject("r", "REJECTED");
 				result.addObject("noVacio", true);
 				result.addObject("time", true);
 			} else

@@ -46,9 +46,15 @@ public class OfferOrganizerController extends AbstractController {
 		try {
 			final Organizer organizer = this.organizerService.findByPrincipal();
 			final Collection<Offer> offers = this.offerService.findByOrg(organizer.getId());
+			final Boolean b = !offers.isEmpty();
 			result = new ModelAndView("offer/list");
 			result.addObject("requestURI", "offer/organizer/list.do");
 			result.addObject("offers", offers);
+			result.addObject("b", b);
+			result.addObject("p", "PENDING");
+			result.addObject("c", "CONFIRMED");
+			result.addObject("w", "WAITINGFORCONFIRMATION");
+			result.addObject("r", "REJECTED");
 
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:/#");
