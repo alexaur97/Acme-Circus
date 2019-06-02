@@ -48,7 +48,10 @@ public class OfferArtistController extends AbstractController {
 			result = new ModelAndView("offer/list");
 			result.addObject("requestURI", "offer/artist/list.do");
 			result.addObject("offers", offers);
-			result.addObject("s", "PENDING");
+			result.addObject("p", "PENDING");
+			result.addObject("c", "CONFIRMED");
+			result.addObject("w", "WAITINGFORCONFIRMATION");
+			result.addObject("r", "REJECTED");
 			if (!offers.isEmpty())
 				result.addObject("noVacio", true);
 

@@ -29,6 +29,8 @@
 						code="master.page.organizers" /></a></li>
 			<li><a href="tour/owner/list.do"><spring:message
 						code="master.page.mytours" /></a></li>
+			<li><a href="offer/owner/list.do"><spring:message
+						code="master.page.offers" /></a></li>
 
 		</security:authorize>
 		<security:authorize access="hasRole('ORGANIZER')">

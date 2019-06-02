@@ -86,6 +86,7 @@
 
 		<security:intercept-url pattern="/circus/owner/**" access="hasRole('OWNER')" />
 		<security:intercept-url pattern="/categoryPrice/owner/create.do" access="hasRole('OWNER')" />
+		<security:intercept-url pattern="/offer/owner/**" access="hasRole('OWNER')" />
 
 		<security:intercept-url pattern="/performance/artist/**" access="hasRole('ARTIST')" />
 		<security:intercept-url pattern="/offer/artist/**" access="hasRole('ARTIST')" />

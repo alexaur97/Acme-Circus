@@ -15,6 +15,7 @@ import org.springframework.validation.Validator;
 import repositories.OfferRepository;
 import domain.Artist;
 import domain.Offer;
+import domain.Owner;
 import domain.Tour;
 import forms.OfferForm;
 
@@ -121,6 +122,28 @@ public class OfferService {
 		Assert.isTrue(offers.contains(offer));
 		Assert.isTrue(offer.getStatus().equals("PENDING"));
 		offer.setStatus("REJECTED");
+		offer.setLastUpdate(new Date());
+		return offer;
+	}
+
+	public Offer rejectOwner(final int id) {
+		final Owner o = this.ownerService.findByPrincipal();
+		final Collection<Offer> offers = this.findByCircus(o.getCircus().getId());
+		final Offer offer = this.offerRepository.findOne(id);
+		Assert.isTrue(offers.contains(offer));
+		Assert.isTrue(offer.getStatus().equals("WAITINGFORCONFIRMATION"));
+		offer.setStatus("REJECTED");
+		offer.setLastUpdate(new Date());
+		return offer;
+	}
+
+	public Offer confirmOwner(final int id) {
+		final Owner o = this.ownerService.findByPrincipal();
+		final Collection<Offer> offers = this.findByCircus(o.getCircus().getId());
+		final Offer offer = this.offerRepository.findOne(id);
+		Assert.isTrue(offers.contains(offer));
+		Assert.isTrue(offer.getStatus().equals("WAITINGFORCONFIRMATION"));
+		offer.setStatus("CONFIRMED");
 		offer.setLastUpdate(new Date());
 		return offer;
 	}

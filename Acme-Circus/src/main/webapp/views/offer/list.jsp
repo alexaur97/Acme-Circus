@@ -24,7 +24,18 @@
 	pagesize="5" class="displaytag table">
 		<display:column property="performance.name" titleKey="performance.name" />
 	<display:column property="observations" titleKey="offer.observation" />
-	<display:column titleKey="offer.status" property="status" ></display:column>
+	<jstl:if test="${offers.status==c}">
+	<display:column style="color:green" titleKey="offer.status" property="status" ></display:column>
+	</jstl:if>
+	<jstl:if test="${offers.status==p}">
+	<display:column style="color:purple" titleKey="offer.status" property="status" ></display:column>
+	</jstl:if>
+	<jstl:if test="${offers.status==w}">
+	<display:column style="color:blue" titleKey="offer.status" property="status" ></display:column>
+	</jstl:if>
+	<jstl:if test="${offers.status==r}">
+	<display:column style="color:red" titleKey="offer.status" property="status" ></display:column>
+	</jstl:if>
 		<display:column titleKey="offer.lastUpdate" property="lastUpdate" ></display:column>
 		<display:column titleKey="offer.conditions" property="conditions" ></display:column>
 		<display:column titleKey="offer.money" property="money" ></display:column>
@@ -32,16 +43,72 @@
 
 	<display:column titleKey="offer.accept">
 	<jstl:if test="${noVacio}">
-	<jstl:if test="${offers.status==s}">		
-			<acme:button url="/offer/artist/accept.do?offerId=${offers.id}" code="offer.accept" />
+	<jstl:if test="${offers.status==c}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==w}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==r}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==p}">		
+			<div style="text-align:center"><acme:button url="/offer/artist/accept.do?offerId=${offers.id}" code="offer.accept" /></div>
 	</jstl:if>
 		</jstl:if>
 	</display:column>
 	
 	<display:column titleKey="offer.reject">	
 	<jstl:if test="${noVacio}">
-	<jstl:if test="${offers.status==s}">	
-			<acme:button url="/offer/artist/reject.do?offerId=${offers.id}" code="offer.reject" />
+	<jstl:if test="${offers.status==c}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==w}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==r}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==p}">	
+			<div style="text-align:center"><acme:button url="/offer/artist/reject.do?offerId=${offers.id}" code="offer.reject" /></div>
+	</jstl:if>
+		</jstl:if>
+	</display:column>
+	
+	
+	</security:authorize>
+<security:authorize access="hasRole('OWNER')">
+
+	<display:column titleKey="offer.confirm">
+	<jstl:if test="${noVacio}">
+	<jstl:if test="${offers.status==c}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==p}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==r}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==w}">		
+			<div style="text-align:center"><acme:button url="/offer/owner/confirm.do?offerId=${offers.id}" code="offer.confirm" /></div>
+	</jstl:if>
+		</jstl:if>
+	</display:column>
+	
+	<display:column titleKey="offer.reject">	
+	<jstl:if test="${noVacio}">
+	<jstl:if test="${offers.status==c}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==p}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==r}">		
+			<div style="text-align:center">-</div>
+	</jstl:if>
+	<jstl:if test="${offers.status==w}">	
+			<div style="text-align:center"><acme:button url="/offer/owner/reject.do?offerId=${offers.id}" code="offer.reject" /></div>
 	</jstl:if>
 		</jstl:if>
 	</display:column>
