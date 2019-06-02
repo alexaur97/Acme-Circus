@@ -18,6 +18,9 @@ public interface CircusInvoiceRepository extends JpaRepository<CircusInvoice, In
 	@Query("select ci from CircusInvoice ci join ci.circus c where exists (select k from Owner o join o.circus k where o.id=?1 and k=c) order by ci.dateRequested desc")
 	Collection<CircusInvoice> findAllByPrincipal(int id);
 
+	@Query("select c from CircusInvoice c order by c.dateRequested desc")
+	Collection<CircusInvoice> findAllDesc();
+
 	//@Query("") 
 	//Method 
 

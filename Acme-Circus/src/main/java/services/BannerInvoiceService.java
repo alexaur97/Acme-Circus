@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.BannerInvoiceRepository;
+import domain.Banner;
 import domain.BannerInvoice;
 import domain.Owner;
 
@@ -23,6 +25,12 @@ public class BannerInvoiceService {
 	@Autowired
 	private OwnerService			ownerService;
 
+	@Autowired
+	private BannerService			bannerService;
+
+	@Autowired
+	private FeeService				feeService;
+
 
 	//Supporting Services ------------------
 
@@ -33,10 +41,17 @@ public class BannerInvoiceService {
 
 	//Simple CRUD methods--------------------
 
-	public BannerInvoice create() {
+	public BannerInvoice create(final Banner banner) {
 		BannerInvoice result;
 
 		result = new BannerInvoice();
+		result.setBanner(banner);
+		final Double bannerFee = this.feeService.find().getBannerFee();
+		result.setBannerFee(bannerFee);
+		final Date dateRequested = new Date();
+		result.setDateRequested(dateRequested);
+		result.setGenerated(false);
+		result.setTotal(bannerFee);
 
 		return result;
 	}
@@ -81,5 +96,9 @@ public class BannerInvoiceService {
 		return this.bannerInvoiceRepository.findAllByPrincipal(principal.getId());
 	}
 
+	public void generate(final Banner banner) {
+		final BannerInvoice created = this.create(banner);
+		this.save(created);
+	}
 	//Other Methods--------------------
 }

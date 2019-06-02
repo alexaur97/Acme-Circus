@@ -18,6 +18,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Artist;
 import domain.CreditCard;
+import domain.Offer;
 import forms.ActorEditForm;
 import forms.ArtistRegisterForm;
 
@@ -164,6 +165,10 @@ public class ArtistService {
 		res.setAddress(actorEditForm.getAddress());
 		Assert.notNull(res);
 		return res;
+	}
+
+	public Artist findByOffer(final Offer offer) {
+		return this.artistRepository.findByOffer(offer.getId());
 	}
 
 }
