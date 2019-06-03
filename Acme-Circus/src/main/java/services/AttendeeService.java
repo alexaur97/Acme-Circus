@@ -3,6 +3,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 
 import miscellaneous.Utils;
 
@@ -112,6 +113,7 @@ public class AttendeeService {
 		result.setUserAccount(userAccount);
 
 		result.setAddress(attendeeRegisterForm.getAddress());
+		Assert.isTrue(attendeeRegisterForm.getBornDate().before(new Date()));
 		result.setBornDate(attendeeRegisterForm.getBornDate());
 
 		final CreditCard creditCard = result.getCreditCard();
