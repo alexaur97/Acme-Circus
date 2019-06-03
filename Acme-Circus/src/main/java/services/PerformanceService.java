@@ -30,6 +30,8 @@ public class PerformanceService {
 	private ArtistService			artistService;
 	@Autowired
 	private OfferService			offerService;
+	@Autowired
+	private TourService				tourService;
 
 
 	//COnstructors -------------------------

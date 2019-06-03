@@ -201,4 +201,5 @@ public class TourService {
 	public Tour findByOffer(final int id) {
 		return this.tourRepository.findByOffer(id);
 	}
+
 }
