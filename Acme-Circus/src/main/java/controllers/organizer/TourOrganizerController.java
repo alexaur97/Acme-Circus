@@ -178,9 +178,9 @@ public class TourOrganizerController extends AbstractController {
 		try {
 
 			final Organizer o = this.organizerService.findByPrincipal();
-			final Boolean b = tour.getOrganizers().equals(o);
+			final Boolean b = res.getOrganizers().equals(o);
 			Assert.isTrue(b);
-			Assert.isTrue(!tour.validated);
+			Assert.isTrue(!res.validated);
 
 			this.tourService.delete(res);
 			result = new ModelAndView("redirect:/tour/organizer/list.do");
