@@ -226,4 +226,5 @@ public class OfferService {
 				result.add(o);
 		return result;
 	}
+
 }

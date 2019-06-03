@@ -103,6 +103,7 @@ public class OfferArtistController extends AbstractController {
 				final Boolean b = !offers.isEmpty();
 				result = new ModelAndView("offer/list");
 				result.addObject("requestURI", "offer/artist/list.do");
+				result.addObject("offers", offers);
 				result.addObject("b", b);
 				result.addObject("p", "PENDING");
 				result.addObject("c", "CONFIRMED");
@@ -142,13 +143,13 @@ public class OfferArtistController extends AbstractController {
 			result.addObject("offerForm", offer);
 		} else
 			try {
-				//				Assert.isNull(offerF.getConditions());
-				Assert.isTrue(!offerF.getConditions().isEmpty());
+				final String b = offer.getConditions().trim();
+				Assert.isTrue(!b.isEmpty());
 				final Offer offerFinal = this.offerService.save(offerF);
 				result = new ModelAndView("redirect:/offer/artist/list.do");
 
 			} catch (final Throwable oops) {
-				if (offerF.getConditions().isEmpty()) {
+				if (offer.getConditions().trim().isEmpty()) {
 					result = new ModelAndView("offer/edit");
 					result.addObject("offerForm", offerF);
 					result.addObject("blanco", true);
