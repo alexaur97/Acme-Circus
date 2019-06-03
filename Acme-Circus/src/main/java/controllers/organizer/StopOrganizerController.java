@@ -81,7 +81,7 @@ public class StopOrganizerController extends AbstractController {
 			final Organizer o = this.organizerService.findByPrincipal();
 			final Boolean b = stop.getTour().getOrganizers().equals(o);
 			Assert.isTrue(b);
-
+			Assert.isTrue(stop.getSpotsAvailable() <= stop.getSpotsTotal());
 			Assert.isTrue(!stop.getTour().validated);
 
 			res = this.createEditModelAndView(stop);
@@ -118,6 +118,8 @@ public class StopOrganizerController extends AbstractController {
 				Assert.isTrue(stop.getDate().after(stop.getTour().getStartDate()));
 				Assert.isTrue(stop.getDate().before(stop.getTour().getEndDate()));
 
+				Assert.isTrue(stop.getSpotsAvailable() <= stop.getSpotsTotal());
+
 				this.stopService.save(stop);
 				res = new ModelAndView("redirect:/stop/list.do");
 
@@ -129,6 +131,8 @@ public class StopOrganizerController extends AbstractController {
 					res = this.createEditModelAndView(stop, "stop.afterDate.error");
 				else if (!stop.getDate().before(stop.getTour().getEndDate()))
 					res = this.createEditModelAndView(stop, "stop.beforeDate.error");
+				else if (stop.getSpotsAvailable() > stop.getSpotsTotal())
+					res = this.createEditModelAndView(stop, "stop.spots.error");
 				else
 					res = this.createEditModelAndView(stop, "stop.samedate.error");
 			}

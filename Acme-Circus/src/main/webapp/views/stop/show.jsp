@@ -22,6 +22,7 @@
 
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<acme:display code="stop.tour.name" path="${stop.tour.name}" />
 <acme:display code="stop.city" path="${stop.city}" />
 <acme:display code="stop.country" path="${stop.country }" />
 <acme:display code="stop.location" path="${stop.location }" />

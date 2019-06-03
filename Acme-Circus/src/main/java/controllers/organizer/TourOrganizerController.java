@@ -1,8 +1,10 @@
 
 package controllers.organizer;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -81,6 +83,25 @@ public class TourOrganizerController extends AbstractController {
 
 			Assert.isTrue(!tour.validated);
 
+			//No podremos crear ni guardar un tour con una fecha entre la fecha
+			// de alguno de nuestros trous
+			Collection<Tour> misTours;
+			final int id = this.organizerService.findByPrincipal().getCircus().getId();
+			misTours = this.tourService.findAllByCircus(id);
+			final List<Tour> lista = new ArrayList<>(misTours);
+			for (int i = 0; i < lista.size(); i++) {
+
+				// Esta condicion comprueba que la fecha de comienzo de mi tour
+				// está entre la fecha de comienzo y la fecha de fin de otro tour del circo
+				final Boolean condicion1 = (lista.get(i).getStartDate().before(tour.getStartDate()) && tour.getStartDate().before(lista.get(i).getEndDate()));
+
+				//Esta condicion comprueba que la fecha de fin de mi tour está entre la fecha
+				// de comienzo y la fecha de fin de otro tour del circo
+				final Boolean condicion2 = (lista.get(i).getStartDate().before(tour.getEndDate()) && tour.getEndDate().before(lista.get(i).endDate));
+
+				Assert.isTrue(!condicion1);
+				Assert.isTrue(!condicion2);
+			}
 			res = this.createEditModelAndView(tour);
 
 		} catch (final Throwable oops) {
@@ -111,6 +132,26 @@ public class TourOrganizerController extends AbstractController {
 				final Date actual = new Date();
 				Assert.isTrue(tour.getStartDate().after(actual));
 
+				//No podremos crear ni guardar un tour con una fecha entre la fecha
+				// de alguno de nuestros trous
+				Collection<Tour> misTours;
+				final int id = this.organizerService.findByPrincipal().getCircus().getId();
+				misTours = this.tourService.findAllByCircus(id);
+				final List<Tour> lista = new ArrayList<>(misTours);
+				for (int i = 0; i < lista.size(); i++) {
+
+					// Esta condicion comprueba que la fecha de comienzo de mi tour
+					// está entre la fecha de comienzo y la fecha de fin de otro tour del circo
+					final Boolean condicion1 = (lista.get(i).getStartDate().before(tour.getStartDate()) && tour.getStartDate().before(lista.get(i).getEndDate()));
+
+					//Esta condicion comprueba que la fecha de fin de mi tour está entre la fecha
+					// de comienzo y la fecha de fin de otro tour del circo
+					final Boolean condicion2 = (lista.get(i).getStartDate().before(tour.getEndDate()) && tour.getEndDate().before(lista.get(i).endDate));
+
+					Assert.isTrue(!condicion1);
+					Assert.isTrue(!condicion2);
+				}
+
 				this.tourService.save(tour);
 				res = new ModelAndView("redirect:/tour/organizer/list.do");
 
@@ -125,7 +166,7 @@ public class TourOrganizerController extends AbstractController {
 				else if (!tour.getStartDate().after(actual))
 					res = this.createEditModelAndView(tour, "tour.actual.error");
 				else
-					res = this.createEditModelAndView(tour, "tour.commit.error");
+					res = this.createEditModelAndView(tour, "tour.datebetween.error");
 			}
 		return res;
 	}
