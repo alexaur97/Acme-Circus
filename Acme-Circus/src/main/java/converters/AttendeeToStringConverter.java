@@ -1,24 +1,24 @@
-package converters; 
 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import domain.Attendee; 
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class AttendeeToStringConverter implements Converter<Attendee, String>{ 
+import domain.Attendee;
 
-	@Override 
-	public String convert(Attendee attendee){ 
-		String result; 
-		if(attendee == null){ 
-			result = null; 
-		}else{ 
-			result = String.valueOf(attendee.getId()); 
-		} 
-		return result; 
-	} 
+@Component
+@Transactional
+public class AttendeeToStringConverter implements Converter<Attendee, String> {
 
-} 
+	@Override
+	public String convert(final Attendee attendee) {
+		String result;
+		if (attendee == null)
+			result = null;
+		else
+			result = String.valueOf(attendee.getId());
+		return result;
+	}
+
+}

@@ -26,9 +26,6 @@ public class BannerInvoiceService {
 	private OwnerService			ownerService;
 
 	@Autowired
-	private BannerService			bannerService;
-
-	@Autowired
 	private FeeService				feeService;
 
 

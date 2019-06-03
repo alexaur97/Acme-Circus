@@ -1,38 +1,40 @@
-package converters; 
 
-import org.apache.commons.lang.StringUtils; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import repositories.CategoryTourRepository; 
-import domain.CategoryTour; 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class StringToCategoryTourConverter implements Converter<String, CategoryTour>{ 
+import repositories.CategoryTourRepository;
+import domain.CategoryTour;
 
-	@Autowired 
-	CategoryTourRepository categoryTourRepository; 
+@Component
+@Transactional
+public class StringToCategoryTourConverter implements Converter<String, CategoryTour> {
 
-	@Override 
-	public CategoryTour convert(String text){ 
-		CategoryTour result; 
-		int id; 
+	@Autowired
+	CategoryTourRepository	categoryTourRepository;
 
-		try{ 
-			if(StringUtils.isEmpty(text)){ 
-				result = null; 
-			}else{ 
-				id = Integer.valueOf(text); 
-				result = categoryTourRepository.findOne(id); 
-			} 
-		}catch (Throwable oops) { 
-			throw new IllegalArgumentException(oops); 
-		} 
 
-		return result; 
-	} 
+	@Override
+	public CategoryTour convert(final String text) {
+		CategoryTour result;
+		int id;
 
-} 
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = this.categoryTourRepository.findOne(id);
+			}
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
+	}
+
+}

@@ -1,38 +1,40 @@
-package converters; 
 
-import org.apache.commons.lang.StringUtils; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import repositories.CategoryPriceRepository; 
-import domain.CategoryPrice; 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class StringToCategoryPriceConverter implements Converter<String, CategoryPrice>{ 
+import repositories.CategoryPriceRepository;
+import domain.CategoryPrice;
 
-	@Autowired 
-	CategoryPriceRepository categoryPriceRepository; 
+@Component
+@Transactional
+public class StringToCategoryPriceConverter implements Converter<String, CategoryPrice> {
 
-	@Override 
-	public CategoryPrice convert(String text){ 
-		CategoryPrice result; 
-		int id; 
+	@Autowired
+	CategoryPriceRepository	categoryPriceRepository;
 
-		try{ 
-			if(StringUtils.isEmpty(text)){ 
-				result = null; 
-			}else{ 
-				id = Integer.valueOf(text); 
-				result = categoryPriceRepository.findOne(id); 
-			} 
-		}catch (Throwable oops) { 
-			throw new IllegalArgumentException(oops); 
-		} 
 
-		return result; 
-	} 
+	@Override
+	public CategoryPrice convert(final String text) {
+		CategoryPrice result;
+		int id;
 
-} 
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = this.categoryPriceRepository.findOne(id);
+			}
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
+	}
+
+}

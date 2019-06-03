@@ -28,10 +28,6 @@ public class PerformanceService {
 	//Supporting Services ------------------
 	@Autowired
 	private ArtistService			artistService;
-	@Autowired
-	private OfferService			offerService;
-	@Autowired
-	private TourService				tourService;
 
 
 	//COnstructors -------------------------

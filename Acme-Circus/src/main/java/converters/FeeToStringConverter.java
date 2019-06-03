@@ -1,24 +1,24 @@
-package converters; 
 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import domain.Fee; 
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class FeeToStringConverter implements Converter<Fee, String>{ 
+import domain.Fee;
 
-	@Override 
-	public String convert(Fee fee){ 
-		String result; 
-		if(fee == null){ 
-			result = null; 
-		}else{ 
-			result = String.valueOf(fee.getId()); 
-		} 
-		return result; 
-	} 
+@Component
+@Transactional
+public class FeeToStringConverter implements Converter<Fee, String> {
 
-} 
+	@Override
+	public String convert(final Fee fee) {
+		String result;
+		if (fee == null)
+			result = null;
+		else
+			result = String.valueOf(fee.getId());
+		return result;
+	}
+
+}

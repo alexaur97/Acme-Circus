@@ -1,24 +1,24 @@
-package converters; 
 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import domain.Ticket; 
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class TicketToStringConverter implements Converter<Ticket, String>{ 
+import domain.Ticket;
 
-	@Override 
-	public String convert(Ticket ticket){ 
-		String result; 
-		if(ticket == null){ 
-			result = null; 
-		}else{ 
-			result = String.valueOf(ticket.getId()); 
-		} 
-		return result; 
-	} 
+@Component
+@Transactional
+public class TicketToStringConverter implements Converter<Ticket, String> {
 
-} 
+	@Override
+	public String convert(final Ticket ticket) {
+		String result;
+		if (ticket == null)
+			result = null;
+		else
+			result = String.valueOf(ticket.getId());
+		return result;
+	}
+
+}

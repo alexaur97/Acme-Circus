@@ -45,7 +45,7 @@ public class OfferService {
 	private ArtistInvoiceService	artistInvoiceService;
 
 	@Autowired
-	private OwnerService		ownerService;
+	private OwnerService			ownerService;
 
 
 	//COnstructors -------------------------

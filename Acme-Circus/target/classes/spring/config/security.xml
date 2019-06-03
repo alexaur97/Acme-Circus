@@ -128,7 +128,6 @@
 			access="hasRole('ARTIST')" />
 		<security:intercept-url pattern="/invoice/artist/list.do"
 			access="hasRole('ARTIST')" />
-
 		<!-- <security:intercept-url pattern="/**" access="hasRole('NONE')" /> -->
 
 		<security:intercept-url pattern="/attendee/signup.do"

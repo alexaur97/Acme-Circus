@@ -1,24 +1,24 @@
-package converters; 
 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import domain.BannerInvoice; 
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class BannerInvoiceToStringConverter implements Converter<BannerInvoice, String>{ 
+import domain.BannerInvoice;
 
-	@Override 
-	public String convert(BannerInvoice bannerInvoice){ 
-		String result; 
-		if(bannerInvoice == null){ 
-			result = null; 
-		}else{ 
-			result = String.valueOf(bannerInvoice.getId()); 
-		} 
-		return result; 
-	} 
+@Component
+@Transactional
+public class BannerInvoiceToStringConverter implements Converter<BannerInvoice, String> {
 
-} 
+	@Override
+	public String convert(final BannerInvoice bannerInvoice) {
+		String result;
+		if (bannerInvoice == null)
+			result = null;
+		else
+			result = String.valueOf(bannerInvoice.getId());
+		return result;
+	}
+
+}

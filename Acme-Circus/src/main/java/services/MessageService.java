@@ -25,22 +25,16 @@ public class MessageService {
 
 	//Managed repository -------------------
 	@Autowired
-	private MessageRepository		messageRepository;
+	private MessageRepository	messageRepository;
 
 	@Autowired
-	private AdministratorService	administratorService;
+	private SpamWordService		spamWordService;
 
 	@Autowired
-	private ActorService			actorService;
+	private Validator			validator;
 
 	@Autowired
-	private SpamWordService			spamWordService;
-
-	@Autowired
-	private Validator				validator;
-
-	@Autowired
-	private WorkerService			workerService;
+	private WorkerService		workerService;
 
 
 	//Supporting Services ------------------

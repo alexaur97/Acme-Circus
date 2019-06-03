@@ -1,38 +1,40 @@
-package converters; 
 
-import org.apache.commons.lang.StringUtils; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import repositories.CircusInvoiceRepository; 
-import domain.CircusInvoice; 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class StringToCircusInvoiceConverter implements Converter<String, CircusInvoice>{ 
+import repositories.CircusInvoiceRepository;
+import domain.CircusInvoice;
 
-	@Autowired 
-	CircusInvoiceRepository circusInvoiceRepository; 
+@Component
+@Transactional
+public class StringToCircusInvoiceConverter implements Converter<String, CircusInvoice> {
 
-	@Override 
-	public CircusInvoice convert(String text){ 
-		CircusInvoice result; 
-		int id; 
+	@Autowired
+	CircusInvoiceRepository	circusInvoiceRepository;
 
-		try{ 
-			if(StringUtils.isEmpty(text)){ 
-				result = null; 
-			}else{ 
-				id = Integer.valueOf(text); 
-				result = circusInvoiceRepository.findOne(id); 
-			} 
-		}catch (Throwable oops) { 
-			throw new IllegalArgumentException(oops); 
-		} 
 
-		return result; 
-	} 
+	@Override
+	public CircusInvoice convert(final String text) {
+		CircusInvoice result;
+		int id;
 
-} 
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = this.circusInvoiceRepository.findOne(id);
+			}
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
+	}
+
+}

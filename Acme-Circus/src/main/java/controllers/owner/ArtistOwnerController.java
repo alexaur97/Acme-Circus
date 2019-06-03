@@ -15,7 +15,6 @@ import services.OwnerService;
 import services.PerformanceService;
 import controllers.AbstractController;
 import domain.Artist;
-import domain.Owner;
 import domain.Performance;
 
 @Controller
@@ -51,7 +50,7 @@ public class ArtistOwnerController extends AbstractController {
 	public ModelAndView performances(@RequestParam final int artistId) {
 		ModelAndView result;
 		try {
-			final Owner owner = this.ownerService.findByPrincipal();
+			this.ownerService.findByPrincipal();
 			final Collection<Performance> performances = this.performanceService.findByArtist(artistId);
 			result = new ModelAndView("performance/list");
 			result.addObject("requestURI", "artist/owner/performances.do");

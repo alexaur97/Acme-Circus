@@ -1,3 +1,4 @@
+
 package domain;
 
 import java.util.Date;
@@ -17,37 +18,37 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Invoice extends DomainEntity {
 
 	// Attributes ..................
-	
-	public Date dateRequested;
-	public Boolean generated;
-	public Double total;
-	
+
+	public Date		dateRequested;
+	public Boolean	generated;
+	public Double	total;
+
+
 	@NotNull
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	public Date getDateRequested() {
-		return dateRequested;
+		return this.dateRequested;
 	}
-	public void setDateRequested(Date dateRequested) {
+	public void setDateRequested(final Date dateRequested) {
 		this.dateRequested = dateRequested;
 	}
-	
-	@NotNull	
+
+	@NotNull
 	public Boolean getGenerated() {
-		return generated;
+		return this.generated;
 	}
-	public void setGenerated(Boolean generated) {
+	public void setGenerated(final Boolean generated) {
 		this.generated = generated;
 	}
-	
+
 	@NotNull
-	@Range(min= 0)
+	@Range(min = 0)
 	public Double getTotal() {
-		return total;
+		return this.total;
 	}
-	public void setTotal(Double total) {
+	public void setTotal(final Double total) {
 		this.total = total;
 	}
-
 
 }

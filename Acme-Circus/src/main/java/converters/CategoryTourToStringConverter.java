@@ -1,24 +1,24 @@
-package converters; 
 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import domain.CategoryTour; 
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class CategoryTourToStringConverter implements Converter<CategoryTour, String>{ 
+import domain.CategoryTour;
 
-	@Override 
-	public String convert(CategoryTour categoryTour){ 
-		String result; 
-		if(categoryTour == null){ 
-			result = null; 
-		}else{ 
-			result = String.valueOf(categoryTour.getId()); 
-		} 
-		return result; 
-	} 
+@Component
+@Transactional
+public class CategoryTourToStringConverter implements Converter<CategoryTour, String> {
 
-} 
+	@Override
+	public String convert(final CategoryTour categoryTour) {
+		String result;
+		if (categoryTour == null)
+			result = null;
+		else
+			result = String.valueOf(categoryTour.getId());
+		return result;
+	}
+
+}

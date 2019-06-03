@@ -1,38 +1,35 @@
-package services; 
 
-import java.util.Collection; 
+package services;
 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.stereotype.Service; 
-import org.springframework.transaction.annotation.Transactional; 
-import org.springframework.util.Assert; 
+import java.util.Collection;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import repositories.InvoiceRepository;
+import domain.Invoice;
 
-import domain.Invoice; 
-import domain.Offer;
-
-@Service 
-@Transactional 
-public class InvoiceService { 
+@Service
+@Transactional
+public class InvoiceService {
 
 	//Managed repository -------------------
 	@Autowired
-	private InvoiceRepository invoiceRepository;
+	private InvoiceRepository	invoiceRepository;
 
 
 	//Supporting Services ------------------
 
-
 	//COnstructors -------------------------
-	public InvoiceService(){
+	public InvoiceService() {
 		super();
 	}
 
-
 	//Simple CRUD methods--------------------
 
-	public Invoice create(){
+	public Invoice create() {
 		Invoice result;
 
 		result = new Invoice();
@@ -40,32 +37,31 @@ public class InvoiceService {
 		return result;
 	}
 
-	public Collection<Invoice> findAll(){
+	public Collection<Invoice> findAll() {
 		Collection<Invoice> result;
 
-		result = invoiceRepository.findAll();
+		result = this.invoiceRepository.findAll();
 
 		return result;
 	}
 
-	public Invoice findOne(int invoiceId){
+	public Invoice findOne(final int invoiceId) {
 		Invoice result;
 
-		result = invoiceRepository.findOne(invoiceId);
+		result = this.invoiceRepository.findOne(invoiceId);
 
 		return result;
 	}
 
-	public void save(Invoice invoice){
+	public void save(final Invoice invoice) {
 		Assert.notNull(invoice);
 
-		invoiceRepository.save(invoice);
+		this.invoiceRepository.save(invoice);
 	}
 
-	public void delete(Invoice invoice){
-		invoiceRepository.delete(invoice);
+	public void delete(final Invoice invoice) {
+		this.invoiceRepository.delete(invoice);
 	}
-
 
 	//Other Methods--------------------
-} 
+}

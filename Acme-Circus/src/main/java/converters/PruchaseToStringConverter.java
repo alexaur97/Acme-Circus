@@ -1,24 +1,24 @@
-package converters; 
 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import domain.Purchase; 
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class PruchaseToStringConverter implements Converter<Purchase, String>{ 
+import domain.Purchase;
 
-	@Override 
-	public String convert(Purchase pruchase){ 
-		String result; 
-		if(pruchase == null){ 
-			result = null; 
-		}else{ 
-			result = String.valueOf(pruchase.getId()); 
-		} 
-		return result; 
-	} 
+@Component
+@Transactional
+public class PruchaseToStringConverter implements Converter<Purchase, String> {
 
-} 
+	@Override
+	public String convert(final Purchase pruchase) {
+		String result;
+		if (pruchase == null)
+			result = null;
+		else
+			result = String.valueOf(pruchase.getId());
+		return result;
+	}
+
+}
