@@ -1763,7 +1763,31 @@
 	</bean>
 	
 	<bean id="circusInvoice1" class="domain.CircusInvoice">
-		<property name="dateRequested" value="1/12/2018"/>
+		<property name="dateRequested" value="12/1/2018"/>
+		<property name="generated" value="true"/>
+		<property name="total" value="1.0"/>
+		<property name="circusFee" value="1.0"/>
+		<property name="circus" ref="circus1" />
+	</bean>
+	
+	<bean id="circusInvoice2" class="domain.CircusInvoice">
+		<property name="dateRequested" value="1/1/2019"/>
+		<property name="generated" value="true"/>
+		<property name="total" value="1.0"/>
+		<property name="circusFee" value="1.0"/>
+		<property name="circus" ref="circus1" />
+	</bean>
+	
+	<bean id="circusInvoice3" class="domain.CircusInvoice">
+		<property name="dateRequested" value="2/1/2019"/>
+		<property name="generated" value="true"/>
+		<property name="total" value="1.0"/>
+		<property name="circusFee" value="1.0"/>
+		<property name="circus" ref="circus1" />
+	</bean>
+	
+	<bean id="circusInvoice4" class="domain.CircusInvoice">
+		<property name="dateRequested" value="11/1/2018"/>
 		<property name="generated" value="true"/>
 		<property name="total" value="1.0"/>
 		<property name="circusFee" value="1.0"/>
@@ -1771,7 +1795,7 @@
 	</bean>
 	
 	<bean id="artistInvoice1" class="domain.ArtistInvoice">
-		<property name="dateRequested" value="1/12/2018"/>
+		<property name="dateRequested" value="12/1/2018"/>
 		<property name="generated" value="true"/>
 		<property name="total" value="8.0"/>
 		<property name="acceptedOfferFee" value="0.1"/>

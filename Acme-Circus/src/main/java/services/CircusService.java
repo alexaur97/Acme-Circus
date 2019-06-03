@@ -109,5 +109,9 @@ public class CircusService {
 		return res;
 	}
 
+	public Collection<Circus> findAllActive() {
+		return this.circusRepository.findAllActive();
+	}
+
 	//Other Methods--------------------
 }

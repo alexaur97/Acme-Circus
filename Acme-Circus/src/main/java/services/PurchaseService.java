@@ -59,10 +59,12 @@ public class PurchaseService {
 		return result;
 	}
 
-	public void save(final Purchase pruchase) {
+	public Purchase save(final Purchase pruchase) {
 		Assert.notNull(pruchase);
 
-		this.pruchaseRepository.save(pruchase);
+		Purchase res;
+		res = this.pruchaseRepository.save(pruchase);
+		return res;
 	}
 
 	public void delete(final Purchase pruchase) {

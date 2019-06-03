@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -63,7 +62,7 @@ public class Purchase extends DomainEntity {
 	}
 
 	@NotNull
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany()
 	public Collection<Ticket> getTickets() {
 		return this.tickets;
 	}

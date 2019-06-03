@@ -56,10 +56,12 @@ public class TicketService {
 		return result;
 	}
 
-	public void save(final Ticket ticket) {
+	public Ticket save(final Ticket ticket) {
 		Assert.notNull(ticket);
 
-		this.ticketRepository.save(ticket);
+		Ticket res;
+		res = this.ticketRepository.save(ticket);
+		return res;
 	}
 
 	public void delete(final Ticket ticket) {
@@ -72,16 +74,72 @@ public class TicketService {
 		for (Integer i = 0; i < form.getNum(); i++) {
 			final Ticket ticket = new Ticket();
 			ticket.setCategoryPrice(form.getCategory());
-			final Integer refNumber = this.creaNum();
+			final String number = this.creaNum();
+			final String name = this.createName(form.getCategory().getStop().getCity());
+
+			final String refNumber = name.concat(number);
+
 			ticket.setRefNumber(refNumber);
 			res.add(ticket);
 
 		}
-		//final List<Ticket> r = res.subList(0, form.getNum() - 1);
 		res = res.subList(0, form.getNum());
 		return res;
 	}
-	public Integer creaNum() {
+
+	private String createName(final String name) {
+		String resultado;
+		final char[] res = new char[2];
+
+		final Collection<String> elementos = new ArrayList<>();
+		elementos.add("A");
+		elementos.add("N");
+		elementos.add("B");
+		elementos.add("O");
+		elementos.add("C");
+		elementos.add("P");
+		elementos.add("D");
+		elementos.add("Q");
+		elementos.add("E");
+		elementos.add("R");
+		elementos.add("F");
+		elementos.add("S");
+		elementos.add("G");
+		elementos.add("T");
+		elementos.add("H");
+		elementos.add("U");
+		elementos.add("I");
+		elementos.add("V");
+		elementos.add("J");
+		elementos.add("W");
+		elementos.add("K");
+		elementos.add("X");
+		elementos.add("L");
+		elementos.add("Y");
+		elementos.add("M");
+		elementos.add("Z");
+
+		final char[] nuevo = name.toUpperCase().toCharArray();
+		int a = 0;
+		for (int i = 0; i <= nuevo.length; i++) {
+			char letra;
+			final String s = String.valueOf(nuevo[i]);
+			if (elementos.contains(s)) {
+				letra = name.charAt(i);
+				res[a] = letra;
+				a++;
+				if (a == 2)
+					break;
+			}
+		}
+		resultado = new String(res);
+		if (resultado.length() < 2)
+			for (int j = resultado.length(); j <= 2; j++)
+				resultado = resultado.concat("X");
+		return resultado;
+	}
+
+	public String creaNum() {
 		String cadena = null;
 
 		final char[] elementos = {
@@ -98,9 +156,7 @@ public class TicketService {
 		}
 		cadena = new String(conjunto);
 
-		final Integer num = Integer.parseInt(cadena);
-
-		return num;
+		return cadena;
 	}
 
 	//Other Methods--------------------
