@@ -2,6 +2,7 @@
 package controllers.all;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -86,6 +87,8 @@ public class AttendeeController extends AbstractController {
 					result.addObject("message", "attendee.password.error");
 				else if (Utils.creditCardIsExpired(attendeeRegisterForm.getExpirationMonth(), attendeeRegisterForm.getExpirationYear()))
 					result.addObject("message", "attendee.expired.card.error");
+				else if (attendeeRegisterForm.getBornDate().after(new Date()))
+					result.addObject("message", "attendee.date.error");
 				else
 					result.addObject("message", "attendee.commit.error");
 			}

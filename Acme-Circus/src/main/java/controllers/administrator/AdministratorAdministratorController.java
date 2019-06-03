@@ -53,7 +53,7 @@ public class AdministratorAdministratorController extends AbstractController {
 			try {
 				final Administrator administrator = this.administratorService.reconstruct(administratorRegisterForm);
 				this.administratorService.save(administrator);
-				result = new ModelAndView("redirect:/security/login.do");
+				result = new ModelAndView("redirect:/#");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(administratorRegisterForm);
 
@@ -61,15 +61,15 @@ public class AdministratorAdministratorController extends AbstractController {
 				final Collection<String> emails = this.actorService.findAllEmails();
 
 				if (accounts.contains(administratorRegisterForm.getUsername()))
-					result.addObject("message", "register.username.error");
+					result.addObject("message", "administrator.username.error");
 				else if (emails.contains(administratorRegisterForm.getEmail()))
-					result.addObject("message", "register.email.error");
+					result.addObject("message", "administrator.email.error");
 				else if (!administratorRegisterForm.getConfirmPassword().equals(administratorRegisterForm.getPassword()))
-					result.addObject("message", "register.password.error");
+					result.addObject("message", "administrator.password.error");
 				else if (Utils.creditCardIsExpired(administratorRegisterForm.getExpirationMonth(), administratorRegisterForm.getExpirationYear()))
-					result.addObject("message", "register.expired.card.error");
+					result.addObject("message", "administrator.expired.card.error");
 				else
-					result.addObject("message", "register.commit.error");
+					result.addObject("message", "administrator.commit.error");
 			}
 		return result;
 	}
