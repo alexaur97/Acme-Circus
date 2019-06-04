@@ -26,13 +26,13 @@ import domain.Stop;
 public class CategoryPriceOwnerController extends AbstractController {
 
 	@Autowired
-	CategoryPriceService	categoryPriceService;
+	private CategoryPriceService	categoryPriceService;
 
 	@Autowired
-	OwnerService			ownerService;
+	private OwnerService			ownerService;
 
 	@Autowired
-	StopService				stopService;
+	private StopService				stopService;
 
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
