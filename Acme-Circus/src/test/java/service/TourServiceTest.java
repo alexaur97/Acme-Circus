@@ -54,9 +54,9 @@ public class TourServiceTest extends AbstractTest {
 	@Test
 	public void validateTourGood() {
 
-		super.authenticate("owner1");
+		super.authenticate("owner2");
 
-		final int idTour = super.getEntityId("tour1");
+		final int idTour = super.getEntityId("tour3");
 		final Tour tour = this.tourService.findOne(idTour);
 		this.tourService.validate(tour);
 		super.unauthenticate();
@@ -83,6 +83,19 @@ public class TourServiceTest extends AbstractTest {
 		super.authenticate("owner1");
 
 		final int idTour = super.getEntityId("tour3");
+		final Tour tour = this.tourService.findOne(idTour);
+		this.tourService.validate(tour);
+		super.unauthenticate();
+
+	}
+
+	// intenta validar una gira validada
+
+	@Test(expected = IllegalArgumentException.class)
+	public void validateTourError2() throws ParseException {
+
+		super.authenticate("owner1");
+		final int idTour = super.getEntityId("tour1");
 		final Tour tour = this.tourService.findOne(idTour);
 		this.tourService.validate(tour);
 		super.unauthenticate();
@@ -170,7 +183,35 @@ public class TourServiceTest extends AbstractTest {
 		tour.setValidated(false);
 		this.tourService.save(tour);
 		super.unauthenticate();
+	}
 
+	// intenta crear un tour un owner
+
+	@Test(expected = IllegalArgumentException.class)
+	public void createTourError2() throws ParseException {
+		super.authenticate("owner1");
+		final Tour tour = this.tourService.create();
+		final Organizer o = this.organizerService.findByPrincipal();
+		final int idCategoryTour = super.getEntityId("categoryTour1");
+		final CategoryTour categoryTour = this.categoryTourService.findOne(idCategoryTour);
+		tour.setCategoryTour(categoryTour);
+		tour.setDescription("descripcion");
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String stringFecha = "2035-10-10";
+		final Date endDate = sdf.parse(stringFecha);
+		tour.setEndDate(endDate);
+		final String stringFecha1 = "2034-10-10";
+		final Date startDate = sdf.parse(stringFecha1);
+		tour.setStartDate(startDate);
+		tour.setCategoryTour(categoryTour);
+		tour.setLink("hola");
+		tour.setOrganizers(o);
+		tour.setName("nombre");
+		tour.setTags(null);
+		tour.setOffers(null);
+		tour.setValidated(false);
+		this.tourService.save(tour);
+		super.unauthenticate();
 		//Este test testea el requisito 16.1 Un actor registrado como organizador del circo 
 		// puede editar giras para su circo
 
@@ -225,6 +266,23 @@ public class TourServiceTest extends AbstractTest {
 
 	}
 
+	//intenta editar un tour ya validado
+
+	@Test(expected = IllegalArgumentException.class)
+	public void editTourError2() throws ParseException {
+		super.authenticate("organizer1");
+		final int tourId = super.getEntityId("tour1");
+		final Tour tour = this.tourService.findOne(tourId);
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String stringFecha = "2020-10-10";
+		final Date endDate = sdf.parse(stringFecha);
+		tour.setEndDate(endDate);
+		this.tourService.reconstruct(tour, null);
+		this.tourService.save(tour);
+		super.unauthenticate();
+
+	}
+
 	//Este test testea el requisito 16.1 Un actor registrado como organizador del circo 
 	// puede eliminar giras de su circo
 
@@ -263,6 +321,16 @@ public class TourServiceTest extends AbstractTest {
 	public void testDeleteTourError() throws ParseException {
 		super.authenticate("organizer1");
 		final int id = super.getEntityId("tour3");
+		final Tour tour = this.tourService.findOne(id);
+		this.tourService.delete(tour);
+		super.unauthenticate();
+	}
+
+	// intenta eliminar una gira validada
+	@Test(expected = IllegalArgumentException.class)
+	public void testDeleteTourError2() throws ParseException {
+		super.authenticate("organizer1");
+		final int id = super.getEntityId("tour1");
 		final Tour tour = this.tourService.findOne(id);
 		this.tourService.delete(tour);
 		super.unauthenticate();

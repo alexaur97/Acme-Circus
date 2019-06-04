@@ -101,6 +101,29 @@ public class StopServiceTest extends AbstractTest {
 
 	}
 
+	// intenta crear una parada con una fecha anterior a la actual
+
+	@Test(expected = IllegalArgumentException.class)
+	public void createStopError2() throws ParseException {
+		super.authenticate("organizer2");
+		final Stop stop = this.stopService.create();
+		stop.setCity("Ciudad");
+		stop.setCountry("Pais");
+		stop.setLocation("Localizacion");
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String stringFecha = "2016-10-11";
+		final Date date = sdf.parse(stringFecha);
+		stop.setDate(date);
+		final int id = super.getEntityId("tour3");
+		final Tour tour = this.tourService.findOne(id);
+		stop.setTour(tour);
+		stop.setSpotsAvailable(100);
+		stop.setSpotsTotal(200);
+		this.stopService.save(stop);
+		super.unauthenticate();
+
+	}
+
 	//Este test testea el requisito 16.2 Un actor registrado como organizador del circo 
 	// puede eliminar paradas para las giras de su circo que no estén validadas
 
@@ -140,6 +163,17 @@ public class StopServiceTest extends AbstractTest {
 	public void testDeleteStopError() throws ParseException {
 		super.authenticate("organizer2");
 		final int id = super.getEntityId("stop3");
+		final Stop stop = this.stopService.findOne(id);
+		this.stopService.delete(stop);
+		super.unauthenticate();
+	}
+
+	// Intenta borrar una parada que no es suya
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testDeleteStopError2() throws ParseException {
+		super.authenticate("organizer2");
+		final int id = super.getEntityId("stop10");
 		final Stop stop = this.stopService.findOne(id);
 		this.stopService.delete(stop);
 		super.unauthenticate();

@@ -68,11 +68,27 @@ public class CategoryPriceServiceTest extends AbstractTest {
 
 	// Análisis del data coverage (¿Que y como estamos verificando en nuestro modelo de datos?):
 
-	// Estamos verificando en nuestro modelo de datos que un solo un dueño puede
+	// Estamos verificando en nuestro modelo de datos que solo un dueño puede
 	// crear category prices para las paradas de los tours de su circo
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createCategoryPriceError() throws ParseException {
+		super.authenticate("owner1");
+		final CategoryPrice categoryPrice = this.categoryPriceService.create();
+		categoryPrice.setAmount(80.0);
+		categoryPrice.setCategory("Entrada vip");
+		final int idStop = super.getEntityId("stop7");
+		final Stop stop = this.stopService.findOne(idStop);
+		categoryPrice.setStop(stop);
+		this.categoryPriceService.save(categoryPrice);
+		super.unauthenticate();
+
+	}
+
+	// intentar crear un categoryPrice asociado a una stop que no es de su circo
+
+	@Test(expected = IllegalArgumentException.class)
+	public void createCategoryPriceError2() throws ParseException {
 		super.authenticate("organizer1");
 		final CategoryPrice categoryPrice = this.categoryPriceService.create();
 		categoryPrice.setAmount(80.0);
@@ -132,6 +148,19 @@ public class CategoryPriceServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
+	// intenta editarla un organizador
+
+	@Test(expected = IllegalArgumentException.class)
+	public void editCategoryPriceError2() throws ParseException {
+		super.authenticate("organizer1");
+		final int idCategoryPrice = super.getEntityId("categoryPrice1");
+		CategoryPrice categoryPrice = this.categoryPriceService.findOne(idCategoryPrice);
+		categoryPrice.setAmount(100.0);
+		categoryPrice = this.categoryPriceService.reconstruct(categoryPrice, null);
+		this.categoryPriceService.save(categoryPrice);
+		super.unauthenticate();
+	}
+
 	//Este test testea el requisito 15.7 Un Actor autenticado como dueño debe poder
 	// eliminar category prices solo de las paradas de las giras de su circo
 
@@ -170,6 +199,17 @@ public class CategoryPriceServiceTest extends AbstractTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void deleteCategoryPriceError() throws ParseException {
 		super.authenticate("owner2");
+		final int idCategoryPrice = super.getEntityId("categoryPrice1");
+		final CategoryPrice categoryPrice = this.categoryPriceService.findOne(idCategoryPrice);
+		this.categoryPriceService.delete(categoryPrice);
+		super.unauthenticate();
+	}
+
+	// Intenta eliminarla un organizador
+
+	@Test(expected = IllegalArgumentException.class)
+	public void deleteCategoryPriceError2() throws ParseException {
+		super.authenticate("organizer1");
 		final int idCategoryPrice = super.getEntityId("categoryPrice1");
 		final CategoryPrice categoryPrice = this.categoryPriceService.findOne(idCategoryPrice);
 		this.categoryPriceService.delete(categoryPrice);

@@ -173,6 +173,8 @@ public class TourService {
 	}
 
 	public Tour validate(final Tour tour) {
+
+		Assert.isTrue(!tour.getValidated());
 		final Owner o = this.ownerService.findByPrincipal();
 		Assert.isTrue(tour.getOrganizers().getCircus().equals(o.getCircus()));
 		final Tour res = tour;
