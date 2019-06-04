@@ -23,6 +23,8 @@ public class CircusService {
 	@Autowired
 	private CircusRepository		circusRepository;
 
+	//Supporting Services ------------------
+
 	@Autowired
 	private OwnerService			ownerService;
 
@@ -32,8 +34,9 @@ public class CircusService {
 	@Autowired
 	private Validator				validator;
 
+	@Autowired
+	private FeeService				feeService;
 
-	//Supporting Services ------------------
 
 	//COnstructors -------------------------
 	public CircusService() {

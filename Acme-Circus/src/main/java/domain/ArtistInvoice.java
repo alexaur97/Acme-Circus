@@ -5,6 +5,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Range;
@@ -17,6 +18,7 @@ public class ArtistInvoice extends Invoice {
 
 	public Artist	artist;
 	public Double	acceptedOfferFee;
+	public Offer	offer;
 
 
 	@NotNull
@@ -36,6 +38,16 @@ public class ArtistInvoice extends Invoice {
 	}
 	public void setAcceptedOfferFee(final Double acceptedOfferFee) {
 		this.acceptedOfferFee = acceptedOfferFee;
+	}
+
+	@NotNull
+	@OneToOne(optional = false)
+	public Offer getOffer() {
+		return this.offer;
+	}
+
+	public void setOffer(final Offer offer) {
+		this.offer = offer;
 	}
 
 }

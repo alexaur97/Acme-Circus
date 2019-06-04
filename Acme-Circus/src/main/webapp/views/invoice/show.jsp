@@ -25,27 +25,21 @@
 
 <jstl:if test="${not empty artistInvoice}">
 <acme:display code="invoice.date" path="${artistInvoice.dateRequested}"/>
-<acme:display code="invoice.fee" path="${artistInvoice.acceptedOfferFee}%"/>
-<h4><spring:message code="invoice.offers"/></h4>
-<ul style="list-style:none;">
-<jstl:forEach items="${offers}" var="x">
-<li>
-<fieldset>
-<jstl:out value="${x.performance.name}" />
-<br/>
-<jstl:if test="${not empty x.conditions}">
-<acme:display code="invoice.conditions" path="${x.conditions}" />
-</jstl:if>
-<jstl:out value="${x.money}" />&#8364; 
-<br/>
-<br/>
-<acme:display code="invoice.lastModified" path="${x.lastUpdate}" />
-</fieldset>
-</li>
+<acme:display code="invoice.fee" path="${artistInvoice.acceptedOfferFee*100}%"/>
+<h4><spring:message code="invoice.offer"/></h4>
 
+<fieldset>
+<jstl:out value="${artistInvoice.offer.performance.name}" />
 <br/>
-</jstl:forEach>
-</ul>
+<jstl:if test="${not empty artistInvoice.offer.conditions}">
+<acme:display code="invoice.conditions" path="${artistInvoice.offer.conditions}" />
+</jstl:if>
+<jstl:out value="${artistInvoice.offer.money}" />&#8364; 
+<br/>
+<br/>
+<acme:display code="invoice.lastModified" path="${artistInvoice.offer.lastUpdate}" />
+</fieldset>
+
 <h3><spring:message code="invoice.total" />: <jstl:out value="${artistInvoice.total}"/>&#8364;</h3>
 <acme:button url="invoice/artist/list.do" code="invoice.back"/>
 </jstl:if>
