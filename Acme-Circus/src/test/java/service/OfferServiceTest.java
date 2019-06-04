@@ -55,7 +55,6 @@ public class OfferServiceTest extends AbstractTest {
 		final Offer offerFinal = this.offerService.save(offerF);
 		tour.getOffers().add(offerFinal);
 		this.tourService.save(tour);
-
 	}
 
 }
