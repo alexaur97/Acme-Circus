@@ -1,5 +1,5 @@
 
-package services;
+package service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import services.BannerService;
+import services.TourService;
 import utilities.AbstractTest;
 import domain.Banner;
 import domain.Tour;

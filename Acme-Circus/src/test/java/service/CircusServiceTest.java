@@ -1,5 +1,5 @@
 
-package services;
+package service;
 
 import javax.transaction.Transactional;
 
@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import services.CircusService;
 import utilities.AbstractTest;
 import domain.Circus;
 
