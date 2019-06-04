@@ -48,7 +48,7 @@ public class CircusAdministratorController extends AbstractController {
 			this.administratorService.findByPrincipal();
 			Circus circus = this.circusService.findOne(circusId);
 			circus = this.circusService.deactivate(circus);
-			circus = this.circusService.save(circus);
+			circus = this.circusService.saveDeactive(circus);
 			result = new ModelAndView("redirect:/circus/administrator/list.do");
 
 		} catch (final Throwable oops) {

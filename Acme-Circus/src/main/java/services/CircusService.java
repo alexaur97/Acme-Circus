@@ -80,6 +80,14 @@ public class CircusService {
 		return this.circusRepository.save(circus);
 	}
 
+	public Circus saveDeactive(final Circus circus) {
+		Assert.notNull(circus);
+
+		this.administratorService.findByPrincipal();
+
+		return this.circusRepository.save(circus);
+	}
+
 	public void delete(final Circus circus) {
 		this.circusRepository.delete(circus);
 	}
@@ -112,6 +120,7 @@ public class CircusService {
 
 	public Circus deactivate(final Circus circus) {
 		this.administratorService.findByPrincipal();
+		Assert.isTrue(circus.getActive().equals(true));
 		final Circus res = circus;
 		res.setActive(false);
 		return res;
