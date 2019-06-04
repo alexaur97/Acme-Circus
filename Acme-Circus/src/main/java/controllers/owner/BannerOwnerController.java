@@ -100,14 +100,6 @@ public class BannerOwnerController extends AbstractController {
 		else
 			try {
 
-				final Date date = new Date();
-				Assert.isTrue(banner.getStartDate().before(banner.getEndDate()));
-				Assert.isTrue(banner.getStartDate().after(date));
-
-				final Circus circusOwner = this.ownerService.findByPrincipal().getCircus();
-				final Circus circusBanner = banner.getTour().getOrganizers().getCircus();
-				Assert.isTrue(circusOwner.equals(circusBanner));
-
 				this.bannerService.save(banner);
 				res = new ModelAndView("redirect:/banner/owner/myList.do");
 
