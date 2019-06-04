@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import services.CategoryPriceService;
 import services.PurchaseService;
+import services.TicketService;
 import utilities.AbstractTest;
 import domain.CategoryPrice;
 import domain.Purchase;
@@ -25,7 +27,6 @@ import forms.PurchaseAttendeeForm;
 @Transactional
 public class PurchaseServiceTest extends AbstractTest {
 
-	@SuppressWarnings("unused")
 	@Autowired
 	private PurchaseService			purchaseService;
 
