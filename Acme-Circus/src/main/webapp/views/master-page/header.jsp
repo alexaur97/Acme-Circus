@@ -78,6 +78,9 @@
 					<li><a href="invoice/administrator/generate.do"><spring:message
 								code="master.page.administrator.generate" /></a></li>
 				</ul></li>
+				
+				<li><a class="fNiv" href="invoice/administrator/list.do"><spring:message
+						code="master.page.invoices.admin.list" /></a></li>
 		</security:authorize>
 
 		<security:authorize access="hasRole('ATTENDEE')">
