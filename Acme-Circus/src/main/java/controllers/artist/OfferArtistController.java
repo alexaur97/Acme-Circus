@@ -15,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ArtistService;
 import services.OfferService;
-import services.OrganizerService;
-import services.PerformanceService;
 import services.TourService;
 import controllers.AbstractController;
 import domain.Artist;
@@ -28,15 +26,11 @@ import domain.Tour;
 public class OfferArtistController extends AbstractController {
 
 	@Autowired
-	private ArtistService		artistService;
+	private ArtistService	artistService;
 	@Autowired
-	private OfferService		offerService;
+	private OfferService	offerService;
 	@Autowired
-	private PerformanceService	performanceService;
-	@Autowired
-	private OrganizerService	organizerService;
-	@Autowired
-	private TourService			tourService;
+	private TourService		tourService;
 
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -145,7 +139,7 @@ public class OfferArtistController extends AbstractController {
 			try {
 				final String b = offer.getConditions().trim();
 				Assert.isTrue(!b.isEmpty());
-				final Offer offerFinal = this.offerService.save(offerF);
+				this.offerService.save(offerF);
 				result = new ModelAndView("redirect:/offer/artist/list.do");
 
 			} catch (final Throwable oops) {

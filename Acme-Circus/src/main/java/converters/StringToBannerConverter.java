@@ -1,38 +1,40 @@
-package converters; 
 
-import org.apache.commons.lang.StringUtils; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import repositories.BannerRepository; 
-import domain.Banner; 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class StringToBannerConverter implements Converter<String, Banner>{ 
+import repositories.BannerRepository;
+import domain.Banner;
 
-	@Autowired 
-	BannerRepository bannerRepository; 
+@Component
+@Transactional
+public class StringToBannerConverter implements Converter<String, Banner> {
 
-	@Override 
-	public Banner convert(String text){ 
-		Banner result; 
-		int id; 
+	@Autowired
+	BannerRepository	bannerRepository;
 
-		try{ 
-			if(StringUtils.isEmpty(text)){ 
-				result = null; 
-			}else{ 
-				id = Integer.valueOf(text); 
-				result = bannerRepository.findOne(id); 
-			} 
-		}catch (Throwable oops) { 
-			throw new IllegalArgumentException(oops); 
-		} 
 
-		return result; 
-	} 
+	@Override
+	public Banner convert(final String text) {
+		Banner result;
+		int id;
 
-} 
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = this.bannerRepository.findOne(id);
+			}
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
+	}
+
+}

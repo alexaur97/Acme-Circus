@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.OrganizerService;
-import services.OwnerService;
 import controllers.AbstractController;
 import domain.Organizer;
 import forms.OrganizerRegisterForm;
@@ -26,9 +25,6 @@ import forms.OrganizerRegisterForm;
 @Controller
 @RequestMapping("organizer/owner")
 public class OrganizerOwnerController extends AbstractController {
-
-	@Autowired
-	private OwnerService		ownerService;
 
 	@Autowired
 	private OrganizerService	organizerService;

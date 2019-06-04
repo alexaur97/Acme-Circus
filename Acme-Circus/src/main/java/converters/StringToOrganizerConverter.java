@@ -1,38 +1,40 @@
-package converters; 
 
-import org.apache.commons.lang.StringUtils; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import repositories.OrganizerRepository; 
-import domain.Organizer; 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class StringToOrganizerConverter implements Converter<String, Organizer>{ 
+import repositories.OrganizerRepository;
+import domain.Organizer;
 
-	@Autowired 
-	OrganizerRepository organizerRepository; 
+@Component
+@Transactional
+public class StringToOrganizerConverter implements Converter<String, Organizer> {
 
-	@Override 
-	public Organizer convert(String text){ 
-		Organizer result; 
-		int id; 
+	@Autowired
+	OrganizerRepository	organizerRepository;
 
-		try{ 
-			if(StringUtils.isEmpty(text)){ 
-				result = null; 
-			}else{ 
-				id = Integer.valueOf(text); 
-				result = organizerRepository.findOne(id); 
-			} 
-		}catch (Throwable oops) { 
-			throw new IllegalArgumentException(oops); 
-		} 
 
-		return result; 
-	} 
+	@Override
+	public Organizer convert(final String text) {
+		Organizer result;
+		int id;
 
-} 
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = this.organizerRepository.findOne(id);
+			}
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
+	}
+
+}

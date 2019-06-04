@@ -1,3 +1,4 @@
+
 package domain;
 
 import javax.persistence.Access;
@@ -11,18 +12,18 @@ import javax.validation.constraints.NotNull;
 public class Worker extends Actor {
 
 	// Attributes ..................
-	
-	public Circus circus;
+
+	public Circus	circus;
+
 
 	@NotNull
 	@ManyToOne(optional = false)
 	public Circus getCircus() {
-		return circus;
+		return this.circus;
 	}
 
-	public void setCircus(Circus circus) {
+	public void setCircus(final Circus circus) {
 		this.circus = circus;
 	}
-
 
 }

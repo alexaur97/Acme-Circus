@@ -718,8 +718,9 @@
 	<!-- Tour -->
 	<bean id="tour1" class="domain.Tour">
 		<property name="name" value="Gira por Andalucia" />
-		<property name="description" value="El mejor circo de toda españa llega a Andalucia" />
-		<property name="startDate" value="10/10/2020"/>
+		<property name="description"
+			value="El mejor circo de toda españa llega a Andalucia" />
+		<property name="startDate" value="10/10/2020" />
 		<property name="endDate" value="10/10/2021" />
 		<property name="link" value="https://circo.com" />
 		<property name="tags" value="" />
@@ -728,20 +729,27 @@
 		<property name="categoryTour" ref="categoryTour1" />
 		<property name="performances">
 			<list>
-				<ref bean="performance1"/>
+				<ref bean="performance1" />
 			</list>
 		</property>
 		<property name="offers">
-		 <list>
-		 		<ref bean="offer1"/>
-		 </list>
+			<list>
+				<ref bean="offer1" />
+				<ref bean="offer4" />
+				<ref bean="offer6" />
+				<ref bean="offer8" />
+				<ref bean="offer10" />
+				<ref bean="offer12" />
+				<ref bean="offer14" />
+
+			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="tour2" class="domain.Tour">
 		<property name="name" value="Circo del sol 2020" />
 		<property name="description" value="Gira por España!" />
-		<property name="startDate" value="05/05/2020"/>
+		<property name="startDate" value="05/05/2020" />
 		<property name="endDate" value="09/09/2021" />
 		<property name="link" value="https://circosol.com" />
 		<property name="tags" value="" />
@@ -750,13 +758,21 @@
 		<property name="categoryTour" ref="categoryTour1" />
 		<property name="performances">
 			<list>
-				<ref bean="performance2"/>
+				<ref bean="performance2" />
 			</list>
 		</property>
 		<property name="offers">
-		 <list>
-		 <ref bean="offer3"/>
-		 </list>
+			<list>
+				<ref bean="offer5" />
+				<ref bean="offer2" />
+				<ref bean="offer7" />
+				<ref bean="offer9" />
+				<ref bean="offer3" />
+				<ref bean="offer11" />
+				<ref bean="offer13" />
+				<ref bean="offer15" />
+
+			</list>
 		</property>
 	</bean>
 	

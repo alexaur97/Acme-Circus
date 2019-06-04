@@ -111,7 +111,8 @@ public class StopOrganizerController extends AbstractController {
 				final Collection<Stop> stopsC = this.stopService.findStopsByTour(stop.getTour().getId());
 				final List<Stop> stops = new ArrayList<>(stopsC);
 				for (final Stop s : stops)
-					Assert.isTrue(!s.getDate().equals(stop.getDate()));
+					if (!(s.getId() == stop.getId()))
+						Assert.isTrue(!s.getDate().equals(stop.getDate()));
 
 				Assert.isTrue(!stop.getTour().validated);
 

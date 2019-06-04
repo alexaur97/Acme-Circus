@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.ArtistService;
 import services.OfferService;
 import services.OrganizerService;
 import services.PerformanceService;
@@ -28,8 +27,6 @@ import forms.OfferForm;
 @RequestMapping("offer/organizer")
 public class OfferOrganizerController extends AbstractController {
 
-	@Autowired
-	private ArtistService		artistService;
 	@Autowired
 	private OfferService		offerService;
 	@Autowired

@@ -1,38 +1,40 @@
-package converters; 
 
-import org.apache.commons.lang.StringUtils; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import repositories.ArtistInvoiceRepository; 
-import domain.ArtistInvoice; 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class StringToArtistInvoiceConverter implements Converter<String, ArtistInvoice>{ 
+import repositories.ArtistInvoiceRepository;
+import domain.ArtistInvoice;
 
-	@Autowired 
-	ArtistInvoiceRepository artistInvoiceRepository; 
+@Component
+@Transactional
+public class StringToArtistInvoiceConverter implements Converter<String, ArtistInvoice> {
 
-	@Override 
-	public ArtistInvoice convert(String text){ 
-		ArtistInvoice result; 
-		int id; 
+	@Autowired
+	ArtistInvoiceRepository	artistInvoiceRepository;
 
-		try{ 
-			if(StringUtils.isEmpty(text)){ 
-				result = null; 
-			}else{ 
-				id = Integer.valueOf(text); 
-				result = artistInvoiceRepository.findOne(id); 
-			} 
-		}catch (Throwable oops) { 
-			throw new IllegalArgumentException(oops); 
-		} 
 
-		return result; 
-	} 
+	@Override
+	public ArtistInvoice convert(final String text) {
+		ArtistInvoice result;
+		int id;
 
-} 
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = this.artistInvoiceRepository.findOne(id);
+			}
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
+	}
+
+}

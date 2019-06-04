@@ -1,38 +1,40 @@
-package converters; 
 
-import org.apache.commons.lang.StringUtils; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import repositories.OwnerRepository; 
-import domain.Owner; 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class StringToOwnerConverter implements Converter<String, Owner>{ 
+import repositories.OwnerRepository;
+import domain.Owner;
 
-	@Autowired 
-	OwnerRepository ownerRepository; 
+@Component
+@Transactional
+public class StringToOwnerConverter implements Converter<String, Owner> {
 
-	@Override 
-	public Owner convert(String text){ 
-		Owner result; 
-		int id; 
+	@Autowired
+	OwnerRepository	ownerRepository;
 
-		try{ 
-			if(StringUtils.isEmpty(text)){ 
-				result = null; 
-			}else{ 
-				id = Integer.valueOf(text); 
-				result = ownerRepository.findOne(id); 
-			} 
-		}catch (Throwable oops) { 
-			throw new IllegalArgumentException(oops); 
-		} 
 
-		return result; 
-	} 
+	@Override
+	public Owner convert(final String text) {
+		Owner result;
+		int id;
 
-} 
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = this.ownerRepository.findOne(id);
+			}
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
+	}
+
+}

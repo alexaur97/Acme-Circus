@@ -1,38 +1,40 @@
-package converters; 
 
-import org.apache.commons.lang.StringUtils; 
-import org.springframework.beans.factory.annotation.Autowired; 
-import org.springframework.core.convert.converter.Converter; 
-import org.springframework.stereotype.Component; 
-import org.springframework.transaction.annotation.Transactional; 
+package converters;
 
-import repositories.ArtistRepository; 
-import domain.Artist; 
+import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component 
-@Transactional 
-public class StringToArtistConverter implements Converter<String, Artist>{ 
+import repositories.ArtistRepository;
+import domain.Artist;
 
-	@Autowired 
-	ArtistRepository artistRepository; 
+@Component
+@Transactional
+public class StringToArtistConverter implements Converter<String, Artist> {
 
-	@Override 
-	public Artist convert(String text){ 
-		Artist result; 
-		int id; 
+	@Autowired
+	ArtistRepository	artistRepository;
 
-		try{ 
-			if(StringUtils.isEmpty(text)){ 
-				result = null; 
-			}else{ 
-				id = Integer.valueOf(text); 
-				result = artistRepository.findOne(id); 
-			} 
-		}catch (Throwable oops) { 
-			throw new IllegalArgumentException(oops); 
-		} 
 
-		return result; 
-	} 
+	@Override
+	public Artist convert(final String text) {
+		Artist result;
+		int id;
 
-} 
+		try {
+			if (StringUtils.isEmpty(text))
+				result = null;
+			else {
+				id = Integer.valueOf(text);
+				result = this.artistRepository.findOne(id);
+			}
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException(oops);
+		}
+
+		return result;
+	}
+
+}

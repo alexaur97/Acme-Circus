@@ -15,7 +15,6 @@ import services.OrganizerService;
 import services.PerformanceService;
 import controllers.AbstractController;
 import domain.Artist;
-import domain.Organizer;
 import domain.Performance;
 
 @Controller
@@ -35,7 +34,7 @@ public class ArtistOrganizerController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		try {
-			final Organizer organizer = this.organizerService.findByPrincipal();
+			this.organizerService.findByPrincipal();
 			final Collection<Artist> artists = this.artistService.findAll();
 			result = new ModelAndView("artist/list");
 			result.addObject("requestURI", "artist/organizer/list.do");
@@ -51,7 +50,7 @@ public class ArtistOrganizerController extends AbstractController {
 	public ModelAndView performances(@RequestParam final int artistId) {
 		ModelAndView result;
 		try {
-			final Organizer organizer = this.organizerService.findByPrincipal();
+			this.organizerService.findByPrincipal();
 			final Collection<Performance> performances = this.performanceService.findByArtist(artistId);
 			final Artist artist = this.artistService.findOne(artistId);
 			result = new ModelAndView("performance/list");

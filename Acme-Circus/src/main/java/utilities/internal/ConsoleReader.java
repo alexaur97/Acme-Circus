@@ -40,14 +40,12 @@ public class ConsoleReader {
 			line = StringUtils.trim(line);
 			buffer.append(line);
 			buffer.append(' ');
-			if (!line.isEmpty()) {
+			if (!line.isEmpty())
 				prompt = "\t> ";
-			}
 		} while (line != null && !line.endsWith(";"));
 
-		if (line != null && line.endsWith(";") && buffer.length() >= 2) {
+		if (line != null && line.endsWith(";") && buffer.length() >= 2)
 			buffer.deleteCharAt(buffer.length() - 2);
-		}
 
 		result = StringUtils.trim(buffer.toString());
 

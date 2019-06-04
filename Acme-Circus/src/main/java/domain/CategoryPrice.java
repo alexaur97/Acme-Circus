@@ -1,3 +1,4 @@
+
 package domain;
 
 import javax.persistence.Access;
@@ -16,39 +17,37 @@ import org.hibernate.validator.constraints.SafeHtml.WhiteListType;
 public class CategoryPrice extends DomainEntity {
 
 	// Attributes ..................
-	
-	public Double amount;
-	public String category;
-	public Stop stop;
-	
+
+	public Double	amount;
+	public String	category;
+	public Stop		stop;
+
+
 	@NotNull
-	@Range(min=0)
+	@Range(min = 0)
 	public Double getAmount() {
-		return amount;
+		return this.amount;
 	}
-	public void setAmount(Double amount) {
+	public void setAmount(final Double amount) {
 		this.amount = amount;
 	}
-	
+
 	@NotBlank
 	@SafeHtml(whitelistType = WhiteListType.NONE)
 	public String getCategory() {
-		return category;
+		return this.category;
 	}
-	public void setCategory(String category) {
+	public void setCategory(final String category) {
 		this.category = category;
 	}
-	
+
 	@NotNull
 	@ManyToOne(optional = false)
 	public Stop getStop() {
-		return stop;
+		return this.stop;
 	}
-	public void setStop(Stop stop) {
+	public void setStop(final Stop stop) {
 		this.stop = stop;
 	}
-	
-	
-
 
 }
