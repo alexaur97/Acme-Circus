@@ -41,12 +41,28 @@ public class CircusServiceTest extends AbstractTest {
 	//Análisis del sentence coverage: el sistema al llamar al metodo del servicio "save" comprueba
 	// que el circo es de ese Dueño.
 	@Test(expected = IllegalArgumentException.class)
-	public void testEditPositionError() {
+	public void testEditCircusError1() {
 		super.authenticate("owner1");
 
 		final int IdCircus = super.getEntityId("circus2");
 		Circus circus = this.circusService.findOne(IdCircus);
 		circus.setHistory("new History");
+		circus = this.circusService.reconstruct(circus, null);
+		this.circusService.save(circus);
+		super.unauthenticate();
+	}
+
+	//	Para el caso negativo estamos intentando que un Dueño edite la informacion
+	// de un circo que no es el suyo
+	//Análisis del sentence coverage: el sistema al llamar al metodo del servicio "reconstruct" comprueba
+	// que los atributos del circo cumplen las restricciones del dominio.
+	@Test(expected = NullPointerException.class)
+	public void testEditCircusError2() {
+		super.authenticate("owner1");
+
+		final int IdCircus = super.getEntityId("circus2");
+		Circus circus = this.circusService.findOne(IdCircus);
+		circus.setVAT("error");
 		circus = this.circusService.reconstruct(circus, null);
 		this.circusService.save(circus);
 		super.unauthenticate();
