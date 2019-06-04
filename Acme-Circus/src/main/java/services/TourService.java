@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.TourRepository;
+import domain.CategoryPrice;
 import domain.Organizer;
 import domain.Owner;
 import domain.Stop;
@@ -27,19 +28,22 @@ public class TourService {
 
 	//Managed repository -------------------
 	@Autowired
-	private TourRepository		tourRepository;
+	private TourRepository			tourRepository;
 
 	@Autowired
-	private StopService			stopService;
+	private StopService				stopService;
 
 	@Autowired
-	private OwnerService		ownerService;
+	private OwnerService			ownerService;
 
 	@Autowired
-	private OrganizerService	organizerService;
+	private OrganizerService		organizerService;
 
 	@Autowired
-	private Validator			validator;
+	private CategoryPriceService	categoryPriceService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	//Supporting Services ------------------
@@ -172,6 +176,16 @@ public class TourService {
 		final Owner o = this.ownerService.findByPrincipal();
 		Assert.isTrue(tour.getOrganizers().getCircus().equals(o.getCircus()));
 		final Tour res = tour;
+		Collection<Stop> stopsFromTour = new ArrayList<>();
+		//Aquí tengo todas las paradas que tiene el tour que quiero validar
+		stopsFromTour = this.stopService.findStopsByTour(tour.getId());
+		//ahora tengo que comprobar que cada una de esas paradas tenga al menos 
+		//un category price, ya que si no en la compra no te da a elegir
+		// que entrada quieres pagar
+		for (final Stop s : stopsFromTour) {
+			final Collection<CategoryPrice> cp = this.categoryPriceService.findByStop(s.getId());
+			Assert.notEmpty(cp);
+		}
 		res.setValidated(true);
 		return res;
 	}
