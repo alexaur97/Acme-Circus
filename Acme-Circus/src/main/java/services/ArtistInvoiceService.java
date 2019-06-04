@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
@@ -40,8 +42,8 @@ public class ArtistInvoiceService {
 
 	public ArtistInvoice create(final Offer offer) {
 		ArtistInvoice result;
-
 		result = new ArtistInvoice();
+		result.setOffer(offer);
 		final Double acceptedOfferFee = this.feeService.find().getAcceptedOfferFee();
 		result.setAcceptedOfferFee(acceptedOfferFee);
 		final Artist artist = this.artistService.findByOffer(offer);
@@ -100,6 +102,30 @@ public class ArtistInvoiceService {
 		final ArtistInvoice created = this.create(result);
 		this.save(created);
 
+	}
+
+	public Collection<ArtistInvoice> findCurrentMonthInvoices() {
+		final Collection<ArtistInvoice> result = new ArrayList<>();
+		final Collection<ArtistInvoice> all = this.artistInvoiceRepository.findAllDesc();
+		for (final ArtistInvoice a : all) {
+			final Calendar invoiceDate = Calendar.getInstance();
+			invoiceDate.setTime(a.getDateRequested());
+			final Calendar now = Calendar.getInstance();
+			now.setTime(new Date());
+			if (now.get(Calendar.MONTH) == invoiceDate.get(Calendar.MONTH) && now.get(Calendar.YEAR) == invoiceDate.get(Calendar.YEAR))
+				result.add(a);
+			else
+				break;
+		}
+		return result;
+	}
+
+	public Double findCurrentMonthArtistBenefits() {
+		final Collection<ArtistInvoice> all = this.findCurrentMonthInvoices();
+		Double total = 0.0;
+		for (final ArtistInvoice a : all)
+			total = total + a.getTotal();
+		return total;
 	}
 
 	//Other Methods--------------------

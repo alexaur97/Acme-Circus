@@ -18,6 +18,9 @@ public interface BannerInvoiceRepository extends JpaRepository<BannerInvoice, In
 	@Query("select bi from BannerInvoice bi join bi.banner.tour t where exists (select k from Owner o join o.circus k where o.id=?1 and k=t.organizers.circus) order by bi.dateRequested desc")
 	Collection<BannerInvoice> findAllByPrincipal(int id);
 
+	@Query("select b from BannerInvoice b order by b.dateRequested desc")
+	Collection<BannerInvoice> findAllDesc();
+
 	//@Query("") 
 	//Method 
 

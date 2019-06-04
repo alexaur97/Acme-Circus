@@ -1752,6 +1752,15 @@
 		<property name="performance" ref="performance26" />
 	</bean>
 	
+	<bean id="offer16" class="domain.Offer">
+		<property name="observations" value="We are a great family, we offer you been like at home." />
+		<property name="status" value="CONFIRMED" />
+		<property name="money" value="4000" />
+		<property name="conditions" value="" />
+		<property name="lastUpdate" value="05/05/2019"/>
+		<property name="performance" ref="performance19" />
+	</bean>
+	
 	<!-- Invoices -->
 	
 	<bean id="bannerInvoice1" class="domain.BannerInvoice">
@@ -1813,9 +1822,10 @@
 	<bean id="artistInvoice1" class="domain.ArtistInvoice">
 		<property name="dateRequested" value="12/1/2018"/>
 		<property name="generated" value="true"/>
-		<property name="total" value="8.0"/>
+		<property name="total" value="400.0"/>
 		<property name="acceptedOfferFee" value="0.1"/>
-		<property name="artist" ref="artist1" />
+		<property name="offer" ref="offer16" />
+		<property name="artist" ref="artist1"/>
 	</bean>
 	
 	<!-- Banners -->

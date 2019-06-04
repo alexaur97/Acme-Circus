@@ -44,16 +44,16 @@
 <br />
 <table>
 	<tr>
-		<th><spring:message code="stats.monthlyBenefit" /></th>
-		<th><spring:message code="stats.circusInvoiceBenefits" /></th>
-		<th><spring:message code="stats.artistInvoiceBenefits" /></th>
-		<th><spring:message code="stats.circusBalance" /></th>
+		<th><spring:message code="stats.circusEarning" /></th>
+		<th><spring:message code="stats.bannerEarning" /></th>
+		<th><spring:message code="stats.artistEarning" /></th>
+		<th><spring:message code="stats.totalBenefit" /></th>
 	</tr>
 	<tr>
+		<td>${circusEarning}</td>
+		<td>${bannerEarning}</td>
+		<td>${artistEarning}</td>
 		<td>${totalBenefit}</td>
-		<td>${circusInvoiceBenefits}</td>
-		<td>${artistInvoiceBenefits}</td>
-		<td>${circusBalance}</td>
 	</tr>
 </table>
 <br />
