@@ -29,9 +29,9 @@
 			</list>
 		</property>
 	</bean>
-	
-	<!-- Other domain beans come here -->	
-	
+
+	<!-- Administrators -->
+
 	<bean id="actor1" class="domain.Administrator">
 		<property name="name" value="Paolo" />
 		<property name="surnames" value="Luna Rodríguez" />
@@ -45,6 +45,7 @@
 		<property name="userAccount" ref="userAccount1" />
 	</bean>
 	
+	<!-- CreditCards -->
 	<bean id="creditCard1" class="domain.CreditCard">
 		<property name="holderName" value="Paolo Luna Rodríguez" />
 		<property name="brandName" value="Visa" />
@@ -54,10 +55,42 @@
 		<property name="cvv" value="194" />
 	</bean>
 	
+	<!-- Fee -->
+
 	<bean id="fee" class="domain.Fee">
-		<property name="bannerFee" value="2.25" />
-		<property name="circusFee" value="5" />
+		<property name="bannerFee" value="0.25" />
+		<property name="circusFee" value="1.0" />
 		<property name="acceptedOfferFee" value="0.75" />
+	</bean>
+	
+		<!-- Spamwords -->
+
+	<bean id="spamWord1" class="domain.SpamWord">
+		<property name="word" value="sex" />
+	</bean>
+	<bean id="spamWord2" class="domain.SpamWord">
+		<property name="word" value="viagra" />
+	</bean>
+	<bean id="spamWord3" class="domain.SpamWord">
+		<property name="word" value="cialis" />
+	</bean>
+	<bean id="spamWord4" class="domain.SpamWord">
+		<property name="word" value="one million" />
+	</bean>
+	<bean id="spamWord5" class="domain.SpamWord">
+		<property name="word" value="you've been selected" />
+	</bean>
+	<bean id="spamWord6" class="domain.SpamWord">
+		<property name="word" value="Nigeria" />
+	</bean>
+	<bean id="spamWord7" class="domain.SpamWord">
+		<property name="word" value="sexo" />
+	</bean>
+	<bean id="spamWord8" class="domain.SpamWord">
+		<property name="word" value="un millon" />
+	</bean>
+	<bean id="spamWord9" class="domain.SpamWord">
+		<property name="word" value="has sido elegido" />
 	</bean>
 	
 	
