@@ -71,6 +71,11 @@ public class CircusService {
 
 	public Circus save(final Circus circus) {
 		Assert.notNull(circus);
+		if (circus.getId() != 0) {
+			final Integer idO = this.ownerService.findByPrincipal().getId();
+			final Owner owner = this.ownerService.findOne(idO);
+			Assert.isTrue(owner.getCircus().equals(circus));
+		}
 
 		return this.circusRepository.save(circus);
 	}
