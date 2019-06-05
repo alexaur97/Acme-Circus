@@ -36,6 +36,9 @@ public class MessageService {
 	@Autowired
 	private WorkerService		workerService;
 
+	@Autowired
+	private ActorService		actorService;
+
 
 	//Supporting Services ------------------
 
@@ -79,7 +82,6 @@ public class MessageService {
 	public void delete(final Message message) {
 		this.messageRepository.delete(message);
 	}
-
 	//Other Methods--------------------
 
 	public Collection<Message> findRecives(final int id) {
@@ -134,6 +136,7 @@ public class MessageService {
 	public Message reconstruct(final Message msg, final BindingResult binding) {
 		final Message res = msg;
 		final Worker a = this.workerService.findByPrincipal();
+		Assert.isTrue(this.workerService.findWorkersByCircus().contains(res.getRecipient()));
 		msg.setSender(a);
 		msg.setOwner(a);
 		final Date moment = new Date();

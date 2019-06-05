@@ -54,7 +54,7 @@ public class ActorServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	//	Para el caso negativo 2: Email en uso.
+	//	Para el caso negativo 1: Email en uso.
 	// Esto debe provocar un error.
 	// Análisis del sentence coverage: el sistema al llamar al metodo del servicio "reconstructEdit" comprueba
 	// que el email no se encuentre en uso.
