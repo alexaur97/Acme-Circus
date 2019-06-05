@@ -30,10 +30,14 @@ public class CircusAdministratorController extends AbstractController {
 	public ModelAndView list() {
 		ModelAndView result;
 		try {
+			Boolean a = true;
 			this.administratorService.findByPrincipal();
 			final Collection<Circus> circus = this.circusService.findAll();
+			if (circus.isEmpty())
+				a = false;
 			result = new ModelAndView("circus/list");
 			result.addObject("circus", circus);
+			result.addObject("a", a);
 			result.addObject("requestURI", "circus/administrator/list.do");
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:/#");

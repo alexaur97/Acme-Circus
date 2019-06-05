@@ -37,13 +37,16 @@
 			code="circus.history" />
 	</display:column>	
 	
+	
 	<security:authorize access="hasRole('ADMINISTRATOR')">
+		<jstl:if test="${a}">
 	<jstl:if test="${circus.active eq true}">
 	<display:column titleKey="circus.deactivate">
 		<acme:cancel url="/circus/administrator/deactivate.do?circusId=${circus.id}"
 			code="circus.deactivate" />
 	</display:column>
 	</jstl:if>	
+	</jstl:if>
 	</security:authorize>
 </display:table>
 
