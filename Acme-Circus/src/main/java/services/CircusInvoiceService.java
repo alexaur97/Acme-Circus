@@ -145,4 +145,13 @@ public class CircusInvoiceService {
 		}
 		return result;
 	}
+
+	public Double findCurrentMonthCircusBenefits() {
+		final Collection<CircusInvoice> all = this.findCurrentMonthInvoices();
+		Double total = 0.0;
+		for (final CircusInvoice c : all)
+			total = total + c.getTotal();
+		return total;
+	}
+
 }

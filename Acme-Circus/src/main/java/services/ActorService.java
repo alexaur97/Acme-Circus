@@ -165,6 +165,7 @@ public class ActorService {
 	}
 
 	public ActorEditForm toForm(final Actor actor) {
+		Assert.isTrue(actor.getUserAccount().getId() == this.findByPrincipal().getUserAccount().getId());
 		final ActorEditForm res = new ActorEditForm();
 		res.setName(actor.getName());
 		res.setSurnames(actor.getSurnames());

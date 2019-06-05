@@ -72,6 +72,9 @@ public class CategoryPriceService {
 		this.categoryPriceRepository.save(categoryPrice);
 	}
 	public void delete(final CategoryPrice categoryPrice) {
+		final Circus c = categoryPrice.getStop().getTour().getOrganizers().getCircus();
+		final Owner o = this.ownerService.findByPrincipal();
+		Assert.isTrue(c.equals(o.getCircus()));
 		this.categoryPriceRepository.delete(categoryPrice);
 	}
 

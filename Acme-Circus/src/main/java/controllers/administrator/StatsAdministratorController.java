@@ -77,12 +77,10 @@ public class StatsAdministratorController extends AbstractController {
 			}
 
 			final Integer artistNum = this.artistService.findAll().size();
-			final Double bannerInvoiceBenefits = this.bannerInvoiceService.totalBenefits();
-			final Double circusInvoiceBenefits = this.circusInvoiceService.totalBenefits();
-			final Double artistInvoiceBenefits = this.artistInvoiceService.totalBenefits();
-			final Double totalEarning = bannerInvoiceBenefits + circusInvoiceBenefits;
-			final Double totalBenefit = totalEarning - artistInvoiceBenefits;
-			final Double circusBalance = circusInvoiceBenefits - artistInvoiceBenefits;
+			final Double circusEarning = this.circusInvoiceService.findCurrentMonthCircusBenefits();
+			final Double bannerEarning = this.bannerInvoiceService.findCurrentMonthBannerBenefits();
+			final Double artistEarning = this.artistInvoiceService.findCurrentMonthArtistBenefits();
+			final Double totalBenefit = circusEarning + bannerEarning + artistEarning;
 			final Double ratio1 = this.offerService.acceptedOffersPerArtistRatio();
 			final Double ratio2 = this.stopService.stopsPerTour();
 			final Integer totalOffers = this.offerService.findAll().size();
@@ -101,11 +99,10 @@ public class StatsAdministratorController extends AbstractController {
 			result.addObject("totalOwners", totalOwners);
 			result.addObject("totalOrganizers", totalOrganizers);
 			result.addObject("artistNum", artistNum);
-			result.addObject("totalEarning", totalEarning);
+			result.addObject("circusEarning", circusEarning);
+			result.addObject("bannerEarning", bannerEarning);
+			result.addObject("artistEarning", artistEarning);
 			result.addObject("totalBenefit", totalBenefit);
-			result.addObject("circusBalance", circusBalance);
-			result.addObject("circusInvoiceBenefits", circusInvoiceBenefits);
-			result.addObject("artistInvoiceBenefits", artistInvoiceBenefits);
 			result.addObject("ratio1", ratio1);
 			result.addObject("ratio2", ratio2);
 			result.addObject("totalOffers", totalOffers);

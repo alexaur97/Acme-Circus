@@ -72,11 +72,15 @@ public class PurchaseService {
 	}
 
 	public Purchase reconstruct(final PurchaseAttendeeForm form, final Collection<Ticket> tickets) {
+		Assert.isTrue(form.getCategory().getStop().getSpotsAvailable() > 0);
+
 		final Purchase purchase = new Purchase();
 		final Attendee attendee = this.attendeeService.findByPrincipal();
 		purchase.setAttendee(attendee);
 		purchase.setCreditCard(attendee.getCreditCard());
 		purchase.setStop(form.getCategory().getStop());
+
+		Assert.isTrue(form.getCategory().getStop().getSpotsAvailable() >= form.getNum());
 
 		final int resta = purchase.getStop().getSpotsAvailable();
 		purchase.getStop().setSpotsAvailable(resta - form.getNum());

@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
@@ -22,14 +24,14 @@ public class BannerInvoiceService {
 	@Autowired
 	private BannerInvoiceRepository	bannerInvoiceRepository;
 
+	//Supporting Services ------------------
+
 	@Autowired
 	private OwnerService			ownerService;
 
 	@Autowired
 	private FeeService				feeService;
 
-
-	//Supporting Services ------------------
 
 	//COnstructors -------------------------
 	public BannerInvoiceService() {
@@ -98,4 +100,28 @@ public class BannerInvoiceService {
 		this.save(created);
 	}
 	//Other Methods--------------------
+	public Collection<BannerInvoice> findCurrentMonthInvoices() {
+		final Collection<BannerInvoice> result = new ArrayList<>();
+		final Collection<BannerInvoice> all = this.bannerInvoiceRepository.findAllDesc();
+		for (final BannerInvoice b : all) {
+			final Calendar invoiceDate = Calendar.getInstance();
+			invoiceDate.setTime(b.getDateRequested());
+			final Calendar now = Calendar.getInstance();
+			now.setTime(new Date());
+			if (now.get(Calendar.MONTH) == invoiceDate.get(Calendar.MONTH) && now.get(Calendar.YEAR) == invoiceDate.get(Calendar.YEAR))
+				result.add(b);
+			else
+				break;
+		}
+		return result;
+	}
+
+	public Double findCurrentMonthBannerBenefits() {
+		final Collection<BannerInvoice> all = this.findCurrentMonthInvoices();
+		Double total = 0.0;
+		for (final BannerInvoice b : all)
+			total = total + b.getTotal();
+		return total;
+	}
+
 }

@@ -38,7 +38,7 @@ public class PurchaseAttendeeController extends AbstractController {
 	private PurchaseService			purchaseService;
 
 	@Autowired
-	private TicketService			tickerService;
+	private TicketService			ticketService;
 
 	@Autowired
 	private StopService				stopService;
@@ -106,11 +106,11 @@ public class PurchaseAttendeeController extends AbstractController {
 
 				Assert.isTrue(stop.getSpotsAvailable() >= purchaseAttendeeForm.getNum());
 
-				tickets = this.tickerService.reconstruct(purchaseAttendeeForm);
+				tickets = this.ticketService.reconstruct(purchaseAttendeeForm);
 				final Collection<Ticket> ticketsSaved = new ArrayList<>();
 
 				for (final Ticket t : tickets)
-					ticketsSaved.add(this.tickerService.save(t));
+					ticketsSaved.add(this.ticketService.save(t));
 
 				purchase = this.purchaseService.reconstruct(purchaseAttendeeForm, ticketsSaved);
 

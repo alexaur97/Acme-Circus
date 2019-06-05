@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- 
+<!--
  * PopulateDatabase.xml
  *
  * Copyright (C) 2019 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the 
- * TDG Licence, a copy of which you may download from 
+ *
+ * The use of this project is hereby constrained to the conditions of the
+ * TDG Licence, a copy of which you may download from
  * http://www.tdg-seville.info/License.html
  -->
 
@@ -15,7 +15,7 @@
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
-	
+
 	<!-- User accounts -->
 
 	<bean id="userAccount1" class="security.UserAccount">
@@ -138,7 +138,7 @@
 		</property>
 
 	</bean>
-	
+
 	<bean id="userAccount10" class="security.UserAccount">
 		<property name="username" value="owner3" />
 		<property name="password" value="80a38342307696962140b56a785877ae" />
@@ -153,7 +153,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount11" class="security.UserAccount">
 		<property name="username" value="attendee3" />
 		<property name="password" value="ba30678e31f03eda1532ba361179805b" />
@@ -165,7 +165,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount12" class="security.UserAccount">
 		<property name="username" value="attendee4" />
 		<property name="password" value="7047369a0dffc677c5473ae2f341afe8" />
@@ -177,7 +177,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 		<bean id="userAccount13" class="security.UserAccount">
 		<property name="username" value="owner4" />
 		<property name="password" value="b6faad5051326390f43710c2dd66b15e" />
@@ -192,7 +192,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 		<bean id="userAccount14" class="security.UserAccount">
 		<property name="username" value="organizer3" />
 		<property name="password" value="fa238b284eee68de9720932fadbc01b9" />
@@ -207,7 +207,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 		<bean id="userAccount15" class="security.UserAccount">
 		<property name="username" value="organizer4" />
 		<property name="password" value="bd94603cd3f6ce0a6fb9aa657df6a003" />
@@ -222,7 +222,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount16" class="security.UserAccount">
 		<property name="username" value="artist3" />
 		<property name="password" value="0f1da3aa51be4b7ff3e1e045feedfb7c" />
@@ -234,7 +234,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount17" class="security.UserAccount">
 		<property name="username" value="artist4" />
 		<property name="password" value="e6da9289f35109858fd26c685ef1d3a1" />
@@ -246,7 +246,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="userAccount18" class="security.UserAccount">
 		<property name="username" value="owner5" />
 		<property name="password" value="9486ba2f75d911e8b02f0c6d0f555d43" />
@@ -261,8 +261,8 @@
 			</list>
 		</property>
 	</bean>
-	
-	
+
+
 		<!-- Circus -->
 
 	<bean id="circus1" class="domain.Circus">
@@ -271,14 +271,14 @@
 		<property name="history" value="A legendary circus." />
 		<property name="active" value="true" />
 	</bean>
-	
+
 	<bean id="circus2" class="domain.Circus">
 		<property name="VAT" value="ESR0463321Q" />
 		<property name="name" value="Circe du Soeil" />
 		<property name="history" value="Le cirké definitivé, o la lá." />
 		<property name="active" value="true" />
 	</bean>
-	
+
 	<bean id="circus3" class="domain.Circus">
 		<property name="VAT" value="ESG0063121H" />
 		<property name="name" value="The circus od the horrors" />
@@ -398,7 +398,7 @@
 		<property name="expirationYear" value="29" />
 		<property name="cvv" value="478" />
 	</bean>
-	
+
 	<bean id="creditCard12" class="domain.CreditCard">
 		<property name="holderName" value="Jose Reina" />
 		<property name="brandName" value="Express" />
@@ -407,7 +407,7 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvv" value="148" />
 	</bean>
-	
+
 		<bean id="creditCard13" class="domain.CreditCard">
 		<property name="holderName" value="Jose Reina" />
 		<property name="brandName" value="Express" />
@@ -416,7 +416,7 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvv" value="148" />
 	</bean>
-	
+
 		<bean id="creditCard14" class="domain.CreditCard">
 		<property name="holderName" value="Jose Reina" />
 		<property name="brandName" value="Express" />
@@ -425,7 +425,7 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvv" value="148" />
 	</bean>
-	
+
 		<bean id="creditCard15" class="domain.CreditCard">
 		<property name="holderName" value="Jose Reina" />
 		<property name="brandName" value="Express" />
@@ -434,7 +434,7 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvv" value="148" />
 	</bean>
-	
+
 	<bean id="creditCard16" class="domain.CreditCard">
 		<property name="holderName" value="Jose Reina" />
 		<property name="brandName" value="Express" />
@@ -443,7 +443,7 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvv" value="148" />
 	</bean>
-	
+
 	<bean id="creditCard17" class="domain.CreditCard">
 		<property name="holderName" value="Jose Reina" />
 		<property name="brandName" value="Express" />
@@ -452,7 +452,7 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvv" value="148" />
 	</bean>
-	
+
 	<bean id="creditCard18" class="domain.CreditCard">
 		<property name="holderName" value="Jose Reina" />
 		<property name="brandName" value="Express" />
@@ -461,7 +461,7 @@
 		<property name="expirationYear" value="21" />
 		<property name="cvv" value="148" />
 	</bean>
-	
+
 	<!-- Actors -->
 
 	<!-- Administrators -->
@@ -506,7 +506,7 @@
 		<property name="address" value="" />
 		<property name="userAccount" ref="userAccount3" />
 	</bean>
-	
+
 	<bean id="artist3" class="domain.Artist">
 		<property name="name" value="artist3" />
 		<property name="surnames" value="Finch Berry" />
@@ -519,7 +519,7 @@
 		<property name="address" value="" />
 		<property name="userAccount" ref="userAccount16" />
 	</bean>
-	
+
 	<bean id="artist4" class="domain.Artist">
 		<property name="name" value="artist4" />
 		<property name="surnames" value="Finch Berry" />
@@ -561,7 +561,7 @@
 		<property name="userAccount" ref="userAccount5" />
 		<property name="circus" ref="circus2" />
 	</bean>
-	
+
 		<bean id="organizer3" class="domain.Organizer">
 		<property name="name" value="organizer3" />
 		<property name="surnames" value="Valdes Tolón" />
@@ -574,7 +574,7 @@
 		<property name="userAccount" ref="userAccount14" />
 		<property name="circus" ref="circus4" />
 	</bean>
-	
+
 		<bean id="organizer4" class="domain.Organizer">
 		<property name="name" value="organizer4" />
 		<property name="surnames" value="Valdes Tolón" />
@@ -587,7 +587,7 @@
 		<property name="userAccount" ref="userAccount15" />
 		<property name="circus" ref="circus3" />
 	</bean>
-	
+
 	<!-- Attendee -->
 
 	<bean id="attendee1" class="domain.Attendee">
@@ -617,7 +617,7 @@
 		<property name="bornDate" value="04/10/1999" />
 		<property name="userAccount" ref="userAccount7" />
 	</bean>
-	
+
 	<bean id="attendee3" class="domain.Attendee">
 		<property name="name" value="attendee3" />
 		<property name="surnames" value="attendee3" />
@@ -631,7 +631,7 @@
 		<property name="bornDate" value="04/10/1999" />
 		<property name="userAccount" ref="userAccount11" />
 	</bean>
-	
+
 	<bean id="attendee4" class="domain.Attendee">
 		<property name="name" value="attendee4" />
 		<property name="surnames" value="attendee4" />
@@ -645,7 +645,7 @@
 		<property name="bornDate" value="04/10/1999" />
 		<property name="userAccount" ref="userAccount12" />
 	</bean>
-	
+
 
 	<!-- Owner -->
 
@@ -675,7 +675,7 @@
 		<property name="userAccount" ref="userAccount9" />
 		<property name="circus" ref="circus2" />
 	</bean>
-	
+
 	<bean id="owner3" class="domain.Owner">
 		<property name="name" value="Rosa Mari" />
 		<property name="surnames" value="León Reina" />
@@ -688,7 +688,7 @@
 		<property name="userAccount" ref="userAccount10" />
 		<property name="circus" ref="circus3" />
 	</bean>
-	
+
 	<bean id="owner4" class="domain.Owner">
 		<property name="name" value="owner4" />
 		<property name="surnames" value="owner4" />
@@ -701,7 +701,7 @@
 		<property name="userAccount" ref="userAccount13" />
 		<property name="circus" ref="circus4" />
 	</bean>
-	
+
 	<bean id="owner5" class="domain.Owner">
 		<property name="name" value="owner5" />
 		<property name="surnames" value="owner5" />
@@ -714,7 +714,7 @@
 		<property name="userAccount" ref="userAccount18" />
 		<property name="circus" ref="circus5" />
 	</bean>
-	
+
 	<!-- Tour -->
 	<bean id="tour1" class="domain.Tour">
 		<property name="name" value="Gira por Andalucia" />
@@ -775,7 +775,7 @@
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="tour3" class="domain.Tour">
 		<property name="name" value="Circo de los horrores 2021" />
 		<property name="description" value="Vuelve el circo de los horrores, muahahaha" />
@@ -795,7 +795,7 @@
 		 </list>
 		</property>
 	</bean>
-	
+
 	<bean id="tour4" class="domain.Tour">
 		<property name="name" value="The british circus" />
 		<property name="description" value="YYou know, it's british." />
@@ -815,7 +815,7 @@
 		 </list>
 		</property>
 	</bean>
-	
+
 	<bean id="tour5" class="domain.Tour">
 		<property name="name" value="Circo del agua" />
 		<property name="description" value="Gira por las playas españolas" />
@@ -856,238 +856,238 @@
 		</property>
 	</bean>
 	<!-- CategoryPrice -->
-	
+
 	<bean id="categoryPrice1" class="domain.CategoryPrice">
 		<property name="amount" value="100" />
 		<property name="category" value="Entrada normal" />
 		<property name="stop" ref="stop1" />
 	</bean>
-	
+
 	<bean id="categoryPrice2" class="domain.CategoryPrice">
 		<property name="amount" value="50" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop2" />			
+		<property name="stop" ref="stop2" />
 	</bean>
-	
+
 	<bean id="categoryPrice3" class="domain.CategoryPrice">
 		<property name="amount" value="60" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop3" />			
+		<property name="stop" ref="stop3" />
 	</bean>
-	
+
 	<bean id="categoryPrice4" class="domain.CategoryPrice">
 		<property name="amount" value="70" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop4" />			
+		<property name="stop" ref="stop4" />
 	</bean>
-	
+
 	<bean id="categoryPrice5" class="domain.CategoryPrice">
 		<property name="amount" value="80" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop5" />			
+		<property name="stop" ref="stop5" />
 	</bean>
-	
+
 	<bean id="categoryPrice6" class="domain.CategoryPrice">
 		<property name="amount" value="60" />
 		<property name="category" value="Entrada normal" />
 		<property name="stop" ref="stop6" />
 	</bean>
-	
+
 	<bean id="categoryPrice7" class="domain.CategoryPrice">
 		<property name="amount" value="75" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop7" />			
+		<property name="stop" ref="stop7" />
 	</bean>
-	
+
 	<bean id="categoryPrice8" class="domain.CategoryPrice">
 		<property name="amount" value="43" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop8" />			
+		<property name="stop" ref="stop8" />
 	</bean>
-	
+
 	<bean id="categoryPrice9" class="domain.CategoryPrice">
 		<property name="amount" value="90" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop9" />			
+		<property name="stop" ref="stop9" />
 	</bean>
-	
+
 	<bean id="categoryPrice10" class="domain.CategoryPrice">
 		<property name="amount" value="19" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop10" />			
+		<property name="stop" ref="stop10" />
 	</bean>
-	
+
 		<bean id="categoryPrice11" class="domain.CategoryPrice">
 		<property name="amount" value="85" />
 		<property name="category" value="Entrada normal" />
 		<property name="stop" ref="stop11" />
 	</bean>
-	
+
 	<bean id="categoryPrice12" class="domain.CategoryPrice">
 		<property name="amount" value="150" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop12" />			
+		<property name="stop" ref="stop12" />
 	</bean>
-	
+
 	<bean id="categoryPrice13" class="domain.CategoryPrice">
 		<property name="amount" value="106" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop13" />			
+		<property name="stop" ref="stop13" />
 	</bean>
-	
+
 	<bean id="categoryPrice14" class="domain.CategoryPrice">
 		<property name="amount" value="47" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop14" />			
+		<property name="stop" ref="stop14" />
 	</bean>
-	
+
 	<bean id="categoryPrice15" class="domain.CategoryPrice">
 		<property name="amount" value="67" />
 		<property name="category" value="Entrada normal" />
-		<property name="stop" ref="stop15" />			
+		<property name="stop" ref="stop15" />
 	</bean>
-	
+
 	<bean id="categoryPrice16" class="domain.CategoryPrice">
 		<property name="amount" value="90" />
 		<property name="category" value="Gold" />
 		<property name="stop" ref="stop1" />
 	</bean>
-	
+
 	<bean id="categoryPrice17" class="domain.CategoryPrice">
 		<property name="amount" value="50" />
 		<property name="category" value="Entrada VIP" />
-		<property name="stop" ref="stop2" />			
+		<property name="stop" ref="stop2" />
 	</bean>
-	
+
 	<bean id="categoryPrice18" class="domain.CategoryPrice">
 		<property name="amount" value="100" />
 		<property name="category" value="VIP" />
-		<property name="stop" ref="stop3" />			
+		<property name="stop" ref="stop3" />
 	</bean>
-	
+
 	<bean id="categoryPrice19" class="domain.CategoryPrice">
 		<property name="amount" value="30" />
 		<property name="category" value="Teenager" />
-		<property name="stop" ref="stop4" />			
+		<property name="stop" ref="stop4" />
 	</bean>
-	
+
 	<bean id="categoryPrice20" class="domain.CategoryPrice">
 		<property name="amount" value="40" />
 		<property name="category" value="Reduced price" />
-		<property name="stop" ref="stop5" />			
+		<property name="stop" ref="stop5" />
 	</bean>
-	
+
 	<bean id="categoryPrice21" class="domain.CategoryPrice">
 		<property name="amount" value="10" />
 		<property name="category" value="First tickets" />
 		<property name="stop" ref="stop6" />
 	</bean>
-	
+
 	<bean id="categoryPrice22" class="domain.CategoryPrice">
 		<property name="amount" value="75" />
 		<property name="category" value="Gold" />
-		<property name="stop" ref="stop7" />			
+		<property name="stop" ref="stop7" />
 	</bean>
-	
+
 	<bean id="categoryPrice23" class="domain.CategoryPrice">
 		<property name="amount" value="43" />
 		<property name="category" value="Olds" />
-		<property name="stop" ref="stop8" />			
+		<property name="stop" ref="stop8" />
 	</bean>
-	
+
 	<bean id="categoryPrice24" class="domain.CategoryPrice">
 		<property name="amount" value="24" />
 		<property name="category" value="Teenager" />
-		<property name="stop" ref="stop9" />			
+		<property name="stop" ref="stop9" />
 	</bean>
-	
+
 	<bean id="categoryPrice25" class="domain.CategoryPrice">
 		<property name="amount" value="19" />
 		<property name="category" value="Teenager" />
-		<property name="stop" ref="stop10" />			
+		<property name="stop" ref="stop10" />
 	</bean>
-	
+
 		<bean id="categoryPrice26" class="domain.CategoryPrice">
 		<property name="amount" value="85" />
 		<property name="category" value="Gold" />
 		<property name="stop" ref="stop11" />
 	</bean>
-	
+
 	<bean id="categoryPrice27" class="domain.CategoryPrice">
 		<property name="amount" value="150" />
 		<property name="category" value="Super VIP" />
-		<property name="stop" ref="stop12" />			
+		<property name="stop" ref="stop12" />
 	</bean>
-	
+
 	<bean id="categoryPrice28" class="domain.CategoryPrice">
 		<property name="amount" value="106" />
 		<property name="category" value="Gold" />
-		<property name="stop" ref="stop13" />			
+		<property name="stop" ref="stop13" />
 	</bean>
-	
+
 	<bean id="categoryPrice29" class="domain.CategoryPrice">
 		<property name="amount" value="37" />
 		<property name="category" value="Childs" />
-		<property name="stop" ref="stop14" />			
+		<property name="stop" ref="stop14" />
 	</bean>
-	
+
 	<bean id="categoryPrice30" class="domain.CategoryPrice">
 		<property name="amount" value="87" />
 		<property name="category" value="VIP" />
-		<property name="stop" ref="stop15" />			
+		<property name="stop" ref="stop15" />
 	</bean>
-	
-	
+
+
 	<!-- CategoryTour -->
 	<bean id="categoryTour1" class="domain.CategoryTour">
 		<property name="name" value="Adultos" />
 		<property name="minAge" value="18" />
-		
+
 	</bean>
-	
+
 	<bean id="categoryTour2" class="domain.CategoryTour">
 		<property name="name" value="Todos los públicos" />
 		<property name="minAge" value="0" />
-		
+
 	</bean>
-	
+
 	<bean id="categoryTour3" class="domain.CategoryTour">
 		<property name="name" value="Adolescentes" />
 		<property name="minAge" value="12" />
-		
+
 	</bean>
 
-	
+
 	<bean id="categoryTour4" class="domain.CategoryTour">
 		<property name="name" value="Pachachos" />
 		<property name="minAge" value="6" />
-		
+
 	</bean>
-	
+
 	<bean id="categoryTour5" class="domain.CategoryTour">
 		<property name="name" value="Saltimbanquis" />
 		<property name="minAge" value="3" />
-		
+
 	</bean>
-	
+
 	<bean id="categoryTour6" class="domain.CategoryTour">
 		<property name="name" value="Elefantes voladores" />
 		<property name="minAge" value="3" />
-		
+
 	</bean>
-	
+
 	<bean id="categoryTour7" class="domain.CategoryTour">
 		<property name="name" value="Leones" />
 		<property name="minAge" value="14" />
-		
+
 	</bean>
-	
+
 	<bean id="categoryTour8" class="domain.CategoryTour">
 		<property name="name" value="Fuegos" />
 		<property name="minAge" value="6" />
-		
+
 	</bean>
-	
+
 	<!--  Stops -->
 	<bean id="stop1" class="domain.Stop">
 		<property name="city" value="Trebujena" />
@@ -1098,7 +1098,7 @@
 		<property name="spotsAvailable" value="5" />
 		<property name="tour" ref="tour1" />
 	</bean>
-	
+
 	<bean id="stop2" class="domain.Stop">
 		<property name="city" value="Madrid" />
 		<property name="country" value="España" />
@@ -1108,7 +1108,7 @@
 		<property name="spotsAvailable" value="1" />
 		<property name="tour" ref="tour1" />
 	</bean>
-	
+
 	<bean id="stop3" class="domain.Stop">
 		<property name="city" value="Barcelona" />
 		<property name="country" value="Catalunya" />
@@ -1118,7 +1118,7 @@
 		<property name="spotsAvailable" value="9" />
 		<property name="tour" ref="tour1" />
 	</bean>
-	
+
 	<bean id="stop4" class="domain.Stop">
 		<property name="city" value="Madrid" />
 		<property name="country" value="España" />
@@ -1128,7 +1128,7 @@
 		<property name="spotsAvailable" value="0" />
 		<property name="tour" ref="tour2" />
 	</bean>
-	
+
 	<bean id="stop5" class="domain.Stop">
 		<property name="city" value="Burgos" />
 		<property name="country" value="España" />
@@ -1138,7 +1138,7 @@
 		<property name="spotsAvailable" value="694" />
 		<property name="tour" ref="tour2" />
 	</bean>
-	
+
 		<bean id="stop6" class="domain.Stop">
 		<property name="city" value="Vigo" />
 		<property name="country" value="España" />
@@ -1148,7 +1148,7 @@
 		<property name="spotsAvailable" value="12" />
 		<property name="tour" ref="tour2" />
 	</bean>
-	
+
 	<bean id="stop7" class="domain.Stop">
 		<property name="city" value="Granada" />
 		<property name="country" value="España" />
@@ -1158,7 +1158,7 @@
 		<property name="spotsAvailable" value="0" />
 		<property name="tour" ref="tour2" />
 	</bean>
-	
+
 	<bean id="stop8" class="domain.Stop">
 		<property name="city" value="Caceres" />
 		<property name="country" value="España" />
@@ -1177,7 +1177,7 @@
 		<property name="spotsAvailable" value="326" />
 		<property name="tour" ref="tour3" />
 	</bean>
-	
+
 	<bean id="stop10" class="domain.Stop">
 		<property name="city" value="Valencia" />
 		<property name="country" value="España" />
@@ -1187,7 +1187,7 @@
 		<property name="spotsAvailable" value="810" />
 		<property name="tour" ref="tour4" />
 	</bean>
-	
+
 		<bean id="stop11" class="domain.Stop">
 		<property name="city" value="Madrid" />
 		<property name="country" value="España" />
@@ -1197,7 +1197,7 @@
 		<property name="spotsAvailable" value="600" />
 		<property name="tour" ref="tour4" />
 	</bean>
-	
+
 	<bean id="stop12" class="domain.Stop">
 		<property name="city" value="Huelva" />
 		<property name="country" value="España" />
@@ -1207,7 +1207,7 @@
 		<property name="spotsAvailable" value="250" />
 		<property name="tour" ref="tour4" />
 	</bean>
-	
+
 	<bean id="stop13" class="domain.Stop">
 		<property name="city" value="Lisboa" />
 		<property name="country" value="Portugal" />
@@ -1226,7 +1226,7 @@
 		<property name="spotsAvailable" value="1200" />
 		<property name="tour" ref="tour4" />
 	</bean>
-	
+
 	<bean id="stop15" class="domain.Stop">
 		<property name="city" value="Valladolid" />
 		<property name="country" value="España" />
@@ -1236,7 +1236,7 @@
 		<property name="spotsAvailable" value="50" />
 		<property name="tour" ref="tour4" />
 	</bean>
-	
+
 		<!-- Messages -->
 
 	<bean id="message1" class="domain.Message">
@@ -1356,7 +1356,7 @@
 		<property name="owner" ref="owner3" />
 		<property name="copy" value="true" />
 	</bean>
-	
+
 	<!-- Fee -->
 
 	<bean id="fee" class="domain.Fee">
@@ -1364,7 +1364,7 @@
 		<property name="circusFee" value="1.0" />
 		<property name="acceptedOfferFee" value="0.75" />
 	</bean>
-	
+
 	<!-- Performance -->
 
 	<bean id="performance1" class="domain.Performance">
@@ -1375,7 +1375,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance2" class="domain.Performance">
 		<property name="name" value="Surprise!!" />
 		<property name="tags" value="NONE" />
@@ -1384,7 +1384,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance3" class="domain.Performance">
 		<property name="name" value="If you like clowns, we are the bests" />
 		<property name="tags" value="CLOWNS" />
@@ -1393,7 +1393,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance4" class="domain.Performance">
 		<property name="name" value="Let's dance a little bit with us!" />
 		<property name="tags" value="DANCE " />
@@ -1402,7 +1402,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance5" class="domain.Performance">
 		<property name="name" value="Performance without animals!" />
 		<property name="tags" value="NO ANIMALS , MODERN , REAL , AWESOME" />
@@ -1411,7 +1411,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance6" class="domain.Performance">
 		<property name="name" value="Dragons" />
 		<property name="tags" value="NO ANIMALS , DRAGONS , FIRE , BOOM" />
@@ -1420,7 +1420,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance7" class="domain.Performance">
 		<property name="name" value="Silencio" />
 		<property name="tags" value="ORIGINAL , SHHHH , SILENCE , FOR KIDS" />
@@ -1429,7 +1429,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance8" class="domain.Performance">
 		<property name="name" value="LOS VOLADORES" />
 		<property name="tags" value="ACROBACIAS , Y VOLO , Y YO VOLE DE EL , Y SE QUEO TRAMBOLIKO" />
@@ -1438,7 +1438,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist3" />
 	</bean>
-	
+
 	<bean id="performance9" class="domain.Performance">
 		<property name="name" value="LOS VOLADORES" />
 		<property name="tags" value="ACROBACIAS , Y VOLO , Y YO VOLE DE EL , Y SE QUEO TRAMBOLIKO" />
@@ -1447,7 +1447,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist3" />
 	</bean>
-	
+
 	<bean id="performance10" class="domain.Performance">
 		<property name="name" value="Musicaleando" />
 		<property name="tags" value="BREAKBEAT , PAYASOSO , AMAZING , PARTY" />
@@ -1456,7 +1456,7 @@
 		<property name="copy" value="false" />
 		<property name="artist" ref="artist4" />
 	</bean>
-	
+
 	<bean id="performance11" class="domain.Performance">
 		<property name="name" value="Performance amizing with a tiger" />
 		<property name="tags" value="ANIMALS , AMAZING , ORIGINAL , NOTEXPENSIVE" />
@@ -1465,7 +1465,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance12" class="domain.Performance">
 		<property name="name" value="Performance amizing with a tiger" />
 		<property name="tags" value="ANIMALS , AMAZING , ORIGINAL , NOTEXPENSIVE" />
@@ -1474,7 +1474,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance13" class="domain.Performance">
 		<property name="name" value="Surprise!!" />
 		<property name="tags" value="NONE" />
@@ -1483,7 +1483,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance14" class="domain.Performance">
 		<property name="name" value="Dragons" />
 		<property name="tags" value="NO ANIMALS , DRAGONS , FIRE , BOOM" />
@@ -1492,7 +1492,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance15" class="domain.Performance">
 		<property name="name" value="Silencio" />
 		<property name="tags" value="ORIGINAL , SHHHH , SILENCE , FOR KIDS" />
@@ -1501,7 +1501,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance16" class="domain.Performance">
 		<property name="name" value="Let's dance a little bit with us!" />
 		<property name="tags" value="DANCE " />
@@ -1510,7 +1510,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance17" class="domain.Performance">
 		<property name="name" value="LOS VOLADORES" />
 		<property name="tags" value="ACROBACIAS , Y VOLO , Y YO VOLE DE EL , Y SE QUEO TRAMBOLIKO" />
@@ -1519,7 +1519,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist3" />
 	</bean>
-	
+
 	<bean id="performance18" class="domain.Performance">
 		<property name="name" value="Performance amizing with a tiger" />
 		<property name="tags" value="ANIMALS , AMAZING , ORIGINAL , NOTEXPENSIVE" />
@@ -1528,7 +1528,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance19" class="domain.Performance">
 		<property name="name" value="Surprise!!" />
 		<property name="tags" value="NONE" />
@@ -1537,7 +1537,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance20" class="domain.Performance">
 		<property name="name" value="If you like clowns, we are the bests" />
 		<property name="tags" value="CLOWNS" />
@@ -1546,7 +1546,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist1" />
 	</bean>
-	
+
 	<bean id="performance21" class="domain.Performance">
 		<property name="name" value="Musicaleando" />
 		<property name="tags" value="BREAKBEAT , PAYASOSO , AMAZING , PARTY" />
@@ -1555,7 +1555,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist4" />
 	</bean>
-	
+
 	<bean id="performance22" class="domain.Performance">
 		<property name="name" value="Dragons" />
 		<property name="tags" value="NO ANIMALS , DRAGONS , FIRE , BOOM" />
@@ -1564,7 +1564,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance23" class="domain.Performance">
 		<property name="name" value="Dragons" />
 		<property name="tags" value="NO ANIMALS , DRAGONS , FIRE , BOOM" />
@@ -1573,7 +1573,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist2" />
 	</bean>
-	
+
 	<bean id="performance24" class="domain.Performance">
 		<property name="name" value="LOS VOLADORES" />
 		<property name="tags" value="ACROBACIAS , Y VOLO , Y YO VOLE DE EL , Y SE QUEO TRAMBOLIKO" />
@@ -1582,7 +1582,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist3" />
 	</bean>
-	
+
 	<bean id="performance25" class="domain.Performance">
 		<property name="name" value="LOS VOLADORES" />
 		<property name="tags" value="ACROBACIAS , Y VOLO , Y YO VOLE DE EL , Y SE QUEO TRAMBOLIKO" />
@@ -1591,7 +1591,7 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist3" />
 	</bean>
-	
+
 	<bean id="performance26" class="domain.Performance">
 		<property name="name" value="Musicaleando" />
 		<property name="tags" value="BREAKBEAT , PAYASOSO , AMAZING , PARTY" />
@@ -1600,9 +1600,9 @@
 		<property name="copy" value="true" />
 		<property name="artist" ref="artist4" />
 	</bean>
-	
-	
-	
+
+
+
 	<!-- Spamwords -->
 
 	<bean id="spamWord1" class="domain.SpamWord">
@@ -1632,10 +1632,10 @@
 	<bean id="spamWord9" class="domain.SpamWord">
 		<property name="word" value="has sido elegido" />
 	</bean>
-	
-	
+
+
 	<!-- Offers -->
-	
+
 	<bean id="offer1" class="domain.Offer">
 		<property name="observations" value="We want you!" />
 		<property name="status" value="CONFIRMED" />
@@ -1644,7 +1644,7 @@
 		<property name="lastUpdate" value="10/10/2018"/>
 		<property name="performance" ref="performance11" />
 	</bean>
-	
+
 	<bean id="offer2" class="domain.Offer">
 		<property name="observations" value="Its a good opportinity" />
 		<property name="status" value="PENDING" />
@@ -1653,7 +1653,7 @@
 		<property name="lastUpdate" value="10/10/2018"/>
 		<property name="performance" ref="performance12" />
 	</bean>
-	
+
 	<bean id="offer3" class="domain.Offer">
 		<property name="observations" value="Our circus needs someone like you" />
 		<property name="status" value="CONFIRMED" />
@@ -1662,7 +1662,7 @@
 		<property name="lastUpdate" value="9/10/2018"/>
 		<property name="performance" ref="performance13" />
 	</bean>
-	
+
 	<bean id="offer4" class="domain.Offer">
 		<property name="observations" value="Come on! Join us." />
 		<property name="status" value="PENDING" />
@@ -1671,7 +1671,7 @@
 		<property name="lastUpdate" value="05/05/2019"/>
 		<property name="performance" ref="performance14" />
 	</bean>
-	
+
 	<bean id="offer5" class="domain.Offer">
 		<property name="observations" value="We are the best, like you!" />
 		<property name="status" value="PENDING" />
@@ -1680,7 +1680,7 @@
 		<property name="lastUpdate" value="10/10/2018"/>
 		<property name="performance" ref="performance15" />
 	</bean>
-	
+
 	<bean id="offer6" class="domain.Offer">
 		<property name="observations" value="-" />
 		<property name="status" value="PENDING" />
@@ -1689,7 +1689,7 @@
 		<property name="lastUpdate" value="01/01/2019"/>
 		<property name="performance" ref="performance16" />
 	</bean>
-	
+
 	<bean id="offer7" class="domain.Offer">
 		<property name="observations" value="-" />
 		<property name="status" value="REJECTED" />
@@ -1698,7 +1698,7 @@
 		<property name="lastUpdate" value="9/10/2018"/>
 		<property name="performance" ref="performance18" />
 	</bean>
-	
+
 	<bean id="offer8" class="domain.Offer">
 		<property name="observations" value="We are a great family, we offer you been like at home." />
 		<property name="status" value="REJECTED" />
@@ -1707,7 +1707,7 @@
 		<property name="lastUpdate" value="05/05/2019"/>
 		<property name="performance" ref="performance19" />
 	</bean>
-	
+
 	<bean id="offer9" class="domain.Offer">
 		<property name="observations" value="None" />
 		<property name="status" value="REJECTED" />
@@ -1716,7 +1716,7 @@
 		<property name="lastUpdate" value="10/10/2018"/>
 		<property name="performance" ref="performance20" />
 	</bean>
-	
+
 	<bean id="offer10" class="domain.Offer">
 		<property name="observations" value="Welcome to hell bitch." />
 		<property name="status" value="REJECTED" />
@@ -1725,7 +1725,7 @@
 		<property name="lastUpdate" value="01/01/2019"/>
 		<property name="performance" ref="performance21" />
 	</bean>
-	
+
 	<bean id="offer11" class="domain.Offer">
 		<property name="observations" value="This is THE OFFER." />
 		<property name="status" value="WAITINGFORCONFIRMATION" />
@@ -1734,7 +1734,7 @@
 		<property name="lastUpdate" value="01/01/2019"/>
 		<property name="performance" ref="performance22" />
 	</bean>
-	
+
 	<bean id="offer12" class="domain.Offer">
 		<property name="observations" value="Don't reject us please, we need you." />
 		<property name="status" value="WAITINGFORCONFIRMATION" />
@@ -1743,7 +1743,7 @@
 		<property name="lastUpdate" value="01/01/2019"/>
 		<property name="performance" ref="performance23" />
 	</bean>
-	
+
 	<bean id="offer13" class="domain.Offer">
 		<property name="observations" value="Good times are coming!" />
 		<property name="status" value="WAITINGFORCONFIRMATION" />
@@ -1752,7 +1752,7 @@
 		<property name="lastUpdate" value="01/01/2019"/>
 		<property name="performance" ref="performance24" />
 	</bean>
-	
+
 	<bean id="offer14" class="domain.Offer">
 		<property name="observations" value="" />
 		<property name="status" value="WAITINGFORCONFIRMATION" />
@@ -1761,7 +1761,7 @@
 		<property name="lastUpdate" value="01/01/2019"/>
 		<property name="performance" ref="performance25" />
 	</bean>
-	
+
 	<bean id="offer15" class="domain.Offer">
 		<property name="observations" value="Be one of us. You wont regret." />
 		<property name="status" value="WAITINGFORCONFIRMATION" />
@@ -1770,24 +1770,18 @@
 		<property name="lastUpdate" value="01/01/2019"/>
 		<property name="performance" ref="performance26" />
 	</bean>
+
 	<bean id="offer16" class="domain.Offer">
-		<property name="observations" value="Not a normal offer" />
-		<property name="status" value="PENDING" />
-		<property name="money" value="6500" />
-		<property name="conditions" value=" " />
-		<property name="lastUpdate" value="10/10/2018"/>
-		<property name="performance" ref="performance12" />
+		<property name="observations" value="We are a great family, we offer you been like at home." />
+		<property name="status" value="CONFIRMED" />
+		<property name="money" value="4000" />
+		<property name="conditions" value="" />
+		<property name="lastUpdate" value="05/05/2019"/>
+		<property name="performance" ref="performance19" />
 	</bean>
-	<bean id="offer17" class="domain.Offer">
-		<property name="observations" value="Not a normal offer" />
-		<property name="status" value="PENDING" />
-		<property name="money" value="6500" />
-		<property name="conditions" value=" " />
-		<property name="lastUpdate" value="10/10/2018"/>
-		<property name="performance" ref="performance1" />
-	</bean>
+
 	<!-- Invoices -->
-	
+
 	<bean id="bannerInvoice1" class="domain.BannerInvoice">
 		<property name="dateRequested" value="1/12/2018"/>
 		<property name="generated" value="true"/>
@@ -1795,7 +1789,7 @@
 		<property name="bannerFee" value="1.0"/>
 		<property name="banner" ref="banner1" />
 	</bean>
-	
+
 	<bean id="bannerInvoice2" class="domain.BannerInvoice">
 		<property name="dateRequested" value="1/12/2017"/>
 		<property name="generated" value="true"/>
@@ -1803,7 +1797,7 @@
 		<property name="bannerFee" value="1.0"/>
 		<property name="banner" ref="banner2" />
 	</bean>
-	
+
 	<bean id="bannerInvoice3" class="domain.BannerInvoice">
 		<property name="dateRequested" value="1/12/2017"/>
 		<property name="generated" value="true"/>
@@ -1811,7 +1805,7 @@
 		<property name="bannerFee" value="1.0"/>
 		<property name="banner" ref="banner3" />
 	</bean>
-	
+
 	<bean id="circusInvoice1" class="domain.CircusInvoice">
 		<property name="dateRequested" value="12/1/2018"/>
 		<property name="generated" value="true"/>
@@ -1819,7 +1813,7 @@
 		<property name="circusFee" value="1.0"/>
 		<property name="circus" ref="circus1" />
 	</bean>
-	
+
 	<bean id="circusInvoice2" class="domain.CircusInvoice">
 		<property name="dateRequested" value="1/1/2019"/>
 		<property name="generated" value="true"/>
@@ -1827,7 +1821,7 @@
 		<property name="circusFee" value="1.0"/>
 		<property name="circus" ref="circus1" />
 	</bean>
-	
+
 	<bean id="circusInvoice3" class="domain.CircusInvoice">
 		<property name="dateRequested" value="2/1/2019"/>
 		<property name="generated" value="true"/>
@@ -1835,7 +1829,7 @@
 		<property name="circusFee" value="1.0"/>
 		<property name="circus" ref="circus1" />
 	</bean>
-	
+
 	<bean id="circusInvoice4" class="domain.CircusInvoice">
 		<property name="dateRequested" value="11/1/2018"/>
 		<property name="generated" value="true"/>
@@ -1843,39 +1837,40 @@
 		<property name="circusFee" value="1.0"/>
 		<property name="circus" ref="circus1" />
 	</bean>
-	
+
 	<bean id="artistInvoice1" class="domain.ArtistInvoice">
 		<property name="dateRequested" value="12/1/2018"/>
 		<property name="generated" value="true"/>
-		<property name="total" value="8.0"/>
+		<property name="total" value="400.0"/>
 		<property name="acceptedOfferFee" value="0.1"/>
-		<property name="artist" ref="artist1" />
+		<property name="offer" ref="offer16" />
+		<property name="artist" ref="artist1"/>
 	</bean>
-	
+
 	<!-- Banners -->
-	
+
 	<bean id="banner1" class="domain.Banner">
 		<property name="description" value="¡Ya llegaron los pachachos!"/>
-		<property name="startDate" value="7/7/2018"/>
-		<property name="endDate" value="7/11/2018"/>
+		<property name="startDate" value="7/7/2020"/>
+		<property name="endDate" value="7/11/2020"/>
 		<property name="img" value="https://images.evisos.es/2010/10/03/animacioacuten-payaso-pitikliacuten_9a6ca9c88_3.jpg" />
 		<property name="tour" ref="tour1"/>
 	</bean>
-	
+
 	<bean id="banner2" class="domain.Banner">
 		<property name="description" value="¡Oh la la!"/>
-		<property name="startDate" value="7/7/2017"/>
-		<property name="endDate" value="7/11/2017"/>
+		<property name="startDate" value="7/7/2020"/>
+		<property name="endDate" value="7/11/2020"/>
 		<property name="img" value="https://images.evisos.es/2010/10/03/animacioacuten-payaso-pitikliacuten_9a6ca9c88_3.jpg" />
 		<property name="tour" ref="tour1"/>
 	</bean>
-	
+
 	<bean id="banner3" class="domain.Banner">
 		<property name="description" value="¡Ya llegaron los saltimbanquis!"/>
-		<property name="startDate" value="7/7/2017"/>
-		<property name="endDate" value="7/11/2017"/>
+		<property name="startDate" value="7/7/2020"/>
+		<property name="endDate" value="7/11/2020"/>
 		<property name="img" value="https://images.evisos.es/2010/10/03/animacioacuten-payaso-pitikliacuten_9a6ca9c88_3.jpg" />
 		<property name="tour" ref="tour2"/>
 	</bean>
-	
+
 </beans>

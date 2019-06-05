@@ -20,4 +20,7 @@ public interface ArtistInvoiceRepository extends JpaRepository<ArtistInvoice, In
 	@Query("select a from ArtistInvoice a where a.artist.id=?1")
 	Collection<ArtistInvoice> findAllByPrincipal(int id);
 
+	@Query("select a from ArtistInvoice a order by a.dateRequested desc")
+	Collection<ArtistInvoice> findAllDesc();
+
 }

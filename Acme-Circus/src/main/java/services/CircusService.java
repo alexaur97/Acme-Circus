@@ -23,6 +23,8 @@ public class CircusService {
 	@Autowired
 	private CircusRepository		circusRepository;
 
+	//Supporting Services ------------------
+
 	@Autowired
 	private OwnerService			ownerService;
 
@@ -32,8 +34,9 @@ public class CircusService {
 	@Autowired
 	private Validator				validator;
 
+	@Autowired
+	private FeeService				feeService;
 
-	//Supporting Services ------------------
 
 	//COnstructors -------------------------
 	public CircusService() {
@@ -68,6 +71,19 @@ public class CircusService {
 
 	public Circus save(final Circus circus) {
 		Assert.notNull(circus);
+		if (circus.getId() != 0) {
+			final Integer idO = this.ownerService.findByPrincipal().getId();
+			final Owner owner = this.ownerService.findOne(idO);
+			Assert.isTrue(owner.getCircus().equals(circus));
+		}
+
+		return this.circusRepository.save(circus);
+	}
+
+	public Circus saveDeactive(final Circus circus) {
+		Assert.notNull(circus);
+
+		this.administratorService.findByPrincipal();
 
 		return this.circusRepository.save(circus);
 	}
@@ -104,6 +120,7 @@ public class CircusService {
 
 	public Circus deactivate(final Circus circus) {
 		this.administratorService.findByPrincipal();
+		Assert.isTrue(circus.getActive().equals(true));
 		final Circus res = circus;
 		res.setActive(false);
 		return res;
