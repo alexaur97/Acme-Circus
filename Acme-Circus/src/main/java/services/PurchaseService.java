@@ -98,5 +98,9 @@ public class PurchaseService {
 		return res;
 	}
 
+	public Double findSumByAttendee(final int id) {
+		return this.pruchaseRepository.findSumByAttendee(id);
+	}
+
 	//Other Methods--------------------
 }
