@@ -14,7 +14,6 @@ import domain.Tour;
 public class OfferForm {// Attributes ..................
 
 	public String		observations;
-	public String		conditions;
 	public Double		money;
 	public Performance	performance;
 	public Tour			tour;
@@ -35,13 +34,6 @@ public class OfferForm {// Attributes ..................
 	}
 	public void setObservations(final String observations) {
 		this.observations = observations;
-	}
-
-	public String getConditions() {
-		return this.conditions;
-	}
-	public void setConditions(final String conditions) {
-		this.conditions = conditions;
 	}
 	@NotNull
 	@Min(value = 0)

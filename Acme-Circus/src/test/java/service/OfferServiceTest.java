@@ -88,6 +88,31 @@ public class OfferServiceTest extends AbstractTest {
 
 		this.tourService.save(tour);
 	}
+	//	Para el segundo caso negativo estamos intentando que un Organizador cree una oferta con una copia de una performance
+	//esto debe provocar un fallo en el sistema porque solo se puede elegir la performance original
+	//Análisis del sentence coverage: el sistema al llamar al validate comprueba
+	// que las restricciones del dominio se cumplen.
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testCreateOfferError2() throws ParseException {
+		super.authenticate("organizer1");
+		final Organizer organizer = this.organizerService.findByPrincipal();
+		final OfferForm offerForm = new OfferForm();
+		offerForm.setMoney(100.0);
+		offerForm.setObservations("hola");
+		final int IdPerformance = super.getEntityId("performance13");
+		final int IdTour = super.getEntityId("tour1");
+		final Tour tour = this.tourService.findOne(IdTour);
+		final Performance performance = this.performanceService.findOne(IdPerformance);
+		offerForm.setPerformance(performance);
+		offerForm.setTour(tour);
+		this.validator.validate(offerForm, null);
+		final Offer offerF = this.offerService.reconstruct(offerForm, null);
+		final Offer offerFinal = this.offerService.save(offerF);
+		tour.getOffers().add(offerFinal);
+
+		this.tourService.save(tour);
+	}
 	//Requisito 17.3 Un actor autenticado como artista en el sistema debe ser capaz derechazar ofertas de circos para actuar en ellos.
 	@Test
 	public void testRejectOfferGood() {
@@ -108,7 +133,18 @@ public class OfferServiceTest extends AbstractTest {
 		final Offer a = this.offerService.rejectResticc(offerId);
 		this.offerService.save(a);
 	}
+	//	Para el segundo caso negativo estamos intentando que un Artista rechace una oferta ya aceptada
+	//esto debe provocar un fallo en el sistema porque este solo puede rechazar sus ofertas en PENDING
+	//Análisis del sentence coverage: el sistema al llamar al metodo rejectRestricc que comprueba
+	// que el estado de la oferta es PENDING
 
+	@Test(expected = IllegalArgumentException.class)
+	public void testRejectOfferError2() {
+		super.authenticate("artist2");
+		final int offerId = super.getEntityId("offer11");
+		final Offer a = this.offerService.rejectResticc(offerId);
+		this.offerService.save(a);
+	}
 	//Requisito 17.2 Un actor autenticado como artista en el sistema debe ser capaz de aceptar las ofertas de los circos siempre que no tengan ya alguna oferta aceptada en dichas fechas.
 
 	@Test
@@ -129,7 +165,22 @@ public class OfferServiceTest extends AbstractTest {
 	@Test(expected = IllegalArgumentException.class)
 	public void testAcceptOfferError() {
 		super.authenticate("artist1");
-		final int offerId = super.getEntityId("offer17");
+		final int offerId = super.getEntityId("offer2");
+		this.offerService.acceptRestricGet(offerId);
+		final Offer offer = this.offerService.findOne(offerId);
+		final Offer offerF = this.offerService.reconstructArtist(offer, null);
+		this.offerService.save(offerF);
+
+	}
+	//	Para el caso negativo estamos intentando que un Artista acepte una oferta de un tour ya finalizado
+	//esto debe provocar un fallo en el sistema porque este solo puede aceptar ofertas en fechas disponibles
+	//Análisis del sentence coverage: el sistema al llamar al metodo acceptRestricGet que comprueba
+	// que el tour que realizo la oferta aun no ha finalizado.
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAcceptOfferError2() {
+		super.authenticate("artist2");
+		final int offerId = super.getEntityId("offer4");
 		this.offerService.acceptRestricGet(offerId);
 		final Offer offer = this.offerService.findOne(offerId);
 		final Offer offerF = this.offerService.reconstructArtist(offer, null);

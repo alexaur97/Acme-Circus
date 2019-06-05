@@ -74,6 +74,25 @@ public class PerformanceServiceTest extends AbstractTest {
 		this.performanceService.reconstruct(performance, null);
 		this.performanceService.save(performance);
 	}
+	//		Para el segundo caso negativo estamos intentando que un Artista cree una performance con el atributo video sin ser URL
+	//esto debe provocar un fallo en el sistema porque este tiene que ser una URL
+	//Análisis del sentence coverage: el sistema al llamar al metodo reconstruction que comprueba
+	// que las restricciones del dominio se cumplen.
+
+	@Test(expected = NullPointerException.class)
+	public void testCreateEditPerformanceError2() {
+		super.authenticate("artist1");
+		final Artist artist = this.artistService.findByPrincipal();
+		final Performance performance = new Performance();
+		performance.setName("PRUEBA");
+		performance.setPersons(4);
+		final Collection<String> tags = new ArrayList<>();
+		tags.add("PRUEBA");
+		performance.setTags(tags);
+		performance.setVideo("video");
+		this.performanceService.reconstruct(performance, null);
+		this.performanceService.save(performance);
+	}
 	//Requisito 17.1 Un actor autenticado como artista en el sistema debe ser capaz de eleminar sus actuaciones .
 
 	@Test
@@ -90,6 +109,18 @@ public class PerformanceServiceTest extends AbstractTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testDeletePerformanceError() {
+		super.authenticate("artist2");
+		final int IdPerformance = super.getEntityId("performance2");
+		final Performance performance = this.performanceService.findOne(IdPerformance);
+		this.performanceService.delete(performance);
+	}
+	//	Para el caso negativo estamos intentando que un Organizador elimine una performance 
+	//esto debe provocar un fallo en el sistema porque este solo puede eliminar sus actuaciones el artista
+	//Análisis del sentence coverage: el sistema al llamar al metodo delete que comprueba
+	//el actor logueado es un artista
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testDeletePerformanceError2() {
 		super.authenticate("artist2");
 		final int IdPerformance = super.getEntityId("performance2");
 		final Performance performance = this.performanceService.findOne(IdPerformance);

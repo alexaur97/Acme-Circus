@@ -120,6 +120,7 @@ public class OfferService {
 
 	//Other Methods--------------------
 	public Offer reconstruct(final OfferForm offer, final BindingResult binding) {
+		Assert.isTrue(!offer.getPerformance().getCopy());
 		final Offer result = new Offer();
 		result.setMoney(offer.getMoney());
 		result.setObservations(offer.getObservations());

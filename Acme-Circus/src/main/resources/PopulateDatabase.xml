@@ -735,13 +735,12 @@
 		<property name="offers">
 			<list>
 				<ref bean="offer1" />
-				<ref bean="offer4" />
+				
 				<ref bean="offer6" />
 				<ref bean="offer8" />
 				<ref bean="offer10" />
 				<ref bean="offer12" />
 				<ref bean="offer14" />
-<ref bean="offer17" />
 			</list>
 		</property>
 	</bean>
@@ -838,8 +837,8 @@
 <bean id="tour6" class="domain.Tour">
 		<property name="name" value="The british circus" />
 		<property name="description" value="YYou know, it's british." />
-		<property name="startDate" value="10/11/2024"/>
-		<property name="endDate" value="09/09/2025" />
+		<property name="startDate" value="10/11/2017"/>
+		<property name="endDate" value="09/09/2018" />
 		<property name="link" value="https://britshcrcus.com" />
 		<property name="tags" value="BRITISH" />
 		<property name="validated" value="true" />
@@ -851,6 +850,7 @@
 		</property>
 		<property name="offers">
 		 <list>
+		 <ref bean="offer4" />
 		 <ref bean="offer16" />
 		 </list>
 		</property>
@@ -1651,7 +1651,7 @@
 		<property name="money" value="6500" />
 		<property name="conditions" value=" " />
 		<property name="lastUpdate" value="10/10/2018"/>
-		<property name="performance" ref="performance12" />
+		<property name="performance" ref="performance18" />
 	</bean>
 
 	<bean id="offer3" class="domain.Offer">
