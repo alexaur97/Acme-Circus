@@ -19,7 +19,6 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Attendee;
 import domain.CreditCard;
-import domain.Purchase;
 import forms.ActorEditForm;
 import forms.AttendeeRegisterForm;
 
@@ -35,6 +34,9 @@ public class AttendeeService {
 
 	@Autowired
 	private ActorService		actorService;
+
+	@Autowired
+	private PurchaseService		purchaseService;
 
 
 	//COnstructors -------------------------
@@ -156,13 +158,16 @@ public class AttendeeService {
 	}
 
 	public Attendee mostSpender() {
-		final Purchase p = this.attendeeRepository.mostExpensive();
-		int id;
-		if (p != null)
-			id = p.getId();
-		else
-			id = 0;
-		return this.attendeeRepository.mostSpender(id);
+		final Collection<Attendee> all = this.attendeeRepository.findAll();
+		Attendee result = null;
+		final Double sum = 0.0;
+		if (!all.isEmpty())
+			for (final Attendee a : all) {
+				final Double total = this.purchaseService.findSumByAttendee(a.getId());
+				if (total != null && total > sum)
+					result = a;
+			}
+		return result;
 	}
 
 	public Attendee reconstructEdit(final ActorEditForm actorEditForm) {

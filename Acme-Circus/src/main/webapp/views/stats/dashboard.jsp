@@ -60,10 +60,13 @@
 <acme:display code="stats.ratioAcceptedOffersPerArtist" path="${ratio1}" />
 <acme:display code="stats.ratioStopsPerTour" path="${ratio2}" />
 <spring:message code="stats.mostSpender" />:
-<jstl:out value="${mostSpender}" />
+<jstl:out value="${mostSpender.name}" /> <jstl:out value="${mostSpender.surnames}" />
 <jstl:if test="${not empty mostSpender}">
 	<a
 		href="actor/administrator/show.do?userId=${mostSpender.userAccount.id}"><spring:message
 			code="stats.mostSpender.show" /></a>
+</jstl:if>
+<jstl:if test="${empty mostSpender}">
+	<spring:message code="stats.mostSpender.anyone" />
 </jstl:if>
 <acme:display code="stats.totalOffers" path="${totalOffers}" />

@@ -1873,4 +1873,22 @@
 		<property name="tour" ref="tour2"/>
 	</bean>
 
+<!-- Purchases -->
+
+	<bean id="purchase1" class="domain.Purchase">
+		<property name="totalPrice" value="14.0"/>
+		<property name="attendee" ref="attendee1"/>
+		<property name="tickets" ref="ticket1"/>
+		<property name="creditCard" ref="creditCard1" />
+		<property name="stop" ref="stop1" />
+	</bean>
+	
+	<!-- Tickets -->
+
+	<bean id="ticket1" class="domain.Ticket">
+		<property name="refNumber" value="87987987"/>
+		<property name="categoryPrice" ref="categoryPrice1"/>
+	</bean>
+
+
 </beans>
