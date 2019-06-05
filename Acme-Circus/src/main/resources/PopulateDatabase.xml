@@ -729,7 +729,7 @@
 		<property name="categoryTour" ref="categoryTour1" />
 		<property name="performances">
 			<list>
-				<ref bean="performance1" />
+				<ref bean="performance11" />
 			</list>
 		</property>
 		<property name="offers">
@@ -741,7 +741,7 @@
 				<ref bean="offer10" />
 				<ref bean="offer12" />
 				<ref bean="offer14" />
-
+<ref bean="offer17" />
 			</list>
 		</property>
 	</bean>
@@ -835,7 +835,26 @@
 		 </list>
 		</property>
 	</bean>
-
+<bean id="tour6" class="domain.Tour">
+		<property name="name" value="The british circus" />
+		<property name="description" value="YYou know, it's british." />
+		<property name="startDate" value="10/11/2024"/>
+		<property name="endDate" value="09/09/2025" />
+		<property name="link" value="https://britshcrcus.com" />
+		<property name="tags" value="BRITISH" />
+		<property name="validated" value="true" />
+		<property name="organizers" ref="organizer3" />
+		<property name="categoryTour" ref="categoryTour2" />
+		<property name="performances">
+			<list>
+			</list>
+		</property>
+		<property name="offers">
+		 <list>
+		 <ref bean="offer16" />
+		 </list>
+		</property>
+	</bean>
 	<!-- CategoryPrice -->
 	
 	<bean id="categoryPrice1" class="domain.CategoryPrice">
@@ -1751,7 +1770,22 @@
 		<property name="lastUpdate" value="01/01/2019"/>
 		<property name="performance" ref="performance26" />
 	</bean>
-	
+	<bean id="offer16" class="domain.Offer">
+		<property name="observations" value="Not a normal offer" />
+		<property name="status" value="PENDING" />
+		<property name="money" value="6500" />
+		<property name="conditions" value=" " />
+		<property name="lastUpdate" value="10/10/2018"/>
+		<property name="performance" ref="performance12" />
+	</bean>
+	<bean id="offer17" class="domain.Offer">
+		<property name="observations" value="Not a normal offer" />
+		<property name="status" value="PENDING" />
+		<property name="money" value="6500" />
+		<property name="conditions" value=" " />
+		<property name="lastUpdate" value="10/10/2018"/>
+		<property name="performance" ref="performance1" />
+	</bean>
 	<!-- Invoices -->
 	
 	<bean id="bannerInvoice1" class="domain.BannerInvoice">

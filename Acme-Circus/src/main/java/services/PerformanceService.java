@@ -75,6 +75,9 @@ public class PerformanceService {
 
 	public void delete(final Performance performance) {
 		Assert.isTrue(!performance.getCopy());
+		final Artist a = this.artistService.findByPrincipal();
+
+		Assert.isTrue(performance.getArtist().equals(a));
 		this.performanceRepository.delete(performance);
 	}
 	//Other Methods--------------------

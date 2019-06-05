@@ -36,7 +36,7 @@ public class PerformanceArtistController extends AbstractController {
 			final Artist artist = this.artistService.findByPrincipal();
 			final Collection<Performance> performances = this.performanceService.findByArtist(artist.getId());
 			result = new ModelAndView("performance/list");
-			result.addObject("requestURI", "artist/organizer/performances.do");
+			result.addObject("requestURI", "performance/artist/list.do");
 			result.addObject("performances", performances);
 
 		} catch (final Exception e) {
@@ -112,8 +112,7 @@ public class PerformanceArtistController extends AbstractController {
 		try {
 			final Artist a = this.artistService.findByPrincipal();
 			final Performance performance = this.performanceService.findOne(performanceId);
-			Assert.isTrue(performance.getArtist().equals(a));
-			Assert.isTrue(!performance.getCopy());
+
 			this.performanceService.delete(performance);
 			result = new ModelAndView("redirect:/performance/artist/list.do");
 
