@@ -89,6 +89,19 @@ public class TourServiceTest extends AbstractTest {
 
 	}
 
+	//Este test testea el requisito 15.5 Un actor registrado como dueño del circo 
+	// no podrá validar las giras de un circo que no sea suyo
+
+	// Análisis del sentence coverage (Pasos que sigue el test en nuestro código): 
+	// 1. El dueño se loguea
+	// 2. El dueño intenta validar un tour que ya está validado
+	// 3. El sistema no le permite validar un tour validado
+
+	// Análisis del data coverage (¿Que y como estamos verificando en nuestro modelo de datos?):
+
+	// Estamos verificando en nuestro modelo de datos que el dueño de un circo
+	// solo puede validar los tours que no estén ya validados
+
 	// intenta validar una gira validada
 
 	@Test(expected = IllegalArgumentException.class)
@@ -185,7 +198,18 @@ public class TourServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	// intenta crear un tour un owner
+	//Este test testea el requisito 16.1 Un actor registrado como organizador del circo 
+	// puede crear giras para su circo
+
+	// Análisis del sentence coverage (Pasos que sigue el test en nuestro código): 
+	// 1. El dueño se loguea
+	// 2. El dueño intenta crear una nueva gira para su circo
+	// 3. La gira no puede crearse ya que solo la puede crear el organizador
+
+	// Análisis del data coverage (¿Que y como estamos verificando en nuestro modelo de datos?):
+
+	// Estamos verificando en nuestro modelo de datos que las giras solo las puede crear
+	// el organizador
 
 	@Test(expected = IllegalArgumentException.class)
 	public void createTourError2() throws ParseException {
@@ -266,7 +290,19 @@ public class TourServiceTest extends AbstractTest {
 
 	}
 
-	//intenta editar un tour ya validado
+	//Este test testea el requisito 16.1 Un actor registrado como organizador del circo 
+	// puede editar giras para su circo
+
+	// Análisis del sentence coverage (Pasos que sigue el test en nuestro código): 
+	// 1. El organizador se loguea
+	// 2. El organizador intenta editar una gira para su circo
+	// estando la gira ya validada
+	// 3. La gira se no puede editarse 
+
+	// Análisis del data coverage (¿Que y como estamos verificando en nuestro modelo de datos?):
+
+	// Estamos verificando en nuestro modelo de datos que el organizador de un circo
+	// puede editar giras para su circo pero no puede estar validada
 
 	@Test(expected = IllegalArgumentException.class)
 	public void editTourError2() throws ParseException {
@@ -326,7 +362,18 @@ public class TourServiceTest extends AbstractTest {
 		super.unauthenticate();
 	}
 
-	// intenta eliminar una gira validada
+	//Este test testea el requisito 16.1 Un actor registrado como organizador del circo 
+	// puede eliminar giras de su circo
+
+	// Análisis del sentence coverage (Pasos que sigue el test en nuestro código): 
+	// 1. El organizador se loguea
+	// 2. El organizador intenta eliminar una gira de un circo que ya estaba validada
+	// 3. La gira no se elimina correctamente
+
+	// Análisis del data coverage (¿Que y como estamos verificando en nuestro modelo de datos?):
+
+	// Estamos verificando en nuestro modelo de datos que el organizador de un circo
+	// puede eliminar giras de su circo siempre que no estén validadas
 	@Test(expected = IllegalArgumentException.class)
 	public void testDeleteTourError2() throws ParseException {
 		super.authenticate("organizer1");
