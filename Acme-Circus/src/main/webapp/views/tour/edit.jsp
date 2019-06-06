@@ -39,6 +39,7 @@
 						<acme:textbox placeholder="yyyy-MM-dd" code="tour.endDate" path="endDate" />
 						<acme:textbox code="tour.link" path="link" />
 						<acme:textarea code="tour.tags" path="tags" />
+						<spring:message code="tour.categoryTour"/>	
 						<form:select  id="categoryTour" code="tour.categoryTour" path="categoryTour">
 							<form:options items="${categoryTours}" itemLabel="name" itemValue="id" />
 						</form:select>

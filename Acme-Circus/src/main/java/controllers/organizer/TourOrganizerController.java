@@ -77,6 +77,9 @@ public class TourOrganizerController extends AbstractController {
 			final Tour tour = this.tourService.findOne(tourId);
 			Assert.notNull(tour);
 
+			final Collection<CategoryTour> categoryTours = this.categoryTourService.findAll();
+			Assert.notEmpty(categoryTours);
+
 			final Organizer o = this.organizerService.findByPrincipal();
 			final Boolean b = tour.getOrganizers().equals(o);
 			Assert.isTrue(b);
@@ -121,6 +124,11 @@ public class TourOrganizerController extends AbstractController {
 		else
 			try {
 
+				final Collection<CategoryTour> categoryTours = this.categoryTourService.findAll();
+				Assert.notEmpty(categoryTours);
+
+				Assert.notNull(categoryTours);
+
 				final Organizer o = this.organizerService.findByPrincipal();
 				final Boolean b = tour.getOrganizers().equals(o);
 				Assert.isTrue(b);
@@ -157,6 +165,7 @@ public class TourOrganizerController extends AbstractController {
 
 			} catch (final Throwable oops) {
 
+				final Collection<CategoryTour> categoryTours = this.categoryTourService.findAll();
 				final Date actual = new Date();
 
 				if (tour.getValidated().equals(true))
@@ -165,6 +174,8 @@ public class TourOrganizerController extends AbstractController {
 					res = this.createEditModelAndView(tour, "tour.date.error");
 				else if (!tour.getStartDate().after(actual))
 					res = this.createEditModelAndView(tour, "tour.actual.error");
+				else if (categoryTours.isEmpty())
+					res = this.createEditModelAndView(tour, "tour.categoryempty.error");
 				else
 					res = this.createEditModelAndView(tour, "tour.datebetween.error");
 			}

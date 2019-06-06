@@ -40,6 +40,7 @@
 						<acme:textbox code="stop.spotsTotal" path="spotsTotal" />
 						<acme:textbox code="stop.spotsAvailable" path="spotsAvailable" />
 						
+						<spring:message code="stop.tour"/>	
 						<form:select  id="tour" code="stop.tour" path="tour">
 							<form:options items="${tours}" itemLabel="name" itemValue="id" />
 						</form:select>

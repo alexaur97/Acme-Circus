@@ -59,6 +59,8 @@ public class StopOrganizerController extends AbstractController {
 	public ModelAndView create() {
 		ModelAndView result;
 		try {
+			final Collection<Tour> tours = this.tourService.findAllNotAvailableByOrganize();
+			Assert.notNull(tours);
 			final Stop stop = this.stopService.create();
 			result = this.createEditModelAndView(stop);
 		} catch (final Throwable oops) {
@@ -66,12 +68,12 @@ public class StopOrganizerController extends AbstractController {
 		}
 		return result;
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam final int stopId) {
 		ModelAndView res;
 		try {
 
+			final Collection<Tour> tours = this.tourService.findAllNotAvailableByOrganize();
 			final Stop stop = this.stopService.findOne(stopId);
 			Assert.notNull(stop);
 
@@ -83,6 +85,7 @@ public class StopOrganizerController extends AbstractController {
 			Assert.isTrue(b);
 			Assert.isTrue(stop.getSpotsAvailable() <= stop.getSpotsTotal());
 			Assert.isTrue(!stop.getTour().validated);
+			Assert.notEmpty(tours);
 
 			res = this.createEditModelAndView(stop);
 
@@ -103,6 +106,8 @@ public class StopOrganizerController extends AbstractController {
 			res = this.createEditModelAndView(stop);
 		else
 			try {
+				final Collection<Tour> tours = this.tourService.findAllNotAvailableByOrganize();
+				Assert.notEmpty(tours);
 
 				final Organizer o = this.organizerService.findByPrincipal();
 				final Boolean b = stop.getTour().getOrganizers().equals(o);
@@ -126,14 +131,18 @@ public class StopOrganizerController extends AbstractController {
 
 			} catch (final Throwable oops) {
 
-				if (stop.getTour().getValidated().equals(true))
-					res = this.createEditModelAndView(stop, "stop.validated.error");
+				final Collection<Tour> tours = this.tourService.findAllNotAvailableByOrganize();
+
+				if (tours.isEmpty())
+					res = this.createEditModelAndView(stop, "stop.toursempty.error");
 				else if (!stop.getDate().after(stop.getTour().getStartDate()))
 					res = this.createEditModelAndView(stop, "stop.afterDate.error");
 				else if (!stop.getDate().before(stop.getTour().getEndDate()))
 					res = this.createEditModelAndView(stop, "stop.beforeDate.error");
 				else if (stop.getSpotsAvailable() > stop.getSpotsTotal())
 					res = this.createEditModelAndView(stop, "stop.spots.error");
+				else if (stop.getTour().getValidated().equals(true))
+					res = this.createEditModelAndView(stop, "stop.validated.error");
 				else
 					res = this.createEditModelAndView(stop, "stop.samedate.error");
 			}
@@ -173,4 +182,5 @@ public class StopOrganizerController extends AbstractController {
 
 		return res;
 	}
+
 }
