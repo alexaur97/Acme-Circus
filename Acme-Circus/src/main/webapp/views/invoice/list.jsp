@@ -48,6 +48,7 @@
 	<h3><spring:message code="invoice.artistInvoice" /></h3>
 
 <display:table name="artistInvoices" id="artistInvoice" requestURI="invoice/artist/list.do" pagesize="5" class="displaytag">
+<display:column property="offer.performance.name" titleKey="invoice.offer"/>
 <display:column property="total" titleKey="invoice.total"/>
 <display:column property="dateRequested" titleKey="invoice.date"/>
 <display:column titleKey="invoice.show"><acme:button code="invoice.show" url="invoice/artist/show.do?artistInvoiceId=${artistInvoice.id}"/></display:column>

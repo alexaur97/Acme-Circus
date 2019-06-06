@@ -27,7 +27,7 @@
 <display:column property="circus.name" titleKey="invoice.circus"/>
 <display:column property="total" titleKey="invoice.total"/>
 <display:column property="dateRequested" titleKey="invoice.date"/>
-<display:column titleKey="invoice.show"><acme:button code="invoice.show" url="invoice/owner/circusInvoice/show.do?circusInvoiceId=${circusInvoice.id}"/></display:column></display:table>
+</display:table>
 
 <h3><spring:message code="invoice.bannerInvoice" /></h3>
 
@@ -36,12 +36,12 @@
 <display:column property="banner.description" titleKey="invoice.description"/>
 <display:column property="total" titleKey="invoice.total"/>
 <display:column property="dateRequested" titleKey="invoice.date"/>
-<display:column titleKey="invoice.show"><acme:button code="invoice.show" url="invoice/owner/bannerInvoice/show.do?bannerInvoiceId=${bannerInvoice.id}"/></display:column>
 </display:table>
 
 <h3><spring:message code="invoice.artistInvoice" /></h3>
 
 <display:table name="artistInvoices" id="artistInvoice" requestURI="invoice/administrator/list.do" pagesize="5" class="displaytag">
+<display:column property="offer.performance.name" titleKey="invoice.offer"/>
 <display:column property="total" titleKey="invoice.total"/>
 <display:column property="dateRequested" titleKey="invoice.date"/>
 </display:table>

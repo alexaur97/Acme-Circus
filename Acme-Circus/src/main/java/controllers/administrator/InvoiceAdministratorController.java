@@ -12,9 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 import services.ArtistInvoiceService;
 import services.BannerInvoiceService;
 import services.CircusInvoiceService;
+import services.CircusService;
 import controllers.AbstractController;
 import domain.ArtistInvoice;
 import domain.BannerInvoice;
+import domain.Circus;
 import domain.CircusInvoice;
 
 @Controller
@@ -30,14 +32,20 @@ public class InvoiceAdministratorController extends AbstractController {
 	@Autowired
 	private ArtistInvoiceService	artistInvoiceService;
 
+	@Autowired
+	private CircusService			circusService;
+
 
 	@RequestMapping(value = "/generate", method = RequestMethod.GET)
 	public ModelAndView generate() {
 		ModelAndView result;
 		try {
 			final Boolean alreadyGenerated = this.circusInvoiceService.areAlreadyGenerated();
+			final Collection<Circus> circus = this.circusService.findAllActive();
 			result = new ModelAndView("invoice/generate");
 			result.addObject("alreadyGenerated", alreadyGenerated);
+			if (circus.size() != 0)
+				result.addObject("circus", circus);
 			if (alreadyGenerated == true) {
 				final Collection<CircusInvoice> circusInvoices = this.circusInvoiceService.findCurrentMonthInvoices();
 				Double sum = 0.0;

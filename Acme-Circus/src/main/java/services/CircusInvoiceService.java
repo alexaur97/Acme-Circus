@@ -106,15 +106,19 @@ public class CircusInvoiceService {
 
 	public Boolean areAlreadyGenerated() {
 		Boolean result = false;
-		final CircusInvoice last = (CircusInvoice) this.circusInvoiceRepository.findAllDesc().toArray()[0];
-		final Date a = last.getDateRequested();
-		final Date b = new Date();
-		final Calendar invoiceDate = Calendar.getInstance();
-		invoiceDate.setTime(a);
-		final Calendar now = Calendar.getInstance();
-		now.setTime(b);
-		if (now.get(Calendar.MONTH) == invoiceDate.get(Calendar.MONTH) && now.get(Calendar.YEAR) == invoiceDate.get(Calendar.YEAR))
-			result = true;
+		final Collection<CircusInvoice> all = this.circusInvoiceRepository.findAllDesc();
+		if (all.size() != 0) {
+			final CircusInvoice last = (CircusInvoice) all.toArray()[0];
+
+			final Date a = last.getDateRequested();
+			final Date b = new Date();
+			final Calendar invoiceDate = Calendar.getInstance();
+			invoiceDate.setTime(a);
+			final Calendar now = Calendar.getInstance();
+			now.setTime(b);
+			if (now.get(Calendar.MONTH) == invoiceDate.get(Calendar.MONTH) && now.get(Calendar.YEAR) == invoiceDate.get(Calendar.YEAR))
+				result = true;
+		}
 		return result;
 	}
 

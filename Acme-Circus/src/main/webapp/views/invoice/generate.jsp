@@ -37,7 +37,8 @@
 		<h3>Total: <jstl:out value="${sum}"/>&#8364;</h3>
 	</jstl:when>
 	<jstl:otherwise>
-	<h4><spring:message code="invoice.click" /></h4>
-		<acme:button url="invoice/administrator/generating.do" code="invoice.gen" />
+	<jstl:if test="${not empty circus}"><h4><spring:message code="invoice.click" /></h4>
+		<acme:button url="invoice/administrator/generating.do" code="invoice.gen" /></jstl:if>
+	<jstl:if test="${empty circus}"><h4><spring:message code="invoice.noCircus" /></h4></jstl:if>
 	</jstl:otherwise>
 </jstl:choose>

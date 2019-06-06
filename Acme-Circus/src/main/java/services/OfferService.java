@@ -81,17 +81,7 @@ public class OfferService {
 
 	public Offer save(final Offer offer) {
 		Assert.notNull(offer);
-		Offer old;
-		if (offer.getId() != 0)
-			old = this.findOne(offer.getId());
-		else
-			old = null;
-
 		final Offer result = this.offerRepository.save(offer);
-
-		if (old != null)
-			if (old.getStatus().equals("WAITINGFORCONFIRMATION") && result.getStatus().equals("CONFIRMED"))
-				this.artistInvoiceService.generate(result);
 		return result;
 	}
 
@@ -157,11 +147,13 @@ public class OfferService {
 		final Owner o = this.ownerService.findByPrincipal();
 		final Collection<Offer> offers = this.findByCircus(o.getCircus().getId());
 		final Offer offer = this.offerRepository.findOne(id);
+		final Offer result = offer;
 		Assert.isTrue(offers.contains(offer));
 		Assert.isTrue(offer.getStatus().equals("WAITINGFORCONFIRMATION"));
-		offer.setStatus("CONFIRMED");
-		offer.setLastUpdate(new Date());
-		return offer;
+		result.setStatus("CONFIRMED");
+		result.setLastUpdate(new Date());
+		this.artistInvoiceService.generate(result);
+		return result;
 	}
 
 	public Offer acceptRestricGet(final int id) {
