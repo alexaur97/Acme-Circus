@@ -71,7 +71,6 @@ public class AttendeeController extends AbstractController {
 			try {
 				final Attendee attendee = this.attendeeService.constructByForm(attendeeRegisterForm);
 				final Attendee saved = this.attendeeService.save(attendee);
-				System.out.println(saved);
 				result = new ModelAndView("redirect:/security/login.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(attendeeRegisterForm);

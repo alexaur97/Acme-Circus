@@ -38,7 +38,8 @@ public class CircusInvoiceServiceTest extends AbstractTest {
 		this.circusInvoiceService.generateMonthlyInvoices();
 	}
 
-	//	Para el caso negativo 1: actor no autenticado
+	//	Caso negativo 1: actor no autenticado
+
 	//Esto debe provocar un error.
 	//Análisis del sentence coverage: el sistema al llamar al metodo del servicio "generateMonthlyInvoices" comprueba
 	// que el actor no está autenticado
@@ -48,7 +49,8 @@ public class CircusInvoiceServiceTest extends AbstractTest {
 		this.circusInvoiceService.generateMonthlyInvoices();
 	}
 
-	//	Para el caso negativo 2: Email en uso.
+	//	Caso negativo 2: Email en uso.
+
 	//Esto debe provocar un error.
 	//Análisis del sentence coverage: el sistema al llamar al metodo del servicio "generateMonthlyInvoices" por segunda vez, comprueba
 	// que las facturas ya fueron generadas este mes.

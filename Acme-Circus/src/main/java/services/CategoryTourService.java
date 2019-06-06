@@ -19,9 +19,11 @@ public class CategoryTourService {
 	@Autowired
 	private CategoryTourRepository	categoryTourRepository;
 
-
 	//Supporting Services ------------------
 
+	@Autowired
+	private AdministratorService administratorService;
+	
 	//COnstructors -------------------------
 	public CategoryTourService() {
 		super();
@@ -30,6 +32,8 @@ public class CategoryTourService {
 	//Simple CRUD methods--------------------
 
 	public CategoryTour create() {
+		this.administratorService.findByPrincipal();
+		
 		CategoryTour result;
 
 		result = new CategoryTour();

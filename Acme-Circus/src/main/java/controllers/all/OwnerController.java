@@ -70,7 +70,6 @@ public class OwnerController extends AbstractController {
 			try {
 				final Owner owner = this.ownerService.constructByForm(ownerRegisterForm);
 				final Owner saved = this.ownerService.save(owner);
-				System.out.println(saved);
 				result = new ModelAndView("redirect:/security/login.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(ownerRegisterForm);

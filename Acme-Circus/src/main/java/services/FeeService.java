@@ -15,10 +15,13 @@ public class FeeService {
 
 	//Managed repository -------------------
 	@Autowired
-	private FeeRepository	feeRepository;
-
+	private FeeRepository			feeRepository;
 
 	//Supporting Services ------------------
+
+	@Autowired
+	private AdministratorService	administratorService;
+
 
 	//COnstructors -------------------------
 	public FeeService() {
@@ -36,6 +39,7 @@ public class FeeService {
 	//	}
 
 	public Fee find() {
+
 		Fee result;
 
 		result = (Fee) this.feeRepository.findAll().toArray()[0];
@@ -52,6 +56,8 @@ public class FeeService {
 	//	}
 
 	public Fee save(final Fee fee) {
+
+		this.administratorService.findByPrincipal();
 		Assert.notNull(fee);
 		return this.feeRepository.save(fee);
 	}

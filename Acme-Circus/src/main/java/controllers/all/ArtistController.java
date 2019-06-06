@@ -69,8 +69,7 @@ public class ArtistController extends AbstractController {
 		else
 			try {
 				final Artist artist = this.artistService.constructByForm(artistRegisterForm);
-				final Artist saved = this.artistService.save(artist);
-				System.out.println(saved);
+				this.artistService.save(artist);
 				result = new ModelAndView("redirect:/security/login.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(artistRegisterForm);

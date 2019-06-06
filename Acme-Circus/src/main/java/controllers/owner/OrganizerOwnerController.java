@@ -85,7 +85,6 @@ public class OrganizerOwnerController extends AbstractController {
 			try {
 				final Organizer organizer = this.organizerService.constructByForm(organizerRegisterForm);
 				final Organizer saved = this.organizerService.save(organizer);
-				System.out.println(saved);
 				result = new ModelAndView("redirect:/organizer/owner/list.do");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(organizerRegisterForm);

@@ -150,7 +150,6 @@ public class MessageService {
 			if (!t.trim().isEmpty())
 				tags.add(t);
 		msg.setTags(tags);
-		System.out.println(binding);
 		this.validator.validate(res, binding);
 		return res;
 	}
