@@ -382,4 +382,33 @@ public class TourServiceTest extends AbstractTest {
 		this.tourService.delete(tour);
 		super.unauthenticate();
 	}
+
+	//Este test testea el requisito 16.1 Un actor registrado como organizador del circo 
+	// puede editar giras para su circo
+
+	// Análisis del sentence coverage (Pasos que sigue el test en nuestro código): 
+	// 1. El dueño se loguea
+	// 2. El dueño intenta editar una gira para su circo
+	// 3. La gira se no puede editarse ya que solo puede editarlas el organizador
+
+	// Análisis del data coverage (¿Que y como estamos verificando en nuestro modelo de datos?):
+
+	// Estamos verificando en nuestro modelo de datos que solo el organizador
+	// puede editar las giras del circo
+
+	@Test(expected = IllegalArgumentException.class)
+	public void editTourError3() throws ParseException {
+		super.authenticate("owner1");
+		final int tourId = super.getEntityId("tour1");
+		final Tour tour = this.tourService.findOne(tourId);
+		final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		final String stringFecha = "2020-10-10";
+		final Date endDate = sdf.parse(stringFecha);
+		tour.setEndDate(endDate);
+		this.tourService.reconstruct(tour, null);
+		this.tourService.save(tour);
+		super.unauthenticate();
+
+	}
+
 }
