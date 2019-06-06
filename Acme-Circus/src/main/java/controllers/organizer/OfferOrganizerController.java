@@ -68,7 +68,7 @@ public class OfferOrganizerController extends AbstractController {
 			final Organizer o = this.organizerService.findByPrincipal();
 			final OfferForm offer;
 			offer = new OfferForm();
-			final Collection<Tour> tours = this.tourService.findAllAvailableOrg(o.getId());
+			final Collection<Tour> tours = this.tourService.findAllAvailableByOrg(o.getId());
 			final Collection<Performance> performances = this.performanceService.findAllNotCopy();
 			result = new ModelAndView("offer/edit");
 			result.addObject("offerForm", offer);

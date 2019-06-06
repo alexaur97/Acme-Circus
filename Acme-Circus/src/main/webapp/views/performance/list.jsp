@@ -35,6 +35,7 @@
 		<a href="${performances.video }">Video</a>
 	</display:column>
 	<security:authorize access="hasRole('ARTIST')">
+		<jstl:if test="${vacio}">
 	<jstl:if test="${!performances.copy}">
 	<display:column titleKey="performance.edit">		
 			<acme:button url="/performance/artist/edit.do?performanceId=${performances.id}" code="performance.edit" />
@@ -42,6 +43,7 @@
 	<display:column titleKey="performance.delete">		
 			<acme:button url="/performance/artist/delete.do?performanceId=${performances.id}" code="performance.delete" />
 	</display:column>
+							</jstl:if>
 							</jstl:if>
 	</security:authorize>
 

@@ -38,6 +38,8 @@ public class PerformanceArtistController extends AbstractController {
 			result = new ModelAndView("performance/list");
 			result.addObject("requestURI", "performance/artist/list.do");
 			result.addObject("performances", performances);
+			if (!performances.isEmpty())
+				result.addObject("vacio", true);
 
 		} catch (final Exception e) {
 			result = new ModelAndView("redirect:/#");
