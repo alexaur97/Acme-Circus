@@ -38,8 +38,11 @@
 						<acme:textbox code="message.subject" path="subject" />
 						<acme:textarea code="message.body" path="body" />
 						<acme:textbox code="message.tags" path="tags" />
-						<acme:select items="${actors}" itemLabel="email" code="message.recipient" path="recipient"/>
-					
+						<form:select  id="actor" code="message.recipient" path="recipient">
+							<form:options items="${actors}" itemLabel="email" itemValue="id" />
+						</form:select>
+						</br>
+						</br>
 						<acme:submit name="save" code="msg.save" />						
 						<acme:cancel url="/message/list.do"
 							code="msg.cancel" />
