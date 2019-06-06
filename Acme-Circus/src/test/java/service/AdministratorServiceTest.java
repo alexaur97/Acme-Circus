@@ -75,7 +75,7 @@ public class AdministratorServiceTest extends AbstractTest {
 		form.setPhoto("");
 		form.setDni("123Z");
 		form.setEmail("AdministratorTest@gmail.com");
-		form.setUsername("AdministratorTest");
+		form.setUsername("");
 		form.setPassword("AdministratorTest");
 		form.setConfirmPassword("AdministratorTest");
 		form.setHolderName("AdministratorTest");

@@ -111,7 +111,7 @@ public class AdministratorService {
 		Assert.isTrue(bAccount);
 
 		final Collection<String> emails = this.actorService.findAllEmails();
-		final String email = result.getEmail();
+		final String email = r.getEmail();
 		final Boolean bEmail = !emails.contains(email);
 		Assert.isTrue(bEmail);
 
